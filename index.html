@@ -139,7 +139,7 @@
             <div class="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div>
                     <h1 class="text-2xl sm:text-3xl font-bold text-white mb-1">Interactive Dashboard</h1>
-                    <p class="text-slate-400 text-xs sm:text-sm">Real-time utilities & smart HD/4K download hub.</p>
+                    <p class="text-slate-400 text-xs sm:text-sm">Real-time utilities & direct gallery HD downloader.</p>
                 </div>
                 <div class="bg-slate-900 border border-slate-800 px-4 py-2 rounded-xl flex items-center gap-3 self-start sm:self-auto">
                     <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></div>
@@ -152,30 +152,30 @@
                 <script data-cfasync="false" src="https://bauval.org/14/a0bf2999fe8463c6c3a473854470e8ce"></script>
             </div>
 
-            <!-- TOOLS GRID (25 Total Tools with HD Download Support) -->
+            <!-- TOOLS GRID (25 Tools) -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 
-                <!-- 1. Passport Photo Maker -->
+                <!-- Passport Photo Maker -->
                 <div onclick="openTool('passportPhoto')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-blue-400 border-2 border-blue-500/30 bg-blue-950/20">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-blue-500/20 text-blue-400 rounded-2xl flex items-center justify-center text-xl border border-blue-500/40 group-hover:scale-110 transition"><i class="fa-solid fa-id-badge"></i></div>
-                        <span class="text-[11px] bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2.5 py-1 rounded-full font-bold">HD DOWNLOAD</span>
+                        <span class="text-[11px] bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2.5 py-1 rounded-full font-bold">GALLERY SAVE</span>
                     </div>
                     <h3 class="font-bold text-lg text-white mb-1 group-hover:text-blue-400 transition">Passport Photo Maker</h3>
-                    <p class="text-xs text-slate-300">Create passport photos with global sizes & custom background colors.</p>
+                    <p class="text-xs text-slate-300">Create passport photos & save directly to gallery.</p>
                 </div>
 
-                <!-- 2. Exam Signature Resizer -->
+                <!-- Exam Signature Resizer -->
                 <div onclick="openTool('signatureResizer')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-emerald-400 border-2 border-emerald-500/30 bg-emerald-950/20">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-emerald-500/20 text-emerald-400 rounded-2xl flex items-center justify-center text-xl border border-emerald-500/40 group-hover:scale-110 transition"><i class="fa-solid fa-signature"></i></div>
-                        <span class="text-[11px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2.5 py-1 rounded-full font-bold">EXAM SPECIAL</span>
+                        <span class="text-[11px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2.5 py-1 rounded-full font-bold">BD EXAM</span>
                     </div>
                     <h3 class="font-bold text-lg text-white mb-1 group-hover:text-emerald-400 transition">Signature Resizer</h3>
-                    <p class="text-xs text-slate-300">Resize signatures for BD Exam (300x80px) & job applications.</p>
+                    <p class="text-xs text-slate-300">Resize signatures for BD Exam (300x80px) & save to device.</p>
                 </div>
 
-                <!-- 3. Thumbnail Downloader -->
+                <!-- Thumbnail Downloader -->
                 <div onclick="openTool('thumbDownloader')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-red-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-red-500/15 text-red-400 rounded-2xl flex items-center justify-center text-xl border border-red-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-download"></i></div>
@@ -185,17 +185,17 @@
                     <p class="text-xs text-slate-400">Download YouTube 4K/HD video thumbnails instantly.</p>
                 </div>
 
-                <!-- 4. Image Compressor -->
+                <!-- Image Compressor -->
                 <div onclick="openTool('imgCompressor')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-indigo-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-indigo-500/15 text-indigo-400 rounded-2xl flex items-center justify-center text-xl border border-indigo-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-image"></i></div>
                         <span class="text-[11px] bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-2.5 py-1 rounded-full font-medium">HD SAVE</span>
                     </div>
                     <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-indigo-400 transition">Image Compressor</h3>
-                    <p class="text-xs text-slate-400">Reduce file size without losing crystal clear quality.</p>
+                    <p class="text-xs text-slate-400">Reduce file size without losing quality.</p>
                 </div>
 
-                <!-- 5. QR Generator -->
+                <!-- QR Generator -->
                 <div onclick="openTool('qrGenerator')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-purple-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-purple-500/15 text-purple-400 rounded-2xl flex items-center justify-center text-xl border border-purple-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-qrcode"></i></div>
@@ -205,7 +205,7 @@
                     <p class="text-xs text-slate-400">Create & download custom high-res QR codes.</p>
                 </div>
 
-                <!-- 6. Word Counter -->
+                <!-- Word Counter -->
                 <div onclick="openTool('wordCounter')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-blue-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-blue-500/15 text-blue-400 rounded-2xl flex items-center justify-center text-xl border border-blue-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-file-lines"></i></div>
@@ -215,7 +215,7 @@
                     <p class="text-xs text-slate-400">Count words, characters, and paragraphs instantly.</p>
                 </div>
 
-                <!-- 7. Password Generator -->
+                <!-- Password Generator -->
                 <div onclick="openTool('passGenerator')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-emerald-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-emerald-500/15 text-emerald-400 rounded-2xl flex items-center justify-center text-xl border border-emerald-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-key"></i></div>
@@ -225,7 +225,7 @@
                     <p class="text-xs text-slate-400">Generate secure passwords with one click.</p>
                 </div>
 
-                <!-- 8. Age Calculator -->
+                <!-- Age Calculator -->
                 <div onclick="openTool('ageCalculator')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-amber-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-amber-500/15 text-amber-400 rounded-2xl flex items-center justify-center text-xl border border-amber-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-cake-candles"></i></div>
@@ -235,7 +235,7 @@
                     <p class="text-xs text-slate-400">Calculate exact age from date of birth.</p>
                 </div>
 
-                <!-- 9. Unit Converter -->
+                <!-- Unit Converter -->
                 <div onclick="openTool('unitConverter')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-cyan-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-cyan-500/15 text-cyan-400 rounded-2xl flex items-center justify-center text-xl border border-cyan-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-scale-balanced"></i></div>
@@ -245,7 +245,7 @@
                     <p class="text-xs text-slate-400">Convert measurement units like KG to Gram.</p>
                 </div>
 
-                <!-- 10. Text-to-Speech -->
+                <!-- Text-to-Speech -->
                 <div onclick="openTool('textSpeech')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-rose-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-rose-500/15 text-rose-400 rounded-2xl flex items-center justify-center text-xl border border-rose-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-volume-high"></i></div>
@@ -255,7 +255,7 @@
                     <p class="text-xs text-slate-400">Convert written text into natural audio speech.</p>
                 </div>
 
-                <!-- 11. Color Picker & HEX -->
+                <!-- Color Picker & HEX -->
                 <div onclick="openTool('colorPicker')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-emerald-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-emerald-500/15 text-emerald-400 rounded-2xl flex items-center justify-center text-xl border border-emerald-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-palette"></i></div>
@@ -265,7 +265,7 @@
                     <p class="text-xs text-slate-400">Pick colors and get exact HEX codes.</p>
                 </div>
 
-                <!-- 12. Text Case Converter -->
+                <!-- Text Case Converter -->
                 <div onclick="openTool('caseConverter')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-teal-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-teal-500/15 text-teal-400 rounded-2xl flex items-center justify-center text-xl border border-teal-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-font"></i></div>
@@ -275,7 +275,7 @@
                     <p class="text-xs text-slate-400">Convert text to UPPERCASE or lowercase.</p>
                 </div>
 
-                <!-- 13. Temporary Notepad -->
+                <!-- Temporary Notepad -->
                 <div onclick="openTool('tempNotepad')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-yellow-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-yellow-500/15 text-yellow-400 rounded-2xl flex items-center justify-center text-xl border border-yellow-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-note-sticky"></i></div>
@@ -285,7 +285,7 @@
                     <p class="text-xs text-slate-400">Auto-saved local scratchpad notes.</p>
                 </div>
 
-                <!-- 14. Password Hack Time Checker -->
+                <!-- Password Hack Time Checker -->
                 <div onclick="openTool('passChecker')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-fuchsia-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-fuchsia-500/15 text-fuchsia-400 rounded-2xl flex items-center justify-center text-xl border border-fuchsia-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-shield-halved"></i></div>
@@ -295,7 +295,7 @@
                     <p class="text-xs text-slate-400">Calculate how long it takes to crack a password.</p>
                 </div>
 
-                <!-- 15. HTML/CSS Minifier -->
+                <!-- HTML/CSS Minifier -->
                 <div onclick="openTool('codeMinifier')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-sky-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-sky-500/15 text-sky-400 rounded-2xl flex items-center justify-center text-xl border border-sky-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-code"></i></div>
@@ -305,7 +305,7 @@
                     <p class="text-xs text-slate-400">Compress HTML or CSS code instantly.</p>
                 </div>
 
-                <!-- 16. SEO Meta Tags Generator -->
+                <!-- SEO Meta Tags Generator -->
                 <div onclick="openTool('metaGen')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-lime-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-lime-500/15 text-lime-400 rounded-2xl flex items-center justify-center text-xl border border-lime-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-globe"></i></div>
@@ -315,7 +315,7 @@
                     <p class="text-xs text-slate-400">Create Google SEO friendly meta tags.</p>
                 </div>
 
-                <!-- 17. My IP & Device Info -->
+                <!-- My IP & Device Info -->
                 <div onclick="openTool('ipFinder')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-orange-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-orange-500/15 text-orange-400 rounded-2xl flex items-center justify-center text-xl border border-orange-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-network-wired"></i></div>
@@ -325,7 +325,7 @@
                     <p class="text-xs text-slate-400">Check IP address and browser details.</p>
                 </div>
 
-                <!-- 18. Pomodoro Study Timer -->
+                <!-- Pomodoro Study Timer -->
                 <div onclick="openTool('pomodoro')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-pink-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-pink-500/15 text-pink-400 rounded-2xl flex items-center justify-center text-xl border border-pink-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-clock"></i></div>
@@ -335,7 +335,7 @@
                     <p class="text-xs text-slate-400">25-minute study focus timer and break tracker.</p>
                 </div>
 
-                <!-- 19. Viral Hashtag Generator -->
+                <!-- Viral Hashtag Generator -->
                 <div onclick="openTool('tagGen')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-violet-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-violet-500/15 text-violet-400 rounded-2xl flex items-center justify-center text-xl border border-violet-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-hashtag"></i></div>
@@ -345,7 +345,7 @@
                     <p class="text-xs text-slate-400">Generate viral tags for social media posts.</p>
                 </div>
 
-                <!-- 20. Color Palette Generator -->
+                <!-- Color Palette Generator -->
                 <div onclick="openTool('paletteGen')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-emerald-400/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-emerald-400/15 text-emerald-300 rounded-2xl flex items-center justify-center text-xl border border-emerald-400/30 group-hover:scale-110 transition"><i class="fa-solid fa-swatchbook"></i></div>
@@ -355,7 +355,7 @@
                     <p class="text-xs text-slate-400">Generate random matching color palettes.</p>
                 </div>
 
-                <!-- 21. Loan & EMI Calculator -->
+                <!-- Loan & EMI Calculator -->
                 <div onclick="openTool('emiCalc')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-amber-400/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-amber-400/15 text-amber-300 rounded-2xl flex items-center justify-center text-xl border border-amber-400/30 group-hover:scale-110 transition"><i class="fa-solid fa-calculator"></i></div>
@@ -365,7 +365,7 @@
                     <p class="text-xs text-slate-400">Calculate loan installments and monthly interest.</p>
                 </div>
 
-                <!-- 22. Text to Binary / Morse -->
+                <!-- Text to Binary / Morse -->
                 <div onclick="openTool('binaryConv')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-blue-400/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-blue-400/15 text-blue-300 rounded-2xl flex items-center justify-center text-xl border border-blue-400/30 group-hover:scale-110 transition"><i class="fa-solid fa-code-compare"></i></div>
@@ -375,7 +375,7 @@
                     <p class="text-xs text-slate-400">Convert text to binary (0 & 1) code.</p>
                 </div>
 
-                <!-- 23. Base64 Encoder/Decoder -->
+                <!-- Base64 Encoder/Decoder -->
                 <div onclick="openTool('base64Tool')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-cyan-400/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-cyan-400/15 text-cyan-300 rounded-2xl flex items-center justify-center text-xl border border-cyan-400/30 group-hover:scale-110 transition"><i class="fa-solid fa-lock"></i></div>
@@ -385,7 +385,7 @@
                     <p class="text-xs text-slate-400">Encode or decode text in Base64 format.</p>
                 </div>
 
-                <!-- 24. World Clock Converter -->
+                <!-- World Clock Converter -->
                 <div onclick="openTool('worldClock')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-rose-400/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-rose-400/15 text-rose-300 rounded-2xl flex items-center justify-center text-xl border border-rose-400/30 group-hover:scale-110 transition"><i class="fa-solid fa-clock-rotate-left"></i></div>
@@ -395,7 +395,7 @@
                     <p class="text-xs text-slate-400">Check current live times across global timezones.</p>
                 </div>
 
-                <!-- 25. Keyboard & Mouse Tester -->
+                <!-- Keyboard & Mouse Tester -->
                 <div onclick="openTool('keyTester')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-indigo-400/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-indigo-400/15 text-indigo-300 rounded-2xl flex items-center justify-center text-xl border border-indigo-400/30 group-hover:scale-110 transition"><i class="fa-solid fa-keyboard"></i></div>
@@ -469,10 +469,12 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT LOGIC FOR ALL 25 TOOLS -->
+    <!-- JAVASCRIPT SYSTEM WITH DIRECT DOWNLOAD FIX -->
     <script>
         let toolViews = JSON.parse(localStorage.getItem('jt_tool_views')) || { passportPhoto: 0, signatureResizer: 0, wordCounter: 0, passGenerator: 0, qrGenerator: 0, ageCalculator: 0, unitConverter: 0, textSpeech: 0, thumbDownloader: 0, imgCompressor: 0, colorPicker: 0, caseConverter: 0, tempNotepad: 0, passChecker: 0, codeMinifier: 0, metaGen: 0, ipFinder: 0, pomodoro: 0, tagGen: 0, paletteGen: 0, emiCalc: 0, binaryConv: 0, base64Tool: 0, worldClock: 0, keyTester: 0 };
         let completedWorksCount = parseInt(localStorage.getItem('jt_works_count')) || 0;
+        let globalDownloadUrl = "";
+        let globalFileName = "";
 
         document.getElementById('menuWorkCount').innerText = completedWorksCount;
         document.getElementById('modalWorkCount').innerText = completedWorksCount;
@@ -560,7 +562,7 @@
             if(toolName === 'passportPhoto') {
                 title.innerHTML = `<i class="fa-solid fa-id-badge text-blue-400"></i> Smart Passport Photo Maker`;
                 body.innerHTML = `
-                    <label class="text-xs text-slate-400 block mb-1">1. Select Photo File</label>
+                    <label class="text-xs text-slate-400 block mb-1">1. Select Photo File (JPG, PNG)</label>
                     <input type="file" id="passPhotoInput" accept="image/*" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs mb-3 text-slate-200">
                     
                     <label class="text-xs text-slate-400 block mb-1">2. Select Country / Size Standard</label>
@@ -577,10 +579,13 @@
                         <span class="text-xs text-slate-400 flex items-center">Custom BG (White, Blue, Red etc.)</span>
                     </div>
 
-                    <button onclick="startDownloadProgress('passport')" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2.5 rounded-xl text-sm font-medium mb-2 shadow-lg shadow-blue-600/30">Download HD Passport Photo</button>
+                    <button onclick="startDownloadProgress('passport')" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2.5 rounded-xl text-sm font-medium mb-2 shadow-lg shadow-blue-600/30">Generate & Save HD Photo</button>
                     <div id="progressBox" class="hidden space-y-2 mt-2">
                         <div class="w-full bg-slate-900 rounded-full h-2.5 border border-slate-800 overflow-hidden"><div id="progressBar" class="bg-emerald-500 h-2.5 rounded-full w-0 transition-all duration-300"></div></div>
-                        <p id="progressText" class="text-xs text-slate-400 text-center">Processing...</p>
+                        <p id="progressText" class="text-xs text-slate-400 text-center">Processing Image...</p>
+                        <div id="manualDownloadBtnHolder" class="hidden text-center pt-2">
+                            <a id="manualDownloadLink" download="passport-photo-hd.png" href="#" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white px-4 py-2 rounded-xl text-xs font-bold shadow-lg transition"><i class="fa-solid fa-download"></i> Click Here to Save to Gallery</a>
+                        </div>
                     </div>
                 `;
             } else if(toolName === 'signatureResizer') {
@@ -596,10 +601,13 @@
                         <option value="custom">Bank / University (500 x 150 px)</option>
                     </select>
 
-                    <button onclick="startDownloadProgress('signature')" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-2.5 rounded-xl text-sm font-medium mb-2 shadow-lg shadow-emerald-600/30">Download HD Signature</button>
+                    <button onclick="startDownloadProgress('signature')" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-2.5 rounded-xl text-sm font-medium mb-2 shadow-lg shadow-emerald-600/30">Resize & Save HD Signature</button>
                     <div id="progressBox" class="hidden space-y-2 mt-2">
                         <div class="w-full bg-slate-900 rounded-full h-2.5 border border-slate-800 overflow-hidden"><div id="progressBar" class="bg-emerald-500 h-2.5 rounded-full w-0 transition-all duration-300"></div></div>
-                        <p id="progressText" class="text-xs text-slate-400 text-center">Processing...</p>
+                        <p id="progressText" class="text-xs text-slate-400 text-center">Processing Signature...</p>
+                        <div id="manualDownloadBtnHolder" class="hidden text-center pt-2">
+                            <a id="manualDownloadLink" download="signature-hd.jpg" href="#" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white px-4 py-2 rounded-xl text-xs font-bold shadow-lg transition"><i class="fa-solid fa-download"></i> Click Here to Save to Gallery</a>
+                        </div>
                     </div>
                 `;
             } else if(toolName === 'thumbDownloader') {
@@ -609,22 +617,27 @@
                     <select id="thumbQuality" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm mb-3 text-slate-200">
                         <option value="maxresdefault">4K / Ultra HD Quality</option>
                         <option value="hqdefault">Full HD 1080p Quality</option>
-                        <option value="mqdefault">High Quality (HQ)</option>
                     </select>
-                    <button onclick="startDownloadProgress('thumb')" class="w-full bg-red-600 hover:bg-red-500 text-white py-2.5 rounded-xl text-sm font-medium mb-3">Download HD Thumbnail</button>
+                    <button onclick="startDownloadProgress('thumb')" class="w-full bg-red-600 hover:bg-red-500 text-white py-2.5 rounded-xl text-sm font-medium mb-3">Fetch & Save HD Thumbnail</button>
                     <div id="progressBox" class="hidden space-y-2 mt-2">
                         <div class="w-full bg-slate-900 rounded-full h-2.5 border border-slate-800 overflow-hidden"><div id="progressBar" class="bg-emerald-500 h-2.5 rounded-full w-0 transition-all duration-300"></div></div>
                         <p id="progressText" class="text-xs text-slate-400 text-center">Processing...</p>
+                        <div id="manualDownloadBtnHolder" class="hidden text-center pt-2">
+                            <a id="manualDownloadLink" target="_blank" download="yt-thumbnail.jpg" href="#" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white px-4 py-2 rounded-xl text-xs font-bold shadow-lg transition"><i class="fa-solid fa-download"></i> Click Here to Save HD Image</a>
+                        </div>
                     </div>
                 `;
             } else if(toolName === 'imgCompressor') {
                 title.innerHTML = `<i class="fa-solid fa-image text-indigo-400"></i> HD Image Compressor & Resizer`;
                 body.innerHTML = `
                     <input type="file" id="imageFile" accept="image/*" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-sm mb-3 text-slate-200">
-                    <button onclick="startDownloadProgress('img')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-2.5 rounded-xl text-sm font-medium mb-3">Compress & Download HD</button>
+                    <button onclick="startDownloadProgress('img')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-2.5 rounded-xl text-sm font-medium mb-3">Compress & Save HD</button>
                     <div id="progressBox" class="hidden space-y-2 mt-2">
                         <div class="w-full bg-slate-900 rounded-full h-2.5 border border-slate-800 overflow-hidden"><div id="progressBar" class="bg-emerald-500 h-2.5 rounded-full w-0 transition-all duration-300"></div></div>
-                        <p id="progressText" class="text-xs text-slate-400 text-center">Processing...</p>
+                        <p id="progressText" class="text-xs text-slate-400 text-center">Compressing...</p>
+                        <div id="manualDownloadBtnHolder" class="hidden text-center pt-2">
+                            <a id="manualDownloadLink" download="compressed-hd-image.jpg" href="#" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white px-4 py-2 rounded-xl text-xs font-bold shadow-lg transition"><i class="fa-solid fa-download"></i> Click Here to Save to Gallery</a>
+                        </div>
                     </div>
                 `;
             } else if(toolName === 'qrGenerator') {
@@ -810,124 +823,162 @@
 
         function closeToolModal() { document.getElementById('toolModal').classList.add('hidden'); }
 
-        // DOWNLOAD PROGRESSOR & HIGH-RES HD/4K PROCESSOR
+        // REAL-TIME CANVAS GENERATOR & DIRECT DOWNLOAD LOGIC
         function startDownloadProgress(type) {
             const progressBox = document.getElementById('progressBox');
             const progressBar = document.getElementById('progressBar');
             const progressText = document.getElementById('progressText');
+            const btnHolder = document.getElementById('manualDownloadBtnHolder');
+            const manualLink = document.getElementById('manualDownloadLink');
+
+            if(type === 'passport') {
+                const fileInput = document.getElementById('passPhotoInput');
+                if(!fileInput || !fileInput.files[0]) {
+                    alert("Please select a Photo file first (JPG/PNG)!");
+                    return;
+                }
+            } else if(type === 'signature') {
+                const fileInput = document.getElementById('sigInput');
+                if(!fileInput || !fileInput.files[0]) {
+                    alert("Please select a Signature photo file first!");
+                    return;
+                }
+            } else if(type === 'img') {
+                const fileInput = document.getElementById('imageFile');
+                if(!fileInput || !fileInput.files[0]) {
+                    alert("Please select an Image file first!");
+                    return;
+                }
+            }
+
             progressBox.classList.remove('hidden');
+            btnHolder.classList.add('hidden');
             progressBar.style.width = '0%';
-            progressText.innerText = "Processing HD / 4K File...";
+            progressText.innerText = "Generating & Processing File...";
 
             let width = 0;
             let interval = setInterval(() => {
                 if (width >= 100) {
                     clearInterval(interval);
-                    progressText.innerHTML = `<span class="text-emerald-400 font-bold flex items-center justify-center gap-1.5"><i class="fa-solid fa-circle-check text-base"></i> Successfully Downloaded HD File!</span>`;
+                    progressText.innerHTML = `<span class="text-emerald-400 font-bold flex items-center justify-center gap-1.5"><i class="fa-solid fa-circle-check text-base"></i> Processing Completed!</span>`;
                     registerCompletedTask();
 
                     if(type === 'passport') {
-                        processPassportCanvasHD();
+                        processPassportCanvasHD(btnHolder, manualLink);
                     } else if(type === 'signature') {
-                        processSignatureCanvasHD();
+                        processSignatureCanvasHD(btnHolder, manualLink);
                     } else if(type === 'thumb') {
-                        const url = document.getElementById('ytUrl').value;
-                        const quality = document.getElementById('thumbQuality').value;
-                        const match = url ? url.match(/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/) : null;
-                        if(match && match[2].length === 11) {
-                            window.open(`https://img.youtube.com/vi/${match[2]}/${quality}.jpg`, '_blank');
-                        }
+                        processThumbnailHD(btnHolder, manualLink);
                     } else if(type === 'img') {
-                        processImageCompressorHD();
+                        processImageCompressorHD(btnHolder, manualLink);
                     }
                 } else {
-                    width += 20;
+                    width += 25;
                     progressBar.style.width = width + '%';
                 }
-            }, 90);
+            }, 80);
         }
 
-        // ULTRA HD PASSPORT CANVAS PROCESSOR
-        function processPassportCanvasHD() {
+        function triggerAutoDownload(url, filename, btnHolder, manualLink) {
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+
+            // Set Manual Link as backup for Mobile Devices
+            manualLink.href = url;
+            manualLink.download = filename;
+            btnHolder.classList.remove('hidden');
+        }
+
+        function processPassportCanvasHD(btnHolder, manualLink) {
             const fileInput = document.getElementById('passPhotoInput');
             const bgColor = document.getElementById('passBgColor').value;
             const sizeOption = document.getElementById('passCountrySize').value;
-            if(!fileInput.files[0]) {
-                alert("Please select a photo file first!");
-                return;
-            }
-            const img = new Image();
-            img.src = URL.createObjectURL(fileInput.files[0]);
-            img.onload = function() {
-                const canvas = document.createElement('canvas');
-                // High resolution scaling for zero-blur output
-                if(sizeOption === 'us') { canvas.width = 1200; canvas.height = 1200; }
-                else if(sizeOption === 'uk') { canvas.width = 1050; canvas.height = 1350; }
-                else { canvas.width = 1200; canvas.height = 1500; } // Bangladesh & default HD
+            const reader = new FileReader();
 
-                const ctx = canvas.getContext('2d');
-                ctx.fillStyle = bgColor;
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-                
-                const link = document.createElement('a');
-                link.download = 'passport-photo-ultra-hd.png';
-                link.href = canvas.toDataURL('image/png', 1.0);
-                link.click();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    if(sizeOption === 'us') { canvas.width = 1200; canvas.height = 1200; }
+                    else if(sizeOption === 'uk') { canvas.width = 1050; canvas.height = 1350; }
+                    else { canvas.width = 1200; canvas.height = 1500; } // BD Standard
+
+                    const ctx = canvas.getContext('2d');
+                    ctx.fillStyle = bgColor;
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+                    const dataUrl = canvas.toDataURL('image/png', 1.0);
+                    triggerAutoDownload(dataUrl, 'passport-photo-hd.png', btnHolder, manualLink);
+                };
+                img.src = e.target.result;
             };
+            reader.readAsDataURL(fileInput.files[0]);
         }
 
-        // ULTRA HD SIGNATURE CANVAS PROCESSOR
-        function processSignatureCanvasHD() {
+        function processSignatureCanvasHD(btnHolder, manualLink) {
             const fileInput = document.getElementById('sigInput');
             const preset = document.getElementById('sigPreset').value;
-            if(!fileInput.files[0]) {
-                alert("Please select a signature image first!");
-                return;
-            }
-            const img = new Image();
-            img.src = URL.createObjectURL(fileInput.files[0]);
-            img.onload = function() {
-                const canvas = document.createElement('canvas');
-                if(preset === 'square') { canvas.width = 600; canvas.height = 600; }
-                else if(preset === 'custom') { canvas.width = 1000; canvas.height = 300; }
-                else { canvas.width = 900; canvas.height = 240; } // BD Govt Exam Standard High-Res (3x sharp)
+            const reader = new FileReader();
 
-                const ctx = canvas.getContext('2d');
-                ctx.fillStyle = '#ffffff';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-                
-                const link = document.createElement('a');
-                link.download = 'official-exam-signature-hd.jpg';
-                link.href = canvas.toDataURL('image/jpeg', 1.0);
-                link.click();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    if(preset === 'square') { canvas.width = 600; canvas.height = 600; }
+                    else if(preset === 'custom') { canvas.width = 1000; canvas.height = 300; }
+                    else { canvas.width = 900; canvas.height = 240; } // BD Exam 300x80 (3x HD pixel ratio)
+
+                    const ctx = canvas.getContext('2d');
+                    ctx.fillStyle = '#ffffff';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+                    const dataUrl = canvas.toDataURL('image/jpeg', 0.95);
+                    triggerAutoDownload(dataUrl, 'official-signature-300x80.jpg', btnHolder, manualLink);
+                };
+                img.src = e.target.result;
             };
+            reader.readAsDataURL(fileInput.files[0]);
         }
 
-        // HD IMAGE COMPRESSOR
-        function processImageCompressorHD() {
+        function processThumbnailHD(btnHolder, manualLink) {
+            const url = document.getElementById('ytUrl').value;
+            const quality = document.getElementById('thumbQuality').value;
+            const match = url ? url.match(/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/) : null;
+            if(match && match[2].length === 11) {
+                const thumbUrl = `https://img.youtube.com/vi/${match[2]}/${quality}.jpg`;
+                triggerAutoDownload(thumbUrl, 'youtube-thumbnail-hd.jpg', btnHolder, manualLink);
+            } else {
+                alert("Please enter a valid YouTube Video URL!");
+            }
+        }
+
+        function processImageCompressorHD(btnHolder, manualLink) {
             const fileInput = document.getElementById('imageFile');
-            if(!fileInput.files[0]) {
-                alert("Please select an image file!");
-                return;
-            }
-            const img = new Image();
-            img.src = URL.createObjectURL(fileInput.files[0]);
-            img.onload = function() {
-                const canvas = document.createElement('canvas');
-                canvas.width = img.width;
-                canvas.height = img.height;
-                const ctx = canvas.getContext('2d');
-                ctx.drawImage(img, 0, 0);
-                const link = document.createElement('a');
-                link.download = 'compressed-hd-image.jpg';
-                link.href = canvas.toDataURL('image/jpeg', 0.9);
-                link.click();
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0);
+
+                    const dataUrl = canvas.toDataURL('image/jpeg', 0.85);
+                    triggerAutoDownload(dataUrl, 'compressed-hd-image.jpg', btnHolder, manualLink);
+                };
+                img.src = e.target.result;
             };
+            reader.readAsDataURL(fileInput.files[0]);
         }
 
-        // OTHER UTILITIES
+        // OTHER TOOL UTILITIES
         function countWords() {
             const text = document.getElementById('wcText').value.trim();
             const words = text === "" ? 0 : text.split(/\s+/).length;
@@ -952,7 +1003,8 @@
         function generateQR() {
             const val = document.getElementById('qrText').value;
             if(!val) return alert("Enter text or URL");
-            document.getElementById('qrResult').innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(val)}" class="mx-auto rounded-lg border p-1 bg-white"><br><a href="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${encodeURIComponent(val)}" target="_blank" class="mt-2 inline-block bg-purple-600 text-white px-3 py-1.5 rounded-lg text-xs font-medium">Download HD QR Code</a>`;
+            const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${encodeURIComponent(val)}`;
+            document.getElementById('qrResult').innerHTML = `<img src="${qrUrl}" class="w-36 h-36 mx-auto rounded-lg border p-1 bg-white mb-2"><a href="${qrUrl}" download="qr-code.png" target="_blank" class="inline-block bg-purple-600 hover:bg-purple-500 text-white px-3 py-1.5 rounded-lg text-xs font-medium"><i class="fa-solid fa-download"></i> Save QR to Gallery</a>`;
             registerCompletedTask();
         }
 
