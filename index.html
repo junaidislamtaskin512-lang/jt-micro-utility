@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JT Micro Utility - All-in-One Toolkit</title>
-    <!-- Tailwind CSS for Modern Responsive Design -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Poppins', sans-serif; }
-        .glass { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .glass { background: rgba(15, 23, 42, 0.90); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
         .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
         .glass-card:hover { transform: translateY(-6px); box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.5); }
         @keyframes spin-slow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
@@ -26,19 +26,19 @@
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white">
 
     <!-- FLOATING WHATSAPP SUPPORT BUTTON -->
-    <a href="https://wa.me/8801568600668?text=Hello!%20I%20have%20a%20question%20regarding%20JT%20Micro%20Utility." target="_blank" title="Chat on WhatsApp" class="whatsapp-float fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-400 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl transition hover:scale-110 border border-emerald-300">
+    <a href="https://wa.me/8801568600668?text=Hello!%20I%20need%20help%20with%20JT%20Micro%20Utility." target="_blank" title="Chat on WhatsApp" class="whatsapp-float fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-400 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl transition hover:scale-110 border border-emerald-300">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <!-- AUTHENTICATION MODAL (Initially Visible) -->
-    <div id="authModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md p-4">
+    <!-- AUTHENTICATION MODAL -->
+    <div id="authModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md p-4 hidden">
         <div class="glass w-full max-w-md rounded-2xl p-8 shadow-2xl animate-pop relative border border-slate-800">
             <div class="text-center mb-6">
                 <div class="w-16 h-16 bg-gradient-to-tr from-blue-600 to-indigo-500 text-white rounded-2xl flex items-center justify-center mx-auto mb-3 text-2xl shadow-lg shadow-blue-500/30">
                     <i class="fa-solid fa-bolt animate-spin-slow"></i>
                 </div>
                 <h1 class="text-2xl font-bold tracking-wide">JT Micro Utility</h1>
-                <p class="text-xs text-slate-400 mt-1">Please login or register to access tools</p>
+                <p class="text-xs text-slate-400 mt-1">Please login or register to start working</p>
             </div>
 
             <!-- Tab Switcher -->
@@ -47,15 +47,15 @@
                 <button onclick="switchTab('signup')" id="signupTabBtn" class="flex-1 py-2 text-sm font-medium rounded-lg text-slate-400 hover:text-white transition">Sign Up</button>
             </div>
 
-            <!-- LOGIN FORM (Clean placeholders, no hardcoded names) -->
+            <!-- LOGIN FORM -->
             <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-4">
                 <div>
                     <label class="text-xs text-slate-400 block mb-1">Email or Phone Number</label>
-                    <input type="text" id="loginEmail" required class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500 transition" placeholder="Enter email or phone number">
+                    <input type="text" id="loginEmail" required class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500 transition text-slate-200" placeholder="Enter email or phone number">
                 </div>
                 <div>
                     <label class="text-xs text-slate-400 block mb-1">Password</label>
-                    <input type="password" id="loginPass" required class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500 transition" placeholder="Enter your password">
+                    <input type="password" id="loginPass" required class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500 transition text-slate-200" placeholder="Enter your password">
                 </div>
                 <div class="flex justify-between items-center text-xs">
                     <label class="flex items-center gap-2 cursor-pointer text-slate-400"><input type="checkbox" class="rounded bg-slate-900 border-slate-700"> Remember me</label>
@@ -64,32 +64,31 @@
                 <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-medium py-3 rounded-xl transition shadow-lg shadow-blue-600/30">Login Now</button>
             </form>
 
-            <!-- SIGNUP FORM (Clean placeholders) -->
+            <!-- SIGNUP FORM -->
             <form id="signupForm" onsubmit="handleSignup(event)" class="space-y-4 hidden">
                 <div>
                     <label class="text-xs text-slate-400 block mb-1">Full Name</label>
-                    <input type="text" id="signupName" required class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 transition" placeholder="Enter your full name">
+                    <input type="text" id="signupName" required class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 transition text-slate-200" placeholder="Enter your full name">
                 </div>
                 <div>
                     <label class="text-xs text-slate-400 block mb-1">Email or Phone Number</label>
-                    <input type="text" id="signupEmail" required class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 transition" placeholder="Enter email or phone number">
+                    <input type="text" id="signupEmail" required class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 transition text-slate-200" placeholder="Enter email or phone number">
                 </div>
                 <div>
                     <label class="text-xs text-slate-400 block mb-1">Create Password</label>
-                    <input type="password" id="signupPass" required class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 transition" placeholder="Create a strong password">
+                    <input type="password" id="signupPass" required class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 transition text-slate-200" placeholder="Create a strong password">
                 </div>
                 <button type="submit" class="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-medium py-3 rounded-xl transition shadow-lg shadow-emerald-600/30">Register Account</button>
             </form>
 
-            <!-- Success Alert Popup inside Modal -->
             <div id="authAlert" class="hidden mt-4 p-3 bg-emerald-500/20 border border-emerald-500 text-emerald-400 rounded-xl text-center text-sm font-medium animate-pop flex items-center justify-center gap-2">
                 <i class="fa-solid fa-circle-check text-lg"></i> <span id="authAlertText">Success!</span>
             </div>
         </div>
     </div>
 
-    <!-- MAIN APP DASHBOARD (Hidden until logged in) -->
-    <div id="mainApp" class="hidden flex-1 flex flex-col">
+    <!-- MAIN APP DASHBOARD -->
+    <div id="mainApp" class="flex-1 flex flex-col hidden">
         <!-- Header -->
         <header class="glass sticky top-0 z-40 px-4 lg:px-12 py-4 flex justify-between items-center border-b border-slate-800/80">
             <div class="flex items-center gap-3">
@@ -103,7 +102,6 @@
             </div>
             
             <div class="flex items-center gap-3 relative">
-                <!-- WhatsApp Support Button -->
                 <a href="https://wa.me/8801568600668" target="_blank" class="hidden sm:flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20 px-3 py-1.5 rounded-xl text-xs font-medium transition">
                     <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Support
                 </a>
@@ -114,9 +112,9 @@
                         <i class="fa-solid fa-ellipsis-vertical text-lg"></i>
                     </button>
 
-                    <!-- Three-Dot Dropdown Menu (Dashboard, Profile, Complete Works, Logout) -->
+                    <!-- Dropdown Menu -->
                     <div id="dropdownMenu" class="hidden absolute right-0 mt-2 w-52 glass rounded-xl shadow-2xl border border-slate-800 overflow-hidden z-50 animate-pop">
-                        <button onclick="openDashboard()" class="w-full text-left px-4 py-2.5 text-xs text-slate-200 hover:bg-slate-800/80 flex items-center gap-2.5 transition border-b border-slate-800/50">
+                        <button onclick="openDashboard(); toggleMenu();" class="w-full text-left px-4 py-2.5 text-xs text-slate-200 hover:bg-slate-800/80 flex items-center gap-2.5 transition border-b border-slate-800/50">
                             <i class="fa-solid fa-house text-blue-400"></i> Dashboard
                         </button>
                         <button onclick="openProfileModal(); toggleMenu();" class="w-full text-left px-4 py-2.5 text-xs text-slate-200 hover:bg-slate-800/80 flex items-center gap-2.5 transition border-b border-slate-800/50">
@@ -133,133 +131,96 @@
             </div>
         </header>
 
-        <!-- Main Body / Dashboard Tools Grid -->
+        <!-- Dashboard Body -->
         <main class="flex-1 max-w-7xl w-full mx-auto px-4 lg:px-8 py-8">
             <div class="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div>
                     <h1 class="text-2xl sm:text-3xl font-bold text-white mb-1">Interactive Dashboard</h1>
-                    <p class="text-slate-400 text-xs sm:text-sm">Explore dedicated micro-tools. Real-time stats update as users interact.</p>
+                    <p class="text-slate-400 text-xs sm:text-sm">Real-time stats update as real users perform tasks here.</p>
                 </div>
                 <div class="bg-slate-900 border border-slate-800 px-4 py-2 rounded-xl flex items-center gap-3 self-start sm:self-auto">
                     <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></div>
-                    <span class="text-xs text-slate-300 font-medium">Active Users / Views: <strong id="totalViewsCount" class="text-emerald-400">0</strong></span>
+                    <span class="text-xs text-slate-300 font-medium">Total Live Interactions: <strong id="totalViewsCount" class="text-emerald-400">0</strong></span>
                 </div>
             </div>
 
-            <!-- Tools Grid with 0 Starting Views (Realistic & Accurate) -->
+            <!-- Tools Grid (Starting cleanly from 0 real views) -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                
-                <!-- Tool 1: Word Counter -->
                 <div onclick="openTool('wordCounter')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-blue-500/50">
                     <div class="flex justify-between items-start mb-4">
-                        <div class="w-12 h-12 bg-blue-500/15 text-blue-400 rounded-2xl flex items-center justify-center text-xl border border-blue-500/30 group-hover:scale-110 transition">
-                            <i class="fa-solid fa-file-lines"></i>
-                        </div>
-                        <span class="text-[11px] bg-blue-500/10 text-blue-400 border border-blue-500/20 px-2.5 py-1 rounded-full font-medium flex items-center gap-1.5">
-                            <i class="fa-solid fa-eye text-[10px]"></i> <span id="view-wordCounter">0</span> views
-                        </span>
+                        <div class="w-12 h-12 bg-blue-500/15 text-blue-400 rounded-2xl flex items-center justify-center text-xl border border-blue-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-file-lines"></i></div>
+                        <span class="text-[11px] bg-blue-500/10 text-blue-400 border border-blue-500/20 px-2.5 py-1 rounded-full font-medium flex items-center gap-1.5"><i class="fa-solid fa-eye text-[10px]"></i> <span id="view-wordCounter">0</span> views</span>
                     </div>
                     <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-blue-400 transition">Word & Char Counter</h3>
                     <p class="text-xs text-slate-400">Count exact words, characters, and paragraphs in real-time.</p>
                 </div>
 
-                <!-- Tool 2: Password Generator -->
                 <div onclick="openTool('passGenerator')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-emerald-500/50">
                     <div class="flex justify-between items-start mb-4">
-                        <div class="w-12 h-12 bg-emerald-500/15 text-emerald-400 rounded-2xl flex items-center justify-center text-xl border border-emerald-500/30 group-hover:scale-110 transition">
-                            <i class="fa-solid fa-key"></i>
-                        </div>
-                        <span class="text-[11px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2.5 py-1 rounded-full font-medium flex items-center gap-1.5">
-                            <i class="fa-solid fa-eye text-[10px]"></i> <span id="view-passGenerator">0</span> views
-                        </span>
+                        <div class="w-12 h-12 bg-emerald-500/15 text-emerald-400 rounded-2xl flex items-center justify-center text-xl border border-emerald-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-key"></i></div>
+                        <span class="text-[11px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2.5 py-1 rounded-full font-medium flex items-center gap-1.5"><i class="fa-solid fa-eye text-[10px]"></i> <span id="view-passGenerator">0</span> views</span>
                     </div>
                     <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-emerald-400 transition">Password Generator</h3>
                     <p class="text-xs text-slate-400">Generate secure and strong custom passwords with one click.</p>
                 </div>
 
-                <!-- Tool 3: QR Code Generator -->
                 <div onclick="openTool('qrGenerator')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-purple-500/50">
                     <div class="flex justify-between items-start mb-4">
-                        <div class="w-12 h-12 bg-purple-500/15 text-purple-400 rounded-2xl flex items-center justify-center text-xl border border-purple-500/30 group-hover:scale-110 transition">
-                            <i class="fa-solid fa-qrcode"></i>
-                        </div>
-                        <span class="text-[11px] bg-purple-500/10 text-purple-400 border border-purple-500/20 px-2.5 py-1 rounded-full font-medium flex items-center gap-1.5">
-                            <i class="fa-solid fa-eye text-[10px]"></i> <span id="view-qrGenerator">0</span> views
-                        </span>
+                        <div class="w-12 h-12 bg-purple-500/15 text-purple-400 rounded-2xl flex items-center justify-center text-xl border border-purple-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-qrcode"></i></div>
+                        <span class="text-[11px] bg-purple-500/10 text-purple-400 border border-purple-500/20 px-2.5 py-1 rounded-full font-medium flex items-center gap-1.5"><i class="fa-solid fa-eye text-[10px]"></i> <span id="view-qrGenerator">0</span> views</span>
                     </div>
                     <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-purple-400 transition">QR Code Generator</h3>
                     <p class="text-xs text-slate-400">Create custom QR codes instantly for websites or texts.</p>
                 </div>
 
-                <!-- Tool 4: Age Calculator -->
                 <div onclick="openTool('ageCalculator')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-amber-500/50">
                     <div class="flex justify-between items-start mb-4">
-                        <div class="w-12 h-12 bg-amber-500/15 text-amber-400 rounded-2xl flex items-center justify-center text-xl border border-amber-500/30 group-hover:scale-110 transition">
-                            <i class="fa-solid fa-cake-candles"></i>
-                        </div>
-                        <span class="text-[11px] bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2.5 py-1 rounded-full font-medium flex items-center gap-1.5">
-                            <i class="fa-solid fa-eye text-[10px]"></i> <span id="view-ageCalculator">0</span> views
-                        </span>
+                        <div class="w-12 h-12 bg-amber-500/15 text-amber-400 rounded-2xl flex items-center justify-center text-xl border border-amber-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-cake-candles"></i></div>
+                        <span class="text-[11px] bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2.5 py-1 rounded-full font-medium flex items-center gap-1.5"><i class="fa-solid fa-eye text-[10px]"></i> <span id="view-ageCalculator">0</span> views</span>
                     </div>
                     <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-amber-400 transition">Age Calculator</h3>
                     <p class="text-xs text-slate-400">Calculate exact age in years, months, and days from date of birth.</p>
                 </div>
 
-                <!-- Tool 5: Unit Converter -->
                 <div onclick="openTool('unitConverter')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-cyan-500/50">
                     <div class="flex justify-between items-start mb-4">
-                        <div class="w-12 h-12 bg-cyan-500/15 text-cyan-400 rounded-2xl flex items-center justify-center text-xl border border-cyan-500/30 group-hover:scale-110 transition">
-                            <i class="fa-solid fa-scale-balanced"></i>
-                        </div>
-                        <span class="text-[11px] bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 px-2.5 py-1 rounded-full font-medium flex items-center gap-1.5">
-                            <i class="fa-solid fa-eye text-[10px]"></i> <span id="view-unitConverter">0</span> views
-                        </span>
+                        <div class="w-12 h-12 bg-cyan-500/15 text-cyan-400 rounded-2xl flex items-center justify-center text-xl border border-cyan-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-scale-balanced"></i></div>
+                        <span class="text-[11px] bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 px-2.5 py-1 rounded-full font-medium flex items-center gap-1.5"><i class="fa-solid fa-eye text-[10px]"></i> <span id="view-unitConverter">0</span> views</span>
                     </div>
                     <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-cyan-400 transition">Unit Converter</h3>
                     <p class="text-xs text-slate-400">Convert measurement units like KG to Gram instantly.</p>
                 </div>
 
-                <!-- Tool 6: Text-to-Speech -->
                 <div onclick="openTool('textSpeech')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-rose-500/50">
                     <div class="flex justify-between items-start mb-4">
-                        <div class="w-12 h-12 bg-rose-500/15 text-rose-400 rounded-2xl flex items-center justify-center text-xl border border-rose-500/30 group-hover:scale-110 transition">
-                            <i class="fa-solid fa-volume-high"></i>
-                        </div>
-                        <span class="text-[11px] bg-rose-500/10 text-rose-400 border border-rose-500/20 px-2.5 py-1 rounded-full font-medium flex items-center gap-1.5">
-                            <i class="fa-solid fa-eye text-[10px]"></i> <span id="view-textSpeech">0</span> views
-                        </span>
+                        <div class="w-12 h-12 bg-rose-500/15 text-rose-400 rounded-2xl flex items-center justify-center text-xl border border-rose-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-volume-high"></i></div>
+                        <span class="text-[11px] bg-rose-500/10 text-rose-400 border border-rose-500/20 px-2.5 py-1 rounded-full font-medium flex items-center gap-1.5"><i class="fa-solid fa-eye text-[10px]"></i> <span id="view-textSpeech">0</span> views</span>
                     </div>
                     <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-rose-400 transition">Text-to-Speech</h3>
                     <p class="text-xs text-slate-400">Convert any written text into natural audio speech.</p>
                 </div>
-
             </div>
         </main>
 
-        <!-- Footer -->
         <footer class="glass border-t border-slate-800 text-center py-4 px-4 text-xs text-slate-400 flex flex-col sm:flex-row justify-between items-center gap-2 max-w-7xl mx-auto w-full">
             <div>&copy; 2026 JT Micro Utility. Powered by Junaid.</div>
-            <div>
-                Need help? <a href="https://wa.me/8801568600668" target="_blank" class="text-emerald-400 hover:underline inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp (01568600668)</a>
-            </div>
+            <div>Need help? <a href="https://wa.me/8801568600668" target="_blank" class="text-emerald-400 hover:underline inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp"></i> WhatsApp (01568600668)</a></div>
         </footer>
     </div>
 
-    <!-- TOOL MODAL CONTAINER -->
-    <div id="toolModal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/85 backdrop-blur-md p-4">
+    <!-- TOOL MODAL -->
+    <div id="toolModal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/90 backdrop-blur-md p-4">
         <div class="glass w-full max-w-lg rounded-2xl p-6 shadow-2xl animate-pop relative border border-slate-800">
             <div class="flex justify-between items-center mb-4 border-b border-slate-800 pb-3">
                 <h3 id="toolModalTitle" class="font-bold text-lg text-white flex items-center gap-2">Tool Title</h3>
                 <button onclick="closeToolModal()" class="w-8 h-8 rounded-full bg-slate-900 text-slate-400 hover:text-white flex items-center justify-center border border-slate-800 transition"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            <div id="toolModalBody">
-                <!-- Dynamic tool content injected here -->
-            </div>
+            <div id="toolModalBody"></div>
         </div>
     </div>
 
     <!-- PROFILE MODAL -->
-    <div id="profileModal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/85 backdrop-blur-md p-4">
+    <div id="profileModal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/90 backdrop-blur-md p-4">
         <div class="glass w-full max-w-md rounded-2xl p-6 shadow-2xl animate-pop relative border border-slate-800">
             <div class="flex justify-between items-center mb-4 border-b border-slate-800 pb-3">
                 <h3 class="font-bold text-lg text-white">Edit User Profile</h3>
@@ -268,26 +229,21 @@
             <form onsubmit="saveProfile(event)" class="space-y-4">
                 <div>
                     <label class="text-xs text-slate-400 block mb-1">Full Name</label>
-                    <input type="text" id="profileNameInput" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-blue-500 transition" required placeholder="Enter name">
+                    <input type="text" id="profileNameInput" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-blue-500 transition text-slate-200" required placeholder="Enter your name">
                 </div>
                 <div>
                     <label class="text-xs text-slate-400 block mb-1">Phone / Contact</label>
-                    <input type="text" id="profilePhoneInput" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-blue-500 transition" placeholder="015xxxxxxxx">
+                    <input type="text" id="profilePhoneInput" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-blue-500 transition text-slate-200" placeholder="015xxxxxxxx">
                 </div>
                 <div>
                     <label class="text-xs text-slate-400 block mb-1">Bio / Address</label>
-                    <textarea id="profileBioInput" rows="2" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-blue-500 transition" placeholder="Write something about yourself..."></textarea>
+                    <textarea id="profileBioInput" rows="2" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-blue-500 transition text-slate-200" placeholder="Write something about yourself..."></textarea>
                 </div>
                 <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-medium py-2.5 rounded-xl transition shadow-lg shadow-blue-600/30">Save Changes</button>
             </form>
-
             <div class="mt-4 pt-3 border-t border-slate-800 text-center">
-                <a href="https://wa.me/8801568600668" target="_blank" class="text-xs text-emerald-400 hover:text-emerald-300 font-medium inline-flex items-center gap-1.5">
-                    <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Support: 01568600668
-                </a>
+                <a href="https://wa.me/8801568600668" target="_blank" class="text-xs text-emerald-400 hover:text-emerald-300 font-medium inline-flex items-center gap-1.5"><i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Support: 01568600668</a>
             </div>
-
-            <!-- Green Check Success Alert -->
             <div id="profileAlert" class="hidden mt-3 p-3 bg-emerald-500/20 border border-emerald-500 text-emerald-400 rounded-xl text-center text-xs font-medium flex items-center justify-center gap-2 animate-pop">
                 <i class="fa-solid fa-circle-check text-base"></i> Profile Updated Successfully!
             </div>
@@ -295,7 +251,7 @@
     </div>
 
     <!-- COMPLETE WORKS MODAL -->
-    <div id="completeWorksModal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/85 backdrop-blur-md p-4">
+    <div id="completeWorksModal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/90 backdrop-blur-md p-4">
         <div class="glass w-full max-w-md rounded-2xl p-6 shadow-2xl animate-pop relative border border-slate-800">
             <div class="flex justify-between items-center mb-4 border-b border-slate-800 pb-3">
                 <h3 class="font-bold text-lg text-white flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> Complete Works History</h3>
@@ -306,26 +262,33 @@
                     <span class="text-xs text-slate-300 font-medium">Total Tasks Completed:</span>
                     <span id="modalWorkCount" class="text-lg font-bold text-emerald-400">0</span>
                 </div>
-                <p class="text-xs text-slate-400 text-center mt-2">Every time you successfully use any tool or generate an output, your complete works count increases automatically!</p>
+                <p class="text-xs text-slate-400 text-center mt-2">Every time you successfully complete a task, your work count increases automatically from zero!</p>
             </div>
         </div>
     </div>
 
     <!-- JavaScript Logic -->
     <script>
-        let currentUser = { name: "", email: "", phone: "", bio: "" };
-        
-        // Accurate real-time tracker starting from 0
-        let toolViews = {
-            wordCounter: 0,
-            passGenerator: 0,
-            qrGenerator: 0,
-            ageCalculator: 0,
-            unitConverter: 0,
-            textSpeech: 0
-        };
+        // Check session login state
+        window.addEventListener('DOMContentLoaded', () => {
+            const isLoggedIn = localStorage.getItem('jt_is_logged_in');
+            if (isLoggedIn === 'true') {
+                document.getElementById('authModal').classList.add('hidden');
+                document.getElementById('mainApp').classList.remove('hidden');
+            } else {
+                document.getElementById('authModal').classList.remove('hidden');
+                document.getElementById('mainApp').classList.add('hidden');
+            }
+            loadStats();
+        });
 
-        let completedWorksCount = 0;
+        // 100% Real tracking starting strictly from 0
+        let toolViews = JSON.parse(localStorage.getItem('jt_tool_views')) || { wordCounter: 0, passGenerator: 0, qrGenerator: 0, ageCalculator: 0, unitConverter: 0, textSpeech: 0 };
+        let completedWorksCount = parseInt(localStorage.getItem('jt_works_count')) || 0;
+
+        document.getElementById('menuWorkCount').innerText = completedWorksCount;
+        document.getElementById('modalWorkCount').innerText = completedWorksCount;
+        updateTotalViews();
 
         function switchTab(tab) {
             const loginBtn = document.getElementById('loginTabBtn');
@@ -352,6 +315,8 @@
             const alertText = document.getElementById('authAlertText');
             alertBox.classList.remove('hidden');
             alertText.innerText = "Login Successful!";
+
+            localStorage.setItem('jt_is_logged_in', 'true');
             
             setTimeout(() => {
                 document.getElementById('authModal').classList.add('hidden');
@@ -362,7 +327,8 @@
         function handleSignup(e) {
             e.preventDefault();
             const name = document.getElementById('signupName').value;
-            currentUser.name = name;
+            localStorage.setItem('jt_user_name', name);
+            localStorage.setItem('jt_is_logged_in', 'true');
 
             const alertBox = document.getElementById('authAlert');
             const alertText = document.getElementById('authAlertText');
@@ -376,13 +342,13 @@
         }
 
         function logout() {
+            localStorage.removeItem('jt_is_logged_in');
             document.getElementById('mainApp').classList.add('hidden');
             document.getElementById('authModal').classList.remove('hidden');
             document.getElementById('authAlert').classList.add('hidden');
             document.getElementById('dropdownMenu').classList.add('hidden');
         }
 
-        // Toggle Three-Dot Menu
         function toggleMenu() {
             const menu = document.getElementById('dropdownMenu');
             menu.classList.toggle('hidden');
@@ -393,9 +359,9 @@
         }
 
         function openProfileModal() {
-            document.getElementById('profileNameInput').value = currentUser.name || '';
-            document.getElementById('profilePhoneInput').value = currentUser.phone || '';
-            document.getElementById('profileBioInput').value = currentUser.bio || '';
+            document.getElementById('profileNameInput').value = localStorage.getItem('jt_user_name') || '';
+            document.getElementById('profilePhoneInput').value = localStorage.getItem('jt_user_phone') || '';
+            document.getElementById('profileBioInput').value = localStorage.getItem('jt_user_bio') || '';
             document.getElementById('profileAlert').classList.add('hidden');
             document.getElementById('profileModal').classList.remove('hidden');
         }
@@ -414,9 +380,13 @@
 
         function saveProfile(e) {
             e.preventDefault();
-            currentUser.name = document.getElementById('profileNameInput').value;
-            currentUser.phone = document.getElementById('profilePhoneInput').value;
-            currentUser.bio = document.getElementById('profileBioInput').value;
+            const name = document.getElementById('profileNameInput').value;
+            const phone = document.getElementById('profilePhoneInput').value;
+            const bio = document.getElementById('profileBioInput').value;
+
+            localStorage.setItem('jt_user_name', name);
+            localStorage.setItem('jt_user_phone', phone);
+            localStorage.setItem('jt_user_bio', bio);
             
             document.getElementById('profileAlert').classList.remove('hidden');
             setTimeout(() => {
@@ -424,9 +394,9 @@
             }, 1100);
         }
 
-        // Increment Completed Work & Views
         function registerCompletedTask() {
             completedWorksCount++;
+            localStorage.setItem('jt_works_count', completedWorksCount);
             document.getElementById('menuWorkCount').innerText = completedWorksCount;
             document.getElementById('modalWorkCount').innerText = completedWorksCount;
         }
@@ -434,12 +404,20 @@
         function updateTotalViews() {
             let total = Object.values(toolViews).reduce((a, b) => a + b, 0);
             document.getElementById('totalViewsCount').innerText = total;
+            for (let key in toolViews) {
+                const el = document.getElementById(`view-${key}`);
+                if(el) el.innerText = toolViews[key];
+            }
+        }
+
+        function loadStats() {
+            updateTotalViews();
         }
 
         // TOOL SYSTEM LOGIC
         function openTool(toolName) {
             toolViews[toolName]++;
-            document.getElementById(`view-${toolName}`).innerText = toolViews[toolName];
+            localStorage.setItem('jt_tool_views', JSON.stringify(toolViews));
             updateTotalViews();
 
             const modal = document.getElementById('toolModal');
@@ -450,7 +428,7 @@
             if(toolName === 'wordCounter') {
                 title.innerHTML = `<i class="fa-solid fa-file-lines text-blue-400"></i> Word & Character Counter`;
                 body.innerHTML = `
-                    <textarea id="wcText" oninput="countWords()" rows="4" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm focus:outline-none focus:border-blue-500 mb-3 transition" placeholder="Type or paste your text here..."></textarea>
+                    <textarea id="wcText" oninput="countWords()" rows="4" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm focus:outline-none focus:border-blue-500 mb-3 transition text-slate-200" placeholder="Type or paste your text here..."></textarea>
                     <div class="grid grid-cols-2 gap-3 text-center mb-3">
                         <div class="bg-slate-900 p-3 rounded-xl border border-slate-800"><span id="wordCount" class="text-xl font-bold text-blue-400">0</span><p class="text-xs text-slate-400">Words</p></div>
                         <div class="bg-slate-900 p-3 rounded-xl border border-slate-800"><span id="charCount" class="text-xl font-bold text-emerald-400">0</span><p class="text-xs text-slate-400">Characters</p></div>
@@ -468,7 +446,7 @@
             } else if(toolName === 'qrGenerator') {
                 title.innerHTML = `<i class="fa-solid fa-qrcode text-purple-400"></i> QR Code Generator`;
                 body.innerHTML = `
-                    <input type="text" id="qrText" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-purple-500 mb-3 transition" placeholder="Enter URL or text...">
+                    <input type="text" id="qrText" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-purple-500 mb-3 transition text-slate-200" placeholder="Enter URL or text...">
                     <button onclick="generateQR()" class="w-full bg-purple-600 hover:bg-purple-500 text-white py-2.5 rounded-xl text-sm font-medium mb-3 transition">Create QR Code</button>
                     <div id="qrResult" class="text-center p-4 bg-slate-900 rounded-xl border border-slate-800 text-xs text-slate-400">QR code preview will appear here</div>
                 `;
@@ -483,13 +461,13 @@
             } else if(toolName === 'unitConverter') {
                 title.innerHTML = `<i class="fa-solid fa-scale-balanced text-cyan-400"></i> Unit Converter (KG to Gram)`;
                 body.innerHTML = `
-                    <input type="number" id="kgInput" oninput="convertUnit()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-cyan-500 mb-3 transition" placeholder="Enter Kilogram (KG)...">
+                    <input type="number" id="kgInput" oninput="convertUnit()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-cyan-500 mb-3 transition text-slate-200" placeholder="Enter Kilogram (KG)...">
                     <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 text-center text-sm"><span id="gramResult" class="font-bold text-cyan-400">0</span> Gram</div>
                 `;
             } else if(toolName === 'textSpeech') {
                 title.innerHTML = `<i class="fa-solid fa-volume-high text-rose-400"></i> Text-to-Speech`;
                 body.innerHTML = `
-                    <textarea id="speechText" rows="3" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm focus:outline-none focus:border-rose-500 mb-3 transition" placeholder="Type text to speak..."></textarea>
+                    <textarea id="speechText" rows="3" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm focus:outline-none focus:border-rose-500 mb-3 transition text-slate-200" placeholder="Type text to speak..."></textarea>
                     <button onclick="speakText()" class="w-full bg-rose-600 hover:bg-rose-500 text-white py-2.5 rounded-xl text-sm font-medium transition shadow-lg shadow-rose-600/30">Speak Aloud</button>
                 `;
             }
@@ -499,7 +477,6 @@
             document.getElementById('toolModal').classList.add('hidden');
         }
 
-        // Mini Tool Functions with Work Counter Trigger
         function countWords() {
             const text = document.getElementById('wcText').value.trim();
             const words = text === "" ? 0 : text.split(/\s+/).length;
