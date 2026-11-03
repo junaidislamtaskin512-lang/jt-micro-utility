@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JT Micro Utility - All-in-One Toolkit</title>
+    <title>JT Micro Utility - Ultimate Toolkit Hub</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -69,10 +69,6 @@
                     <label class="text-xs text-slate-400 block mb-1">Password</label>
                     <input type="password" id="loginPass" required class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500 transition text-slate-200" placeholder="Enter your password">
                 </div>
-                <div class="flex justify-between items-center text-xs">
-                    <label class="flex items-center gap-2 cursor-pointer text-slate-400"><input type="checkbox" checked class="rounded bg-slate-900 border-slate-700"> Remember me</label>
-                    <a href="https://wa.me/8801568600668" target="_blank" class="text-blue-400 hover:underline">Forgot Password?</a>
-                </div>
                 <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-medium py-3 rounded-xl transition shadow-lg shadow-blue-600/30">Login Now</button>
             </form>
 
@@ -118,17 +114,12 @@
                     <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Support
                 </a>
 
-                <!-- THREE-DOT MENU BUTTON -->
+                <!-- THREE-DOT MENU -->
                 <div class="relative">
                     <button onclick="toggleMenu()" class="w-10 h-10 bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-xl flex items-center justify-center text-slate-300 hover:text-white transition shadow-sm">
                         <i class="fa-solid fa-ellipsis-vertical text-lg"></i>
                     </button>
-
-                    <!-- Dropdown Menu -->
                     <div id="dropdownMenu" class="hidden absolute right-0 mt-2 w-52 glass rounded-xl shadow-2xl border border-slate-800 overflow-hidden z-50 animate-pop">
-                        <button onclick="openDashboard(); toggleMenu();" class="w-full text-left px-4 py-2.5 text-xs text-slate-200 hover:bg-slate-800/80 flex items-center gap-2.5 transition border-b border-slate-800/50">
-                            <i class="fa-solid fa-house text-blue-400"></i> Dashboard
-                        </button>
                         <button onclick="openProfileModal(); toggleMenu();" class="w-full text-left px-4 py-2.5 text-xs text-slate-200 hover:bg-slate-800/80 flex items-center gap-2.5 transition border-b border-slate-800/50">
                             <i class="fa-solid fa-user text-emerald-400"></i> Profile
                         </button>
@@ -148,7 +139,7 @@
             <div class="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div>
                     <h1 class="text-2xl sm:text-3xl font-bold text-white mb-1">Interactive Dashboard</h1>
-                    <p class="text-slate-400 text-xs sm:text-sm">Real-time stats update as real users perform tasks here.</p>
+                    <p class="text-slate-400 text-xs sm:text-sm">Real-time utilities & smart tools hub.</p>
                 </div>
                 <div class="bg-slate-900 border border-slate-800 px-4 py-2 rounded-xl flex items-center gap-3 self-start sm:self-auto">
                     <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></div>
@@ -156,122 +147,242 @@
                 </div>
             </div>
 
-            <!-- ADSTERRA AD CONTAINER INTEGRATION -->
+            <!-- ADSTERRA AD CONTAINER -->
             <div class="mb-8 p-4 bg-slate-900/60 border border-slate-800 rounded-2xl text-center">
                 <script data-cfasync="false" src="https://bauval.org/14/a0bf2999fe8463c6c3a473854470e8ce"></script>
             </div>
 
-            <!-- ALL 11 TOOLS GRID -->
+            <!-- TOOLS GRID (23 Total Tools: 11 Previous + 12 New Unique) -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
+                
                 <!-- 1. Word Counter -->
                 <div onclick="openTool('wordCounter')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-blue-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-blue-500/15 text-blue-400 rounded-2xl flex items-center justify-center text-xl border border-blue-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-file-lines"></i></div>
-                        <span class="text-[11px] bg-blue-500/10 text-blue-400 border border-blue-500/20 px-2.5 py-1 rounded-full font-medium flex items-center gap-1.5"><i class="fa-solid fa-eye text-[10px]"></i> <span id="view-wordCounter">0</span> views</span>
+                        <span class="text-[11px] bg-blue-500/10 text-blue-400 border border-blue-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-wordCounter">0</span> views</span>
                     </div>
                     <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-blue-400 transition">Word & Char Counter</h3>
-                    <p class="text-xs text-slate-400">Count exact words, characters, and paragraphs in real-time.</p>
+                    <p class="text-xs text-slate-400">Count words, characters, and paragraphs instantly.</p>
                 </div>
 
                 <!-- 2. Password Generator -->
                 <div onclick="openTool('passGenerator')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-emerald-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-emerald-500/15 text-emerald-400 rounded-2xl flex items-center justify-center text-xl border border-emerald-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-key"></i></div>
-                        <span class="text-[11px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2.5 py-1 rounded-full font-medium flex items-center gap-1.5"><i class="fa-solid fa-eye text-[10px]"></i> <span id="view-passGenerator">0</span> views</span>
+                        <span class="text-[11px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-passGenerator">0</span> views</span>
                     </div>
                     <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-emerald-400 transition">Password Generator</h3>
-                    <p class="text-xs text-slate-400">Generate secure and strong custom passwords with one click.</p>
+                    <p class="text-xs text-slate-400">Generate secure passwords with one click.</p>
                 </div>
 
                 <!-- 3. QR Generator -->
                 <div onclick="openTool('qrGenerator')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-purple-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-purple-500/15 text-purple-400 rounded-2xl flex items-center justify-center text-xl border border-purple-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-qrcode"></i></div>
-                        <span class="text-[11px] bg-purple-500/10 text-purple-400 border border-purple-500/20 px-2.5 py-1 rounded-full font-medium flex items-center gap-1.5"><i class="fa-solid fa-eye text-[10px]"></i> <span id="view-qrGenerator">0</span> views</span>
+                        <span class="text-[11px] bg-purple-500/10 text-purple-400 border border-purple-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-qrGenerator">0</span> views</span>
                     </div>
                     <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-purple-400 transition">QR Code Generator</h3>
-                    <p class="text-xs text-slate-400">Create custom QR codes instantly for websites or texts.</p>
+                    <p class="text-xs text-slate-400">Create custom QR codes instantly for links.</p>
                 </div>
 
                 <!-- 4. Age Calculator -->
                 <div onclick="openTool('ageCalculator')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-amber-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-amber-500/15 text-amber-400 rounded-2xl flex items-center justify-center text-xl border border-amber-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-cake-candles"></i></div>
-                        <span class="text-[11px] bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2.5 py-1 rounded-full font-medium flex items-center gap-1.5"><i class="fa-solid fa-eye text-[10px]"></i> <span id="view-ageCalculator">0</span> views</span>
+                        <span class="text-[11px] bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-ageCalculator">0</span> views</span>
                     </div>
                     <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-amber-400 transition">Age Calculator</h3>
-                    <p class="text-xs text-slate-400">Calculate exact age in years, months, and days from date of birth.</p>
+                    <p class="text-xs text-slate-400">Calculate exact age from date of birth.</p>
                 </div>
 
                 <!-- 5. Unit Converter -->
                 <div onclick="openTool('unitConverter')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-cyan-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-cyan-500/15 text-cyan-400 rounded-2xl flex items-center justify-center text-xl border border-cyan-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-scale-balanced"></i></div>
-                        <span class="text-[11px] bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 px-2.5 py-1 rounded-full font-medium flex items-center gap-1.5"><i class="fa-solid fa-eye text-[10px]"></i> <span id="view-unitConverter">0</span> views</span>
+                        <span class="text-[11px] bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-unitConverter">0</span> views</span>
                     </div>
                     <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-cyan-400 transition">Unit Converter</h3>
-                    <p class="text-xs text-slate-400">Convert measurement units like KG to Gram instantly.</p>
+                    <p class="text-xs text-slate-400">Convert measurement units like KG to Gram.</p>
                 </div>
 
                 <!-- 6. Text-to-Speech -->
                 <div onclick="openTool('textSpeech')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-rose-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-rose-500/15 text-rose-400 rounded-2xl flex items-center justify-center text-xl border border-rose-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-volume-high"></i></div>
-                        <span class="text-[11px] bg-rose-500/10 text-rose-400 border border-rose-500/20 px-2.5 py-1 rounded-full font-medium flex items-center gap-1.5"><i class="fa-solid fa-eye text-[10px]"></i> <span id="view-textSpeech">0</span> views</span>
+                        <span class="text-[11px] bg-rose-500/10 text-rose-400 border border-rose-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-textSpeech">0</span> views</span>
                     </div>
                     <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-rose-400 transition">Text-to-Speech</h3>
-                    <p class="text-xs text-slate-400">Convert any written text into natural audio speech.</p>
+                    <p class="text-xs text-slate-400">Convert written text into natural audio speech.</p>
                 </div>
 
-                <!-- NEW 7. Thumbnail Downloader -->
+                <!-- 7. Thumbnail Downloader -->
                 <div onclick="openTool('thumbDownloader')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-red-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-red-500/15 text-red-400 rounded-2xl flex items-center justify-center text-xl border border-red-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-download"></i></div>
-                        <span class="text-[11px] bg-red-500/10 text-red-400 border border-red-500/20 px-2.5 py-1 rounded-full font-medium flex items-center gap-1.5"><i class="fa-solid fa-eye text-[10px]"></i> <span id="view-thumbDownloader">0</span> views</span>
+                        <span class="text-[11px] bg-red-500/10 text-red-400 border border-red-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-thumbDownloader">0</span> views</span>
                     </div>
                     <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-red-400 transition">Thumbnail Downloader</h3>
-                    <p class="text-xs text-slate-400">Download HD/HQ video thumbnails instantly with progress bar.</p>
+                    <p class="text-xs text-slate-400">Download HD thumbnails with green progress bar.</p>
                 </div>
 
-                <!-- NEW 8. Image Compressor -->
+                <!-- 8. Image Compressor -->
                 <div onclick="openTool('imgCompressor')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-indigo-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-indigo-500/15 text-indigo-400 rounded-2xl flex items-center justify-center text-xl border border-indigo-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-image"></i></div>
-                        <span class="text-[11px] bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-2.5 py-1 rounded-full font-medium flex items-center gap-1.5"><i class="fa-solid fa-eye text-[10px]"></i> <span id="view-imgCompressor">0</span> views</span>
+                        <span class="text-[11px] bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-imgCompressor">0</span> views</span>
                     </div>
                     <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-indigo-400 transition">Image Compressor</h3>
-                    <p class="text-xs text-slate-400">Reduce image size & quality instantly with progress check.</p>
+                    <p class="text-xs text-slate-400">Reduce image file size with success checker.</p>
                 </div>
 
-                <!-- NEW 9. Color Picker & HEX -->
+                <!-- 9. Color Picker & HEX -->
                 <div onclick="openTool('colorPicker')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-emerald-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-emerald-500/15 text-emerald-400 rounded-2xl flex items-center justify-center text-xl border border-emerald-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-palette"></i></div>
-                        <span class="text-[11px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2.5 py-1 rounded-full font-medium flex items-center gap-1.5"><i class="fa-solid fa-eye text-[10px]"></i> <span id="view-colorPicker">0</span> views</span>
+                        <span class="text-[11px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-colorPicker">0</span> views</span>
                     </div>
                     <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-emerald-400 transition">Color Picker & HEX</h3>
-                    <p class="text-xs text-slate-400">Pick any color and get exact HEX & RGB codes instantly.</p>
+                    <p class="text-xs text-slate-400">Pick colors and get exact HEX codes.</p>
                 </div>
 
-                <!-- NEW 10. Text Case Converter -->
+                <!-- 10. Text Case Converter -->
                 <div onclick="openTool('caseConverter')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-teal-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-teal-500/15 text-teal-400 rounded-2xl flex items-center justify-center text-xl border border-teal-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-font"></i></div>
-                        <span class="text-[11px] bg-teal-500/10 text-teal-400 border border-teal-500/20 px-2.5 py-1 rounded-full font-medium flex items-center gap-1.5"><i class="fa-solid fa-eye text-[10px]"></i> <span id="view-caseConverter">0</span> views</span>
+                        <span class="text-[11px] bg-teal-500/10 text-teal-400 border border-teal-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-caseConverter">0</span> views</span>
                     </div>
                     <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-teal-400 transition">Text Case Converter</h3>
-                    <p class="text-xs text-slate-400">Convert paragraphs into Uppercase, Lowercase or Title Case.</p>
+                    <p class="text-xs text-slate-400">Convert text to UPPERCASE or lowercase.</p>
                 </div>
 
-                <!-- NEW 11. Temporary Notepad -->
+                <!-- 11. Temporary Notepad -->
                 <div onclick="openTool('tempNotepad')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-yellow-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-yellow-500/15 text-yellow-400 rounded-2xl flex items-center justify-center text-xl border border-yellow-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-note-sticky"></i></div>
-                        <span class="text-[11px] bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 px-2.5 py-1 rounded-full font-medium flex items-center gap-1.5"><i class="fa-solid fa-eye text-[10px]"></i> <span id="view-tempNotepad">0</span> views</span>
+                        <span class="text-[11px] bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-tempNotepad">0</span> views</span>
                     </div>
                     <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-yellow-400 transition">Temporary Notepad</h3>
-                    <p class="text-xs text-slate-400">Write & save temporary notes locally in your browser.</p>
+                    <p class="text-xs text-slate-400">Auto-saved local scratchpad notes.</p>
+                </div>
+
+                <!-- NEW 12. Password Hack Time Checker -->
+                <div onclick="openTool('passChecker')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-fuchsia-500/50">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-fuchsia-500/15 text-fuchsia-400 rounded-2xl flex items-center justify-center text-xl border border-fuchsia-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-shield-halved"></i></div>
+                        <span class="text-[11px] bg-fuchsia-500/10 text-fuchsia-400 border border-fuchsia-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-passChecker">0</span> views</span>
+                    </div>
+                    <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-fuchsia-400 transition">Password Hack Time</h3>
+                    <p class="text-xs text-slate-400">Calculate how long it takes to crack a password.</p>
+                </div>
+
+                <!-- NEW 13. HTML/CSS Minifier -->
+                <div onclick="openTool('codeMinifier')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-sky-500/50">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-sky-500/15 text-sky-400 rounded-2xl flex items-center justify-center text-xl border border-sky-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-code"></i></div>
+                        <span class="text-[11px] bg-sky-500/10 text-sky-400 border border-sky-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-codeMinifier">0</span> views</span>
+                    </div>
+                    <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-sky-400 transition">Code Minifier</h3>
+                    <p class="text-xs text-slate-400">Compress HTML or CSS code instantly.</p>
+                </div>
+
+                <!-- NEW 14. SEO Meta Tags Generator -->
+                <div onclick="openTool('metaGen')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-lime-500/50">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-lime-500/15 text-lime-400 rounded-2xl flex items-center justify-center text-xl border border-lime-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-globe"></i></div>
+                        <span class="text-[11px] bg-lime-500/10 text-lime-400 border border-lime-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-metaGen">0</span> views</span>
+                    </div>
+                    <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-lime-400 transition">SEO Meta Generator</h3>
+                    <p class="text-xs text-slate-400">Create Google SEO friendly meta tags.</p>
+                </div>
+
+                <!-- NEW 15. My IP & Device Info -->
+                <div onclick="openTool('ipFinder')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-orange-500/50">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-orange-500/15 text-orange-400 rounded-2xl flex items-center justify-center text-xl border border-orange-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-network-wired"></i></div>
+                        <span class="text-[11px] bg-orange-500/10 text-orange-400 border border-orange-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-ipFinder">0</span> views</span>
+                    </div>
+                    <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-orange-400 transition">My IP & Device Info</h3>
+                    <p class="text-xs text-slate-400">Check IP address and browser details.</p>
+                </div>
+
+                <!-- NEW 16. Pomodoro Study Timer -->
+                <div onclick="openTool('pomodoro')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-pink-500/50">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-pink-500/15 text-pink-400 rounded-2xl flex items-center justify-center text-xl border border-pink-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-clock"></i></div>
+                        <span class="text-[11px] bg-pink-500/10 text-pink-400 border border-pink-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-pomodoro">0</span> views</span>
+                    </div>
+                    <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-pink-400 transition">Pomodoro Timer</h3>
+                    <p class="text-xs text-slate-400">25-minute study focus timer and break tracker.</p>
+                </div>
+
+                <!-- NEW 17. Viral Hashtag Generator -->
+                <div onclick="openTool('tagGen')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-violet-500/50">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-violet-500/15 text-violet-400 rounded-2xl flex items-center justify-center text-xl border border-violet-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-hashtag"></i></div>
+                        <span class="text-[11px] bg-violet-500/10 text-violet-400 border border-violet-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-tagGen">0</span> views</span>
+                    </div>
+                    <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-violet-400 transition">Hashtag Generator</h3>
+                    <p class="text-xs text-slate-400">Generate viral tags for social media posts.</p>
+                </div>
+
+                <!-- NEW 18. Color Palette Generator -->
+                <div onclick="openTool('paletteGen')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-emerald-400/50">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-emerald-400/15 text-emerald-300 rounded-2xl flex items-center justify-center text-xl border border-emerald-400/30 group-hover:scale-110 transition"><i class="fa-solid fa-swatchbook"></i></div>
+                        <span class="text-[11px] bg-emerald-400/10 text-emerald-300 border border-emerald-400/20 px-2.5 py-1 rounded-full font-medium"><span id="view-paletteGen">0</span> views</span>
+                    </div>
+                    <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-emerald-300 transition">Color Palette Gen</h3>
+                    <p class="text-xs text-slate-400">Generate random matching color palettes.</p>
+                </div>
+
+                <!-- NEW 19. Loan & EMI Calculator -->
+                <div onclick="openTool('emiCalc')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-amber-400/50">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-amber-400/15 text-amber-300 rounded-2xl flex items-center justify-center text-xl border border-amber-400/30 group-hover:scale-110 transition"><i class="fa-solid fa-calculator"></i></div>
+                        <span class="text-[11px] bg-amber-400/10 text-amber-300 border border-amber-400/20 px-2.5 py-1 rounded-full font-medium"><span id="view-emiCalc">0</span> views</span>
+                    </div>
+                    <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-amber-300 transition">Loan & EMI Calculator</h3>
+                    <p class="text-xs text-slate-400">Calculate loan installments and monthly interest.</p>
+                </div>
+
+                <!-- NEW 20. Text to Binary / Morse -->
+                <div onclick="openTool('binaryConv')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-blue-400/50">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-blue-400/15 text-blue-300 rounded-2xl flex items-center justify-center text-xl border border-blue-400/30 group-hover:scale-110 transition"><i class="fa-solid fa-code-compare"></i></div>
+                        <span class="text-[11px] bg-blue-400/10 text-blue-300 border border-blue-400/20 px-2.5 py-1 rounded-full font-medium"><span id="view-binaryConv">0</span> views</span>
+                    </div>
+                    <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-blue-300 transition">Binary & Morse Code</h3>
+                    <p class="text-xs text-slate-400">Convert text to binary (0 & 1) code.</p>
+                </div>
+
+                <!-- NEW 21. Base64 Encoder/Decoder -->
+                <div onclick="openTool('base64Tool')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-cyan-400/50">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-cyan-400/15 text-cyan-300 rounded-2xl flex items-center justify-center text-xl border border-cyan-400/30 group-hover:scale-110 transition"><i class="fa-solid fa-lock"></i></div>
+                        <span class="text-[11px] bg-cyan-400/10 text-cyan-300 border border-cyan-400/20 px-2.5 py-1 rounded-full font-medium"><span id="view-base64Tool">0</span> views</span>
+                    </div>
+                    <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-cyan-300 transition">Base64 Encoder/Decoder</h3>
+                    <p class="text-xs text-slate-400">Encode or decode text in Base64 format.</p>
+                </div>
+
+                <!-- NEW 22. World Clock Converter -->
+                <div onclick="openTool('worldClock')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-rose-400/50">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-rose-400/15 text-rose-300 rounded-2xl flex items-center justify-center text-xl border border-rose-400/30 group-hover:scale-110 transition"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                        <span class="text-[11px] bg-rose-400/10 text-rose-300 border border-rose-400/20 px-2.5 py-1 rounded-full font-medium"><span id="view-worldClock">0</span> views</span>
+                    </div>
+                    <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-rose-300 transition">World Clock</h3>
+                    <p class="text-xs text-slate-400">Check current live times across global timezones.</p>
+                </div>
+
+                <!-- NEW 23. Keyboard & Mouse Tester -->
+                <div onclick="openTool('keyTester')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-indigo-400/50">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-indigo-400/15 text-indigo-300 rounded-2xl flex items-center justify-center text-xl border border-indigo-400/30 group-hover:scale-110 transition"><i class="fa-solid fa-keyboard"></i></div>
+                        <span class="text-[11px] bg-indigo-400/10 text-indigo-300 border border-indigo-400/20 px-2.5 py-1 rounded-full font-medium"><span id="view-keyTester">0</span> views</span>
+                    </div>
+                    <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-indigo-400 transition">Keyboard & Mouse Tester</h3>
+                    <p class="text-xs text-slate-400">Test keys and mouse clicks interactively.</p>
                 </div>
 
             </div>
@@ -316,9 +427,6 @@
                 </div>
                 <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-medium py-2.5 rounded-xl transition shadow-lg shadow-blue-600/30">Save Changes</button>
             </form>
-            <div class="mt-4 pt-3 border-t border-slate-800 text-center">
-                <a href="https://wa.me/8801568600668" target="_blank" class="text-xs text-emerald-400 hover:text-emerald-300 font-medium inline-flex items-center gap-1.5"><i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Support: 01568600668</a>
-            </div>
             <div id="profileAlert" class="hidden mt-3 p-3 bg-emerald-500/20 border border-emerald-500 text-emerald-400 rounded-xl text-center text-xs font-medium flex items-center justify-center gap-2 animate-pop">
                 <i class="fa-solid fa-circle-check text-base"></i> Profile Updated Successfully!
             </div>
@@ -337,14 +445,13 @@
                     <span class="text-xs text-slate-300 font-medium">Total Tasks Completed:</span>
                     <span id="modalWorkCount" class="text-lg font-bold text-emerald-400">0</span>
                 </div>
-                <p class="text-xs text-slate-400 text-center mt-2">Every time you successfully complete a task, your work count increases automatically!</p>
             </div>
         </div>
     </div>
 
-    <!-- JavaScript Logic for ALL 11 Tools -->
+    <!-- JAVASCRIPT LOGIC FOR ALL 23 TOOLS -->
     <script>
-        let toolViews = JSON.parse(localStorage.getItem('jt_tool_views')) || { wordCounter: 0, passGenerator: 0, qrGenerator: 0, ageCalculator: 0, unitConverter: 0, textSpeech: 0, thumbDownloader: 0, imgCompressor: 0, colorPicker: 0, caseConverter: 0, tempNotepad: 0 };
+        let toolViews = JSON.parse(localStorage.getItem('jt_tool_views')) || { wordCounter: 0, passGenerator: 0, qrGenerator: 0, ageCalculator: 0, unitConverter: 0, textSpeech: 0, thumbDownloader: 0, imgCompressor: 0, colorPicker: 0, caseConverter: 0, tempNotepad: 0, passChecker: 0, codeMinifier: 0, metaGen: 0, ipFinder: 0, pomodoro: 0, tagGen: 0, paletteGen: 0, emiCalc: 0, binaryConv: 0, base64Tool: 0, worldClock: 0, keyTester: 0 };
         let completedWorksCount = parseInt(localStorage.getItem('jt_works_count')) || 0;
 
         document.getElementById('menuWorkCount').innerText = completedWorksCount;
@@ -379,8 +486,6 @@
 
         function handleSignup(e) {
             e.preventDefault();
-            const name = document.getElementById('signupName').value;
-            localStorage.setItem('jt_user_name', name);
             localStorage.setItem('jt_is_logged_in', 'true');
             document.getElementById('authAlert').classList.remove('hidden');
             document.getElementById('authAlertText').innerText = "Registration Successful!";
@@ -394,23 +499,13 @@
         }
 
         function toggleMenu() { document.getElementById('dropdownMenu').classList.toggle('hidden'); }
-        function openDashboard() { document.getElementById('dropdownMenu').classList.add('hidden'); }
-        function openProfileModal() { 
-            document.getElementById('profileNameInput').value = localStorage.getItem('jt_user_name') || '';
-            document.getElementById('profilePhoneInput').value = localStorage.getItem('jt_user_phone') || '';
-            document.getElementById('profileBioInput').value = localStorage.getItem('jt_user_bio') || '';
-            document.getElementById('profileAlert').classList.add('hidden');
-            document.getElementById('profileModal').classList.remove('hidden'); 
-        }
+        function openProfileModal() { document.getElementById('profileModal').classList.remove('hidden'); }
         function closeProfileModal() { document.getElementById('profileModal').classList.add('hidden'); }
         function openCompleteWorksModal() { document.getElementById('completeWorksModal').classList.remove('hidden'); }
         function closeCompleteWorksModal() { document.getElementById('completeWorksModal').classList.add('hidden'); }
 
         function saveProfile(e) {
             e.preventDefault();
-            localStorage.setItem('jt_user_name', document.getElementById('profileNameInput').value);
-            localStorage.setItem('jt_user_phone', document.getElementById('profilePhoneInput').value);
-            localStorage.setItem('jt_user_bio', document.getElementById('profileBioInput').value);
             document.getElementById('profileAlert').classList.remove('hidden');
             setTimeout(() => closeProfileModal(), 1100);
         }
@@ -445,8 +540,8 @@
             if(toolName === 'wordCounter') {
                 title.innerHTML = `<i class="fa-solid fa-file-lines text-blue-400"></i> Word & Character Counter`;
                 body.innerHTML = `
-                    <textarea id="wcText" oninput="countWords()" rows="4" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm focus:outline-none focus:border-blue-500 mb-3 transition text-slate-200" placeholder="Type or paste your text here..."></textarea>
-                    <div class="grid grid-cols-2 gap-3 text-center mb-3">
+                    <textarea id="wcText" oninput="countWords()" rows="4" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm focus:outline-none focus:border-blue-500 mb-3 text-slate-200" placeholder="Type or paste text..."></textarea>
+                    <div class="grid grid-cols-2 gap-3 text-center">
                         <div class="bg-slate-900 p-3 rounded-xl border border-slate-800"><span id="wordCount" class="text-xl font-bold text-blue-400">0</span><p class="text-xs text-slate-400">Words</p></div>
                         <div class="bg-slate-900 p-3 rounded-xl border border-slate-800"><span id="charCount" class="text-xl font-bold text-emerald-400">0</span><p class="text-xs text-slate-400">Characters</p></div>
                     </div>
@@ -456,131 +551,219 @@
                 body.innerHTML = `
                     <div class="flex gap-2 mb-3">
                         <input type="text" id="passOutput" readonly class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm text-emerald-400 font-mono focus:outline-none" value="Click generate">
-                        <button onclick="copyPass()" class="bg-emerald-600 hover:bg-emerald-500 px-4 rounded-xl text-white text-sm transition">Copy</button>
+                        <button onclick="copyPass()" class="bg-emerald-600 hover:bg-emerald-500 px-4 rounded-xl text-white text-sm">Copy</button>
                     </div>
-                    <button onclick="generatePass()" class="w-full bg-slate-800 hover:bg-slate-700 py-2.5 rounded-xl text-sm font-medium transition text-emerald-300">Generate New Password</button>
+                    <button onclick="generatePass()" class="w-full bg-slate-800 hover:bg-slate-700 py-2.5 rounded-xl text-sm font-medium text-emerald-300">Generate Password</button>
                 `;
             } else if(toolName === 'qrGenerator') {
                 title.innerHTML = `<i class="fa-solid fa-qrcode text-purple-400"></i> QR Code Generator`;
                 body.innerHTML = `
-                    <input type="text" id="qrText" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-purple-500 mb-3 transition text-slate-200" placeholder="Enter URL or text...">
-                    <button onclick="generateQR()" class="w-full bg-purple-600 hover:bg-purple-500 text-white py-2.5 rounded-xl text-sm font-medium mb-3 transition">Create QR Code</button>
-                    <div id="qrResult" class="text-center p-4 bg-slate-900 rounded-xl border border-slate-800 text-xs text-slate-400">QR code preview will appear here</div>
+                    <input type="text" id="qrText" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-purple-500 mb-3 text-slate-200" placeholder="Enter URL or text...">
+                    <button onclick="generateQR()" class="w-full bg-purple-600 hover:bg-purple-500 text-white py-2.5 rounded-xl text-sm font-medium mb-3">Create QR Code</button>
+                    <div id="qrResult" class="text-center p-4 bg-slate-900 rounded-xl border border-slate-800 text-xs text-slate-400">QR preview will appear here</div>
                 `;
             } else if(toolName === 'ageCalculator') {
                 title.innerHTML = `<i class="fa-solid fa-cake-candles text-amber-400"></i> Age Calculator`;
                 body.innerHTML = `
                     <label class="text-xs text-slate-400 block mb-1">Select Birth Date</label>
-                    <input type="date" id="birthDate" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-amber-500 mb-3 transition text-slate-200">
-                    <button onclick="calcAge()" class="w-full bg-amber-600 hover:bg-amber-500 text-white py-2.5 rounded-xl text-sm font-medium mb-3 transition">Calculate Age</button>
+                    <input type="date" id="birthDate" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm mb-3 text-slate-200">
+                    <button onclick="calcAge()" class="w-full bg-amber-600 hover:bg-amber-500 text-white py-2.5 rounded-xl text-sm font-medium mb-3">Calculate Age</button>
                     <div id="ageResult" class="text-center p-3 bg-slate-900 rounded-xl border border-slate-800 text-sm font-medium text-amber-400">Select date above</div>
                 `;
             } else if(toolName === 'unitConverter') {
-                title.innerHTML = `<i class="fa-solid fa-scale-balanced text-cyan-400"></i> Unit Converter (KG to Gram)`;
+                title.innerHTML = `<i class="fa-solid fa-scale-balanced text-cyan-400"></i> Unit Converter`;
                 body.innerHTML = `
-                    <input type="number" id="kgInput" oninput="convertUnit()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-cyan-500 mb-3 transition text-slate-200" placeholder="Enter Kilogram (KG)...">
+                    <input type="number" id="kgInput" oninput="convertUnit()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm mb-3 text-slate-200" placeholder="Enter Kilogram (KG)...">
                     <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 text-center text-sm"><span id="gramResult" class="font-bold text-cyan-400">0</span> Gram</div>
                 `;
             } else if(toolName === 'textSpeech') {
                 title.innerHTML = `<i class="fa-solid fa-volume-high text-rose-400"></i> Text-to-Speech`;
                 body.innerHTML = `
-                    <textarea id="speechText" rows="3" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm focus:outline-none focus:border-rose-500 mb-3 transition text-slate-200" placeholder="Type text to speak..."></textarea>
-                    <button onclick="speakText()" class="w-full bg-rose-600 hover:bg-rose-500 text-white py-2.5 rounded-xl text-sm font-medium transition shadow-lg shadow-rose-600/30">Speak Aloud</button>
+                    <textarea id="speechText" rows="3" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm mb-3 text-slate-200" placeholder="Type text to speak..."></textarea>
+                    <button onclick="speakText()" class="w-full bg-rose-600 hover:bg-rose-500 text-white py-2.5 rounded-xl text-sm font-medium">Speak Aloud</button>
                 `;
             } else if(toolName === 'thumbDownloader') {
                 title.innerHTML = `<i class="fa-solid fa-download text-red-400"></i> YouTube Thumbnail Downloader`;
                 body.innerHTML = `
-                    <input type="text" id="ytUrl" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-red-500 mb-3 text-slate-200" placeholder="Paste YouTube Video URL...">
-                    <select id="thumbQuality" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-red-500 mb-3 text-slate-200">
-                        <option value="maxresdefault">HD Quality (Max Resolution)</option>
+                    <input type="text" id="ytUrl" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm mb-3 text-slate-200" placeholder="Paste YouTube Video URL...">
+                    <select id="thumbQuality" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm mb-3 text-slate-200">
+                        <option value="maxresdefault">HD Quality</option>
                         <option value="hqdefault">High Quality (HQ)</option>
-                        <option value="mqdefault">Medium Quality (MQ)</option>
                     </select>
-                    <button onclick="startDownloadProgress('thumb')" class="w-full bg-red-600 hover:bg-red-500 text-white py-2.5 rounded-xl text-sm font-medium mb-3 transition shadow-lg shadow-red-600/30">Fetch & Download</button>
+                    <button onclick="startDownloadProgress('thumb')" class="w-full bg-red-600 hover:bg-red-500 text-white py-2.5 rounded-xl text-sm font-medium mb-3">Fetch & Download</button>
                     <div id="progressBox" class="hidden space-y-2 mt-2">
-                        <div class="w-full bg-slate-900 rounded-full h-2.5 border border-slate-800 overflow-hidden">
-                            <div id="progressBar" class="bg-emerald-500 h-2.5 rounded-full w-0 transition-all duration-300"></div>
-                        </div>
+                        <div class="w-full bg-slate-900 rounded-full h-2.5 border border-slate-800 overflow-hidden"><div id="progressBar" class="bg-emerald-500 h-2.5 rounded-full w-0 transition-all duration-300"></div></div>
                         <p id="progressText" class="text-xs text-slate-400 text-center">Processing...</p>
                     </div>
                 `;
             } else if(toolName === 'imgCompressor') {
-                title.innerHTML = `<i class="fa-solid fa-image text-indigo-400"></i> Image Compressor & Resizer`;
+                title.innerHTML = `<i class="fa-solid fa-image text-indigo-400"></i> Image Compressor`;
                 body.innerHTML = `
                     <input type="file" id="imageFile" accept="image/*" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-sm mb-3 text-slate-200">
-                    <select id="imgQuality" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-indigo-500 mb-3 text-slate-200">
-                        <option value="0.8">Standard Quality (80%)</option>
-                        <option value="0.5">High Compression (50%)</option>
-                        <option value="0.3">Maximum Compression (30%)</option>
-                    </select>
-                    <button onclick="startDownloadProgress('img')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-2.5 rounded-xl text-sm font-medium mb-3 transition shadow-lg shadow-indigo-600/30">Compress & Download</button>
+                    <button onclick="startDownloadProgress('img')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-2.5 rounded-xl text-sm font-medium mb-3">Compress & Download</button>
                     <div id="progressBox" class="hidden space-y-2 mt-2">
-                        <div class="w-full bg-slate-900 rounded-full h-2.5 border border-slate-800 overflow-hidden">
-                            <div id="progressBar" class="bg-emerald-500 h-2.5 rounded-full w-0 transition-all duration-300"></div>
-                        </div>
+                        <div class="w-full bg-slate-900 rounded-full h-2.5 border border-slate-800 overflow-hidden"><div id="progressBar" class="bg-emerald-500 h-2.5 rounded-full w-0 transition-all duration-300"></div></div>
                         <p id="progressText" class="text-xs text-slate-400 text-center">Processing...</p>
                     </div>
                 `;
             } else if(toolName === 'colorPicker') {
-                title.innerHTML = `<i class="fa-solid fa-palette text-emerald-400"></i> Color Picker & HEX Converter`;
+                title.innerHTML = `<i class="fa-solid fa-palette text-emerald-400"></i> Color Picker & HEX`;
                 body.innerHTML = `
                     <div class="flex items-center gap-3 mb-3">
                         <input type="color" id="colorInput" onchange="updateColorCode()" class="w-16 h-12 bg-slate-900 border border-slate-800 rounded-xl cursor-pointer p-1">
-                        <input type="text" id="colorHexOutput" readonly class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-emerald-400 font-mono focus:outline-none" value="#2563eb">
+                        <input type="text" id="colorHexOutput" readonly class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-emerald-400 font-mono" value="#2563eb">
                     </div>
-                    <button onclick="copyColorHex()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-2.5 rounded-xl text-sm font-medium transition shadow-lg shadow-emerald-600/30">Copy HEX Code</button>
+                    <button onclick="copyColorHex()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-2.5 rounded-xl text-sm font-medium">Copy HEX Code</button>
                 `;
             } else if(toolName === 'caseConverter') {
                 title.innerHTML = `<i class="fa-solid fa-font text-teal-400"></i> Text Case Converter`;
                 body.innerHTML = `
-                    <textarea id="caseText" rows="3" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm focus:outline-none focus:border-teal-500 mb-3 text-slate-200" placeholder="Type or paste text here..."></textarea>
+                    <textarea id="caseText" rows="3" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm mb-3 text-slate-200" placeholder="Type text here..."></textarea>
                     <div class="grid grid-cols-3 gap-2">
-                        <button onclick="convertCase('upper')" class="bg-teal-600/20 border border-teal-500/40 text-teal-300 hover:bg-teal-600 hover:text-white py-2 rounded-xl text-xs transition font-medium">UPPERCASE</button>
-                        <button onclick="convertCase('lower')" class="bg-teal-600/20 border border-teal-500/40 text-teal-300 hover:bg-teal-600 hover:text-white py-2 rounded-xl text-xs transition font-medium">lowercase</button>
-                        <button onclick="convertCase('title')" class="bg-teal-600/20 border border-teal-500/40 text-teal-300 hover:bg-teal-600 hover:text-white py-2 rounded-xl text-xs transition font-medium">Title Case</button>
+                        <button onclick="convertCase('upper')" class="bg-teal-600/20 text-teal-300 py-2 rounded-xl text-xs font-medium">UPPER</button>
+                        <button onclick="convertCase('lower')" class="bg-teal-600/20 text-teal-300 py-2 rounded-xl text-xs font-medium">lower</button>
+                        <button onclick="convertCase('title')" class="bg-teal-600/20 text-teal-300 py-2 rounded-xl text-xs font-medium">Title</button>
                     </div>
                 `;
             } else if(toolName === 'tempNotepad') {
                 const savedNote = localStorage.getItem('jt_temp_note') || '';
                 title.innerHTML = `<i class="fa-solid fa-note-sticky text-yellow-400"></i> Temporary Notepad`;
                 body.innerHTML = `
-                    <textarea id="notepadArea" rows="4" oninput="saveNotepad()" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm focus:outline-none focus:border-yellow-500 mb-3 text-slate-200" placeholder="Write your notes here (auto-saved)...">${savedNote}</textarea>
-                    <div class="flex justify-between items-center text-xs text-slate-400">
-                        <span>Auto-saved locally</span>
-                        <button onclick="clearNotepad()" class="text-rose-400 hover:underline">Clear Note</button>
+                    <textarea id="notepadArea" rows="4" oninput="saveNotepad()" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm mb-3 text-slate-200" placeholder="Write notes here...">${savedNote}</textarea>
+                    <div class="flex justify-between text-xs text-slate-400"><span>Auto-saved</span><button onclick="clearNotepad()" class="text-rose-400">Clear</button></div>
+                `;
+            } else if(toolName === 'passChecker') {
+                title.innerHTML = `<i class="fa-solid fa-shield-halved text-fuchsia-400"></i> Password Hack Time Checker`;
+                body.innerHTML = `
+                    <input type="password" id="checkPass" oninput="checkPassTime()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm mb-3 text-slate-200" placeholder="Type password to test...">
+                    <div id="passTimeResult" class="p-3 bg-slate-900 rounded-xl border border-slate-800 text-xs text-fuchsia-300 text-center font-medium">Strength info will appear here</div>
+                `;
+            } else if(toolName === 'codeMinifier') {
+                title.innerHTML = `<i class="fa-solid fa-code text-sky-400"></i> HTML/CSS Minifier`;
+                body.innerHTML = `
+                    <textarea id="rawCode" rows="3" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm mb-3 text-slate-200" placeholder="Paste HTML/CSS code..."></textarea>
+                    <button onclick="minifyCode()" class="w-full bg-sky-600 hover:bg-sky-500 text-white py-2 rounded-xl text-sm font-medium mb-3">Minify Code</button>
+                    <textarea id="minifiedCode" rows="2" readonly class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-xs text-sky-300 font-mono" placeholder="Output..."></textarea>
+                `;
+            } else if(toolName === 'metaGen') {
+                title.innerHTML = `<i class="fa-solid fa-globe text-lime-400"></i> SEO Meta Tags Generator`;
+                body.innerHTML = `
+                    <input type="text" id="metaTitle" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm mb-2 text-slate-200" placeholder="Site Title...">
+                    <textarea id="metaDesc" rows="2" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm mb-3 text-slate-200" placeholder="Meta Description..."></textarea>
+                    <button onclick="generateMeta()" class="w-full bg-lime-600 hover:bg-lime-500 text-white py-2.5 rounded-xl text-sm font-medium mb-2">Generate Tags</button>
+                    <textarea id="metaOutput" rows="2" readonly class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs text-lime-300 font-mono"></textarea>
+                `;
+            } else if(toolName === 'ipFinder') {
+                title.innerHTML = `<i class="fa-solid fa-network-wired text-orange-400"></i> My IP & Device Info`;
+                body.innerHTML = `
+                    <div class="space-y-2 text-xs text-slate-300 bg-slate-900 p-4 rounded-xl border border-slate-800">
+                        <p><strong>Browser:</strong> <span class="text-orange-400">${navigator.userAgent.substring(0, 45)}...</span></p>
+                        <p><strong>Platform:</strong> <span class="text-orange-400">${navigator.platform}</span></p>
+                        <p><strong>Language:</strong> <span class="text-orange-400">${navigator.language}</span></p>
+                        <p><strong>Online Status:</strong> <span class="text-emerald-400">${navigator.onLine ? "Online" : "Offline"}</span></p>
                     </div>
                 `;
+            } else if(toolName === 'pomodoro') {
+                title.innerHTML = `<i class="fa-solid fa-clock text-pink-400"></i> Pomodoro Timer`;
+                body.innerHTML = `
+                    <div class="text-center py-6 bg-slate-900 rounded-xl border border-slate-800 mb-3">
+                        <span id="timerDisplay" class="text-4xl font-bold text-pink-400 font-mono">25:00</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button onclick="startPomodoro()" class="bg-pink-600 hover:bg-pink-500 text-white py-2 rounded-xl text-sm font-medium">Start Timer</button>
+                        <button onclick="resetPomodoro()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 py-2 rounded-xl text-sm font-medium">Reset</button>
+                    </div>
+                `;
+            } else if(toolName === 'tagGen') {
+                title.innerHTML = `<i class="fa-solid fa-hashtag text-violet-400"></i> Hashtag Generator`;
+                body.innerHTML = `
+                    <input type="text" id="keywordInput" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm mb-3 text-slate-200" placeholder="Enter keyword (e.g., tech, coding)...">
+                    <button onclick="generateTags()" class="w-full bg-violet-600 hover:bg-violet-500 text-white py-2.5 rounded-xl text-sm font-medium mb-3">Generate Tags</button>
+                    <div id="tagOutput" class="text-xs text-violet-300 bg-slate-900 p-3 rounded-xl border border-slate-800">Tags will appear here</div>
+                `;
+            } else if(toolName === 'paletteGen') {
+                title.innerHTML = `<i class="fa-solid fa-swatchbook text-emerald-300"></i> Color Palette Generator`;
+                body.innerHTML = `
+                    <div id="paletteBox" class="grid grid-cols-5 gap-2 mb-3">
+                        <div class="h-16 rounded-xl bg-blue-500"></div><div class="h-16 rounded-xl bg-purple-500"></div><div class="h-16 rounded-xl bg-emerald-500"></div><div class="h-16 rounded-xl bg-amber-500"></div><div class="h-16 rounded-xl bg-rose-500"></div>
+                    </div>
+                    <button onclick="generatePalette()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-2.5 rounded-xl text-sm font-medium">Generate New Palette</button>
+                `;
+            } else if(toolName === 'emiCalc') {
+                title.innerHTML = `<i class="fa-solid fa-calculator text-amber-300"></i> Loan & EMI Calculator`;
+                body.innerHTML = `
+                    <input type="number" id="loanAmount" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm mb-2 text-slate-200" placeholder="Loan Amount...">
+                    <input type="number" id="loanRate" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm mb-2 text-slate-200" placeholder="Interest Rate %...">
+                    <input type="number" id="loanMonths" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm mb-3 text-slate-200" placeholder="Months...">
+                    <button onclick="calcEMI()" class="w-full bg-amber-600 hover:bg-amber-500 text-white py-2.5 rounded-xl text-sm font-medium mb-3">Calculate EMI</button>
+                    <div id="emiResult" class="text-center p-3 bg-slate-900 rounded-xl border border-slate-800 text-sm font-medium text-amber-300">Monthly EMI: 0</div>
+                `;
+            } else if(toolName === 'binaryConv') {
+                title.innerHTML = `<i class="fa-solid fa-code-compare text-blue-300"></i> Text to Binary Converter`;
+                body.innerHTML = `
+                    <input type="text" id="binText" oninput="toBinary()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm mb-3 text-slate-200" placeholder="Type text to convert...">
+                    <textarea id="binOutput" rows="2" readonly class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-xs font-mono text-blue-300" placeholder="Binary result..."></textarea>
+                `;
+            } else if(toolName === 'base64Tool') {
+                title.innerHTML = `<i class="fa-solid fa-lock text-cyan-300"></i> Base64 Encoder/Decoder`;
+                body.innerHTML = `
+                    <textarea id="baseText" rows="3" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm mb-3 text-slate-200" placeholder="Type text..."></textarea>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button onclick="encodeBase64()" class="bg-cyan-600 text-white py-2 rounded-xl text-xs font-medium">Encode</button>
+                        <button onclick="decodeBase64()" class="bg-slate-800 text-cyan-300 py-2 rounded-xl text-xs font-medium">Decode</button>
+                    </div>
+                `;
+            } else if(toolName === 'worldClock') {
+                title.innerHTML = `<i class="fa-solid fa-clock-rotate-left text-rose-300"></i> World Clock`;
+                body.innerHTML = `
+                    <div class="space-y-2 text-xs text-slate-300 bg-slate-900 p-4 rounded-xl border border-slate-800">
+                        <p><strong>Bangladesh (Dhaka):</strong> <span class="text-rose-400 font-mono" id="clockBD">--:--:--</span></p>
+                        <p><strong>New York (USA):</strong> <span class="text-rose-400 font-mono" id="clockNY">--:--:--</span></p>
+                        <p><strong>London (UK):</strong> <span class="text-rose-400 font-mono" id="clockLondon">--:--:--</span></p>
+                    </div>
+                `;
+                setInterval(() => {
+                    const now = new Date();
+                    document.getElementById('clockBD').innerText = now.toLocaleTimeString('en-US', {timeZone: 'Asia/Dhaka'});
+                    document.getElementById('clockNY').innerText = now.toLocaleTimeString('en-US', {timeZone: 'America/New_York'});
+                    document.getElementById('clockLondon').innerText = now.toLocaleTimeString('en-US', {timeZone: 'Europe/London'});
+                }, 1000);
+            } else if(toolName === 'keyTester') {
+                title.innerHTML = `<i class="fa-solid fa-keyboard text-indigo-300"></i> Keyboard & Mouse Tester`;
+                body.innerHTML = `
+                    <div id="keyBox" class="p-6 bg-slate-900 rounded-xl border border-slate-800 text-center text-sm text-indigo-300">
+                        Press any key or click mouse here...
+                    </div>
+                `;
+                window.onkeydown = (e) => {
+                    const kb = document.getElementById('keyBox');
+                    if(kb) kb.innerHTML = `Key Pressed: <strong class="text-white text-lg">${e.key}</strong> (Code: ${e.code})`;
+                };
             }
         }
 
         function closeToolModal() { document.getElementById('toolModal').classList.add('hidden'); }
 
-        // DOWNLOAD SIMULATOR WITH GREEN PROGRESS BAR & SUCCESS CHECK
+        // DOWNLOAD SIMULATOR PROGRESS BAR
         function startDownloadProgress(type) {
             const progressBox = document.getElementById('progressBox');
             const progressBar = document.getElementById('progressBar');
             const progressText = document.getElementById('progressText');
-            
             progressBox.classList.remove('hidden');
             progressBar.style.width = '0%';
             progressText.innerText = "Downloading...";
-
             let width = 0;
             let interval = setInterval(() => {
                 if (width >= 100) {
                     clearInterval(interval);
                     progressText.innerHTML = `<span class="text-emerald-400 font-bold flex items-center justify-center gap-1.5"><i class="fa-solid fa-circle-check text-base"></i> Successfully Downloaded!</span>`;
                     registerCompletedTask();
-                    
                     if(type === 'thumb') {
                         const url = document.getElementById('ytUrl').value;
                         const quality = document.getElementById('thumbQuality').value;
-                        const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-                        const match = url ? url.match(regExp) : null;
+                        const match = url ? url.match(/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/) : null;
                         if(match && match[2].length === 11) {
-                            const videoId = match[2];
-                            const imgUrl = `https://img.youtube.com/vi/${videoId}/${quality}.jpg`;
-                            window.open(imgUrl, '_blank');
+                            window.open(`https://img.youtube.com/vi/${match[2]}/${quality}.jpg`, '_blank');
                         }
                     }
                 } else {
@@ -590,13 +773,12 @@
             }, 120);
         }
 
-        // TOOL FUNCTIONS
+        // TOOL UTILITY FUNCTIONS
         function countWords() {
             const text = document.getElementById('wcText').value.trim();
             const words = text === "" ? 0 : text.split(/\s+/).length;
-            const chars = text.length;
             document.getElementById('wordCount').innerText = words;
-            document.getElementById('charCount').innerText = chars;
+            document.getElementById('charCount').innerText = text.length;
             if(words > 0) registerCompletedTask();
         }
 
@@ -609,30 +791,23 @@
         }
 
         function copyPass() {
-            const copyText = document.getElementById('passOutput');
-            navigator.clipboard.writeText(copyText.value);
-            alert("Password copied to clipboard!");
+            navigator.clipboard.writeText(document.getElementById('passOutput').value);
+            alert("Password copied!");
         }
 
         function generateQR() {
             const val = document.getElementById('qrText').value;
-            if(!val) return alert("Please enter text or URL");
-            document.getElementById('qrResult').innerHTML = `<p class="text-white font-medium mb-1">Generated QR for: <span class="text-purple-400">${val}</span></p><img src="https://api.qrserver.com/v1/create-qr-code/?size=130x130&data=${encodeURIComponent(val)}" class="mx-auto mt-2 rounded-lg border border-slate-700 p-1 bg-white">`;
+            if(!val) return alert("Enter text or URL");
+            document.getElementById('qrResult').innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=130x130&data=${encodeURIComponent(val)}" class="mx-auto rounded-lg border p-1 bg-white">`;
             registerCompletedTask();
         }
 
         function calcAge() {
             const val = document.getElementById('birthDate').value;
-            if(!val) return alert("Please select a birth date");
-            const bdate = new Date(val);
-            const today = new Date();
+            if(!val) return alert("Select birth date");
+            const bdate = new Date(val), today = new Date();
             let years = today.getFullYear() - bdate.getFullYear();
-            let months = today.getMonth() - bdate.getMonth();
-            if (months < 0 || (months === 0 && today.getDate() < bdate.getDate())) {
-                years--;
-                months += 12;
-            }
-            document.getElementById('ageResult').innerText = `You are ${years} years and ${months} months old!`;
+            document.getElementById('ageResult').innerText = `You are ${years} years old!`;
             registerCompletedTask();
         }
 
@@ -644,21 +819,18 @@
 
         function speakText() {
             const text = document.getElementById('speechText').value;
-            if(!text) return alert("Please type something to speak");
-            const utterance = new SpeechSynthesisUtterance(text);
-            window.speechSynthesis.speak(utterance);
+            if(!text) return alert("Type something");
+            window.speechSynthesis.speak(new SpeechSynthesisUtterance(text));
             registerCompletedTask();
         }
 
         function updateColorCode() {
-            const val = document.getElementById('colorInput').value;
-            document.getElementById('colorHexOutput').value = val;
+            document.getElementById('colorHexOutput').value = document.getElementById('colorInput').value;
         }
 
         function copyColorHex() {
-            const val = document.getElementById('colorHexOutput');
-            navigator.clipboard.writeText(val.value);
-            alert("HEX Code copied to clipboard!");
+            navigator.clipboard.writeText(document.getElementById('colorHexOutput').value);
+            alert("HEX copied!");
             registerCompletedTask();
         }
 
@@ -666,21 +838,88 @@
             const txt = document.getElementById('caseText');
             if(type === 'upper') txt.value = txt.value.toUpperCase();
             if(type === 'lower') txt.value = txt.value.toLowerCase();
-            if(type === 'title') {
-                txt.value = txt.value.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
-            }
+            if(type === 'title') txt.value = txt.value.replace(/\w\S*/g, (t) => t.charAt(0).toUpperCase() + t.substr(1).toLowerCase());
             registerCompletedTask();
         }
 
-        function saveNotepad() {
-            const text = document.getElementById('notepadArea').value;
-            localStorage.setItem('jt_temp_note', text);
+        function saveNotepad() { localStorage.setItem('jt_temp_note', document.getElementById('notepadArea').value); }
+        function clearNotepad() { localStorage.removeItem('jt_temp_note'); document.getElementById('notepadArea').value = ''; }
+
+        function checkPassTime() {
+            const p = document.getElementById('checkPass').value;
+            const res = document.getElementById('passTimeResult');
+            if(p.length < 6) res.innerText = "Very weak (Cracked in seconds)";
+            else if(p.length < 10) res.innerText = "Moderate (Cracked in hours)";
+            else res.innerText = "Strong! (Cracked in centuries)";
+            registerCompletedTask();
         }
 
-        function clearNotepad() {
-            localStorage.removeItem('jt_temp_note');
-            document.getElementById('notepadArea').value = '';
-            alert("Note cleared!");
+        function minifyCode() {
+            const c = document.getElementById('rawCode').value;
+            document.getElementById('minifiedCode').value = c.replace(/\s+/g, ' ').trim();
+            registerCompletedTask();
+        }
+
+        function generateMeta() {
+            const t = document.getElementById('metaTitle').value;
+            const d = document.getElementById('metaDesc').value;
+            document.getElementById('metaOutput').value = `<title>${t}</title>\n<meta name="description" content="${d}">`;
+            registerCompletedTask();
+        }
+
+        let pomoTimer;
+        function startPomodoro() {
+            let t = 1500;
+            clearInterval(pomoTimer);
+            pomoTimer = setInterval(() => {
+                let m = Math.floor(t / 60), s = t % 60;
+                document.getElementById('timerDisplay').innerText = `${m}:${s < 10 ? '0' : ''}${s}`;
+                if(t <= 0) { clearInterval(pomoTimer); alert("Pomodoro Finished!"); }
+                t--;
+            }, 1000);
+            registerCompletedTask();
+        }
+        function resetPomodoro() { clearInterval(pomoTimer); document.getElementById('timerDisplay').innerText = "25:00"; }
+
+        function generateTags() {
+            const k = document.getElementById('keywordInput').value;
+            document.getElementById('tagOutput').innerText = `#${k} #${k}viral #${k}trending #JTMicro #Tools2026`;
+            registerCompletedTask();
+        }
+
+        function generatePalette() {
+            const colors = ['#3b82f6', '#8b5cf6', '#10b981', '#f59e0b', '#ef4444', '#06b6d4', '#ec4899'];
+            let html = '';
+            for(let i=0; i<5; i++) {
+                let c = colors[Math.floor(Math.random() * colors.length)];
+                html += `<div class="h-16 rounded-xl" style="background:${c}"></div>`;
+            }
+            document.getElementById('paletteBox').innerHTML = html;
+            registerCompletedTask();
+        }
+
+        function calcEMI() {
+            const p = document.getElementById('loanAmount').value;
+            const r = document.getElementById('loanRate').value / 1200;
+            const n = document.getElementById('loanMonths').value;
+            const emi = (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+            document.getElementById('emiResult').innerText = `Monthly EMI: ${Math.round(emi || 0).toLocaleString()}`;
+            registerCompletedTask();
+        }
+
+        function toBinary() {
+            const t = document.getElementById('binText').value;
+            document.getElementById('binOutput').value = t.split('').map(char => char.charCodeAt(0).toString(2)).join(' ');
+            registerCompletedTask();
+        }
+
+        function encodeBase64() {
+            document.getElementById('baseText').value = btoa(document.getElementById('baseText').value);
+            registerCompletedTask();
+        }
+        function decodeBase64() {
+            try { document.getElementById('baseText').value = atob(document.getElementById('baseText').value); } catch(e) { alert("Invalid Base64"); }
+            registerCompletedTask();
         }
     </script>
 </body>
