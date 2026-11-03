@@ -25,12 +25,24 @@
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white">
 
+    <!-- FAST SCRIPT TO PREVENT LOGIN FLASH -->
+    <script>
+        (function() {
+            var isLoggedIn = localStorage.getItem('jt_is_logged_in');
+            if (!isLoggedIn) {
+                document.addEventListener("DOMContentLoaded", function() {
+                    document.getElementById('authModal').classList.remove('hidden');
+                });
+            }
+        })();
+    </script>
+
     <!-- FLOATING WHATSAPP SUPPORT BUTTON -->
     <a href="https://wa.me/8801568600668?text=Hello!%20I%20need%20help%20with%20JT%20Micro%20Utility." target="_blank" title="Chat on WhatsApp" class="whatsapp-float fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-400 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl transition hover:scale-110 border border-emerald-300">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <!-- AUTHENTICATION MODAL -->
+    <!-- AUTHENTICATION MODAL (Hidden by Default for Returning Users) -->
     <div id="authModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md p-4 hidden">
         <div class="glass w-full max-w-md rounded-2xl p-8 shadow-2xl animate-pop relative border border-slate-800">
             <div class="text-center mb-6">
@@ -38,7 +50,7 @@
                     <i class="fa-solid fa-bolt animate-spin-slow"></i>
                 </div>
                 <h1 class="text-2xl font-bold tracking-wide">JT Micro Utility</h1>
-                <p class="text-xs text-slate-400 mt-1">Please login or register to start working</p>
+                <p class="text-xs text-slate-400 mt-1">Please login or register to access tools</p>
             </div>
 
             <!-- Tab Switcher -->
@@ -58,7 +70,7 @@
                     <input type="password" id="loginPass" required class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500 transition text-slate-200" placeholder="Enter your password">
                 </div>
                 <div class="flex justify-between items-center text-xs">
-                    <label class="flex items-center gap-2 cursor-pointer text-slate-400"><input type="checkbox" class="rounded bg-slate-900 border-slate-700"> Remember me</label>
+                    <label class="flex items-center gap-2 cursor-pointer text-slate-400"><input type="checkbox" checked class="rounded bg-slate-900 border-slate-700"> Remember me</label>
                     <a href="https://wa.me/8801568600668" target="_blank" class="text-blue-400 hover:underline">Forgot Password?</a>
                 </div>
                 <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-medium py-3 rounded-xl transition shadow-lg shadow-blue-600/30">Login Now</button>
@@ -88,7 +100,7 @@
     </div>
 
     <!-- MAIN APP DASHBOARD -->
-    <div id="mainApp" class="flex-1 flex flex-col hidden">
+    <div id="mainApp" class="flex-1 flex flex-col">
         <!-- Header -->
         <header class="glass sticky top-0 z-40 px-4 lg:px-12 py-4 flex justify-between items-center border-b border-slate-800/80">
             <div class="flex items-center gap-3">
@@ -144,7 +156,7 @@
                 </div>
             </div>
 
-            <!-- Tools Grid (Starting cleanly from 0 real views) -->
+            <!-- Tools Grid (Starting 0 real views) -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div onclick="openTool('wordCounter')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-blue-500/50">
                     <div class="flex justify-between items-start mb-4">
@@ -262,27 +274,13 @@
                     <span class="text-xs text-slate-300 font-medium">Total Tasks Completed:</span>
                     <span id="modalWorkCount" class="text-lg font-bold text-emerald-400">0</span>
                 </div>
-                <p class="text-xs text-slate-400 text-center mt-2">Every time you successfully complete a task, your work count increases automatically from zero!</p>
+                <p class="text-xs text-slate-400 text-center mt-2">Every time you successfully complete a task, your work count increases automatically!</p>
             </div>
         </div>
     </div>
 
     <!-- JavaScript Logic -->
     <script>
-        // Check session login state
-        window.addEventListener('DOMContentLoaded', () => {
-            const isLoggedIn = localStorage.getItem('jt_is_logged_in');
-            if (isLoggedIn === 'true') {
-                document.getElementById('authModal').classList.add('hidden');
-                document.getElementById('mainApp').classList.remove('hidden');
-            } else {
-                document.getElementById('authModal').classList.remove('hidden');
-                document.getElementById('mainApp').classList.add('hidden');
-            }
-            loadStats();
-        });
-
-        // 100% Real tracking starting strictly from 0
         let toolViews = JSON.parse(localStorage.getItem('jt_tool_views')) || { wordCounter: 0, passGenerator: 0, qrGenerator: 0, ageCalculator: 0, unitConverter: 0, textSpeech: 0 };
         let completedWorksCount = parseInt(localStorage.getItem('jt_works_count')) || 0;
 
@@ -320,7 +318,6 @@
             
             setTimeout(() => {
                 document.getElementById('authModal').classList.add('hidden');
-                document.getElementById('mainApp').classList.remove('hidden');
             }, 800);
         }
 
@@ -337,13 +334,11 @@
 
             setTimeout(() => {
                 document.getElementById('authModal').classList.add('hidden');
-                document.getElementById('mainApp').classList.remove('hidden');
             }, 800);
         }
 
         function logout() {
             localStorage.removeItem('jt_is_logged_in');
-            document.getElementById('mainApp').classList.add('hidden');
             document.getElementById('authModal').classList.remove('hidden');
             document.getElementById('authAlert').classList.add('hidden');
             document.getElementById('dropdownMenu').classList.add('hidden');
@@ -408,10 +403,6 @@
                 const el = document.getElementById(`view-${key}`);
                 if(el) el.innerText = toolViews[key];
             }
-        }
-
-        function loadStats() {
-            updateTotalViews();
         }
 
         // TOOL SYSTEM LOGIC
