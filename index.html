@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JT Micro Utility - Ultimate Toolkit Hub</title>
+    <title>JT Micro Utility - Ultimate All-in-One Toolkit</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -152,9 +152,29 @@
                 <script data-cfasync="false" src="https://bauval.org/14/a0bf2999fe8463c6c3a473854470e8ce"></script>
             </div>
 
-            <!-- TOOLS GRID (23 Total Tools: 11 Previous + 12 New Unique) -->
+            <!-- TOOLS GRID (25 Total Tools: 23 Previous + 2 New Passport & Signature Tools) -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 
+                <!-- NEW SPECIAL FEATURE: Passport Photo & Background Maker -->
+                <div onclick="openTool('passportPhoto')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-blue-400 border-2 border-blue-500/30 bg-blue-950/20">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-blue-500/20 text-blue-400 rounded-2xl flex items-center justify-center text-xl border border-blue-500/40 group-hover:scale-110 transition"><i class="fa-solid fa-id-badge"></i></div>
+                        <span class="text-[11px] bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2.5 py-1 rounded-full font-bold">HOT NEW</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-white mb-1 group-hover:text-blue-400 transition">Passport Photo Maker</h3>
+                    <p class="text-xs text-slate-300">Create passport photos with global sizes & custom background colors.</p>
+                </div>
+
+                <!-- NEW SPECIAL FEATURE: Exam Signature Resizer -->
+                <div onclick="openTool('signatureResizer')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-emerald-400 border-2 border-emerald-500/30 bg-emerald-950/20">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-emerald-500/20 text-emerald-400 rounded-2xl flex items-center justify-center text-xl border border-emerald-500/40 group-hover:scale-110 transition"><i class="fa-solid fa-signature"></i></div>
+                        <span class="text-[11px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2.5 py-1 rounded-full font-bold">BD EXAM SPECIAL</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-white mb-1 group-hover:text-emerald-400 transition">Signature Resizer</h3>
+                    <p class="text-xs text-slate-300">Resize signatures for BD Exam (300x80px) & official job applications.</p>
+                </div>
+
                 <!-- 1. Word Counter -->
                 <div onclick="openTool('wordCounter')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-blue-500/50">
                     <div class="flex justify-between items-start mb-4">
@@ -265,7 +285,7 @@
                     <p class="text-xs text-slate-400">Auto-saved local scratchpad notes.</p>
                 </div>
 
-                <!-- NEW 12. Password Hack Time Checker -->
+                <!-- 12. Password Hack Time Checker -->
                 <div onclick="openTool('passChecker')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-fuchsia-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-fuchsia-500/15 text-fuchsia-400 rounded-2xl flex items-center justify-center text-xl border border-fuchsia-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-shield-halved"></i></div>
@@ -275,7 +295,7 @@
                     <p class="text-xs text-slate-400">Calculate how long it takes to crack a password.</p>
                 </div>
 
-                <!-- NEW 13. HTML/CSS Minifier -->
+                <!-- 13. HTML/CSS Minifier -->
                 <div onclick="openTool('codeMinifier')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-sky-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-sky-500/15 text-sky-400 rounded-2xl flex items-center justify-center text-xl border border-sky-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-code"></i></div>
@@ -285,7 +305,7 @@
                     <p class="text-xs text-slate-400">Compress HTML or CSS code instantly.</p>
                 </div>
 
-                <!-- NEW 14. SEO Meta Tags Generator -->
+                <!-- 14. SEO Meta Tags Generator -->
                 <div onclick="openTool('metaGen')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-lime-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-lime-500/15 text-lime-400 rounded-2xl flex items-center justify-center text-xl border border-lime-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-globe"></i></div>
@@ -295,7 +315,7 @@
                     <p class="text-xs text-slate-400">Create Google SEO friendly meta tags.</p>
                 </div>
 
-                <!-- NEW 15. My IP & Device Info -->
+                <!-- 15. My IP & Device Info -->
                 <div onclick="openTool('ipFinder')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-orange-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-orange-500/15 text-orange-400 rounded-2xl flex items-center justify-center text-xl border border-orange-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-network-wired"></i></div>
@@ -305,7 +325,7 @@
                     <p class="text-xs text-slate-400">Check IP address and browser details.</p>
                 </div>
 
-                <!-- NEW 16. Pomodoro Study Timer -->
+                <!-- 16. Pomodoro Study Timer -->
                 <div onclick="openTool('pomodoro')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-pink-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-pink-500/15 text-pink-400 rounded-2xl flex items-center justify-center text-xl border border-pink-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-clock"></i></div>
@@ -315,7 +335,7 @@
                     <p class="text-xs text-slate-400">25-minute study focus timer and break tracker.</p>
                 </div>
 
-                <!-- NEW 17. Viral Hashtag Generator -->
+                <!-- 17. Viral Hashtag Generator -->
                 <div onclick="openTool('tagGen')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-violet-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-violet-500/15 text-violet-400 rounded-2xl flex items-center justify-center text-xl border border-violet-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-hashtag"></i></div>
@@ -325,7 +345,7 @@
                     <p class="text-xs text-slate-400">Generate viral tags for social media posts.</p>
                 </div>
 
-                <!-- NEW 18. Color Palette Generator -->
+                <!-- 18. Color Palette Generator -->
                 <div onclick="openTool('paletteGen')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-emerald-400/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-emerald-400/15 text-emerald-300 rounded-2xl flex items-center justify-center text-xl border border-emerald-400/30 group-hover:scale-110 transition"><i class="fa-solid fa-swatchbook"></i></div>
@@ -335,7 +355,7 @@
                     <p class="text-xs text-slate-400">Generate random matching color palettes.</p>
                 </div>
 
-                <!-- NEW 19. Loan & EMI Calculator -->
+                <!-- 19. Loan & EMI Calculator -->
                 <div onclick="openTool('emiCalc')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-amber-400/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-amber-400/15 text-amber-300 rounded-2xl flex items-center justify-center text-xl border border-amber-400/30 group-hover:scale-110 transition"><i class="fa-solid fa-calculator"></i></div>
@@ -345,7 +365,7 @@
                     <p class="text-xs text-slate-400">Calculate loan installments and monthly interest.</p>
                 </div>
 
-                <!-- NEW 20. Text to Binary / Morse -->
+                <!-- 20. Text to Binary / Morse -->
                 <div onclick="openTool('binaryConv')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-blue-400/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-blue-400/15 text-blue-300 rounded-2xl flex items-center justify-center text-xl border border-blue-400/30 group-hover:scale-110 transition"><i class="fa-solid fa-code-compare"></i></div>
@@ -355,7 +375,7 @@
                     <p class="text-xs text-slate-400">Convert text to binary (0 & 1) code.</p>
                 </div>
 
-                <!-- NEW 21. Base64 Encoder/Decoder -->
+                <!-- 21. Base64 Encoder/Decoder -->
                 <div onclick="openTool('base64Tool')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-cyan-400/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-cyan-400/15 text-cyan-300 rounded-2xl flex items-center justify-center text-xl border border-cyan-400/30 group-hover:scale-110 transition"><i class="fa-solid fa-lock"></i></div>
@@ -365,7 +385,7 @@
                     <p class="text-xs text-slate-400">Encode or decode text in Base64 format.</p>
                 </div>
 
-                <!-- NEW 22. World Clock Converter -->
+                <!-- 22. World Clock Converter -->
                 <div onclick="openTool('worldClock')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-rose-400/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-rose-400/15 text-rose-300 rounded-2xl flex items-center justify-center text-xl border border-rose-400/30 group-hover:scale-110 transition"><i class="fa-solid fa-clock-rotate-left"></i></div>
@@ -375,7 +395,7 @@
                     <p class="text-xs text-slate-400">Check current live times across global timezones.</p>
                 </div>
 
-                <!-- NEW 23. Keyboard & Mouse Tester -->
+                <!-- 23. Keyboard & Mouse Tester -->
                 <div onclick="openTool('keyTester')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-indigo-400/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-indigo-400/15 text-indigo-300 rounded-2xl flex items-center justify-center text-xl border border-indigo-400/30 group-hover:scale-110 transition"><i class="fa-solid fa-keyboard"></i></div>
@@ -449,9 +469,9 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT LOGIC FOR ALL 23 TOOLS -->
+    <!-- JAVASCRIPT LOGIC FOR ALL 25 TOOLS -->
     <script>
-        let toolViews = JSON.parse(localStorage.getItem('jt_tool_views')) || { wordCounter: 0, passGenerator: 0, qrGenerator: 0, ageCalculator: 0, unitConverter: 0, textSpeech: 0, thumbDownloader: 0, imgCompressor: 0, colorPicker: 0, caseConverter: 0, tempNotepad: 0, passChecker: 0, codeMinifier: 0, metaGen: 0, ipFinder: 0, pomodoro: 0, tagGen: 0, paletteGen: 0, emiCalc: 0, binaryConv: 0, base64Tool: 0, worldClock: 0, keyTester: 0 };
+        let toolViews = JSON.parse(localStorage.getItem('jt_tool_views')) || { passportPhoto: 0, signatureResizer: 0, wordCounter: 0, passGenerator: 0, qrGenerator: 0, ageCalculator: 0, unitConverter: 0, textSpeech: 0, thumbDownloader: 0, imgCompressor: 0, colorPicker: 0, caseConverter: 0, tempNotepad: 0, passChecker: 0, codeMinifier: 0, metaGen: 0, ipFinder: 0, pomodoro: 0, tagGen: 0, paletteGen: 0, emiCalc: 0, binaryConv: 0, base64Tool: 0, worldClock: 0, keyTester: 0 };
         let completedWorksCount = parseInt(localStorage.getItem('jt_works_count')) || 0;
 
         document.getElementById('menuWorkCount').innerText = completedWorksCount;
@@ -537,7 +557,52 @@
             const body = document.getElementById('toolModalBody');
             modal.classList.remove('hidden');
 
-            if(toolName === 'wordCounter') {
+            if(toolName === 'passportPhoto') {
+                title.innerHTML = `<i class="fa-solid fa-id-badge text-blue-400"></i> Smart Passport Photo Maker`;
+                body.innerHTML = `
+                    <label class="text-xs text-slate-400 block mb-1">1. Select Photo File</label>
+                    <input type="file" id="passPhotoInput" accept="image/*" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs mb-3 text-slate-200">
+                    
+                    <label class="text-xs text-slate-400 block mb-1">2. Select Country / Size Standard</label>
+                    <select id="passCountrySize" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs mb-3 text-slate-200">
+                        <option value="bd">Bangladesh Passport (40x50 mm)</option>
+                        <option value="us">USA / Visa (2x2 inches / 600x600 px)</option>
+                        <option value="uk">UK / EU Schengen (35x45 mm)</option>
+                        <option value="stamp">Stamp Size Photo (20x25 mm)</option>
+                    </select>
+
+                    <label class="text-xs text-slate-400 block mb-1">3. Select Background Color</label>
+                    <div class="flex gap-2 mb-4">
+                        <input type="color" id="passBgColor" value="#ffffff" class="w-12 h-9 bg-slate-900 border border-slate-800 rounded-lg p-1 cursor-pointer">
+                        <span class="text-xs text-slate-400 flex items-center">Choose Custom BG (White, Blue, Red)</span>
+                    </div>
+
+                    <button onclick="startDownloadProgress('passport')" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2.5 rounded-xl text-sm font-medium mb-2 shadow-lg shadow-blue-600/30">Generate & Download Passport Photo</button>
+                    <div id="progressBox" class="hidden space-y-2 mt-2">
+                        <div class="w-full bg-slate-900 rounded-full h-2.5 border border-slate-800 overflow-hidden"><div id="progressBar" class="bg-emerald-500 h-2.5 rounded-full w-0 transition-all duration-300"></div></div>
+                        <p id="progressText" class="text-xs text-slate-400 text-center">Processing...</p>
+                    </div>
+                `;
+            } else if(toolName === 'signatureResizer') {
+                title.innerHTML = `<i class="fa-solid fa-signature text-emerald-400"></i> Exam Signature Resizer`;
+                body.innerHTML = `
+                    <label class="text-xs text-slate-400 block mb-1">Select Signature Photo</label>
+                    <input type="file" id="sigInput" accept="image/*" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs mb-3 text-slate-200">
+
+                    <label class="text-xs text-slate-400 block mb-1">Target Application Standard</label>
+                    <select id="sigPreset" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs mb-4 text-slate-200">
+                        <option value="bdgov">Bangladesh Govt Exam (300 x 80 px - Max 60KB)</option>
+                        <option value="square">Square Signature (300 x 300 px)</option>
+                        <option value="custom">Bank / University Signature (500 x 150 px)</option>
+                    </select>
+
+                    <button onclick="startDownloadProgress('signature')" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-2.5 rounded-xl text-sm font-medium mb-2 shadow-lg shadow-emerald-600/30">Resize & Download Signature</button>
+                    <div id="progressBox" class="hidden space-y-2 mt-2">
+                        <div class="w-full bg-slate-900 rounded-full h-2.5 border border-slate-800 overflow-hidden"><div id="progressBar" class="bg-emerald-500 h-2.5 rounded-full w-0 transition-all duration-300"></div></div>
+                        <p id="progressText" class="text-xs text-slate-400 text-center">Processing...</p>
+                    </div>
+                `;
+            } else if(toolName === 'wordCounter') {
                 title.innerHTML = `<i class="fa-solid fa-file-lines text-blue-400"></i> Word & Character Counter`;
                 body.innerHTML = `
                     <textarea id="wcText" oninput="countWords()" rows="4" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm focus:outline-none focus:border-blue-500 mb-3 text-slate-200" placeholder="Type or paste text..."></textarea>
@@ -550,7 +615,7 @@
                 title.innerHTML = `<i class="fa-solid fa-key text-emerald-400"></i> Strong Password Generator`;
                 body.innerHTML = `
                     <div class="flex gap-2 mb-3">
-                        <input type="text" id="passOutput" readonly class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm text-emerald-400 font-mono focus:outline-none" value="Click generate">
+                        <input type="text" id="passOutput" readonly class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm text-emerald-400 font-mono" value="Click generate">
                         <button onclick="copyPass()" class="bg-emerald-600 hover:bg-emerald-500 px-4 rounded-xl text-white text-sm">Copy</button>
                     </div>
                     <button onclick="generatePass()" class="w-full bg-slate-800 hover:bg-slate-700 py-2.5 rounded-xl text-sm font-medium text-emerald-300">Generate Password</button>
@@ -558,7 +623,7 @@
             } else if(toolName === 'qrGenerator') {
                 title.innerHTML = `<i class="fa-solid fa-qrcode text-purple-400"></i> QR Code Generator`;
                 body.innerHTML = `
-                    <input type="text" id="qrText" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-purple-500 mb-3 text-slate-200" placeholder="Enter URL or text...">
+                    <input type="text" id="qrText" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm mb-3 text-slate-200" placeholder="Enter URL or text...">
                     <button onclick="generateQR()" class="w-full bg-purple-600 hover:bg-purple-500 text-white py-2.5 rounded-xl text-sm font-medium mb-3">Create QR Code</button>
                     <div id="qrResult" class="text-center p-4 bg-slate-900 rounded-xl border border-slate-800 text-xs text-slate-400">QR preview will appear here</div>
                 `;
@@ -677,7 +742,7 @@
             } else if(toolName === 'tagGen') {
                 title.innerHTML = `<i class="fa-solid fa-hashtag text-violet-400"></i> Hashtag Generator`;
                 body.innerHTML = `
-                    <input type="text" id="keywordInput" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm mb-3 text-slate-200" placeholder="Enter keyword (e.g., tech, coding)...">
+                    <input type="text" id="keywordInput" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm mb-3 text-slate-200" placeholder="Enter keyword...">
                     <button onclick="generateTags()" class="w-full bg-violet-600 hover:bg-violet-500 text-white py-2.5 rounded-xl text-sm font-medium mb-3">Generate Tags</button>
                     <div id="tagOutput" class="text-xs text-violet-300 bg-slate-900 p-3 rounded-xl border border-slate-800">Tags will appear here</div>
                 `;
@@ -701,7 +766,7 @@
             } else if(toolName === 'binaryConv') {
                 title.innerHTML = `<i class="fa-solid fa-code-compare text-blue-300"></i> Text to Binary Converter`;
                 body.innerHTML = `
-                    <input type="text" id="binText" oninput="toBinary()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm mb-3 text-slate-200" placeholder="Type text to convert...">
+                    <input type="text" id="binText" oninput="toBinary()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm mb-3 text-slate-200" placeholder="Type text...">
                     <textarea id="binOutput" rows="2" readonly class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-xs font-mono text-blue-300" placeholder="Binary result..."></textarea>
                 `;
             } else if(toolName === 'base64Tool') {
@@ -744,21 +809,28 @@
 
         function closeToolModal() { document.getElementById('toolModal').classList.add('hidden'); }
 
-        // DOWNLOAD SIMULATOR PROGRESS BAR
+        // DOWNLOAD SIMULATOR & PROCESSOR
         function startDownloadProgress(type) {
             const progressBox = document.getElementById('progressBox');
             const progressBar = document.getElementById('progressBar');
             const progressText = document.getElementById('progressText');
             progressBox.classList.remove('hidden');
             progressBar.style.width = '0%';
-            progressText.innerText = "Downloading...";
+            progressText.innerText = "Processing Image & Downloading...";
+
             let width = 0;
             let interval = setInterval(() => {
                 if (width >= 100) {
                     clearInterval(interval);
-                    progressText.innerHTML = `<span class="text-emerald-400 font-bold flex items-center justify-center gap-1.5"><i class="fa-solid fa-circle-check text-base"></i> Successfully Downloaded!</span>`;
+                    progressText.innerHTML = `<span class="text-emerald-400 font-bold flex items-center justify-center gap-1.5"><i class="fa-solid fa-circle-check text-base"></i> Successfully Downloaded HD File!</span>`;
                     registerCompletedTask();
-                    if(type === 'thumb') {
+
+                    // REAL CANVAS PROCESSOR FOR PASSPORT & SIGNATURE
+                    if(type === 'passport') {
+                        processPassportCanvas();
+                    } else if(type === 'signature') {
+                        processSignatureCanvas();
+                    } else if(type === 'thumb') {
                         const url = document.getElementById('ytUrl').value;
                         const quality = document.getElementById('thumbQuality').value;
                         const match = url ? url.match(/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/) : null;
@@ -767,13 +839,64 @@
                         }
                     }
                 } else {
-                    width += 25;
+                    width += 20;
                     progressBar.style.width = width + '%';
                 }
-            }, 120);
+            }, 100);
         }
 
-        // TOOL UTILITY FUNCTIONS
+        // CANVAS PROCESSOR FOR PASSPORT PHOTO
+        function processPassportCanvas() {
+            const fileInput = document.getElementById('passPhotoInput');
+            const bgColor = document.getElementById('passBgColor').value;
+            if(!fileInput.files[0]) {
+                alert("Please select an image file first!");
+                return;
+            }
+            const img = new Image();
+            img.src = URL.createObjectURL(fileInput.files[0]);
+            img.onload = function() {
+                const canvas = document.createElement('canvas');
+                canvas.width = 600;
+                canvas.height = 750;
+                const ctx = canvas.getContext('2d');
+                ctx.fillStyle = bgColor;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                
+                const link = document.createElement('a');
+                link.download = 'passport-photo-hd.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            };
+        }
+
+        // CANVAS PROCESSOR FOR BD SIGNATURE
+        function processSignatureCanvas() {
+            const fileInput = document.getElementById('sigInput');
+            if(!fileInput.files[0]) {
+                alert("Please select a signature image first!");
+                return;
+            }
+            const img = new Image();
+            img.src = URL.createObjectURL(fileInput.files[0]);
+            img.onload = function() {
+                const canvas = document.createElement('canvas');
+                canvas.width = 300;
+                canvas.height = 80;
+                const ctx = canvas.getContext('2d');
+                ctx.fillStyle = '#ffffff';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                
+                const link = document.createElement('a');
+                link.download = 'official-signature-300x80.jpg';
+                link.href = canvas.toDataURL('image/jpeg', 0.9);
+                link.click();
+            };
+        }
+
+        // OTHER TOOL LOGICS
         function countWords() {
             const text = document.getElementById('wcText').value.trim();
             const words = text === "" ? 0 : text.split(/\s+/).length;
