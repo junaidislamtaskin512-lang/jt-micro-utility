@@ -42,7 +42,7 @@
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <!-- AUTHENTICATION MODAL (Hidden by Default for Returning Users) -->
+    <!-- AUTHENTICATION MODAL -->
     <div id="authModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md p-4 hidden">
         <div class="glass w-full max-w-md rounded-2xl p-8 shadow-2xl animate-pop relative border border-slate-800">
             <div class="text-center mb-6">
@@ -161,8 +161,10 @@
                 <script data-cfasync="false" src="https://bauval.org/14/a0bf2999fe8463c6c3a473854470e8ce"></script>
             </div>
 
-            <!-- Tools Grid (Starting 0 real views) -->
+            <!-- ALL 11 TOOLS GRID -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- 1. Word Counter -->
                 <div onclick="openTool('wordCounter')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-blue-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-blue-500/15 text-blue-400 rounded-2xl flex items-center justify-center text-xl border border-blue-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-file-lines"></i></div>
@@ -172,6 +174,7 @@
                     <p class="text-xs text-slate-400">Count exact words, characters, and paragraphs in real-time.</p>
                 </div>
 
+                <!-- 2. Password Generator -->
                 <div onclick="openTool('passGenerator')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-emerald-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-emerald-500/15 text-emerald-400 rounded-2xl flex items-center justify-center text-xl border border-emerald-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-key"></i></div>
@@ -181,6 +184,7 @@
                     <p class="text-xs text-slate-400">Generate secure and strong custom passwords with one click.</p>
                 </div>
 
+                <!-- 3. QR Generator -->
                 <div onclick="openTool('qrGenerator')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-purple-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-purple-500/15 text-purple-400 rounded-2xl flex items-center justify-center text-xl border border-purple-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-qrcode"></i></div>
@@ -190,6 +194,7 @@
                     <p class="text-xs text-slate-400">Create custom QR codes instantly for websites or texts.</p>
                 </div>
 
+                <!-- 4. Age Calculator -->
                 <div onclick="openTool('ageCalculator')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-amber-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-amber-500/15 text-amber-400 rounded-2xl flex items-center justify-center text-xl border border-amber-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-cake-candles"></i></div>
@@ -199,6 +204,7 @@
                     <p class="text-xs text-slate-400">Calculate exact age in years, months, and days from date of birth.</p>
                 </div>
 
+                <!-- 5. Unit Converter -->
                 <div onclick="openTool('unitConverter')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-cyan-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-cyan-500/15 text-cyan-400 rounded-2xl flex items-center justify-center text-xl border border-cyan-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-scale-balanced"></i></div>
@@ -208,6 +214,7 @@
                     <p class="text-xs text-slate-400">Convert measurement units like KG to Gram instantly.</p>
                 </div>
 
+                <!-- 6. Text-to-Speech -->
                 <div onclick="openTool('textSpeech')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-rose-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-rose-500/15 text-rose-400 rounded-2xl flex items-center justify-center text-xl border border-rose-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-volume-high"></i></div>
@@ -216,6 +223,57 @@
                     <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-rose-400 transition">Text-to-Speech</h3>
                     <p class="text-xs text-slate-400">Convert any written text into natural audio speech.</p>
                 </div>
+
+                <!-- NEW 7. Thumbnail Downloader -->
+                <div onclick="openTool('thumbDownloader')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-red-500/50">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-red-500/15 text-red-400 rounded-2xl flex items-center justify-center text-xl border border-red-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-download"></i></div>
+                        <span class="text-[11px] bg-red-500/10 text-red-400 border border-red-500/20 px-2.5 py-1 rounded-full font-medium flex items-center gap-1.5"><i class="fa-solid fa-eye text-[10px]"></i> <span id="view-thumbDownloader">0</span> views</span>
+                    </div>
+                    <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-red-400 transition">Thumbnail Downloader</h3>
+                    <p class="text-xs text-slate-400">Download HD/HQ video thumbnails instantly with progress bar.</p>
+                </div>
+
+                <!-- NEW 8. Image Compressor -->
+                <div onclick="openTool('imgCompressor')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-indigo-500/50">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-indigo-500/15 text-indigo-400 rounded-2xl flex items-center justify-center text-xl border border-indigo-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-image"></i></div>
+                        <span class="text-[11px] bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-2.5 py-1 rounded-full font-medium flex items-center gap-1.5"><i class="fa-solid fa-eye text-[10px]"></i> <span id="view-imgCompressor">0</span> views</span>
+                    </div>
+                    <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-indigo-400 transition">Image Compressor</h3>
+                    <p class="text-xs text-slate-400">Reduce image size & quality instantly with progress check.</p>
+                </div>
+
+                <!-- NEW 9. Color Picker & HEX -->
+                <div onclick="openTool('colorPicker')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-emerald-500/50">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-emerald-500/15 text-emerald-400 rounded-2xl flex items-center justify-center text-xl border border-emerald-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-palette"></i></div>
+                        <span class="text-[11px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2.5 py-1 rounded-full font-medium flex items-center gap-1.5"><i class="fa-solid fa-eye text-[10px]"></i> <span id="view-colorPicker">0</span> views</span>
+                    </div>
+                    <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-emerald-400 transition">Color Picker & HEX</h3>
+                    <p class="text-xs text-slate-400">Pick any color and get exact HEX & RGB codes instantly.</p>
+                </div>
+
+                <!-- NEW 10. Text Case Converter -->
+                <div onclick="openTool('caseConverter')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-teal-500/50">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-teal-500/15 text-teal-400 rounded-2xl flex items-center justify-center text-xl border border-teal-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-font"></i></div>
+                        <span class="text-[11px] bg-teal-500/10 text-teal-400 border border-teal-500/20 px-2.5 py-1 rounded-full font-medium flex items-center gap-1.5"><i class="fa-solid fa-eye text-[10px]"></i> <span id="view-caseConverter">0</span> views</span>
+                    </div>
+                    <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-teal-400 transition">Text Case Converter</h3>
+                    <p class="text-xs text-slate-400">Convert paragraphs into Uppercase, Lowercase or Title Case.</p>
+                </div>
+
+                <!-- NEW 11. Temporary Notepad -->
+                <div onclick="openTool('tempNotepad')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-yellow-500/50">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-yellow-500/15 text-yellow-400 rounded-2xl flex items-center justify-center text-xl border border-yellow-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-note-sticky"></i></div>
+                        <span class="text-[11px] bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 px-2.5 py-1 rounded-full font-medium flex items-center gap-1.5"><i class="fa-solid fa-eye text-[10px]"></i> <span id="view-tempNotepad">0</span> views</span>
+                    </div>
+                    <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-yellow-400 transition">Temporary Notepad</h3>
+                    <p class="text-xs text-slate-400">Write & save temporary notes locally in your browser.</p>
+                </div>
+
             </div>
         </main>
 
@@ -284,9 +342,9 @@
         </div>
     </div>
 
-    <!-- JavaScript Logic -->
+    <!-- JavaScript Logic for ALL 11 Tools -->
     <script>
-        let toolViews = JSON.parse(localStorage.getItem('jt_tool_views')) || { wordCounter: 0, passGenerator: 0, qrGenerator: 0, ageCalculator: 0, unitConverter: 0, textSpeech: 0 };
+        let toolViews = JSON.parse(localStorage.getItem('jt_tool_views')) || { wordCounter: 0, passGenerator: 0, qrGenerator: 0, ageCalculator: 0, unitConverter: 0, textSpeech: 0, thumbDownloader: 0, imgCompressor: 0, colorPicker: 0, caseConverter: 0, tempNotepad: 0 };
         let completedWorksCount = parseInt(localStorage.getItem('jt_works_count')) || 0;
 
         document.getElementById('menuWorkCount').innerText = completedWorksCount;
@@ -298,7 +356,6 @@
             const signupBtn = document.getElementById('signupTabBtn');
             const loginForm = document.getElementById('loginForm');
             const signupForm = document.getElementById('signupForm');
-            
             if(tab === 'login') {
                 loginBtn.className = "flex-1 py-2 text-sm font-medium rounded-lg bg-blue-600 text-white transition shadow";
                 signupBtn.className = "flex-1 py-2 text-sm font-medium rounded-lg text-slate-400 hover:text-white transition";
@@ -314,16 +371,10 @@
 
         function handleLogin(e) {
             e.preventDefault();
-            const alertBox = document.getElementById('authAlert');
-            const alertText = document.getElementById('authAlertText');
-            alertBox.classList.remove('hidden');
-            alertText.innerText = "Login Successful!";
-
             localStorage.setItem('jt_is_logged_in', 'true');
-            
-            setTimeout(() => {
-                document.getElementById('authModal').classList.add('hidden');
-            }, 800);
+            document.getElementById('authAlert').classList.remove('hidden');
+            document.getElementById('authAlertText').innerText = "Login Successful!";
+            setTimeout(() => document.getElementById('authModal').classList.add('hidden'), 800);
         }
 
         function handleSignup(e) {
@@ -331,67 +382,37 @@
             const name = document.getElementById('signupName').value;
             localStorage.setItem('jt_user_name', name);
             localStorage.setItem('jt_is_logged_in', 'true');
-
-            const alertBox = document.getElementById('authAlert');
-            const alertText = document.getElementById('authAlertText');
-            alertBox.classList.remove('hidden');
-            alertText.innerText = "Registration Successful!";
-
-            setTimeout(() => {
-                document.getElementById('authModal').classList.add('hidden');
-            }, 800);
+            document.getElementById('authAlert').classList.remove('hidden');
+            document.getElementById('authAlertText').innerText = "Registration Successful!";
+            setTimeout(() => document.getElementById('authModal').classList.add('hidden'), 800);
         }
 
         function logout() {
             localStorage.removeItem('jt_is_logged_in');
             document.getElementById('authModal').classList.remove('hidden');
-            document.getElementById('authAlert').classList.add('hidden');
             document.getElementById('dropdownMenu').classList.add('hidden');
         }
 
-        function toggleMenu() {
-            const menu = document.getElementById('dropdownMenu');
-            menu.classList.toggle('hidden');
-        }
-
-        function openDashboard() {
-            document.getElementById('dropdownMenu').classList.add('hidden');
-        }
-
-        function openProfileModal() {
+        function toggleMenu() { document.getElementById('dropdownMenu').classList.toggle('hidden'); }
+        function openDashboard() { document.getElementById('dropdownMenu').classList.add('hidden'); }
+        function openProfileModal() { 
             document.getElementById('profileNameInput').value = localStorage.getItem('jt_user_name') || '';
             document.getElementById('profilePhoneInput').value = localStorage.getItem('jt_user_phone') || '';
             document.getElementById('profileBioInput').value = localStorage.getItem('jt_user_bio') || '';
             document.getElementById('profileAlert').classList.add('hidden');
-            document.getElementById('profileModal').classList.remove('hidden');
+            document.getElementById('profileModal').classList.remove('hidden'); 
         }
-
-        function closeProfileModal() {
-            document.getElementById('profileModal').classList.add('hidden');
-        }
-
-        function openCompleteWorksModal() {
-            document.getElementById('completeWorksModal').classList.remove('hidden');
-        }
-
-        function closeCompleteWorksModal() {
-            document.getElementById('completeWorksModal').classList.add('hidden');
-        }
+        function closeProfileModal() { document.getElementById('profileModal').classList.add('hidden'); }
+        function openCompleteWorksModal() { document.getElementById('completeWorksModal').classList.remove('hidden'); }
+        function closeCompleteWorksModal() { document.getElementById('completeWorksModal').classList.add('hidden'); }
 
         function saveProfile(e) {
             e.preventDefault();
-            const name = document.getElementById('profileNameInput').value;
-            const phone = document.getElementById('profilePhoneInput').value;
-            const bio = document.getElementById('profileBioInput').value;
-
-            localStorage.setItem('jt_user_name', name);
-            localStorage.setItem('jt_user_phone', phone);
-            localStorage.setItem('jt_user_bio', bio);
-            
+            localStorage.setItem('jt_user_name', document.getElementById('profileNameInput').value);
+            localStorage.setItem('jt_user_phone', document.getElementById('profilePhoneInput').value);
+            localStorage.setItem('jt_user_bio', document.getElementById('profileBioInput').value);
             document.getElementById('profileAlert').classList.remove('hidden');
-            setTimeout(() => {
-                closeProfileModal();
-            }, 1100);
+            setTimeout(() => closeProfileModal(), 1100);
         }
 
         function registerCompletedTask() {
@@ -410,9 +431,9 @@
             }
         }
 
-        // TOOL SYSTEM LOGIC
+        // TOOL SYSTEM HANDLER
         function openTool(toolName) {
-            toolViews[toolName]++;
+            toolViews[toolName] = (toolViews[toolName] || 0) + 1;
             localStorage.setItem('jt_tool_views', JSON.stringify(toolViews));
             updateTotalViews();
 
@@ -466,13 +487,110 @@
                     <textarea id="speechText" rows="3" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm focus:outline-none focus:border-rose-500 mb-3 transition text-slate-200" placeholder="Type text to speak..."></textarea>
                     <button onclick="speakText()" class="w-full bg-rose-600 hover:bg-rose-500 text-white py-2.5 rounded-xl text-sm font-medium transition shadow-lg shadow-rose-600/30">Speak Aloud</button>
                 `;
+            } else if(toolName === 'thumbDownloader') {
+                title.innerHTML = `<i class="fa-solid fa-download text-red-400"></i> YouTube Thumbnail Downloader`;
+                body.innerHTML = `
+                    <input type="text" id="ytUrl" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-red-500 mb-3 text-slate-200" placeholder="Paste YouTube Video URL...">
+                    <select id="thumbQuality" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-red-500 mb-3 text-slate-200">
+                        <option value="maxresdefault">HD Quality (Max Resolution)</option>
+                        <option value="hqdefault">High Quality (HQ)</option>
+                        <option value="mqdefault">Medium Quality (MQ)</option>
+                    </select>
+                    <button onclick="startDownloadProgress('thumb')" class="w-full bg-red-600 hover:bg-red-500 text-white py-2.5 rounded-xl text-sm font-medium mb-3 transition shadow-lg shadow-red-600/30">Fetch & Download</button>
+                    <div id="progressBox" class="hidden space-y-2 mt-2">
+                        <div class="w-full bg-slate-900 rounded-full h-2.5 border border-slate-800 overflow-hidden">
+                            <div id="progressBar" class="bg-emerald-500 h-2.5 rounded-full w-0 transition-all duration-300"></div>
+                        </div>
+                        <p id="progressText" class="text-xs text-slate-400 text-center">Processing...</p>
+                    </div>
+                `;
+            } else if(toolName === 'imgCompressor') {
+                title.innerHTML = `<i class="fa-solid fa-image text-indigo-400"></i> Image Compressor & Resizer`;
+                body.innerHTML = `
+                    <input type="file" id="imageFile" accept="image/*" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-sm mb-3 text-slate-200">
+                    <select id="imgQuality" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-indigo-500 mb-3 text-slate-200">
+                        <option value="0.8">Standard Quality (80%)</option>
+                        <option value="0.5">High Compression (50%)</option>
+                        <option value="0.3">Maximum Compression (30%)</option>
+                    </select>
+                    <button onclick="startDownloadProgress('img')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-2.5 rounded-xl text-sm font-medium mb-3 transition shadow-lg shadow-indigo-600/30">Compress & Download</button>
+                    <div id="progressBox" class="hidden space-y-2 mt-2">
+                        <div class="w-full bg-slate-900 rounded-full h-2.5 border border-slate-800 overflow-hidden">
+                            <div id="progressBar" class="bg-emerald-500 h-2.5 rounded-full w-0 transition-all duration-300"></div>
+                        </div>
+                        <p id="progressText" class="text-xs text-slate-400 text-center">Processing...</p>
+                    </div>
+                `;
+            } else if(toolName === 'colorPicker') {
+                title.innerHTML = `<i class="fa-solid fa-palette text-emerald-400"></i> Color Picker & HEX Converter`;
+                body.innerHTML = `
+                    <div class="flex items-center gap-3 mb-3">
+                        <input type="color" id="colorInput" onchange="updateColorCode()" class="w-16 h-12 bg-slate-900 border border-slate-800 rounded-xl cursor-pointer p-1">
+                        <input type="text" id="colorHexOutput" readonly class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-emerald-400 font-mono focus:outline-none" value="#2563eb">
+                    </div>
+                    <button onclick="copyColorHex()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-2.5 rounded-xl text-sm font-medium transition shadow-lg shadow-emerald-600/30">Copy HEX Code</button>
+                `;
+            } else if(toolName === 'caseConverter') {
+                title.innerHTML = `<i class="fa-solid fa-font text-teal-400"></i> Text Case Converter`;
+                body.innerHTML = `
+                    <textarea id="caseText" rows="3" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm focus:outline-none focus:border-teal-500 mb-3 text-slate-200" placeholder="Type or paste text here..."></textarea>
+                    <div class="grid grid-cols-3 gap-2">
+                        <button onclick="convertCase('upper')" class="bg-teal-600/20 border border-teal-500/40 text-teal-300 hover:bg-teal-600 hover:text-white py-2 rounded-xl text-xs transition font-medium">UPPERCASE</button>
+                        <button onclick="convertCase('lower')" class="bg-teal-600/20 border border-teal-500/40 text-teal-300 hover:bg-teal-600 hover:text-white py-2 rounded-xl text-xs transition font-medium">lowercase</button>
+                        <button onclick="convertCase('title')" class="bg-teal-600/20 border border-teal-500/40 text-teal-300 hover:bg-teal-600 hover:text-white py-2 rounded-xl text-xs transition font-medium">Title Case</button>
+                    </div>
+                `;
+            } else if(toolName === 'tempNotepad') {
+                const savedNote = localStorage.getItem('jt_temp_note') || '';
+                title.innerHTML = `<i class="fa-solid fa-note-sticky text-yellow-400"></i> Temporary Notepad`;
+                body.innerHTML = `
+                    <textarea id="notepadArea" rows="4" oninput="saveNotepad()" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm focus:outline-none focus:border-yellow-500 mb-3 text-slate-200" placeholder="Write your notes here (auto-saved)...">${savedNote}</textarea>
+                    <div class="flex justify-between items-center text-xs text-slate-400">
+                        <span>Auto-saved locally</span>
+                        <button onclick="clearNotepad()" class="text-rose-400 hover:underline">Clear Note</button>
+                    </div>
+                `;
             }
         }
 
-        function closeToolModal() {
-            document.getElementById('toolModal').classList.add('hidden');
+        function closeToolModal() { document.getElementById('toolModal').classList.add('hidden'); }
+
+        // DOWNLOAD SIMULATOR WITH GREEN PROGRESS BAR & SUCCESS CHECK
+        function startDownloadProgress(type) {
+            const progressBox = document.getElementById('progressBox');
+            const progressBar = document.getElementById('progressBar');
+            const progressText = document.getElementById('progressText');
+            
+            progressBox.classList.remove('hidden');
+            progressBar.style.width = '0%';
+            progressText.innerText = "Downloading...";
+
+            let width = 0;
+            let interval = setInterval(() => {
+                if (width >= 100) {
+                    clearInterval(interval);
+                    progressText.innerHTML = `<span class="text-emerald-400 font-bold flex items-center justify-center gap-1.5"><i class="fa-solid fa-circle-check text-base"></i> Successfully Downloaded!</span>`;
+                    registerCompletedTask();
+                    
+                    if(type === 'thumb') {
+                        const url = document.getElementById('ytUrl').value;
+                        const quality = document.getElementById('thumbQuality').value;
+                        const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+                        const match = url ? url.match(regExp) : null;
+                        if(match && match[2].length === 11) {
+                            const videoId = match[2];
+                            const imgUrl = `https://img.youtube.com/vi/${videoId}/${quality}.jpg`;
+                            window.open(imgUrl, '_blank');
+                        }
+                    }
+                } else {
+                    width += 25;
+                    progressBar.style.width = width + '%';
+                }
+            }, 120);
         }
 
+        // TOOL FUNCTIONS
         function countWords() {
             const text = document.getElementById('wcText').value.trim();
             const words = text === "" ? 0 : text.split(/\s+/).length;
@@ -530,6 +648,39 @@
             const utterance = new SpeechSynthesisUtterance(text);
             window.speechSynthesis.speak(utterance);
             registerCompletedTask();
+        }
+
+        function updateColorCode() {
+            const val = document.getElementById('colorInput').value;
+            document.getElementById('colorHexOutput').value = val;
+        }
+
+        function copyColorHex() {
+            const val = document.getElementById('colorHexOutput');
+            navigator.clipboard.writeText(val.value);
+            alert("HEX Code copied to clipboard!");
+            registerCompletedTask();
+        }
+
+        function convertCase(type) {
+            const txt = document.getElementById('caseText');
+            if(type === 'upper') txt.value = txt.value.toUpperCase();
+            if(type === 'lower') txt.value = txt.value.toLowerCase();
+            if(type === 'title') {
+                txt.value = txt.value.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
+            }
+            registerCompletedTask();
+        }
+
+        function saveNotepad() {
+            const text = document.getElementById('notepadArea').value;
+            localStorage.setItem('jt_temp_note', text);
+        }
+
+        function clearNotepad() {
+            localStorage.removeItem('jt_temp_note');
+            document.getElementById('notepadArea').value = '';
+            alert("Note cleared!");
         }
     </script>
 </body>
