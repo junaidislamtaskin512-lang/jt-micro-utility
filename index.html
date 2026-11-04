@@ -19,11 +19,24 @@
         .animate-spin-slow { animation: spin-slow 12s linear infinite; }
         @keyframes pop-in { 0% { transform: scale(0.85); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
         .animate-pop { animation: pop-in 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+        
+        /* SLIDE IN FROM RIGHT TO LEFT ANIMATION FOR DOWNLOAD */
+        @keyframes slide-in-right {
+            0% { transform: translateX(120%); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slide-out-right {
+            0% { transform: translateX(0); opacity: 1; }
+            100% { transform: translateX(120%); opacity: 0; }
+        }
+        .toast-slide-in { animation: slide-in-right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+        .toast-slide-out { animation: slide-out-right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+
         @keyframes pulse-glow { 0%, 100% { box-shadow: 0 0 15px rgba(37, 211, 102, 0.4); } 50% { box-shadow: 0 0 25px rgba(37, 211, 102, 0.8); } }
         .whatsapp-float { animation: pulse-glow 2.5s infinite; }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white">
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white relative overflow-x-hidden">
 
     <!-- FAST SCRIPT TO PREVENT LOGIN FLASH -->
     <script>
@@ -37,8 +50,11 @@
         })();
     </script>
 
+    <!-- FLOATING TOAST NOTIFICATION CONTAINER -->
+    <div id="toastContainer" class="fixed top-6 right-6 z-50 flex flex-col gap-3 pointer-events-none"></div>
+
     <!-- FLOATING WHATSAPP SUPPORT BUTTON -->
-    <a href="https://wa.me/8801568600668?text=Hello!%20I%20need%20help%20with%20JT%20Micro%20Utility." target="_blank" title="Chat on WhatsApp" class="whatsapp-float fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-400 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl transition hover:scale-110 border border-emerald-300">
+    <a href="https://wa.me/8801568600668?text=Hello!%20I%20need%20help%20with%20JT%20Micro%20Utility." target="_blank" title="Chat on WhatsApp" class="whatsapp-float fixed bottom-6 right-6 z-40 bg-emerald-500 hover:bg-emerald-400 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl transition hover:scale-110 border border-emerald-300">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
@@ -94,7 +110,7 @@
 
     <!-- MAIN APP DASHBOARD -->
     <div id="mainApp" class="flex-1 flex flex-col">
-        <header class="glass sticky top-0 z-40 px-4 lg:px-12 py-4 flex justify-between items-center border-b border-slate-800/80">
+        <header class="glass sticky top-0 z-30 px-4 lg:px-12 py-4 flex justify-between items-center border-b border-slate-800/80">
             <div class="flex items-center gap-3">
                 <div class="w-10 h-10 bg-gradient-to-tr from-blue-600 to-indigo-600 text-white rounded-xl flex items-center justify-center font-bold text-lg shadow-md shadow-blue-500/30">
                     <i class="fa-solid fa-bolt animate-spin-slow"></i>
@@ -133,7 +149,7 @@
             <div class="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div>
                     <h1 class="text-2xl sm:text-3xl font-bold text-white mb-1">Interactive Dashboard</h1>
-                    <p class="text-slate-400 text-xs sm:text-sm">Real-time utilities & smart photo/signature editor.</p>
+                    <p class="text-slate-400 text-xs sm:text-sm">All essential utilities & professional passport/signature maker.</p>
                 </div>
                 <div class="bg-slate-900 border border-slate-800 px-4 py-2 rounded-xl flex items-center gap-3 self-start sm:self-auto">
                     <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></div>
@@ -146,24 +162,24 @@
                 <script data-cfasync="false" src="https://bauval.org/14/a0bf2999fe8463c6c3a473854470e8ce"></script>
             </div>
 
-            <!-- TOOLS GRID (25 Tools) -->
+            <!-- TOOLS GRID (25+ Tools) -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 
-                <!-- Passport Photo Maker with Live Editor -->
+                <!-- Passport Photo Maker (Updated Interactive Studio) -->
                 <div onclick="openTool('passportPhoto')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-blue-400 border-2 border-blue-500/30 bg-blue-950/20">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-blue-500/20 text-blue-400 rounded-2xl flex items-center justify-center text-xl border border-blue-500/40 group-hover:scale-110 transition"><i class="fa-solid fa-id-badge"></i></div>
-                        <span class="text-[11px] bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2.5 py-1 rounded-full font-bold">SMART EDITOR</span>
+                        <span class="text-[11px] bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2.5 py-1 rounded-full font-bold">DRAG & ZOOM</span>
                     </div>
                     <h3 class="font-bold text-lg text-white mb-1 group-hover:text-blue-400 transition">Passport Photo Maker</h3>
-                    <p class="text-xs text-slate-300">Background color changer, exact country sizes & HD download.</p>
+                    <p class="text-xs text-slate-300">Custom background color changer, drag position adjust & print sheet download.</p>
                 </div>
 
-                <!-- Signature Resizer with Live Preview -->
+                <!-- Signature Resizer (Updated BD Exam Standard) -->
                 <div onclick="openTool('signatureResizer')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-emerald-400 border-2 border-emerald-500/30 bg-emerald-950/20">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-emerald-500/20 text-emerald-400 rounded-2xl flex items-center justify-center text-xl border border-emerald-500/40 group-hover:scale-110 transition"><i class="fa-solid fa-signature"></i></div>
-                        <span class="text-[11px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2.5 py-1 rounded-full font-bold">BD EXAM</span>
+                        <span class="text-[11px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2.5 py-1 rounded-full font-bold">BD EXAM 300x80</span>
                     </div>
                     <h3 class="font-bold text-lg text-white mb-1 group-hover:text-emerald-400 transition">Signature Resizer</h3>
                     <p class="text-xs text-slate-300">Exact 300x80px Bangladesh govt exam standard with live preview.</p>
@@ -173,7 +189,7 @@
                 <div onclick="openTool('thumbDownloader')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-red-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-red-500/15 text-red-400 rounded-2xl flex items-center justify-center text-xl border border-red-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-download"></i></div>
-                        <span class="text-[11px] bg-red-500/10 text-red-400 border border-red-500/20 px-2.5 py-1 rounded-full font-medium">4K / HD</span>
+                        <span class="text-[11px] bg-red-500/10 text-red-400 border border-red-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-thumbDownloader">0</span> views</span>
                     </div>
                     <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-red-400 transition">Thumbnail Downloader</h3>
                     <p class="text-xs text-slate-400">Download YouTube 4K/HD video thumbnails instantly.</p>
@@ -183,7 +199,7 @@
                 <div onclick="openTool('imgCompressor')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-indigo-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-indigo-500/15 text-indigo-400 rounded-2xl flex items-center justify-center text-xl border border-indigo-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-image"></i></div>
-                        <span class="text-[11px] bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-2.5 py-1 rounded-full font-medium">HD SAVE</span>
+                        <span class="text-[11px] bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-imgCompressor">0</span> views</span>
                     </div>
                     <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-indigo-400 transition">Image Compressor</h3>
                     <p class="text-xs text-slate-400">Reduce file size without losing quality.</p>
@@ -193,7 +209,7 @@
                 <div onclick="openTool('qrGenerator')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-purple-500/50">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-purple-500/15 text-purple-400 rounded-2xl flex items-center justify-center text-xl border border-purple-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-qrcode"></i></div>
-                        <span class="text-[11px] bg-purple-500/10 text-purple-400 border border-purple-500/20 px-2.5 py-1 rounded-full font-medium">PNG DOWNLOAD</span>
+                        <span class="text-[11px] bg-purple-500/10 text-purple-400 border border-purple-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-qrGenerator">0</span> views</span>
                     </div>
                     <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-purple-400 transition">QR Code Generator</h3>
                     <p class="text-xs text-slate-400">Create & download custom high-res QR codes.</p>
@@ -409,8 +425,8 @@
     </div>
 
     <!-- TOOL MODAL -->
-    <div id="toolModal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/90 backdrop-blur-md p-4">
-        <div class="glass w-full max-w-lg rounded-2xl p-6 shadow-2xl animate-pop relative border border-slate-800">
+    <div id="toolModal" class="fixed inset-0 z-40 hidden flex items-center justify-center bg-black/90 backdrop-blur-md p-4">
+        <div class="glass w-full max-w-2xl rounded-2xl p-6 shadow-2xl animate-pop relative border border-slate-800 max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center mb-4 border-b border-slate-800 pb-3">
                 <h3 id="toolModalTitle" class="font-bold text-lg text-white flex items-center gap-2">Tool Title</h3>
                 <button onclick="closeToolModal()" class="w-8 h-8 rounded-full bg-slate-900 text-slate-400 hover:text-white flex items-center justify-center border border-slate-800 transition"><i class="fa-solid fa-xmark"></i></button>
@@ -463,7 +479,7 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT SYSTEM WITH WORKING PHOTO & SIGNATURE EDITORS -->
+    <!-- JAVASCRIPT SYSTEM -->
     <script>
         let toolViews = JSON.parse(localStorage.getItem('jt_tool_views')) || { passportPhoto: 0, signatureResizer: 0, wordCounter: 0, passGenerator: 0, qrGenerator: 0, ageCalculator: 0, unitConverter: 0, textSpeech: 0, thumbDownloader: 0, imgCompressor: 0, colorPicker: 0, caseConverter: 0, tempNotepad: 0, passChecker: 0, codeMinifier: 0, metaGen: 0, ipFinder: 0, pomodoro: 0, tagGen: 0, paletteGen: 0, emiCalc: 0, binaryConv: 0, base64Tool: 0, worldClock: 0, keyTester: 0 };
         let completedWorksCount = parseInt(localStorage.getItem('jt_works_count')) || 0;
@@ -540,7 +556,30 @@
             }
         }
 
-        // TOOL HANDLER
+        // ANIMATED SUCCESS TOAST NOTIFICATION (SLIDE FROM RIGHT TO LEFT)
+        function showSuccessToast(message) {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = "pointer-events-auto bg-slate-900 border border-emerald-500/50 shadow-2xl rounded-2xl p-4 flex items-center gap-3 text-white toast-slide-in min-w-[280px]";
+            toast.innerHTML = `
+                <div class="w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg border border-emerald-500/40 shrink-0">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold text-emerald-400">Success!</h4>
+                    <p class="text-[11px] text-slate-300">${message}</p>
+                </div>
+            `;
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.remove('toast-slide-in');
+                toast.classList.add('toast-slide-out');
+                setTimeout(() => toast.remove(), 400);
+            }, 3500);
+        }
+
+        // TOOL HANDLER (All 25 Tools Included)
         function openTool(toolName) {
             toolViews[toolName] = (toolViews[toolName] || 0) + 1;
             localStorage.setItem('jt_tool_views', JSON.stringify(toolViews));
@@ -552,84 +591,75 @@
             modal.classList.remove('hidden');
 
             if(toolName === 'passportPhoto') {
-                title.innerHTML = `<i class="fa-solid fa-id-badge text-blue-400"></i> Smart Passport Photo Editor`;
+                title.innerHTML = `<i class="fa-solid fa-id-badge text-blue-400"></i> Professional Passport Studio`;
                 body.innerHTML = `
-                    <div class="space-y-3">
-                        <div>
-                            <label class="text-xs text-slate-400 block mb-1">1. Select Photo File (JPG, PNG)</label>
-                            <input type="file" id="passPhotoInput" accept="image/*" onchange="previewPassportImage()" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs text-slate-200">
+                    <div class="space-y-4">
+                        <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800">
+                            <label class="text-xs text-slate-300 block mb-2 font-medium">1. Upload Your Photo</label>
+                            <input type="file" id="passPhotoInput" accept="image/*" onchange="loadPassportImage(event)" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-500 cursor-pointer">
                         </div>
-                        
-                        <div class="grid grid-cols-2 gap-2">
-                            <div>
-                                <label class="text-xs text-slate-400 block mb-1">2. Country Size</label>
-                                <select id="passCountrySize" onchange="updatePassportPreview()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-2 py-2 text-xs text-slate-200">
-                                    <option value="bd">Bangladesh (40x50 mm)</option>
-                                    <option value="us">USA Visa (2x2 inch)</option>
-                                    <option value="uk">UK / Schengen (35x45 mm)</option>
-                                    <option value="stamp">Stamp Size (20x25 mm)</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="text-xs text-slate-400 block mb-1">3. Background Color</label>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
+                                <label class="text-xs text-slate-300 block mb-2 font-medium">2. Select Background Color</label>
+                                <div class="flex items-center gap-2 mb-2">
+                                    <button onclick="changeBg('#ffffff')" class="px-3 py-1.5 bg-white text-slate-900 rounded-lg text-xs font-bold border hover:scale-105 transition shadow">White</button>
+                                    <button onclick="changeBg('#0056b3')" class="px-3 py-1.5 bg-blue-600 text-white rounded-lg text-xs font-bold hover:scale-105 transition shadow">Blue</button>
+                                    <button onclick="changeBg('#dc2626')" class="px-3 py-1.5 bg-red-600 text-white rounded-lg text-xs font-bold hover:scale-105 transition shadow">Red</button>
+                                    <button onclick="changeBg('#f1f5f9')" class="px-3 py-1.5 bg-slate-200 text-slate-800 rounded-lg text-xs font-bold hover:scale-105 transition shadow">Off-White</button>
+                                </div>
                                 <div class="flex items-center gap-2">
-                                    <input type="color" id="passBgColor" value="#ffffff" onchange="updatePassportPreview()" class="w-10 h-8 bg-slate-900 border border-slate-800 rounded-lg p-1 cursor-pointer">
-                                    <span class="text-[11px] text-slate-400">Choose BG</span>
+                                    <input type="color" id="customBgPicker" value="#ffffff" onchange="changeBg(this.value)" class="w-10 h-8 bg-slate-950 border border-slate-800 rounded-lg p-1 cursor-pointer">
+                                    <span class="text-[11px] text-slate-400">Custom Color</span>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- QUICK BACKGROUND PRESETS -->
-                        <div>
-                            <label class="text-[11px] text-slate-400 block mb-1">Quick Official Colors:</label>
-                            <div class="flex gap-2">
-                                <button onclick="setBgColor('#ffffff')" class="px-3 py-1 bg-white text-slate-900 rounded text-xs font-bold border">White</button>
-                                <button onclick="setBgColor('#0056b3')" class="px-3 py-1 bg-blue-600 text-white rounded text-xs font-bold">Blue</button>
-                                <button onclick="setBgColor('#dc2626')" class="px-3 py-1 bg-red-600 text-white rounded text-xs font-bold">Red</button>
-                                <button onclick="setBgColor('#f1f5f9')" class="px-3 py-1 bg-slate-200 text-slate-800 rounded text-xs font-bold">Off-White</button>
+                            <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
+                                <label class="text-xs text-slate-300 block mb-2 font-medium">3. Position & Zoom Adjustment</label>
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="text-[11px] text-slate-400">Zoom:</span>
+                                    <input type="range" id="zoomRange" min="0.5" max="2.5" step="0.05" value="1" oninput="redrawPassport()" class="w-full accent-blue-600">
+                                </div>
+                                <p class="text-[10px] text-slate-400 italic">* Tip: Drag/pan the photo inside the preview box.</p>
                             </div>
                         </div>
 
-                        <!-- LIVE PREVIEW CANVAS -->
-                        <div class="text-center bg-slate-900/90 p-3 rounded-xl border border-slate-800">
-                            <p class="text-[11px] text-slate-400 mb-1 font-medium">Live Preview & Background Check:</p>
-                            <div class="inline-block border-2 border-slate-700 rounded-lg overflow-hidden shadow-lg bg-white" style="max-height: 180px;">
-                                <canvas id="livePassportCanvas" class="max-w-full h-auto block mx-auto"></canvas>
+                        <!-- LIVE PREVIEW -->
+                        <div class="text-center bg-slate-950 p-4 rounded-xl border border-slate-800">
+                            <p class="text-xs text-emerald-400 mb-2 font-semibold"><i class="fa-solid fa-wand-magic-sparkles"></i> Live Editor Preview</p>
+                            <div class="inline-block border-4 border-slate-700 rounded-xl overflow-hidden shadow-2xl bg-white cursor-grab active:cursor-grabbing" style="width: 200px; height: 250px;">
+                                <canvas id="passportCanvas" width="400" height="500" class="w-full h-full block"></canvas>
                             </div>
                         </div>
 
-                        <button onclick="downloadPassportHD()" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2.5 rounded-xl text-sm font-medium shadow-lg shadow-blue-600/30 transition flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-download"></i> Download HD Passport Photo
-                        </button>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                            <button onclick="downloadPassport('single')" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-3 rounded-xl text-xs font-bold shadow-lg shadow-blue-600/30 transition flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-download"></i> Download HD Single Photo
+                            </button>
+                            <button onclick="downloadPassport('print')" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-3 rounded-xl text-xs font-bold shadow-lg shadow-emerald-600/30 transition flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-print"></i> Download 4R Print Sheet (8 Copies)
+                            </button>
+                        </div>
                     </div>
                 `;
+                initPassportInteraction();
             } else if(toolName === 'signatureResizer') {
-                title.innerHTML = `<i class="fa-solid fa-signature text-emerald-400"></i> BD Exam Signature Editor`;
+                title.innerHTML = `<i class="fa-solid fa-signature text-emerald-400"></i> BD Exam Signature Studio (300x80 px)`;
                 body.innerHTML = `
-                    <div class="space-y-3">
-                        <div>
-                            <label class="text-xs text-slate-400 block mb-1">Select Signature Photo</label>
-                            <input type="file" id="sigInput" accept="image/*" onchange="previewSignatureImage()" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs text-slate-200">
+                    <div class="space-y-4">
+                        <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800">
+                            <label class="text-xs text-slate-300 block mb-2 font-medium">Select Signature Image</label>
+                            <input type="file" id="sigInput" accept="image/*" onchange="loadSignatureImage(event)" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-emerald-600 file:text-white hover:file:bg-emerald-500 cursor-pointer">
                         </div>
 
-                        <div>
-                            <label class="text-xs text-slate-400 block mb-1">Target Application Standard</label>
-                            <select id="sigPreset" onchange="updateSignaturePreview()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-200">
-                                <option value="bdgov">Bangladesh Govt Exam (300 x 80 px - Max 60KB)</option>
-                                <option value="square">Square Signature (300 x 300 px)</option>
-                                <option value="custom">Bank / University (500 x 150 px)</option>
-                            </select>
-                        </div>
-
-                        <!-- LIVE PREVIEW CANVAS -->
-                        <div class="text-center bg-slate-900/90 p-3 rounded-xl border border-slate-800">
-                            <p class="text-[11px] text-slate-400 mb-1 font-medium">Live Preview (Exact Ratio):</p>
-                            <div class="inline-block border-2 border-slate-700 rounded-lg overflow-hidden shadow-lg bg-white p-1">
-                                <canvas id="liveSigCanvas" class="max-w-full h-auto block mx-auto"></canvas>
+                        <div class="text-center bg-slate-950 p-4 rounded-xl border border-slate-800">
+                            <p class="text-xs text-emerald-400 mb-2 font-semibold">Live Preview (Exact 300x80 Ratio)</p>
+                            <div class="inline-block border-2 border-slate-700 rounded-lg overflow-hidden shadow-2xl bg-white p-2">
+                                <canvas id="signatureCanvas" width="600" height="160" class="max-w-full h-auto block mx-auto"></canvas>
                             </div>
                         </div>
 
-                        <button onclick="downloadSignatureHD()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-2.5 rounded-xl text-sm font-medium shadow-lg shadow-emerald-600/30 transition flex items-center justify-center gap-2">
+                        <button onclick="downloadSignature()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-3 rounded-xl text-sm font-bold shadow-lg shadow-emerald-600/30 transition flex items-center justify-center gap-2">
                             <i class="fa-solid fa-download"></i> Download HD Official Signature
                         </button>
                     </div>
@@ -833,140 +863,160 @@
 
         function closeToolModal() { document.getElementById('toolModal').classList.add('hidden'); }
 
-        // PASSPORT EDITOR & LIVE PREVIEW ENGINE
-        let activePassportImg = null;
-        function previewPassportImage() {
-            const fileInput = document.getElementById('passPhotoInput');
-            if(!fileInput.files[0]) return;
+        // PASSPORT ENGINE
+        let pImg = null, pBgColor = '#ffffff', pScale = 1, pOffsetX = 0, pOffsetY = 0;
+        let isDragging = false, startX = 0, startY = 0;
+
+        function loadPassportImage(e) {
+            const file = e.target.files[0];
+            if(!file) return;
             const reader = new FileReader();
-            reader.onload = function(e) {
-                activePassportImg = new Image();
-                activePassportImg.onload = function() {
-                    updatePassportPreview();
+            reader.onload = function(event) {
+                pImg = new Image();
+                pImg.onload = function() {
+                    pScale = 1;
+                    pOffsetX = (400 - pImg.width * 0.5) / 2;
+                    pOffsetY = (500 - pImg.height * 0.5) / 2;
+                    document.getElementById('zoomRange').value = 1;
+                    redrawPassport();
                 }
-                activePassportImg.src = e.target.result;
+                pImg.src = event.target.result;
             }
-            reader.readAsDataURL(fileInput.files[0]);
+            reader.readAsDataURL(file);
         }
 
-        function setBgColor(hex) {
-            document.getElementById('passBgColor').value = hex;
-            updatePassportPreview();
+        function changeBg(color) {
+            pBgColor = color;
+            document.getElementById('customBgPicker').value = color;
+            redrawPassport();
         }
 
-        function updatePassportPreview() {
-            if(!activePassportImg) return;
-            const canvas = document.getElementById('livePassportCanvas');
-            const bgColor = document.getElementById('passBgColor').value;
-            const sizeOption = document.getElementById('passCountrySize').value;
-
-            let targetW = 400, targetH = 500;
-            if(sizeOption === 'us') { targetW = 400; targetH = 400; }
-            else if(sizeOption === 'uk') { targetW = 350; targetH = 450; }
-            else if(sizeOption === 'stamp') { targetW = 200; targetH = 250; }
-
-            canvas.width = targetW;
-            canvas.height = targetH;
+        function redrawPassport() {
+            if(!pImg) return;
+            const canvas = document.getElementById('passportCanvas');
             const ctx = canvas.getContext('2d');
-            
-            // Fill Background Color
-            ctx.fillStyle = bgColor;
+            const zoom = parseFloat(document.getElementById('zoomRange').value);
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = pBgColor;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            // Draw Image Centered
-            ctx.drawImage(activePassportImg, 0, 0, canvas.width, canvas.height);
+
+            ctx.save();
+            ctx.translate(pOffsetX, pOffsetY);
+            ctx.scale(zoom, zoom);
+            ctx.drawImage(pImg, 0, 0);
+            ctx.restore();
         }
 
-        function downloadPassportHD() {
-            if(!activePassportImg) {
-                alert("Please select a photo first!");
-                return;
+        function initPassportInteraction() {
+            setTimeout(() => {
+                const canvas = document.getElementById('passportCanvas');
+                if(!canvas) return;
+
+                canvas.onmousedown = (e) => { isDragging = true; startX = e.clientX - pOffsetX; startY = e.clientY - pOffsetY; };
+                window.onmousemove = (e) => { if(!isDragging) return; pOffsetX = e.clientX - startX; pOffsetY = e.clientY - startY; redrawPassport(); };
+                window.onmouseup = () => { isDragging = false; };
+
+                canvas.ontouchstart = (e) => { isDragging = true; startX = e.touches[0].clientX - pOffsetX; startY = e.touches[0].clientY - pOffsetY; };
+                window.ontouchmove = (e) => { if(!isDragging) return; pOffsetX = e.touches[0].clientX - startX; pOffsetY = e.touches[0].clientY - startY; redrawPassport(); };
+                window.ontouchend = () => { isDragging = false; };
+            }, 500);
+        }
+
+        function downloadPassport(mode) {
+            if(!pImg) { alert("Please upload a photo first!"); return; }
+            
+            const hdCanvas = document.createElement('canvas');
+            if(mode === 'single') {
+                hdCanvas.width = 1200; hdCanvas.height = 1500;
+                const ctx = hdCanvas.getContext('2d');
+                ctx.fillStyle = pBgColor;
+                ctx.fillRect(0, 0, hdCanvas.width, hdCanvas.height);
+                ctx.save();
+                ctx.translate(pOffsetX * 3, pOffsetY * 3);
+                ctx.scale(parseFloat(document.getElementById('zoomRange').value) * 3, parseFloat(document.getElementById('zoomRange').value) * 3);
+                ctx.drawImage(pImg, 0, 0);
+                ctx.restore();
+
+                const link = document.createElement('a');
+                link.download = 'passport-photo-hd.png';
+                link.href = hdCanvas.toDataURL('image/png', 1.0);
+                link.click();
+            } else if(mode === 'print') {
+                hdCanvas.width = 1800; hdCanvas.height = 1200;
+                const ctx = hdCanvas.getContext('2d');
+                ctx.fillStyle = '#ffffff';
+                ctx.fillRect(0, 0, hdCanvas.width, hdCanvas.height);
+
+                let pw = 400, ph = 500;
+                let cols = 4, rows = 2;
+                let startX = 100, startY = 100;
+                let gapX = 50, gapY = 50;
+
+                for(let r=0; r<rows; r++) {
+                    for(let c=0; c<cols; c++) {
+                        let x = startX + c * (pw + gapX);
+                        let y = startY + r * (ph + gapY);
+                        ctx.fillStyle = pBgColor;
+                        ctx.fillRect(x, y, pw, ph);
+                        ctx.drawImage(pImg, x + pOffsetX/3, y + pOffsetY/3, pImg.width * parseFloat(document.getElementById('zoomRange').value), pImg.height * parseFloat(document.getElementById('zoomRange').value));
+                    }
+                }
+
+                const link = document.createElement('a');
+                link.download = 'passport-print-sheet-4r.jpg';
+                link.href = hdCanvas.toDataURL('image/jpeg', 0.95);
+                link.click();
             }
-            const bgColor = document.getElementById('passBgColor').value;
-            const sizeOption = document.getElementById('passCountrySize').value;
-
-            const canvas = document.createElement('canvas');
-            let targetW = 1200, targetH = 1500;
-            if(sizeOption === 'us') { targetW = 1200; targetH = 1200; }
-            else if(sizeOption === 'uk') { targetW = 1050; targetH = 1350; }
-            else if(sizeOption === 'stamp') { targetW = 600; targetH = 750; }
-
-            canvas.width = targetW;
-            canvas.height = targetH;
-            const ctx = canvas.getContext('2d');
-            ctx.fillStyle = bgColor;
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(activePassportImg, 0, 0, canvas.width, canvas.height);
-
-            const link = document.createElement('a');
-            link.download = 'passport-photo-hd.png';
-            link.href = canvas.toDataURL('image/png', 1.0);
-            link.click();
+            
             registerCompletedTask();
-            alert("Passport Photo successfully downloaded in HD!");
+            showSuccessToast("Successfully Downloaded HD File!");
         }
 
-        // SIGNATURE EDITOR & LIVE PREVIEW ENGINE
-        let activeSigImg = null;
-        function previewSignatureImage() {
-            const fileInput = document.getElementById('sigInput');
-            if(!fileInput.files[0]) return;
+        // SIGNATURE ENGINE
+        let sImg = null;
+        function loadSignatureImage(e) {
+            const file = e.target.files[0];
+            if(!file) return;
             const reader = new FileReader();
-            reader.onload = function(e) {
-                activeSigImg = new Image();
-                activeSigImg.onload = function() {
-                    updateSignaturePreview();
+            reader.onload = function(event) {
+                sImg = new Image();
+                sImg.onload = function() {
+                    redrawSignature();
                 }
-                activeSigImg.src = e.target.result;
+                sImg.src = event.target.result;
             }
-            reader.readAsDataURL(fileInput.files[0]);
+            reader.readAsDataURL(file);
         }
 
-        function updateSignaturePreview() {
-            if(!activeSigImg) return;
-            const canvas = document.getElementById('liveSigCanvas');
-            const preset = document.getElementById('sigPreset').value;
-
-            let targetW = 300, targetH = 80;
-            if(preset === 'square') { targetW = 200; targetH = 200; }
-            else if(preset === 'custom') { targetW = 300; targetH = 90; }
-
-            canvas.width = targetW;
-            canvas.height = targetH;
+        function redrawSignature() {
+            if(!sImg) return;
+            const canvas = document.getElementById('signatureCanvas');
             const ctx = canvas.getContext('2d');
             ctx.fillStyle = '#ffffff';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(activeSigImg, 0, 0, canvas.width, canvas.height);
+            ctx.drawImage(sImg, 0, 0, canvas.width, canvas.height);
         }
 
-        function downloadSignatureHD() {
-            if(!activeSigImg) {
-                alert("Please select a signature image first!");
-                return;
-            }
-            const preset = document.getElementById('sigPreset').value;
+        function downloadSignature() {
+            if(!sImg) { alert("Please select a signature image first!"); return; }
             const canvas = document.createElement('canvas');
-
-            let targetW = 900, targetH = 240; // 3x HD Scale for BD Exam 300x80px
-            if(preset === 'square') { targetW = 600; targetH = 600; }
-            else if(preset === 'custom') { targetW = 1000; targetH = 300; }
-
-            canvas.width = targetW;
-            canvas.height = targetH;
+            canvas.width = 900; canvas.height = 240; 
             const ctx = canvas.getContext('2d');
             ctx.fillStyle = '#ffffff';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(activeSigImg, 0, 0, canvas.width, canvas.height);
+            ctx.drawImage(sImg, 0, 0, canvas.width, canvas.height);
 
             const link = document.createElement('a');
-            link.download = 'official-exam-signature.jpg';
-            link.href = canvas.toDataURL('image/jpeg', 0.95);
+            link.download = 'official-exam-signature-300x80.jpg';
+            link.href = canvas.toDataURL('image/jpeg', 0.9);
             link.click();
+            
             registerCompletedTask();
-            alert("Official Signature successfully downloaded in HD!");
+            showSuccessToast("Signature Downloaded Successfully!");
         }
 
-        // OTHER UTILITIES
+        // OTHER UTILITIES FUNCTIONS
         function downloadThumbnail() {
             const url = document.getElementById('ytUrl').value;
             const quality = document.getElementById('thumbQuality').value;
@@ -974,6 +1024,7 @@
             if(match && match[2].length === 11) {
                 window.open(`https://img.youtube.com/vi/${match[2]}/${quality}.jpg`, '_blank');
                 registerCompletedTask();
+                showSuccessToast("Thumbnail Downloaded!");
             } else {
                 alert("Please enter a valid YouTube Video URL!");
             }
@@ -996,7 +1047,7 @@
                     link.href = canvas.toDataURL('image/jpeg', 0.85);
                     link.click();
                     registerCompletedTask();
-                    alert("Image compressed and downloaded successfully!");
+                    showSuccessToast("Image Compressed & Downloaded!");
                 }
                 img.src = e.target.result;
             }
@@ -1021,7 +1072,7 @@
 
         function copyPass() {
             navigator.clipboard.writeText(document.getElementById('passOutput').value);
-            alert("Password copied!");
+            showSuccessToast("Password Copied!");
         }
 
         function generateQR() {
@@ -1029,6 +1080,7 @@
             if(!val) return alert("Enter text or URL");
             document.getElementById('qrResult').innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(val)}" class="mx-auto rounded-lg border p-1 bg-white">`;
             registerCompletedTask();
+            showSuccessToast("QR Code Generated!");
         }
 
         function calcAge() {
@@ -1059,7 +1111,7 @@
 
         function copyColorHex() {
             navigator.clipboard.writeText(document.getElementById('colorHexOutput').value);
-            alert("HEX copied!");
+            showSuccessToast("HEX Copied!");
             registerCompletedTask();
         }
 
@@ -1087,6 +1139,7 @@
             const c = document.getElementById('rawCode').value;
             document.getElementById('minifiedCode').value = c.replace(/\s+/g, ' ').trim();
             registerCompletedTask();
+            showSuccessToast("Code Minified!");
         }
 
         function generateMeta() {
@@ -1094,6 +1147,7 @@
             const d = document.getElementById('metaDesc').value;
             document.getElementById('metaOutput').value = `<title>${t}</title>\n<meta name="description" content="${d}">`;
             registerCompletedTask();
+            showSuccessToast("Meta Tags Generated!");
         }
 
         let pomoTimer;
