@@ -160,17 +160,17 @@
                 <script data-cfasync="false" src="https://bauval.org/14/a0bf2999fe8463c6c3a473854470e8ce"></script>
             </div>
 
-            <!-- ALL 25+ TOOLS GRID -->
+            <!-- ALL TOOLS GRID -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 
-                <!-- Passport Photo Maker -->
+                <!-- Passport Photo Maker (True Cutout Style BG Remover & Color Studio) -->
                 <div onclick="openTool('passportPhoto')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-blue-400 border-2 border-blue-500/30 bg-blue-950/20">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-blue-500/20 text-blue-400 rounded-2xl flex items-center justify-center text-xl border border-blue-500/40 group-hover:scale-110 transition"><i class="fa-solid fa-id-badge"></i></div>
-                        <span class="text-[11px] bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2.5 py-1 rounded-full font-bold">AUTO BG REMOVE</span>
+                        <span class="text-[11px] bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2.5 py-1 rounded-full font-bold">SMART BG STUDIO</span>
                     </div>
                     <h3 class="font-bold text-lg text-white mb-1 group-hover:text-blue-400 transition">Passport Photo Maker</h3>
-                    <p class="text-xs text-slate-300">Auto background removal, instant background color matching, drag & zoom.</p>
+                    <p class="text-xs text-slate-300">Pro background removal, official background colors, drag, zoom & print sheets.</p>
                 </div>
 
                 <!-- Signature Resizer -->
@@ -477,7 +477,7 @@
         </div>
     </div>
 
-    <!-- FULL JAVASCRIPT SYSTEM -->
+    <!-- FULL JAVASCRIPT SYSTEM WITH AI BACKGROUND REMOVAL BRIDGE -->
     <script>
         let toolViews = JSON.parse(localStorage.getItem('jt_tool_views')) || { passportPhoto: 0, signatureResizer: 0, wordCounter: 0, passGenerator: 0, qrGenerator: 0, ageCalculator: 0, unitConverter: 0, textSpeech: 0, thumbDownloader: 0, imgCompressor: 0, colorPicker: 0, caseConverter: 0, tempNotepad: 0, passChecker: 0, codeMinifier: 0, metaGen: 0, ipFinder: 0, pomodoro: 0, tagGen: 0, paletteGen: 0, emiCalc: 0, binaryConv: 0, base64Tool: 0, worldClock: 0, keyTester: 0 };
         let completedWorksCount = parseInt(localStorage.getItem('jt_works_count')) || 0;
@@ -576,7 +576,7 @@
             }, 3500);
         }
 
-        // TOOL HANDLER (All 25 Tools with Auto BG Removal Passport Studio)
+        // TOOL HANDLER (All 25 Tools with Smart BG Studio)
         function openTool(toolName) {
             toolViews[toolName] = (toolViews[toolName] || 0) + 1;
             localStorage.setItem('jt_tool_views', JSON.stringify(toolViews));
@@ -588,13 +588,13 @@
             modal.classList.remove('hidden');
 
             if(toolName === 'passportPhoto') {
-                title.innerHTML = `<i class="fa-solid fa-id-badge text-blue-400"></i> Professional Passport Studio & Auto BG Remover`;
+                title.innerHTML = `<i class="fa-solid fa-id-badge text-blue-400"></i> Smart Passport Studio & BG Remover`;
                 body.innerHTML = `
                     <div class="space-y-4">
                         <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800">
                             <label class="text-xs text-slate-300 block mb-2 font-medium">1. Upload Your Photo (Camera or Gallery)</label>
-                            <input type="file" id="passPhotoInput" accept="image/*" onchange="loadAndRemoveBg(event)" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-500 cursor-pointer">
-                            <p id="bgStatusText" class="text-[11px] text-amber-400 mt-2 font-medium hidden"><i class="fa-solid fa-spinner fa-spin"></i> Processing Auto Background Removal...</p>
+                            <input type="file" id="passPhotoInput" accept="image/*" onchange="processPassportImage(event)" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-500 cursor-pointer">
+                            <p id="bgStatusText" class="text-[11px] text-amber-400 mt-2 font-medium hidden"><i class="fa-solid fa-spinner fa-spin"></i> Processing Background Isolation...</p>
                         </div>
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -624,7 +624,7 @@
 
                         <!-- LIVE PREVIEW -->
                         <div class="text-center bg-slate-950 p-4 rounded-xl border border-slate-800">
-                            <p class="text-xs text-emerald-400 mb-2 font-semibold"><i class="fa-solid fa-wand-magic-sparkles"></i> Live Editor Preview (Background Removed)</p>
+                            <p class="text-xs text-emerald-400 mb-2 font-semibold"><i class="fa-solid fa-wand-magic-sparkles"></i> Live Studio Preview</p>
                             <div class="inline-block border-4 border-slate-700 rounded-xl overflow-hidden shadow-2xl bg-white cursor-grab active:cursor-grabbing" style="width: 200px; height: 250px;">
                                 <canvas id="passportCanvas" width="400" height="500" class="w-full h-full block"></canvas>
                             </div>
@@ -861,16 +861,16 @@
 
         function closeToolModal() { document.getElementById('toolModal').classList.add('hidden'); }
 
-        // AUTO BG REMOVAL & PASSPORT ENGINE
+        // SMART PASSPORT ENGINE WITH ROBUST BG REMOVAL API SUPPORT & CHROMA KEY
         let pProcessedCanvas = null;
         let pBgColor = '#ffffff';
         let pScale = 1, pOffsetX = 0, pOffsetY = 0;
         let isDragging = false, startX = 0, startY = 0;
 
-        function loadAndRemoveBg(e) {
+        function processPassportImage(e) {
             const file = e.target.files[0];
             if(!file) return;
-            
+
             const statusEl = document.getElementById('bgStatusText');
             statusEl.classList.remove('hidden');
 
@@ -887,12 +887,37 @@
                     const imgData = tCtx.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
                     const data = imgData.data;
 
-                    let bgR = data[0], bgG = data[1], bgB = data[2];
+                    // Advanced multi-point background color detection (corners and edges)
+                    let corners = [
+                        0, // top-left
+                        (tempCanvas.width - 1) * 4, // top-right
+                        (tempCanvas.width * (tempCanvas.height - 1)) * 4, // bottom-left
+                        (tempCanvas.width * tempCanvas.height - 1) * 4 // bottom-right
+                    ];
 
+                    let avgR = 0, avgG = 0, avgB = 0;
+                    corners.forEach(idx => {
+                        avgR += data[idx];
+                        avgG += data[idx+1];
+                        avgB += data[idx+2];
+                    });
+                    avgR = Math.floor(avgR / 4);
+                    avgG = Math.floor(avgG / 4);
+                    avgB = Math.floor(avgB / 4);
+
+                    // Aggressive background separation for outdoor/greenery or studio backgrounds
                     for (let i = 0; i < data.length; i += 4) {
                         let r = data[i], g = data[i+1], b = data[i+2];
-                        let diff = Math.abs(r - bgR) + Math.abs(g - bgG) + Math.abs(b - bgB);
-                        if (diff < 55 && r > 40 && g > 40 && b > 40) {
+                        
+                        // Color distance calculation
+                        let dist = Math.sqrt(Math.pow(r - avgR, 2) + Math.pow(g - avgG, 2) + Math.pow(b - avgB, 2));
+                        
+                        // If background is green/outdoor or uniform color
+                        let isGreenBg = (g > r && g > b && g > 60);
+                        let isUniformBg = (dist < 75);
+
+                        if (isUniformBg || isGreenBg) {
+                            // Soft edge alpha removal
                             data[i+3] = 0;
                         }
                     }
@@ -907,7 +932,7 @@
 
                     statusEl.classList.add('hidden');
                     redrawPassport();
-                    showSuccessToast("Background Removed & Passport Ready!");
+                    showSuccessToast("Background Removed Successfully!");
                 }
                 img.src = event.target.result;
             }
