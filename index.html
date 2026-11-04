@@ -20,7 +20,6 @@
         @keyframes pop-in { 0% { transform: scale(0.85); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
         .animate-pop { animation: pop-in 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
         
-        /* SLIDE IN FROM RIGHT TO LEFT ANIMATION FOR DOWNLOAD */
         @keyframes slide-in-right {
             0% { transform: translateX(120%); opacity: 0; }
             100% { transform: translateX(0); opacity: 1; }
@@ -38,7 +37,6 @@
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white relative overflow-x-hidden">
 
-    <!-- FAST SCRIPT TO PREVENT LOGIN FLASH -->
     <script>
         (function() {
             var isLoggedIn = localStorage.getItem('jt_is_logged_in');
@@ -50,15 +48,15 @@
         })();
     </script>
 
-    <!-- FLOATING TOAST NOTIFICATION CONTAINER -->
+    <!-- TOAST CONTAINER -->
     <div id="toastContainer" class="fixed top-6 right-6 z-50 flex flex-col gap-3 pointer-events-none"></div>
 
-    <!-- FLOATING WHATSAPP SUPPORT BUTTON -->
+    <!-- WHATSAPP FLOAT -->
     <a href="https://wa.me/8801568600668?text=Hello!%20I%20need%20help%20with%20JT%20Micro%20Utility." target="_blank" title="Chat on WhatsApp" class="whatsapp-float fixed bottom-6 right-6 z-40 bg-emerald-500 hover:bg-emerald-400 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl transition hover:scale-110 border border-emerald-300">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <!-- AUTHENTICATION MODAL -->
+    <!-- AUTH MODAL -->
     <div id="authModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md p-4 hidden">
         <div class="glass w-full max-w-md rounded-2xl p-8 shadow-2xl animate-pop relative border border-slate-800">
             <div class="text-center mb-6">
@@ -108,7 +106,7 @@
         </div>
     </div>
 
-    <!-- MAIN APP DASHBOARD -->
+    <!-- MAIN DASHBOARD -->
     <div id="mainApp" class="flex-1 flex flex-col">
         <header class="glass sticky top-0 z-30 px-4 lg:px-12 py-4 flex justify-between items-center border-b border-slate-800/80">
             <div class="flex items-center gap-3">
@@ -162,20 +160,20 @@
                 <script data-cfasync="false" src="https://bauval.org/14/a0bf2999fe8463c6c3a473854470e8ce"></script>
             </div>
 
-            <!-- TOOLS GRID (25+ Tools) -->
+            <!-- ALL 25+ TOOLS GRID -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 
-                <!-- Passport Photo Maker (Updated Interactive Studio) -->
+                <!-- Passport Photo Maker -->
                 <div onclick="openTool('passportPhoto')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-blue-400 border-2 border-blue-500/30 bg-blue-950/20">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-blue-500/20 text-blue-400 rounded-2xl flex items-center justify-center text-xl border border-blue-500/40 group-hover:scale-110 transition"><i class="fa-solid fa-id-badge"></i></div>
-                        <span class="text-[11px] bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2.5 py-1 rounded-full font-bold">DRAG & ZOOM</span>
+                        <span class="text-[11px] bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2.5 py-1 rounded-full font-bold">AUTO BG REMOVE</span>
                     </div>
                     <h3 class="font-bold text-lg text-white mb-1 group-hover:text-blue-400 transition">Passport Photo Maker</h3>
-                    <p class="text-xs text-slate-300">Custom background color changer, drag position adjust & print sheet download.</p>
+                    <p class="text-xs text-slate-300">Auto background removal, instant background color matching, drag & zoom.</p>
                 </div>
 
-                <!-- Signature Resizer (Updated BD Exam Standard) -->
+                <!-- Signature Resizer -->
                 <div onclick="openTool('signatureResizer')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-emerald-400 border-2 border-emerald-500/30 bg-emerald-950/20">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-emerald-500/20 text-emerald-400 rounded-2xl flex items-center justify-center text-xl border border-emerald-500/40 group-hover:scale-110 transition"><i class="fa-solid fa-signature"></i></div>
@@ -479,7 +477,7 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT SYSTEM -->
+    <!-- FULL JAVASCRIPT SYSTEM -->
     <script>
         let toolViews = JSON.parse(localStorage.getItem('jt_tool_views')) || { passportPhoto: 0, signatureResizer: 0, wordCounter: 0, passGenerator: 0, qrGenerator: 0, ageCalculator: 0, unitConverter: 0, textSpeech: 0, thumbDownloader: 0, imgCompressor: 0, colorPicker: 0, caseConverter: 0, tempNotepad: 0, passChecker: 0, codeMinifier: 0, metaGen: 0, ipFinder: 0, pomodoro: 0, tagGen: 0, paletteGen: 0, emiCalc: 0, binaryConv: 0, base64Tool: 0, worldClock: 0, keyTester: 0 };
         let completedWorksCount = parseInt(localStorage.getItem('jt_works_count')) || 0;
@@ -556,7 +554,6 @@
             }
         }
 
-        // ANIMATED SUCCESS TOAST NOTIFICATION (SLIDE FROM RIGHT TO LEFT)
         function showSuccessToast(message) {
             const container = document.getElementById('toastContainer');
             const toast = document.createElement('div');
@@ -579,7 +576,7 @@
             }, 3500);
         }
 
-        // TOOL HANDLER (All 25 Tools Included)
+        // TOOL HANDLER (All 25 Tools with Auto BG Removal Passport Studio)
         function openTool(toolName) {
             toolViews[toolName] = (toolViews[toolName] || 0) + 1;
             localStorage.setItem('jt_tool_views', JSON.stringify(toolViews));
@@ -591,25 +588,26 @@
             modal.classList.remove('hidden');
 
             if(toolName === 'passportPhoto') {
-                title.innerHTML = `<i class="fa-solid fa-id-badge text-blue-400"></i> Professional Passport Studio`;
+                title.innerHTML = `<i class="fa-solid fa-id-badge text-blue-400"></i> Professional Passport Studio & Auto BG Remover`;
                 body.innerHTML = `
                     <div class="space-y-4">
                         <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800">
-                            <label class="text-xs text-slate-300 block mb-2 font-medium">1. Upload Your Photo</label>
-                            <input type="file" id="passPhotoInput" accept="image/*" onchange="loadPassportImage(event)" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-500 cursor-pointer">
+                            <label class="text-xs text-slate-300 block mb-2 font-medium">1. Upload Your Photo (Camera or Gallery)</label>
+                            <input type="file" id="passPhotoInput" accept="image/*" onchange="loadAndRemoveBg(event)" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-500 cursor-pointer">
+                            <p id="bgStatusText" class="text-[11px] text-amber-400 mt-2 font-medium hidden"><i class="fa-solid fa-spinner fa-spin"></i> Processing Auto Background Removal...</p>
                         </div>
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                             <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
                                 <label class="text-xs text-slate-300 block mb-2 font-medium">2. Select Background Color</label>
                                 <div class="flex items-center gap-2 mb-2">
-                                    <button onclick="changeBg('#ffffff')" class="px-3 py-1.5 bg-white text-slate-900 rounded-lg text-xs font-bold border hover:scale-105 transition shadow">White</button>
-                                    <button onclick="changeBg('#0056b3')" class="px-3 py-1.5 bg-blue-600 text-white rounded-lg text-xs font-bold hover:scale-105 transition shadow">Blue</button>
-                                    <button onclick="changeBg('#dc2626')" class="px-3 py-1.5 bg-red-600 text-white rounded-lg text-xs font-bold hover:scale-105 transition shadow">Red</button>
-                                    <button onclick="changeBg('#f1f5f9')" class="px-3 py-1.5 bg-slate-200 text-slate-800 rounded-lg text-xs font-bold hover:scale-105 transition shadow">Off-White</button>
+                                    <button onclick="changeBgColor('#ffffff')" class="px-3 py-1.5 bg-white text-slate-900 rounded-lg text-xs font-bold border hover:scale-105 transition shadow">White</button>
+                                    <button onclick="changeBgColor('#0056b3')" class="px-3 py-1.5 bg-blue-600 text-white rounded-lg text-xs font-bold hover:scale-105 transition shadow">Blue</button>
+                                    <button onclick="changeBgColor('#dc2626')" class="px-3 py-1.5 bg-red-600 text-white rounded-lg text-xs font-bold hover:scale-105 transition shadow">Red</button>
+                                    <button onclick="changeBgColor('#f1f5f9')" class="px-3 py-1.5 bg-slate-200 text-slate-800 rounded-lg text-xs font-bold hover:scale-105 transition shadow">Off-White</button>
                                 </div>
                                 <div class="flex items-center gap-2">
-                                    <input type="color" id="customBgPicker" value="#ffffff" onchange="changeBg(this.value)" class="w-10 h-8 bg-slate-950 border border-slate-800 rounded-lg p-1 cursor-pointer">
+                                    <input type="color" id="customBgPicker" value="#ffffff" onchange="changeBgColor(this.value)" class="w-10 h-8 bg-slate-950 border border-slate-800 rounded-lg p-1 cursor-pointer">
                                     <span class="text-[11px] text-slate-400">Custom Color</span>
                                 </div>
                             </div>
@@ -626,7 +624,7 @@
 
                         <!-- LIVE PREVIEW -->
                         <div class="text-center bg-slate-950 p-4 rounded-xl border border-slate-800">
-                            <p class="text-xs text-emerald-400 mb-2 font-semibold"><i class="fa-solid fa-wand-magic-sparkles"></i> Live Editor Preview</p>
+                            <p class="text-xs text-emerald-400 mb-2 font-semibold"><i class="fa-solid fa-wand-magic-sparkles"></i> Live Editor Preview (Background Removed)</p>
                             <div class="inline-block border-4 border-slate-700 rounded-xl overflow-hidden shadow-2xl bg-white cursor-grab active:cursor-grabbing" style="width: 200px; height: 250px;">
                                 <canvas id="passportCanvas" width="400" height="500" class="w-full h-full block"></canvas>
                             </div>
@@ -863,36 +861,67 @@
 
         function closeToolModal() { document.getElementById('toolModal').classList.add('hidden'); }
 
-        // PASSPORT ENGINE
-        let pImg = null, pBgColor = '#ffffff', pScale = 1, pOffsetX = 0, pOffsetY = 0;
+        // AUTO BG REMOVAL & PASSPORT ENGINE
+        let pProcessedCanvas = null;
+        let pBgColor = '#ffffff';
+        let pScale = 1, pOffsetX = 0, pOffsetY = 0;
         let isDragging = false, startX = 0, startY = 0;
 
-        function loadPassportImage(e) {
+        function loadAndRemoveBg(e) {
             const file = e.target.files[0];
             if(!file) return;
+            
+            const statusEl = document.getElementById('bgStatusText');
+            statusEl.classList.remove('hidden');
+
             const reader = new FileReader();
             reader.onload = function(event) {
-                pImg = new Image();
-                pImg.onload = function() {
+                const img = new Image();
+                img.onload = function() {
+                    const tempCanvas = document.createElement('canvas');
+                    tempCanvas.width = img.width;
+                    tempCanvas.height = img.height;
+                    const tCtx = tempCanvas.getContext('2d');
+                    tCtx.drawImage(img, 0, 0);
+
+                    const imgData = tCtx.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
+                    const data = imgData.data;
+
+                    let bgR = data[0], bgG = data[1], bgB = data[2];
+
+                    for (let i = 0; i < data.length; i += 4) {
+                        let r = data[i], g = data[i+1], b = data[i+2];
+                        let diff = Math.abs(r - bgR) + Math.abs(g - bgG) + Math.abs(b - bgB);
+                        if (diff < 55 && r > 40 && g > 40 && b > 40) {
+                            data[i+3] = 0;
+                        }
+                    }
+
+                    tCtx.putImageData(imgData, 0, 0);
+
+                    pProcessedCanvas = tempCanvas;
                     pScale = 1;
-                    pOffsetX = (400 - pImg.width * 0.5) / 2;
-                    pOffsetY = (500 - pImg.height * 0.5) / 2;
+                    pOffsetX = (400 - pProcessedCanvas.width * 0.5) / 2;
+                    pOffsetY = (500 - pProcessedCanvas.height * 0.5) / 2;
                     document.getElementById('zoomRange').value = 1;
+
+                    statusEl.classList.add('hidden');
                     redrawPassport();
+                    showSuccessToast("Background Removed & Passport Ready!");
                 }
-                pImg.src = event.target.result;
+                img.src = event.target.result;
             }
             reader.readAsDataURL(file);
         }
 
-        function changeBg(color) {
+        function changeBgColor(color) {
             pBgColor = color;
             document.getElementById('customBgPicker').value = color;
             redrawPassport();
         }
 
         function redrawPassport() {
-            if(!pImg) return;
+            if(!pProcessedCanvas) return;
             const canvas = document.getElementById('passportCanvas');
             const ctx = canvas.getContext('2d');
             const zoom = parseFloat(document.getElementById('zoomRange').value);
@@ -904,7 +933,7 @@
             ctx.save();
             ctx.translate(pOffsetX, pOffsetY);
             ctx.scale(zoom, zoom);
-            ctx.drawImage(pImg, 0, 0);
+            ctx.drawImage(pProcessedCanvas, 0, 0);
             ctx.restore();
         }
 
@@ -924,7 +953,7 @@
         }
 
         function downloadPassport(mode) {
-            if(!pImg) { alert("Please upload a photo first!"); return; }
+            if(!pProcessedCanvas) { alert("Please upload a photo first!"); return; }
             
             const hdCanvas = document.createElement('canvas');
             if(mode === 'single') {
@@ -935,7 +964,7 @@
                 ctx.save();
                 ctx.translate(pOffsetX * 3, pOffsetY * 3);
                 ctx.scale(parseFloat(document.getElementById('zoomRange').value) * 3, parseFloat(document.getElementById('zoomRange').value) * 3);
-                ctx.drawImage(pImg, 0, 0);
+                ctx.drawImage(pProcessedCanvas, 0, 0);
                 ctx.restore();
 
                 const link = document.createElement('a');
@@ -959,7 +988,7 @@
                         let y = startY + r * (ph + gapY);
                         ctx.fillStyle = pBgColor;
                         ctx.fillRect(x, y, pw, ph);
-                        ctx.drawImage(pImg, x + pOffsetX/3, y + pOffsetY/3, pImg.width * parseFloat(document.getElementById('zoomRange').value), pImg.height * parseFloat(document.getElementById('zoomRange').value));
+                        ctx.drawImage(pProcessedCanvas, x + pOffsetX/3, y + pOffsetY/3, pProcessedCanvas.width * parseFloat(document.getElementById('zoomRange').value), pProcessedCanvas.height * parseFloat(document.getElementById('zoomRange').value));
                     }
                 }
 
@@ -981,9 +1010,7 @@
             const reader = new FileReader();
             reader.onload = function(event) {
                 sImg = new Image();
-                sImg.onload = function() {
-                    redrawSignature();
-                }
+                sImg.onload = function() { redrawSignature(); }
                 sImg.src = event.target.result;
             }
             reader.readAsDataURL(file);
