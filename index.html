@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JT Micro Utility - Ultimate All-in-One Toolkit</title>
+    <title>JT Micro Utility - Pro Passport Studio & Toolkit</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -163,14 +163,14 @@
             <!-- ALL TOOLS GRID -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 
-                <!-- Passport Photo Maker (True Cutout Style BG Remover & Color Studio) -->
+                <!-- Passport Photo Maker (Ultimate Custom Size & Pro BG Remover) -->
                 <div onclick="openTool('passportPhoto')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-blue-400 border-2 border-blue-500/30 bg-blue-950/20">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-blue-500/20 text-blue-400 rounded-2xl flex items-center justify-center text-xl border border-blue-500/40 group-hover:scale-110 transition"><i class="fa-solid fa-id-badge"></i></div>
-                        <span class="text-[11px] bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2.5 py-1 rounded-full font-bold">SMART BG STUDIO</span>
+                        <span class="text-[11px] bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2.5 py-1 rounded-full font-bold">PRO PASSPORT STUDIO</span>
                     </div>
                     <h3 class="font-bold text-lg text-white mb-1 group-hover:text-blue-400 transition">Passport Photo Maker</h3>
-                    <p class="text-xs text-slate-300">Pro background removal, official background colors, drag, zoom & print sheets.</p>
+                    <p class="text-xs text-slate-300">Separate Background Removal button, custom sizes (px/cm/mm), and color palette.</p>
                 </div>
 
                 <!-- Signature Resizer -->
@@ -477,7 +477,7 @@
         </div>
     </div>
 
-    <!-- FULL JAVASCRIPT SYSTEM WITH AI BACKGROUND REMOVAL BRIDGE -->
+    <!-- JAVASCRIPT LOGIC -->
     <script>
         let toolViews = JSON.parse(localStorage.getItem('jt_tool_views')) || { passportPhoto: 0, signatureResizer: 0, wordCounter: 0, passGenerator: 0, qrGenerator: 0, ageCalculator: 0, unitConverter: 0, textSpeech: 0, thumbDownloader: 0, imgCompressor: 0, colorPicker: 0, caseConverter: 0, tempNotepad: 0, passChecker: 0, codeMinifier: 0, metaGen: 0, ipFinder: 0, pomodoro: 0, tagGen: 0, paletteGen: 0, emiCalc: 0, binaryConv: 0, base64Tool: 0, worldClock: 0, keyTester: 0 };
         let completedWorksCount = parseInt(localStorage.getItem('jt_works_count')) || 0;
@@ -576,7 +576,7 @@
             }, 3500);
         }
 
-        // TOOL HANDLER (All 25 Tools with Smart BG Studio)
+        // TOOL HANDLER (All 25 Tools with Advanced Passport Studio)
         function openTool(toolName) {
             toolViews[toolName] = (toolViews[toolName] || 0) + 1;
             localStorage.setItem('jt_tool_views', JSON.stringify(toolViews));
@@ -588,18 +588,48 @@
             modal.classList.remove('hidden');
 
             if(toolName === 'passportPhoto') {
-                title.innerHTML = `<i class="fa-solid fa-id-badge text-blue-400"></i> Smart Passport Studio & BG Remover`;
+                title.innerHTML = `<i class="fa-solid fa-id-badge text-blue-400"></i> Pro Passport Studio & Background Remover`;
                 body.innerHTML = `
                     <div class="space-y-4">
                         <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800">
-                            <label class="text-xs text-slate-300 block mb-2 font-medium">1. Upload Your Photo (Camera or Gallery)</label>
-                            <input type="file" id="passPhotoInput" accept="image/*" onchange="processPassportImage(event)" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-500 cursor-pointer">
-                            <p id="bgStatusText" class="text-[11px] text-amber-400 mt-2 font-medium hidden"><i class="fa-solid fa-spinner fa-spin"></i> Processing Background Isolation...</p>
+                            <label class="text-xs text-slate-300 block mb-2 font-medium">1. Upload Image (Camera or Gallery)</label>
+                            <input type="file" id="passPhotoInput" accept="image/*" onchange="loadPassportImage(event)" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-500 cursor-pointer">
+                        </div>
+
+                        <!-- SEPARATE BACKGROUND REMOVAL BUTTON -->
+                        <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800 text-center">
+                            <button onclick="executeBgRemoval()" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold py-3 rounded-xl text-xs shadow-lg shadow-purple-600/30 transition flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-wand-magic-sparkles text-base"></i> Remove Background (1-Click AI Studio)
+                            </button>
+                            <p id="bgStatusText" class="text-[11px] text-amber-400 mt-2 font-medium hidden"><i class="fa-solid fa-spinner fa-spin"></i> Processing Background Removal & Subject Extraction...</p>
+                        </div>
+
+                        <!-- CUSTOM SIZE CONTROLS -->
+                        <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
+                            <label class="text-xs text-slate-300 block mb-2 font-medium">2. Custom Size & Unit Configuration</label>
+                            <div class="grid grid-cols-3 gap-2 mb-2">
+                                <div>
+                                    <span class="text-[10px] text-slate-400 block mb-1">Unit</span>
+                                    <select id="sizeUnit" onchange="updateSizeDimensions()" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2 text-xs text-slate-200">
+                                        <option value="px">Pixel (px)</option>
+                                        <option value="cm">Centimeter (cm)</option>
+                                        <option value="mm">Millimeter (mm)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <span class="text-[10px] text-slate-400 block mb-1">Width</span>
+                                    <input type="number" id="customWidth" value="300" oninput="redrawPassport()" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2 text-xs text-slate-200">
+                                </div>
+                                <div>
+                                    <span class="text-[10px] text-slate-400 block mb-1">Height</span>
+                                    <input type="number" id="customHeight" value="350" oninput="redrawPassport()" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2 text-xs text-slate-200">
+                                </div>
+                            </div>
                         </div>
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                             <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
-                                <label class="text-xs text-slate-300 block mb-2 font-medium">2. Select Background Color</label>
+                                <label class="text-xs text-slate-300 block mb-2 font-medium">3. Background Color Selector</label>
                                 <div class="flex items-center gap-2 mb-2">
                                     <button onclick="changeBgColor('#ffffff')" class="px-3 py-1.5 bg-white text-slate-900 rounded-lg text-xs font-bold border hover:scale-105 transition shadow">White</button>
                                     <button onclick="changeBgColor('#0056b3')" class="px-3 py-1.5 bg-blue-600 text-white rounded-lg text-xs font-bold hover:scale-105 transition shadow">Blue</button>
@@ -613,20 +643,20 @@
                             </div>
 
                             <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
-                                <label class="text-xs text-slate-300 block mb-2 font-medium">3. Position & Zoom Adjustment</label>
+                                <label class="text-xs text-slate-300 block mb-2 font-medium">4. Position & Zoom Adjustment</label>
                                 <div class="flex items-center gap-2 mb-2">
                                     <span class="text-[11px] text-slate-400">Zoom:</span>
                                     <input type="range" id="zoomRange" min="0.5" max="2.5" step="0.05" value="1" oninput="redrawPassport()" class="w-full accent-blue-600">
                                 </div>
-                                <p class="text-[10px] text-slate-400 italic">* Tip: Drag/pan the photo inside the preview box.</p>
+                                <p class="text-[10px] text-slate-400 italic">* Drag/pan the photo inside preview box.</p>
                             </div>
                         </div>
 
                         <!-- LIVE PREVIEW -->
                         <div class="text-center bg-slate-950 p-4 rounded-xl border border-slate-800">
-                            <p class="text-xs text-emerald-400 mb-2 font-semibold"><i class="fa-solid fa-wand-magic-sparkles"></i> Live Studio Preview</p>
-                            <div class="inline-block border-4 border-slate-700 rounded-xl overflow-hidden shadow-2xl bg-white cursor-grab active:cursor-grabbing" style="width: 200px; height: 250px;">
-                                <canvas id="passportCanvas" width="400" height="500" class="w-full h-full block"></canvas>
+                            <p class="text-xs text-emerald-400 mb-2 font-semibold"><i class="fa-solid fa-eye"></i> Studio Live Preview</p>
+                            <div class="inline-block border-4 border-slate-700 rounded-xl overflow-hidden shadow-2xl bg-white cursor-grab active:cursor-grabbing" style="width: 180px; height: 220px;">
+                                <canvas id="passportCanvas" width="300" height="350" class="w-full h-full block"></canvas>
                             </div>
                         </div>
 
@@ -861,82 +891,111 @@
 
         function closeToolModal() { document.getElementById('toolModal').classList.add('hidden'); }
 
-        // SMART PASSPORT ENGINE WITH ROBUST BG REMOVAL API SUPPORT & CHROMA KEY
+        // PASSPORT ENGINE WITH ADVANCED SEPARATE BG REMOVAL & CUSTOM SIZES
+        let pOriginalImage = null;
         let pProcessedCanvas = null;
         let pBgColor = '#ffffff';
         let pScale = 1, pOffsetX = 0, pOffsetY = 0;
         let isDragging = false, startX = 0, startY = 0;
 
-        function processPassportImage(e) {
+        function loadPassportImage(e) {
             const file = e.target.files[0];
             if(!file) return;
-
-            const statusEl = document.getElementById('bgStatusText');
-            statusEl.classList.remove('hidden');
 
             const reader = new FileReader();
             reader.onload = function(event) {
                 const img = new Image();
                 img.onload = function() {
-                    const tempCanvas = document.createElement('canvas');
-                    tempCanvas.width = img.width;
-                    tempCanvas.height = img.height;
-                    const tCtx = tempCanvas.getContext('2d');
-                    tCtx.drawImage(img, 0, 0);
+                    pOriginalImage = img;
+                    pProcessedCanvas = document.createElement('canvas');
+                    pProcessedCanvas.width = img.width;
+                    pProcessedCanvas.height = img.height;
+                    const ctx = pProcessedCanvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0);
 
-                    const imgData = tCtx.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
-                    const data = imgData.data;
-
-                    // Advanced multi-point background color detection (corners and edges)
-                    let corners = [
-                        0, // top-left
-                        (tempCanvas.width - 1) * 4, // top-right
-                        (tempCanvas.width * (tempCanvas.height - 1)) * 4, // bottom-left
-                        (tempCanvas.width * tempCanvas.height - 1) * 4 // bottom-right
-                    ];
-
-                    let avgR = 0, avgG = 0, avgB = 0;
-                    corners.forEach(idx => {
-                        avgR += data[idx];
-                        avgG += data[idx+1];
-                        avgB += data[idx+2];
-                    });
-                    avgR = Math.floor(avgR / 4);
-                    avgG = Math.floor(avgG / 4);
-                    avgB = Math.floor(avgB / 4);
-
-                    // Aggressive background separation for outdoor/greenery or studio backgrounds
-                    for (let i = 0; i < data.length; i += 4) {
-                        let r = data[i], g = data[i+1], b = data[i+2];
-                        
-                        // Color distance calculation
-                        let dist = Math.sqrt(Math.pow(r - avgR, 2) + Math.pow(g - avgG, 2) + Math.pow(b - avgB, 2));
-                        
-                        // If background is green/outdoor or uniform color
-                        let isGreenBg = (g > r && g > b && g > 60);
-                        let isUniformBg = (dist < 75);
-
-                        if (isUniformBg || isGreenBg) {
-                            // Soft edge alpha removal
-                            data[i+3] = 0;
-                        }
-                    }
-
-                    tCtx.putImageData(imgData, 0, 0);
-
-                    pProcessedCanvas = tempCanvas;
                     pScale = 1;
-                    pOffsetX = (400 - pProcessedCanvas.width * 0.5) / 2;
-                    pOffsetY = (500 - pProcessedCanvas.height * 0.5) / 2;
+                    pOffsetX = (300 - img.width * 0.5) / 2;
+                    pOffsetY = (350 - img.height * 0.5) / 2;
                     document.getElementById('zoomRange').value = 1;
 
-                    statusEl.classList.add('hidden');
                     redrawPassport();
-                    showSuccessToast("Background Removed Successfully!");
+                    showSuccessToast("Image Loaded Successfully!");
                 }
                 img.src = event.target.result;
             }
             reader.readAsDataURL(file);
+        }
+
+        // SEPARATE BUTTON TO REMOVE BACKGROUND (AI Studio Style)
+        function executeBgRemoval() {
+            if(!pOriginalImage) {
+                alert("Please upload a photo first!");
+                return;
+            }
+
+            const statusEl = document.getElementById('bgStatusText');
+            statusEl.classList.remove('hidden');
+
+            setTimeout(() => {
+                const tempCanvas = document.createElement('canvas');
+                tempCanvas.width = pOriginalImage.width;
+                tempCanvas.height = pOriginalImage.height;
+                const tCtx = tempCanvas.getContext('2d');
+                tCtx.drawImage(pOriginalImage, 0, 0);
+
+                const imgData = tCtx.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
+                const data = imgData.data;
+
+                // Corner background color detection
+                let corners = [
+                    0,
+                    (tempCanvas.width - 1) * 4,
+                    (tempCanvas.width * (tempCanvas.height - 1)) * 4,
+                    (tempCanvas.width * tempCanvas.height - 1) * 4
+                ];
+
+                let avgR = 0, avgG = 0, avgB = 0;
+                corners.forEach(idx => {
+                    avgR += data[idx];
+                    avgG += data[idx+1];
+                    avgB += data[idx+2];
+                });
+                avgR = Math.floor(avgR / 4);
+                avgG = Math.floor(avgG / 4);
+                avgB = Math.floor(avgB / 4);
+
+                for (let i = 0; i < data.length; i += 4) {
+                    let r = data[i], g = data[i+1], b = data[i+2];
+                    let dist = Math.sqrt(Math.pow(r - avgR, 2) + Math.pow(g - avgG, 2) + Math.pow(b - avgB, 2));
+                    
+                    let isGreenOrOutdoor = (g > r && g > b && g > 50) || (dist < 65);
+                    if (isGreenOrOutdoor) {
+                        data[i+3] = 0; // Make transparent
+                    }
+                }
+
+                tCtx.putImageData(imgData, 0, 0);
+                pProcessedCanvas = tempCanvas;
+
+                statusEl.classList.add('hidden');
+                redrawPassport();
+                showSuccessToast("Background Removed Successfully!");
+            }, 600);
+        }
+
+        function updateSizeDimensions() {
+            const unit = document.getElementById('sizeUnit').value;
+            const wInput = document.getElementById('customWidth');
+            const hInput = document.getElementById('customHeight');
+
+            if(unit === 'cm') {
+                wInput.value = 3.5; hInput.value = 4.5;
+            } else if(unit === 'mm') {
+                wInput.value = 35; hInput.value = 45;
+            } else {
+                wInput.value = 300; hInput.value = 350;
+            }
+            redrawPassport();
         }
 
         function changeBgColor(color) {
@@ -948,6 +1007,11 @@
         function redrawPassport() {
             if(!pProcessedCanvas) return;
             const canvas = document.getElementById('passportCanvas');
+            const w = parseInt(document.getElementById('customWidth').value) || 300;
+            const h = parseInt(document.getElementById('customHeight').value) || 350;
+            canvas.width = w;
+            canvas.height = h;
+
             const ctx = canvas.getContext('2d');
             const zoom = parseFloat(document.getElementById('zoomRange').value);
 
@@ -980,29 +1044,21 @@
         function downloadPassport(mode) {
             if(!pProcessedCanvas) { alert("Please upload a photo first!"); return; }
             
-            const hdCanvas = document.createElement('canvas');
-            if(mode === 'single') {
-                hdCanvas.width = 1200; hdCanvas.height = 1500;
-                const ctx = hdCanvas.getContext('2d');
-                ctx.fillStyle = pBgColor;
-                ctx.fillRect(0, 0, hdCanvas.width, hdCanvas.height);
-                ctx.save();
-                ctx.translate(pOffsetX * 3, pOffsetY * 3);
-                ctx.scale(parseFloat(document.getElementById('zoomRange').value) * 3, parseFloat(document.getElementById('zoomRange').value) * 3);
-                ctx.drawImage(pProcessedCanvas, 0, 0);
-                ctx.restore();
+            const canvas = document.getElementById('passportCanvas');
+            const link = document.createElement('a');
 
-                const link = document.createElement('a');
+            if(mode === 'single') {
                 link.download = 'passport-photo-hd.png';
-                link.href = hdCanvas.toDataURL('image/png', 1.0);
+                link.href = canvas.toDataURL('image/png', 1.0);
                 link.click();
             } else if(mode === 'print') {
-                hdCanvas.width = 1800; hdCanvas.height = 1200;
-                const ctx = hdCanvas.getContext('2d');
-                ctx.fillStyle = '#ffffff';
-                ctx.fillRect(0, 0, hdCanvas.width, hdCanvas.height);
+                const sheetCanvas = document.createElement('canvas');
+                sheetCanvas.width = 1800; sheetCanvas.height = 1200;
+                const sCtx = sheetCanvas.getContext('2d');
+                sCtx.fillStyle = '#ffffff';
+                sCtx.fillRect(0, 0, sheetCanvas.width, sheetCanvas.height);
 
-                let pw = 400, ph = 500;
+                let pw = canvas.width, ph = canvas.height;
                 let cols = 4, rows = 2;
                 let startX = 100, startY = 100;
                 let gapX = 50, gapY = 50;
@@ -1011,15 +1067,12 @@
                     for(let c=0; c<cols; c++) {
                         let x = startX + c * (pw + gapX);
                         let y = startY + r * (ph + gapY);
-                        ctx.fillStyle = pBgColor;
-                        ctx.fillRect(x, y, pw, ph);
-                        ctx.drawImage(pProcessedCanvas, x + pOffsetX/3, y + pOffsetY/3, pProcessedCanvas.width * parseFloat(document.getElementById('zoomRange').value), pProcessedCanvas.height * parseFloat(document.getElementById('zoomRange').value));
+                        sCtx.drawImage(canvas, x, y);
                     }
                 }
 
-                const link = document.createElement('a');
                 link.download = 'passport-print-sheet-4r.jpg';
-                link.href = hdCanvas.toDataURL('image/jpeg', 0.95);
+                link.href = sheetCanvas.toDataURL('image/jpeg', 0.95);
                 link.click();
             }
             
