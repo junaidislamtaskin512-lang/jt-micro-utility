@@ -3,18 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JT Micro Utility - Ultimate Admission & Pro Utility Hub</title>
-    <!-- Tailwind CSS -->
+    <title>JT Micro Utility - Ultimate All-in-One Admission & Utility Portal</title>
+    
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a'
+                        }
+                    },
                     fontFamily: {
                         sans: ['Hind Siliguri', 'Poppins', 'sans-serif']
                     }
@@ -22,202 +29,693 @@
             }
         }
     </script>
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        body { font-family: 'Hind Siliguri', 'Poppins', sans-serif; }
-        .glass-dark { background: rgba(15, 23, 42, 0.90); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
-        .glass-card-dark { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.3s ease; }
-        .glass-card-dark:hover { transform: translateY(-4px); border-color: rgba(59, 130, 246, 0.5); }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        body {
+            font-family: 'Hind Siliguri', 'Poppins', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        .glass-dark {
+            background: rgba(15, 23, 42, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-light {
+            background: rgba(255, 255, 255, 0.90);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        
+        .glass-card-dark {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .glass-card-dark:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.6);
+            border-color: rgba(59, 130, 246, 0.5);
+        }
+
+        .glass-card-light {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card-light:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.12);
+            border-color: rgba(37, 99, 235, 0.4);
+        }
+        
+        @keyframes spin-slow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .animate-spin-slow {
+            animation: spin-slow 12s linear infinite;
+        }
+
+        @keyframes pop-in {
+            0% { transform: scale(0.88); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .animate-pop {
+            animation: pop-in 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        @keyframes slide-in-right {
+            0% { transform: translateX(120%); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slide-out-right {
+            0% { transform: translateX(0); opacity: 1; }
+            100% { transform: translateX(120%); opacity: 0; }
+        }
+
+        .toast-slide-in {
+            animation: slide-in-right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        .toast-slide-out {
+            animation: slide-out-right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 15px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 0 28px rgba(37, 211, 102, 0.85); }
+        }
+
+        .whatsapp-float {
+            animation: pulse-glow 2.5s infinite;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
         @media print {
-            body * { visibility: hidden; }
-            #printableCvArea, #printableCvArea * { visibility: visible; }
-            #printableCvArea { position: absolute; left: 0; top: 0; width: 100%; }
+            body * {
+                visibility: hidden;
+            }
+            #printableCvArea, #printableCvArea * {
+                visibility: visible;
+            }
+            #printableCvArea {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                margin: 0;
+                padding: 20px;
+            }
         }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white">
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white relative overflow-x-hidden">
 
-    <!-- TOAST NOTIFICATION -->
+    <!-- AUTH AUTO CHECK -->
+    <script>
+        (function() {
+            var isLoggedIn = localStorage.getItem('jt_is_logged_in');
+            if (!isLoggedIn) {
+                document.addEventListener("DOMContentLoaded", function() {
+                    document.getElementById('authModal').classList.remove('hidden');
+                });
+            }
+        })();
+    </script>
+
+    <!-- TOAST NOTIFICATIONS CONTAINER -->
     <div id="toastContainer" class="fixed top-6 right-6 z-50 flex flex-col gap-3 pointer-events-none"></div>
 
-    <!-- HEADER -->
-    <header class="glass-dark sticky top-0 z-30 px-4 lg:px-8 py-3.5 flex justify-between items-center border-b border-slate-800">
-        <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-gradient-to-tr from-blue-600 to-indigo-600 text-white rounded-xl flex items-center justify-center font-bold text-lg shadow-md shadow-blue-500/30">
-                <i class="fa-solid fa-bolt"></i>
+    <!-- WHATSAPP FLOATING BUTTON -->
+    <a href="https://wa.me/8801568600668?text=Hello!%20I%20need%20help%20with%20JT%20Micro%20Utility." target="_blank" title="Chat on WhatsApp" class="whatsapp-float fixed bottom-6 right-6 z-40 bg-emerald-500 hover:bg-emerald-400 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl transition hover:scale-110 border border-emerald-300">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- AUTHENTICATION MODAL (LOGIN / SIGNUP) -->
+    <div id="authModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md p-4 hidden">
+        <div class="glass-dark w-full max-w-md rounded-2xl p-8 shadow-2xl animate-pop relative border border-slate-800">
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-gradient-to-tr from-blue-600 to-indigo-500 text-white rounded-2xl flex items-center justify-center mx-auto mb-3 text-2xl shadow-lg shadow-blue-500/30">
+                    <i class="fa-solid fa-bolt animate-spin-slow"></i>
+                </div>
+                <h1 class="text-2xl font-bold tracking-wide text-white">JT Micro Utility</h1>
+                <p class="text-xs text-slate-400 mt-1">পোর্টালে প্রবেশ করতে আপনার অ্যাকাউন্টে লগইন বা সাইন আপ করুন</p>
             </div>
-            <div>
-                <h2 class="font-bold text-base tracking-wide text-white">JT Micro Utility</h2>
-                <p class="text-[11px] text-slate-400">বাংলাদেশের সর্বাধুনিক এডমিশন ও প্রফেশনাল হাব</p>
+
+            <div class="flex bg-slate-900/80 rounded-xl p-1 mb-6 border border-slate-800/80">
+                <button onclick="switchTab('login')" id="loginTabBtn" class="flex-1 py-2 text-sm font-medium rounded-lg bg-blue-600 text-white transition shadow">Login</button>
+                <button onclick="switchTab('signup')" id="signupTabBtn" class="flex-1 py-2 text-sm font-medium rounded-lg text-slate-400 hover:text-white transition">Sign Up</button>
             </div>
-        </div>
 
-        <div class="flex items-center gap-3">
-            <div class="relative w-48 sm:w-72">
-                <input type="text" id="globalSearch" oninput="liveSearchTools()" placeholder="টুলস বা বিশ্ববিদ্যালয় সার্চ করুন..." class="w-full bg-slate-900 border border-slate-800 rounded-xl pl-9 pr-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-blue-500">
-                <i class="fa-solid fa-search absolute left-3 top-2.5 text-xs text-slate-500"></i>
+            <!-- LOGIN FORM -->
+            <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-4">
+                <div>
+                    <label class="text-xs text-slate-400 block mb-1">ইমেইল অথবা ফোন নম্বর</label>
+                    <input type="text" id="loginEmail" required class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500 transition text-slate-200" placeholder="ইমেইল বা ফোন নম্বর দিন">
+                </div>
+                <div>
+                    <label class="text-xs text-slate-400 block mb-1">পাসওয়ার্ড</label>
+                    <input type="password" id="loginPass" required class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500 transition text-slate-200" placeholder="আপনার পাসওয়ার্ড দিন">
+                </div>
+                <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-medium py-3 rounded-xl transition shadow-lg shadow-blue-600/30">লগইন করুন</button>
+            </form>
+
+            <!-- SIGNUP FORM -->
+            <form id="signupForm" onsubmit="handleSignup(event)" class="space-y-4 hidden">
+                <div>
+                    <label class="text-xs text-slate-400 block mb-1">আপনার পূর্ণ নাম</label>
+                    <input type="text" id="signupName" required class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 transition text-slate-200" placeholder="আপনার নাম লিখুন">
+                </div>
+                <div>
+                    <label class="text-xs text-slate-400 block mb-1">ইমেইল অথবা ফোন নম্বর</label>
+                    <input type="text" id="signupEmail" required class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 transition text-slate-200" placeholder="ইমেইল বা ফোন নম্বর দিন">
+                </div>
+                <div>
+                    <label class="text-xs text-slate-400 block mb-1">নতুন পাসওয়ার্ড তৈরি করুন</label>
+                    <input type="password" id="signupPass" required class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 transition text-slate-200" placeholder="পাসওয়ার্ড লিখুন">
+                </div>
+                <button type="submit" class="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-medium py-3 rounded-xl transition shadow-lg shadow-emerald-600/30">রেজিস্ট্রেশন করুন</button>
+            </form>
+
+            <div id="authAlert" class="hidden mt-4 p-3 bg-emerald-500/20 border border-emerald-500 text-emerald-400 rounded-xl text-center text-sm font-medium animate-pop flex items-center justify-center gap-2">
+                <i class="fa-solid fa-circle-check text-lg"></i> <span id="authAlertText">সফল হয়েছে!</span>
             </div>
-            <a href="https://wa.me/8801568600668" target="_blank" class="hidden sm:flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20 px-3 py-1.5 rounded-xl text-xs font-medium transition">
-                <i class="fa-brands fa-whatsapp"></i> সাপোর্ট
-            </a>
-        </div>
-    </header>
-
-    <!-- MAIN DASHBOARD -->
-    <main class="flex-1 max-w-7xl w-full mx-auto px-4 lg:px-8 py-6 space-y-8">
-
-        <!-- LIVE COUNTDOWN BANNER -->
-        <div class="bg-gradient-to-r from-blue-900/40 via-indigo-900/30 to-slate-900 border border-blue-500/30 rounded-2xl p-4 sm:p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="space-y-1 text-center sm:text-left">
-                <span class="text-[10px] bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2.5 py-0.5 rounded-full font-bold">লাইভ এডমিশন ট্র্যাকার</span>
-                <h3 class="font-bold text-base sm:text-lg text-white">ঢাকা বিশ্ববিদ্যালয় (DU) এডমিশন আবেদন</h3>
-                <p class="text-xs text-slate-300">আবেদনের শেষ সময়সীমা গণনায় লাইভ টাইম আপডেট হচ্ছে</p>
-            </div>
-            <div class="flex gap-3 text-center">
-                <div class="bg-slate-900/90 border border-slate-800 p-2.5 rounded-xl min-w-[55px]">
-                    <span id="cdDays" class="block font-bold text-lg text-blue-400">12</span>
-                    <span class="text-[10px] text-slate-400">দিন</span>
-                </div>
-                <div class="bg-slate-900/90 border border-slate-800 p-2.5 rounded-xl min-w-[55px]">
-                    <span id="cdHours" class="block font-bold text-lg text-indigo-400">08</span>
-                    <span class="text-[10px] text-slate-400">ঘণ্টা</span>
-                </div>
-                <div class="bg-slate-900/90 border border-slate-800 p-2.5 rounded-xl min-w-[55px]">
-                    <span id="cdMins" class="block font-bold text-lg text-teal-400">45</span>
-                    <span class="text-[10px] text-slate-400">মিঃ</span>
-                </div>
-                <div class="bg-slate-900/90 border border-slate-800 p-2.5 rounded-xl min-w-[55px]">
-                    <span id="cdSecs" class="block font-bold text-lg text-rose-400">30</span>
-                    <span class="text-[10px] text-slate-400">সেঃ</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- FAVORITES SECTION -->
-        <div id="favSection" class="hidden space-y-3">
-            <h3 class="text-sm font-bold text-amber-400 flex items-center gap-2">
-                <i class="fa-solid fa-star"></i> আপনার পছন্দের বুকমার্ক করা টুলসমূহ (<span id="favCount">0</span>)
-            </h3>
-            <div id="favGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
-        </div>
-
-        <!-- FEATURED TOOLS GRID -->
-        <div>
-            <h3 class="text-base font-bold text-white mb-4 flex items-center justify-between">
-                <span><i class="fa-solid fa-cubes text-blue-500 mr-2"></i>সকল ফিচার ও টুলস</span>
-                <span class="text-xs font-normal text-slate-400">স্টার আইকনে ক্লিক করে প্রিয় টুল বুকমার্ক করুন</span>
-            </h3>
-
-            <div id="toolsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-
-                <!-- 1. GPA & Subject Eligibility Checker -->
-                <div class="tool-card glass-card-dark p-5 rounded-2xl relative group cursor-pointer" data-id="gpaChecker" data-keywords="gpa calculator eligibility admission du ru cu buet medical">
-                    <button onclick="toggleFav('gpaChecker', event)" class="fav-btn absolute top-4 right-4 text-slate-600 hover:text-amber-400 text-lg transition"><i class="fa-solid fa-star"></i></button>
-                    <div onclick="openTool('gpaChecker')">
-                        <div class="w-11 h-11 bg-blue-500/15 text-blue-400 rounded-xl flex items-center justify-center text-xl mb-3 border border-blue-500/30"><i class="fa-solid fa-calculator"></i></div>
-                        <h4 class="font-bold text-base text-white group-hover:text-blue-400 transition mb-1">জিপিএ ও এডমিশন যোগ্যতা ক্যালকুলেটর</h4>
-                        <p class="text-xs text-slate-400">SSC ও HSC জিপিএ দিয়ে চেক করুন আপনি সরকারি, মেডিকেল ও বুয়েটের কোন কোন ইউনিটে পরীক্ষা দিতে পারবেন।</p>
-                    </div>
-                </div>
-
-                <!-- 2. Pro Resume & CV Maker -->
-                <div class="tool-card glass-card-dark p-5 rounded-2xl relative group cursor-pointer" data-id="cvMaker" data-keywords="cv resume maker biodata job part time photo">
-                    <button onclick="toggleFav('cvMaker', event)" class="fav-btn absolute top-4 right-4 text-slate-600 hover:text-amber-400 text-lg transition"><i class="fa-solid fa-star"></i></button>
-                    <div onclick="openTool('cvMaker')">
-                        <div class="w-11 h-11 bg-purple-500/15 text-purple-400 rounded-xl flex items-center justify-center text-xl mb-3 border border-purple-500/30"><i class="fa-solid fa-file-invoice"></i></div>
-                        <h4 class="font-bold text-base text-white group-hover:text-purple-400 transition mb-1">প্রফেশনাল ফটো সিভি ও বায়োডাটা মেকার</h4>
-                        <p class="text-xs text-slate-400">ফুল-টাইম ও পার্ট-টাইম চাকুরীর জন্য আন্তর্জাতিক স্ট্যান্ডার্ডের প্রিমিয়াম ছবিসহ সিভি ডাউনলোড করুন।</p>
-                    </div>
-                </div>
-
-                <!-- 3. Admission Model Test Quiz -->
-                <div class="tool-card glass-card-dark p-5 rounded-2xl relative group cursor-pointer" data-id="quizHub" data-keywords="quiz model test question bank admission mcq">
-                    <button onclick="toggleFav('quizHub', event)" class="fav-btn absolute top-4 right-4 text-slate-600 hover:text-amber-400 text-lg transition"><i class="fa-solid fa-star"></i></button>
-                    <div onclick="openTool('quizHub')">
-                        <div class="w-11 h-11 bg-emerald-500/15 text-emerald-400 rounded-xl flex items-center justify-center text-xl mb-3 border border-emerald-500/30"><i class="fa-solid fa-list-check"></i></div>
-                        <h4 class="font-bold text-base text-white group-hover:text-emerald-400 transition mb-1">এডমিশন প্রশ্ন ব্যাংক ও ডেইলি মডেল টেস্ট</h4>
-                        <p class="text-xs text-slate-400">বিশ্ববিদ্যালয় ভর্তি পরীক্ষার বিগত বছরের প্রশ্ন সমাধান ও ডেইলি লাইভ এমসিকিউ (MCQ) টেস্ট।</p>
-                    </div>
-                </div>
-
-                <!-- 4. Complete Admission Directory -->
-                <div class="tool-card glass-card-dark p-5 rounded-2xl relative group cursor-pointer" data-id="univDirectory" data-keywords="university list du ru cu ju jnu buet medical private link apply">
-                    <button onclick="toggleFav('univDirectory', event)" class="fav-btn absolute top-4 right-4 text-slate-600 hover:text-amber-400 text-lg transition"><i class="fa-solid fa-star"></i></button>
-                    <div onclick="openTool('univDirectory')">
-                        <div class="w-11 h-11 bg-amber-500/15 text-amber-400 rounded-xl flex items-center justify-center text-xl mb-3 border border-amber-500/30"><i class="fa-solid fa-graduation-cap"></i></div>
-                        <h4 class="font-bold text-base text-white group-hover:text-amber-400 transition mb-1">সকল বিশ্ববিদ্যালয় এপ্লাই ও নোটিশ হাব</h4>
-                        <p class="text-xs text-slate-400">বাংলাদেশের সকল পাবলিক, গুচ্ছ, ইঞ্জিনিয়ারিং, মেডিকেল ও সেরা প্রাইভেট বিশ্ববিদ্যালয়ের অফিশিয়াল লিংক।</p>
-                    </div>
-                </div>
-
-                <!-- 5. Signature Resizer (300x80) -->
-                <div class="tool-card glass-card-dark p-5 rounded-2xl relative group cursor-pointer" data-id="sigResizer" data-keywords="signature resizer 300x80 exam gov bd">
-                    <button onclick="toggleFav('sigResizer', event)" class="fav-btn absolute top-4 right-4 text-slate-600 hover:text-amber-400 text-lg transition"><i class="fa-solid fa-star"></i></button>
-                    <div onclick="openTool('sigResizer')">
-                        <div class="w-11 h-11 bg-teal-500/15 text-teal-400 rounded-xl flex items-center justify-center text-xl mb-3 border border-teal-500/30"><i class="fa-solid fa-signature"></i></div>
-                        <h4 class="font-bold text-base text-white group-hover:text-teal-400 transition mb-1">সরকারি ও এডমিশন সিগনেচার সাইজার</h4>
-                        <p class="text-xs text-slate-400">যেকোনো সাক্ষরের ছবি নিখুঁতভাবে ৩০০x৮০ পিক্সেল ফরম্যাটে পরিবর্তন ও ব্যাকগ্রাউন্ড অ্যাডজাস্টমেন্ট।</p>
-                    </div>
-                </div>
-
-                <!-- 6. Passport Photo Studio -->
-                <div class="tool-card glass-card-dark p-5 rounded-2xl relative group cursor-pointer" data-id="passportStudio" data-keywords="passport photo studio bg remove print sheet">
-                    <button onclick="toggleFav('passportStudio', event)" class="fav-btn absolute top-4 right-4 text-slate-600 hover:text-amber-400 text-lg transition"><i class="fa-solid fa-star"></i></button>
-                    <div onclick="openTool('passportStudio')">
-                        <div class="w-11 h-11 bg-rose-500/15 text-rose-400 rounded-xl flex items-center justify-center text-xl mb-3 border border-rose-500/30"><i class="fa-solid fa-id-badge"></i></div>
-                        <h4 class="font-bold text-base text-white group-hover:text-rose-400 transition mb-1">পাসপোর্ট ফটো মেকার স্টুডিও</h4>
-                        <p class="text-xs text-slate-400">স্বয়ংক্রিয় ব্যাকগ্রাউন্ড কালার চেঞ্জ, সাইজ কাটআউট এবং প্রিন্ট শট জেনারেটর।</p>
-                    </div>
-                </div>
-
-                <!-- 7. Compress JPEG Studio -->
-                <div class="tool-card glass-card-dark p-5 rounded-2xl relative group cursor-pointer" data-id="compressJpeg" data-keywords="compress jpeg image size kb reducer">
-                    <button onclick="toggleFav('compressJpeg', event)" class="fav-btn absolute top-4 right-4 text-slate-600 hover:text-amber-400 text-lg transition"><i class="fa-solid fa-star"></i></button>
-                    <div onclick="openTool('compressJpeg')">
-                        <div class="w-11 h-11 bg-cyan-500/15 text-cyan-400 rounded-xl flex items-center justify-center text-xl mb-3 border border-cyan-500/30"><i class="fa-solid fa-file-image"></i></div>
-                        <h4 class="font-bold text-base text-white group-hover:text-cyan-400 transition mb-1">ইমেজ ও জেপিইজি কম্প্রেসর (KB সাইজ)</h4>
-                        <p class="text-xs text-slate-400">ছবি কোয়ালিটি ঠিক রেখে ১০০ KB বা ২০০ KB ফরম্যাটে ফাইল কম্প্রেস করুন।</p>
-                    </div>
-                </div>
-
-                <!-- 8. FB Video Creator Strategy Guide -->
-                <div class="tool-card glass-card-dark p-5 rounded-2xl relative group cursor-pointer" data-id="fbStrategy" data-keywords="facebook video marketing strategy traffic engagement viral">
-                    <button onclick="toggleFav('fbStrategy', event)" class="fav-btn absolute top-4 right-4 text-slate-600 hover:text-amber-400 text-lg transition"><i class="fa-solid fa-star"></i></button>
-                    <div onclick="openTool('fbStrategy')">
-                        <div class="w-11 h-11 bg-indigo-500/15 text-indigo-400 rounded-xl flex items-center justify-center text-xl mb-3 border border-indigo-500/30"><i class="fa-brands fa-facebook"></i></div>
-                        <h4 class="font-bold text-base text-white group-hover:text-indigo-400 transition mb-1">ফেসবুক কন্টেন্ট ও ভাইরাল ট্রাফিক স্ট্র্যাটেজি</h4>
-                        <p class="text-xs text-slate-400">ভিডিও বানিয়ে ফেসবুকে ছাড়ার পর ট্রাফিক ওয়েবসাইটে নিয়ে আসার নিখুঁত স্ট্র্যাটেজি গাইড।</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="glass-dark border-t border-slate-800 text-center py-4 px-4 text-xs text-slate-400">
-        &copy; 2026 JT Micro Utility Portal. All Rights Reserved. Powered by Junaid.
-    </footer>
-
-    <!-- MODAL SYSTEM -->
-    <div id="toolModal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/90 backdrop-blur-md p-4">
-        <div class="glass-dark w-full max-w-4xl rounded-2xl p-6 shadow-2xl relative border border-slate-800 max-h-[90vh] overflow-y-auto">
-            <div class="flex justify-between items-center mb-4 border-b border-slate-800 pb-3">
-                <h3 id="modalTitle" class="font-bold text-base sm:text-lg text-white flex items-center gap-2"></h3>
-                <button onclick="closeModal()" class="w-8 h-8 rounded-full bg-slate-900 text-slate-400 hover:text-white flex items-center justify-center border border-slate-800 transition"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            <div id="modalBody"></div>
         </div>
     </div>
 
-    <!-- JAVASCRIPT LOGIC -->
-    <script>
-        // FAVORITES SYSTEM
-        let favorites = JSON.parse(localStorage.getItem('jt_favorites')) || [];
+    <!-- MAIN DASHBOARD APPLICATION -->
+    <div id="mainApp" class="flex-1 flex flex-col">
+        
+        <!-- HEADER BAR -->
+        <header id="mainHeader" class="glass-dark sticky top-0 z-30 px-4 lg:px-12 py-4 flex justify-between items-center border-b border-slate-800/80 transition-colors duration-300">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-gradient-to-tr from-blue-600 to-indigo-600 text-white rounded-xl flex items-center justify-center font-bold text-lg shadow-md shadow-blue-500/30">
+                    <i class="fa-solid fa-bolt animate-spin-slow"></i>
+                </div>
+                <div>
+                    <h2 class="font-bold text-base tracking-wide text-white" id="headerBrandTitle">JT Micro Utility</h2>
+                    <p class="text-[10px] text-slate-400">বাংলাদেশের সর্বাধুনিক এডমিশন ও প্রফেশনাল হাব</p>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-3 relative">
+                <!-- THEME TOGGLE BUTTON -->
+                <button onclick="toggleTheme()" class="w-10 h-10 bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-xl flex items-center justify-center text-slate-300 transition shadow-sm" title="থিম পরিবর্তন করুন">
+                    <i id="themeIcon" class="fa-solid fa-moon text-base"></i>
+                </button>
 
+                <!-- WHATSAPP SUPPORT -->
+                <a href="https://wa.me/8801568600668" target="_blank" class="hidden sm:flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20 px-3 py-1.5 rounded-xl text-xs font-medium transition">
+                    <i class="fa-brands fa-whatsapp text-sm"></i> হোয়াটসঅ্যাপ সাপোর্ট
+                </a>
+
+                <!-- USER MENU DROPDOWN -->
+                <div class="relative">
+                    <button onclick="toggleMenu()" class="w-10 h-10 bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-xl flex items-center justify-center text-slate-300 transition shadow-sm">
+                        <i class="fa-solid fa-ellipsis-vertical text-lg"></i>
+                    </button>
+                    <div id="dropdownMenu" class="hidden absolute right-0 mt-2 w-56 glass-dark rounded-xl shadow-2xl border border-slate-800 overflow-hidden z-50 animate-pop">
+                        <button onclick="openProfileModal(); toggleMenu();" class="w-full text-left px-4 py-2.5 text-xs text-slate-200 hover:bg-slate-800/80 flex items-center gap-2.5 transition border-b border-slate-800/50">
+                            <i class="fa-solid fa-user text-emerald-400"></i> ইউজার প্রোফাইল
+                        </button>
+                        <button onclick="openCompleteWorksModal(); toggleMenu();" class="w-full text-left px-4 py-2.5 text-xs text-slate-200 hover:bg-slate-800/80 flex items-center gap-2.5 transition border-b border-slate-800/50">
+                            <i class="fa-solid fa-circle-check text-purple-400"></i> সম্পন্ন কাজসমূহ (<span id="menuWorkCount">0</span>)
+                        </button>
+                        <button onclick="logout()" class="w-full text-left px-4 py-2.5 text-xs text-rose-400 hover:bg-rose-500/10 flex items-center gap-2.5 transition font-medium">
+                            <i class="fa-solid fa-right-from-bracket"></i> লগআউট
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="flex-1 max-w-7xl w-full mx-auto px-4 lg:px-8 py-8 space-y-8">
+            
+            <!-- TOP TITLE & STATS BAR -->
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div>
+                    <h1 class="text-2xl sm:text-3xl font-bold text-white mb-1" id="mainHeadingTitle">ইন্টারেক্টিভ অল-ইন-ওয়ান ড্যাশবোর্ড</h1>
+                    <p class="text-slate-400 text-xs sm:text-sm">বিশ্ববিদ্যালয় ভর্তি ডিরেক্টরি, জিপিএ যোগ্যতা চেকার, প্রফেশনাল সিভি ও ইউটিলিটি টুলস।</p>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 px-4 py-2 rounded-xl flex items-center gap-3 self-start sm:self-auto shadow-sm">
+                    <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></div>
+                    <span class="text-xs text-slate-300 font-medium">মোট লাইভ ইন্টারেকশন: <strong id="totalViewsCount" class="text-emerald-400">0</strong></span>
+                </div>
+            </div>
+
+            <!-- LIVE ADMISSION COUNTDOWN BANNER -->
+            <div class="bg-gradient-to-r from-blue-950/60 via-indigo-950/40 to-slate-900 border border-blue-500/30 rounded-2xl p-4 sm:p-6 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
+                <div class="space-y-1 text-center sm:text-left">
+                    <span class="text-[10px] bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2.5 py-0.5 rounded-full font-bold">লাইভ এডমিশন ট্র্যাকার</span>
+                    <h3 class="font-bold text-base sm:text-lg text-white">ঢাকা বিশ্ববিদ্যালয় (DU) ২০২৩-২০২৪ অনলাইন আবেদন সমাপনী</h3>
+                    <p class="text-xs text-slate-300">আবেদনের শেষ সময়সীমা রিয়েল-টাইমে গণনা হচ্ছে:</p>
+                </div>
+                <div class="flex gap-3 text-center">
+                    <div class="bg-slate-900/90 border border-slate-800 p-2.5 rounded-xl min-w-[60px]">
+                        <span id="cdDays" class="block font-bold text-xl text-blue-400">14</span>
+                        <span class="text-[10px] text-slate-400">দিন</span>
+                    </div>
+                    <div class="bg-slate-900/90 border border-slate-800 p-2.5 rounded-xl min-w-[60px]">
+                        <span id="cdHours" class="block font-bold text-xl text-indigo-400">06</span>
+                        <span class="text-[10px] text-slate-400">ঘণ্টা</span>
+                    </div>
+                    <div class="bg-slate-900/90 border border-slate-800 p-2.5 rounded-xl min-w-[60px]">
+                        <span id="cdMins" class="block font-bold text-xl text-teal-400">32</span>
+                        <span class="text-[10px] text-slate-400">মিঃ</span>
+                    </div>
+                    <div class="bg-slate-900/90 border border-slate-800 p-2.5 rounded-xl min-w-[60px]">
+                        <span id="cdSecs" class="block font-bold text-xl text-rose-400">18</span>
+                        <span class="text-[10px] text-slate-400">সেঃ</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- INSTANT LIVE SEARCH BAR -->
+            <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <input type="text" id="liveSearchInput" oninput="filterTools()" placeholder="যেকোনো টুলস বা ভার্সিটির নাম লিখুন (যেমন: Admission, GPA, CV, Passport, Compress, Signature, QR)..." class="w-full bg-slate-900 border border-slate-800 rounded-2xl pl-12 pr-4 py-4 text-sm text-slate-200 focus:outline-none focus:border-blue-500 transition shadow-xl">
+            </div>
+
+            <!-- BOOKMARKED / FAVORITE TOOLS SECTION -->
+            <div id="favSection" class="hidden space-y-3">
+                <h3 class="text-sm font-bold text-amber-400 flex items-center gap-2">
+                    <i class="fa-solid fa-star"></i> আপনার পছন্দের বুকমার্ক করা টুলসমূহ (<span id="favCount">0</span>)
+                </h3>
+                <div id="favGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+            </div>
+
+            <!-- ADSTERRA AD CONTAINER -->
+            <div class="p-4 bg-slate-900/60 border border-slate-800 rounded-2xl text-center">
+                <script data-cfasync="false" src="https://bauval.org/14/a0bf2999fe8463c6c3a473854470e8ce"></script>
+            </div>
+
+            <!-- ALL TOOLS GRID -->
+            <div id="toolsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- 1. UNIVERSITY & ADMISSION PORTAL HUB -->
+                <div class="tool-card glass-card-dark p-6 rounded-2xl cursor-pointer group hover:border-amber-400 border-2 border-amber-500/30 bg-amber-950/20 relative" data-id="admissionHub" data-name="admission hub medical engineering public private university du ru cu ju buet gst cluster" onclick="openTool('admissionHub')">
+                    <button onclick="toggleFav('admissionHub', event)" class="fav-btn absolute top-5 right-5 text-slate-600 hover:text-amber-400 text-lg transition"><i class="fa-solid fa-star"></i></button>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-amber-500/20 text-amber-400 rounded-2xl flex items-center justify-center text-xl border border-amber-500/40 group-hover:scale-110 transition"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <span class="text-[11px] bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2.5 py-1 rounded-full font-bold">ALL ADMISSION HUBS</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-white mb-1 group-hover:text-amber-400 transition">বিশ্ববিদ্যালয় ও মেডিকেল এডমিশন হাব</h3>
+                    <p class="text-xs text-slate-300">পাবলিক, গুচ্ছ (GST), মেডিকেল, ইঞ্জিনিয়ারিং ও প্রাইভেট বিশ্ববিদ্যালয়ের অফিশিয়াল আবেদন ও নোটিশ লিংক।</p>
+                </div>
+
+                <!-- 2. GPA & SUBJECT ELIGIBILITY CHECKER -->
+                <div class="tool-card glass-card-dark p-6 rounded-2xl cursor-pointer group hover:border-cyan-400 border-2 border-cyan-500/30 bg-cyan-950/20 relative" data-id="gpaChecker" data-name="gpa eligibility checker admission university calculator ssc hsc score point" onclick="openTool('gpaChecker')">
+                    <button onclick="toggleFav('gpaChecker', event)" class="fav-btn absolute top-5 right-5 text-slate-600 hover:text-amber-400 text-lg transition"><i class="fa-solid fa-star"></i></button>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-cyan-500/20 text-cyan-400 rounded-2xl flex items-center justify-center text-xl border border-cyan-500/40 group-hover:scale-110 transition"><i class="fa-solid fa-square-check"></i></div>
+                        <span class="text-[11px] bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 px-2.5 py-1 rounded-full font-bold">STUDENT TOOL</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-white mb-1 group-hover:text-cyan-400 transition">জিপিএ ও এডমিশন যোগ্যতা ক্যালকুলেটর</h3>
+                    <p class="text-xs text-slate-300">SSC ও HSC জিপিএ ইনপুট দিয়ে জেনে নিন আপনি ঢাকা বিশ্ববিদ্যালয়, বুয়েট, মেডিকেল ও গুচ্ছের কোন কোন ইউনিটে পরীক্ষা দিতে পারবেন।</p>
+                </div>
+
+                <!-- 3. SMART CV & RESUME BUILDER -->
+                <div class="tool-card glass-card-dark p-6 rounded-2xl cursor-pointer group hover:border-purple-400 border-2 border-purple-500/30 bg-purple-950/20 relative" data-id="cvBuilder" data-name="cv resume builder maker biodata photo print job part time" onclick="openTool('cvBuilder')">
+                    <button onclick="toggleFav('cvBuilder', event)" class="fav-btn absolute top-5 right-5 text-slate-600 hover:text-amber-400 text-lg transition"><i class="fa-solid fa-star"></i></button>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-purple-500/20 text-purple-400 rounded-2xl flex items-center justify-center text-xl border border-purple-500/40 group-hover:scale-110 transition"><i class="fa-solid fa-file-invoice"></i></div>
+                        <span class="text-[11px] bg-purple-500/20 text-purple-300 border border-purple-500/30 px-2.5 py-1 rounded-full font-bold">CAREER TOOL</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-white mb-1 group-hover:text-purple-400 transition">প্রফেশনাল ফটো সিভি ও বায়োডাটা মেকার</h3>
+                    <p class="text-xs text-slate-300">ফুল-টাইম ও পার্ট-টাইম চাকুরীর জন্য আন্তর্জাতিক মানসম্পন্ন প্রফেশনাল ছবিসহ সিভি বানিয়ে ডাউনলোড বা প্রিন্ট করুন।</p>
+                </div>
+
+                <!-- 4. ADMISSION MODEL TEST QUIZ -->
+                <div class="tool-card glass-card-dark p-6 rounded-2xl cursor-pointer group hover:border-emerald-400 border-2 border-emerald-500/30 bg-emerald-950/20 relative" data-id="quizHub" data-name="quiz model test question bank admission mcq daily exam" onclick="openTool('quizHub')">
+                    <button onclick="toggleFav('quizHub', event)" class="fav-btn absolute top-5 right-5 text-slate-600 hover:text-amber-400 text-lg transition"><i class="fa-solid fa-star"></i></button>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-emerald-500/20 text-emerald-400 rounded-2xl flex items-center justify-center text-xl border border-emerald-500/40 group-hover:scale-110 transition"><i class="fa-solid fa-list-check"></i></div>
+                        <span class="text-[11px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2.5 py-1 rounded-full font-bold">DAILY PRACTICE</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-white mb-1 group-hover:text-emerald-400 transition">প্রশ্ন ব্যাংক ও ডেইলি এডমিশন মডেল টেস্ট</h3>
+                    <p class="text-xs text-slate-300">বিগত বছরের বিশ্ববিদ্যালয় প্রশ্ন সমাধান এবং প্রতিদিনের ১০টি করে লাইভ MCQ মডেল টেস্ট কুইজ।</p>
+                </div>
+
+                <!-- 5. COMPRESS JPEG & CONVERTER STUDIO -->
+                <div class="tool-card glass-card-dark p-6 rounded-2xl cursor-pointer group hover:border-teal-400 border-2 border-teal-500/30 bg-teal-950/20 relative" data-id="compressJpeg" data-name="compress jpeg image converter kb size reducer photo" onclick="openTool('compressJpeg')">
+                    <button onclick="toggleFav('compressJpeg', event)" class="fav-btn absolute top-5 right-5 text-slate-600 hover:text-amber-400 text-lg transition"><i class="fa-solid fa-star"></i></button>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-teal-500/20 text-teal-400 rounded-2xl flex items-center justify-center text-xl border border-teal-500/40 group-hover:scale-110 transition"><i class="fa-solid fa-compress"></i></div>
+                        <span class="text-[11px] bg-teal-500/20 text-teal-300 border border-teal-500/30 px-2.5 py-1 rounded-full font-bold">COMPRESS JPEG</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-white mb-1 group-hover:text-teal-400 transition">Compress JPEG & Size Reducer</h3>
+                    <p class="text-xs text-slate-300">যেকোনো ছবিকে জেপিইজি ফরম্যাটে রূপান্তর করুন, কোয়ালিটি ঠিক রেখে ১০০ KB বা ২০০ KB ফরম্যাটে সাইজ কমান।</p>
+                </div>
+
+                <!-- 6. PASSPORT PHOTO MAKER STUDIO -->
+                <div class="tool-card glass-card-dark p-6 rounded-2xl cursor-pointer group hover:border-blue-400 border-2 border-blue-500/30 bg-blue-950/20 relative" data-id="passportPhoto" data-name="passport photo maker background remover cutout print 4r" onclick="openTool('passportPhoto')">
+                    <button onclick="toggleFav('passportPhoto', event)" class="fav-btn absolute top-5 right-5 text-slate-600 hover:text-amber-400 text-lg transition"><i class="fa-solid fa-star"></i></button>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-blue-500/20 text-blue-400 rounded-2xl flex items-center justify-center text-xl border border-blue-500/40 group-hover:scale-110 transition"><i class="fa-solid fa-id-badge"></i></div>
+                        <span class="text-[11px] bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2.5 py-1 rounded-full font-bold">PASSPORT STUDIO</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-white mb-1 group-hover:text-blue-400 transition">পাসপোর্ট ফটো মেকার স্টুডিও</h3>
+                    <p class="text-xs text-slate-300">ইউনিভার্সাল ফরম্যাট সাপোর্ট, ১-ক্লিক এআই ব্যাকগ্রাউন্ড পরিবর্তন ও ৪R প্রিন্ট শিট জেনারেটর।</p>
+                </div>
+
+                <!-- 7. SIGNATURE RESIZER (300x80) -->
+                <div class="tool-card glass-card-dark p-6 rounded-2xl cursor-pointer group hover:border-emerald-400 border-2 border-emerald-500/30 bg-emerald-950/20 relative" data-id="signatureResizer" data-name="signature resizer 300x80 exam gov bd teletalk" onclick="openTool('signatureResizer')">
+                    <button onclick="toggleFav('signatureResizer', event)" class="fav-btn absolute top-5 right-5 text-slate-600 hover:text-amber-400 text-lg transition"><i class="fa-solid fa-star"></i></button>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-emerald-500/20 text-emerald-400 rounded-2xl flex items-center justify-center text-xl border border-emerald-500/40 group-hover:scale-110 transition"><i class="fa-solid fa-signature"></i></div>
+                        <span class="text-[11px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2.5 py-1 rounded-full font-bold">BD EXAM 300x80</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-white mb-1 group-hover:text-emerald-400 transition">সরকারি ও এডমিশন সিগনেচার সাইজার</h3>
+                    <p class="text-xs text-slate-300">যেকোনো স্বাক্ষরের ছবি একদম নিখুঁতভাবে সরকারি আবেদন ফরম্যাট ৩০০x৮০ পিক্সেলে ক্রপ ও ডাউনলোডের সুবিধা।</p>
+                </div>
+
+                <!-- 8. FB VIDEO CREATOR VIRAL MARKETING STRATEGY -->
+                <div class="tool-card glass-card-dark p-6 rounded-2xl cursor-pointer group hover:border-indigo-500/50 relative" data-id="fbStrategy" data-name="facebook video marketing strategy traffic viral engagement guide" onclick="openTool('fbStrategy')">
+                    <button onclick="toggleFav('fbStrategy', event)" class="fav-btn absolute top-5 right-5 text-slate-600 hover:text-amber-400 text-lg transition"><i class="fa-solid fa-star"></i></button>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-indigo-500/15 text-indigo-400 rounded-2xl flex items-center justify-center text-xl border border-indigo-500/30 group-hover:scale-110 transition"><i class="fa-brands fa-facebook"></i></div>
+                        <span class="text-[11px] bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-2.5 py-1 rounded-full font-medium">CREATOR GUIDE</span>
+                    </div>
+                    <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-indigo-400 transition">ফেসবুক ভিডিও কন্টেন্ট ও ভাইরাল স্ট্র্যাটেজি</h3>
+                    <p class="text-xs text-slate-400">ফেসবুকে ভিডিও বানিয়ে ছাড়ার পর দর্শকদের আগ্রহ বাড়িয়ে সাইটে নিয়ে আসার কার্যকারী পদক্ষেপ গাইড।</p>
+                </div>
+
+                <!-- 9. THUMBNAIL DOWNLOADER -->
+                <div class="tool-card glass-card-dark p-6 rounded-2xl cursor-pointer group hover:border-red-500/50 relative" data-id="thumbDownloader" data-name="thumbnail downloader youtube video hd 4k" onclick="openTool('thumbDownloader')">
+                    <button onclick="toggleFav('thumbDownloader', event)" class="fav-btn absolute top-5 right-5 text-slate-600 hover:text-amber-400 text-lg transition"><i class="fa-solid fa-star"></i></button>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-red-500/15 text-red-400 rounded-2xl flex items-center justify-center text-xl border border-red-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-download"></i></div>
+                        <span class="text-[11px] bg-red-500/10 text-red-400 border border-red-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-thumbDownloader">0</span> views</span>
+                    </div>
+                    <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-red-400 transition">ইউটিউব থাম্বনেইল ডাউনলোডার</h3>
+                    <p class="text-xs text-slate-400">ইউটিউব ভিডিওর লিংক বসিয়ে ১-ক্লিকে ৪K ও Full HD থাম্বনেইল ডাউনলোড করুন।</p>
+                </div>
+
+                <!-- 10. QR CODE GENERATOR -->
+                <div class="tool-card glass-card-dark p-6 rounded-2xl cursor-pointer group hover:border-purple-500/50 relative" data-id="qrGenerator" data-name="qr code generator custom link image" onclick="openTool('qrGenerator')">
+                    <button onclick="toggleFav('qrGenerator', event)" class="fav-btn absolute top-5 right-5 text-slate-600 hover:text-amber-400 text-lg transition"><i class="fa-solid fa-star"></i></button>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-purple-500/15 text-purple-400 rounded-2xl flex items-center justify-center text-xl border border-purple-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-qrcode"></i></div>
+                        <span class="text-[11px] bg-purple-500/10 text-purple-400 border border-purple-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-qrGenerator">0</span> views</span>
+                    </div>
+                    <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-purple-400 transition">QR Code Generator</h3>
+                    <p class="text-xs text-slate-400">কাস্টম হাই-রেজোলিউশন কিউআর (QR) কোড তৈরি ও সরাসরি ডাউনলোড করুন।</p>
+                </div>
+
+                <!-- 11. WORD & CHAR COUNTER -->
+                <div class="tool-card glass-card-dark p-6 rounded-2xl cursor-pointer group hover:border-blue-500/50 relative" data-id="wordCounter" data-name="word character counter length paragraph text" onclick="openTool('wordCounter')">
+                    <button onclick="toggleFav('wordCounter', event)" class="fav-btn absolute top-5 right-5 text-slate-600 hover:text-amber-400 text-lg transition"><i class="fa-solid fa-star"></i></button>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-blue-500/15 text-blue-400 rounded-2xl flex items-center justify-center text-xl border border-blue-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-file-lines"></i></div>
+                        <span class="text-[11px] bg-blue-500/10 text-blue-400 border border-blue-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-wordCounter">0</span> views</span>
+                    </div>
+                    <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-blue-400 transition">ওয়ার্ড ও ক্যারেক্টার কাউন্টার</h3>
+                    <p class="text-xs text-slate-400">লেখা বা অনুচ্ছেদের শব্দ ও অক্ষরের সংখ্যা লাইভ গণনা করুন।</p>
+                </div>
+
+                <!-- 12. PASSWORD GENERATOR -->
+                <div class="tool-card glass-card-dark p-6 rounded-2xl cursor-pointer group hover:border-emerald-500/50 relative" data-id="passGenerator" data-name="password generator random strong key" onclick="openTool('passGenerator')">
+                    <button onclick="toggleFav('passGenerator', event)" class="fav-btn absolute top-5 right-5 text-slate-600 hover:text-amber-400 text-lg transition"><i class="fa-solid fa-star"></i></button>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-emerald-500/15 text-emerald-400 rounded-2xl flex items-center justify-center text-xl border border-emerald-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-key"></i></div>
+                        <span class="text-[11px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-passGenerator">0</span> views</span>
+                    </div>
+                    <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-emerald-400 transition">স্ট্রং পাসওয়ার্ড জেনারেটর</h3>
+                    <p class="text-xs text-slate-400">১-ক্লিকে যেকোনো সেবার জন্য নিরাপদ ও শক্তিশালী পাসওয়ার্ড তৈরি করুন।</p>
+                </div>
+
+                <!-- 13. AGE CALCULATOR -->
+                <div class="tool-card glass-card-dark p-6 rounded-2xl cursor-pointer group hover:border-amber-500/50 relative" data-id="ageCalculator" data-name="age calculator birth date year month day" onclick="openTool('ageCalculator')">
+                    <button onclick="toggleFav('ageCalculator', event)" class="fav-btn absolute top-5 right-5 text-slate-600 hover:text-amber-400 text-lg transition"><i class="fa-solid fa-star"></i></button>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-amber-500/15 text-amber-400 rounded-2xl flex items-center justify-center text-xl border border-amber-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-cake-candles"></i></div>
+                        <span class="text-[11px] bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-ageCalculator">0</span> views</span>
+                    </div>
+                    <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-amber-400 transition">বয়স ক্যালকুলেটর</h3>
+                    <p class="text-xs text-slate-400">জন্ম তারিখ বসিয়ে সঠিক বছর, মাস ও দিন নির্ভুলভাবে হিসেব করুন।</p>
+                </div>
+
+                <!-- 14. UNIT CONVERTER -->
+                <div class="tool-card glass-card-dark p-6 rounded-2xl cursor-pointer group hover:border-cyan-500/50 relative" data-id="unitConverter" data-name="unit converter kg gram weight measure" onclick="openTool('unitConverter')">
+                    <button onclick="toggleFav('unitConverter', event)" class="fav-btn absolute top-5 right-5 text-slate-600 hover:text-amber-400 text-lg transition"><i class="fa-solid fa-star"></i></button>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-cyan-500/15 text-cyan-400 rounded-2xl flex items-center justify-center text-xl border border-cyan-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-scale-balanced"></i></div>
+                        <span class="text-[11px] bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-unitConverter">0</span> views</span>
+                    </div>
+                    <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-cyan-400 transition">ইউনিট কনভার্টার (KG to Gram)</h3>
+                    <p class="text-xs text-slate-400">কেজি (KG) থেকে গ্রামে দ্রুত পরিমাপ রূপান্তর করুন।</p>
+                </div>
+
+                <!-- 15. TEXT TO SPEECH -->
+                <div class="tool-card glass-card-dark p-6 rounded-2xl cursor-pointer group hover:border-rose-500/50 relative" data-id="textSpeech" data-name="text to speech voice audio speaker" onclick="openTool('textSpeech')">
+                    <button onclick="toggleFav('textSpeech', event)" class="fav-btn absolute top-5 right-5 text-slate-600 hover:text-amber-400 text-lg transition"><i class="fa-solid fa-star"></i></button>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-rose-500/15 text-rose-400 rounded-2xl flex items-center justify-center text-xl border border-rose-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-volume-high"></i></div>
+                        <span class="text-[11px] bg-rose-500/10 text-rose-400 border border-rose-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-textSpeech">0</span> views</span>
+                    </div>
+                    <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-rose-400 transition">টেক্সট-টু-স্পিচ (ভয়েস অডিও)</h3>
+                    <p class="text-xs text-slate-400">যেকোনো লেখাকে প্রাকৃতিক ভয়েস অডিওতে রূপান্তর করে শুনুন।</p>
+                </div>
+
+                <!-- 16. COLOR PICKER & HEX -->
+                <div class="tool-card glass-card-dark p-6 rounded-2xl cursor-pointer group hover:border-emerald-500/50 relative" data-id="colorPicker" data-name="color picker hex code rgb palette" onclick="openTool('colorPicker')">
+                    <button onclick="toggleFav('colorPicker', event)" class="fav-btn absolute top-5 right-5 text-slate-600 hover:text-amber-400 text-lg transition"><i class="fa-solid fa-star"></i></button>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-emerald-500/15 text-emerald-400 rounded-2xl flex items-center justify-center text-xl border border-emerald-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-palette"></i></div>
+                        <span class="text-[11px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-colorPicker">0</span> views</span>
+                    </div>
+                    <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-emerald-400 transition">কালার পিকার ও HEX কোড</h3>
+                    <p class="text-xs text-slate-400">পছন্দের কালার পিক করুন এবং সঠিক HEX কোড কপি করুন।</p>
+                </div>
+
+                <!-- 17. TEMPORARY NOTEPAD -->
+                <div class="tool-card glass-card-dark p-6 rounded-2xl cursor-pointer group hover:border-yellow-500/50 relative" data-id="tempNotepad" data-name="temporary notepad notes auto save scratchpad" onclick="openTool('tempNotepad')">
+                    <button onclick="toggleFav('tempNotepad', event)" class="fav-btn absolute top-5 right-5 text-slate-600 hover:text-amber-400 text-lg transition"><i class="fa-solid fa-star"></i></button>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-yellow-500/15 text-yellow-400 rounded-2xl flex items-center justify-center text-xl border border-yellow-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-note-sticky"></i></div>
+                        <span class="text-[11px] bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-tempNotepad">0</span> views</span>
+                    </div>
+                    <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-yellow-400 transition">অটো-সেভ টেম্পোরারি নোটপ্যাড</h3>
+                    <p class="text-xs text-slate-400">স্থানীয় ব্রাউজারে স্বয়ংক্রিয়ভাবে সেভ থাকা কুইক নোটপ্যাড।</p>
+                </div>
+
+                <!-- 18. PASSWORD HACK TIME CHECKER -->
+                <div class="tool-card glass-card-dark p-6 rounded-2xl cursor-pointer group hover:border-fuchsia-500/50 relative" data-id="passChecker" data-name="password hack time checker security strength" onclick="openTool('passChecker')">
+                    <button onclick="toggleFav('passChecker', event)" class="fav-btn absolute top-5 right-5 text-slate-600 hover:text-amber-400 text-lg transition"><i class="fa-solid fa-star"></i></button>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-fuchsia-500/15 text-fuchsia-400 rounded-2xl flex items-center justify-center text-xl border border-fuchsia-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-shield-halved"></i></div>
+                        <span class="text-[11px] bg-fuchsia-500/10 text-fuchsia-400 border border-fuchsia-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-passChecker">0</span> views</span>
+                    </div>
+                    <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-fuchsia-400 transition">পাসওয়ার্ড হ্যাক টাইম চেকার</h3>
+                    <p class="text-xs text-slate-400">আপনার পাসওয়ার্ড হ্যাক করতে হ্যাকারদের কত সময় লাগবে তা হিসেব করুন।</p>
+                </div>
+
+                <!-- 19. POMODORO STUDY TIMER -->
+                <div class="tool-card glass-card-dark p-6 rounded-2xl cursor-pointer group hover:border-pink-500/50 relative" data-id="pomodoro" data-name="pomodoro study focus timer clock break" onclick="openTool('pomodoro')">
+                    <button onclick="toggleFav('pomodoro', event)" class="fav-btn absolute top-5 right-5 text-slate-600 hover:text-amber-400 text-lg transition"><i class="fa-solid fa-star"></i></button>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-pink-500/15 text-pink-400 rounded-2xl flex items-center justify-center text-xl border border-pink-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-clock"></i></div>
+                        <span class="text-[11px] bg-pink-500/10 text-pink-400 border border-pink-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-pomodoro">0</span> views</span>
+                    </div>
+                    <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-pink-400 transition">পমোদোরো স্টাডি টাইমার</h3>
+                    <p class="text-xs text-slate-400">২৫ মিনিটের মনোযোগ দিয়ে পড়াশোনা ও বিরতির লাইভ কাউন্টডাউন টাইমার।</p>
+                </div>
+
+                <!-- 20. LOAN & EMI CALCULATOR -->
+                <div class="tool-card glass-card-dark p-6 rounded-2xl cursor-pointer group hover:border-amber-400/50 relative" data-id="emiCalc" data-name="loan emi calculator interest monthly payment" onclick="openTool('emiCalc')">
+                    <button onclick="toggleFav('emiCalc', event)" class="fav-btn absolute top-5 right-5 text-slate-600 hover:text-amber-400 text-lg transition"><i class="fa-solid fa-star"></i></button>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-amber-400/15 text-amber-300 rounded-2xl flex items-center justify-center text-xl border border-amber-400/30 group-hover:scale-110 transition"><i class="fa-solid fa-calculator"></i></div>
+                        <span class="text-[11px] bg-amber-400/10 text-amber-300 border border-amber-400/20 px-2.5 py-1 rounded-full font-medium"><span id="view-emiCalc">0</span> views</span>
+                    </div>
+                    <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-amber-300 transition">লোন ও EMI ক্যালকুলেটর</h3>
+                    <p class="text-xs text-slate-400">ব্যাংক লোন বা কিস্তির মাসিক সুদের হার ও EMI গণনা করুন।</p>
+                </div>
+
+                <!-- 21. WORLD CLOCK -->
+                <div class="tool-card glass-card-dark p-6 rounded-2xl cursor-pointer group hover:border-rose-400/50 relative" data-id="worldClock" data-name="world clock international time zone dhaka new york london" onclick="openTool('worldClock')">
+                    <button onclick="toggleFav('worldClock', event)" class="fav-btn absolute top-5 right-5 text-slate-600 hover:text-amber-400 text-lg transition"><i class="fa-solid fa-star"></i></button>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-rose-400/15 text-rose-300 rounded-2xl flex items-center justify-center text-xl border border-rose-400/30 group-hover:scale-110 transition"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                        <span class="text-[11px] bg-rose-400/10 text-rose-300 border border-rose-400/20 px-2.5 py-1 rounded-full font-medium"><span id="view-worldClock">0</span> views</span>
+                    </div>
+                    <h3 class="font-semibold text-lg text-white mb-1 group-hover:text-rose-300 transition">ওয়ার্ল্ড ক্লক (বিশ্বের সময়)</h3>
+                    <p class="text-xs text-slate-400">বিশ্বের বিভিন্ন দেশের বর্তমান স্থানীয় সময় লাইভ ট্র্যাক করুন।</p>
+                </div>
+
+            </div>
+        </main>
+
+        <!-- FOOTER BAR -->
+        <footer id="mainFooter" class="glass-dark border-t border-slate-800 text-center py-4 px-4 text-xs text-slate-400 flex flex-col sm:flex-row justify-between items-center gap-2 max-w-7xl mx-auto w-full transition-colors duration-300">
+            <div>&copy; 2026 JT Micro Utility. Powered by Junaid.</div>
+            <div>সরাসরি সহায়তা: <a href="https://wa.me/8801568600668" target="_blank" class="text-emerald-400 hover:underline inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp"></i> হোয়াটসঅ্যাপ (01568600668)</a></div>
+        </footer>
+    </div>
+
+    <!-- MAIN TOOL MODAL -->
+    <div id="toolModal" class="fixed inset-0 z-40 hidden flex items-center justify-center bg-black/90 backdrop-blur-md p-4">
+        <div class="glass-dark w-full max-w-4xl rounded-2xl p-6 shadow-2xl animate-pop relative border border-slate-800 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-4 border-b border-slate-800 pb-3">
+                <h3 id="toolModalTitle" class="font-bold text-lg text-white flex items-center gap-2">টুল টাইটেল</h3>
+                <button onclick="closeToolModal()" class="w-8 h-8 rounded-full bg-slate-900 text-slate-400 hover:text-white flex items-center justify-center border border-slate-800 transition"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div id="toolModalBody"></div>
+        </div>
+    </div>
+
+    <!-- PROFILE EDIT MODAL -->
+    <div id="profileModal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/90 backdrop-blur-md p-4">
+        <div class="glass-dark w-full max-w-md rounded-2xl p-6 shadow-2xl animate-pop relative border border-slate-800">
+            <div class="flex justify-between items-center mb-4 border-b border-slate-800 pb-3">
+                <h3 class="font-bold text-lg text-white">ইউজার প্রোফাইল সম্পাদনা</h3>
+                <button onclick="closeProfileModal()" class="w-8 h-8 rounded-full bg-slate-900 text-slate-400 hover:text-white flex items-center justify-center border border-slate-800 transition"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form onsubmit="saveProfile(event)" class="space-y-4">
+                <div>
+                    <label class="text-xs text-slate-400 block mb-1">পূর্ণ নাম</label>
+                    <input type="text" id="profileNameInput" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-blue-500 transition text-slate-200" required placeholder="আপনার নাম লিখুন">
+                </div>
+                <div>
+                    <label class="text-xs text-slate-400 block mb-1">ফোন / কন্টাক্ট নম্বর</label>
+                    <input type="text" id="profilePhoneInput" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-blue-500 transition text-slate-200" placeholder="015xxxxxxxx">
+                </div>
+                <div>
+                    <label class="text-xs text-slate-400 block mb-1">বায়ো / ঠিকানা</label>
+                    <textarea id="profileBioInput" rows="2" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-blue-500 transition text-slate-200" placeholder="নিজের সম্পর্কে কিছু লিখুন..."></textarea>
+                </div>
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-medium py-2.5 rounded-xl transition shadow-lg shadow-blue-600/30">তথ্য সেভ করুন</button>
+            </form>
+            <div id="profileAlert" class="hidden mt-3 p-3 bg-emerald-500/20 border border-emerald-500 text-emerald-400 rounded-xl text-center text-xs font-medium flex items-center justify-center gap-2 animate-pop">
+                <i class="fa-solid fa-circle-check text-base"></i> প্রোফাইল সফলভাবে আপডেট হয়েছে!
+            </div>
+        </div>
+    </div>
+
+    <!-- COMPLETE WORKS HISTORY MODAL -->
+    <div id="completeWorksModal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/90 backdrop-blur-md p-4">
+        <div class="glass-dark w-full max-w-md rounded-2xl p-6 shadow-2xl animate-pop relative border border-slate-800">
+            <div class="flex justify-between items-center mb-4 border-b border-slate-800 pb-3">
+                <h3 class="font-bold text-lg text-white flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> সম্পন্ন কাজের ইতিহাস</h3>
+                <button onclick="closeCompleteWorksModal()" class="w-8 h-8 rounded-full bg-slate-900 text-slate-400 hover:text-white flex items-center justify-center border border-slate-800 transition"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="space-y-3">
+                <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 flex justify-between items-center">
+                    <span class="text-xs text-slate-300 font-medium">মোট সম্পন্ন হওয়া কাজ:</span>
+                    <span id="modalWorkCount" class="text-lg font-bold text-emerald-400">0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ALL JAVASCRIPT SYSTEM LOGIC -->
+    <script>
+        // GLOBAL STATE DATA
+        let toolViews = JSON.parse(localStorage.getItem('jt_tool_views')) || {
+            admissionHub: 0, gpaChecker: 0, cvBuilder: 0, quizHub: 0, compressJpeg: 0, passportPhoto: 0, signatureResizer: 0, wordCounter: 0, passGenerator: 0, qrGenerator: 0, ageCalculator: 0, unitConverter: 0, textSpeech: 0, thumbDownloader: 0, colorPicker: 0, tempNotepad: 0, passChecker: 0, pomodoro: 0, emiCalc: 0, worldClock: 0
+        };
+        let completedWorksCount = parseInt(localStorage.getItem('jt_works_count')) || 0;
+        let favorites = JSON.parse(localStorage.getItem('jt_favorites')) || [];
+        let currentTheme = localStorage.getItem('jt_theme') || 'dark';
+
+        // DOM READY INITIALIZATION
+        document.addEventListener('DOMContentLoaded', () => {
+            applyTheme(currentTheme);
+            document.getElementById('menuWorkCount').innerText = completedWorksCount;
+            document.getElementById('modalWorkCount').innerText = completedWorksCount;
+            updateTotalViews();
+            updateFavUI();
+            startCountdown();
+        });
+
+        // THEME SYSTEM
+        function toggleTheme() {
+            currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            localStorage.setItem('jt_theme', currentTheme);
+            applyTheme(currentTheme);
+        }
+
+        function applyTheme(theme) {
+            const body = document.body;
+            const header = document.getElementById('mainHeader');
+            const footer = document.getElementById('mainFooter');
+            const brandTitle = document.getElementById('headerBrandTitle');
+            const headingTitle = document.getElementById('mainHeadingTitle');
+            const themeIcon = document.getElementById('themeIcon');
+            const cards = document.querySelectorAll('.tool-card');
+
+            if (theme === 'light') {
+                body.className = "bg-slate-100 text-slate-900 min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white relative overflow-x-hidden";
+                header.className = "glass-light sticky top-0 z-30 px-4 lg:px-12 py-4 flex justify-between items-center border-b border-slate-200 transition-colors duration-300";
+                footer.className = "glass-light border-t border-slate-200 text-center py-4 px-4 text-xs text-slate-600 flex flex-col sm:flex-row justify-between items-center gap-2 max-w-7xl mx-auto w-full transition-colors duration-300";
+                brandTitle.className = "font-bold text-base tracking-wide text-slate-900";
+                headingTitle.className = "text-2xl sm:text-3xl font-bold text-slate-900 mb-1";
+                themeIcon.className = "fa-solid fa-sun text-amber-500 text-base";
+                cards.forEach(c => {
+                    c.classList.remove('glass-card-dark');
+                    c.classList.add('glass-card-light');
+                });
+            } else {
+                body.className = "bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white relative overflow-x-hidden";
+                header.className = "glass-dark sticky top-0 z-30 px-4 lg:px-12 py-4 flex justify-between items-center border-b border-slate-800/80 transition-colors duration-300";
+                footer.className = "glass-dark border-t border-slate-800 text-center py-4 px-4 text-xs text-slate-400 flex flex-col sm:flex-row justify-between items-center gap-2 max-w-7xl mx-auto w-full transition-colors duration-300";
+                brandTitle.className = "font-bold text-base tracking-wide text-white";
+                headingTitle.className = "text-2xl sm:text-3xl font-bold text-white mb-1";
+                themeIcon.className = "fa-solid fa-moon text-slate-300 text-base";
+                cards.forEach(c => {
+                    c.classList.remove('glass-card-light');
+                    c.classList.add('glass-card-dark');
+                });
+            }
+        }
+
+        // INSTANT LIVE SEARCH SYSTEM
+        function filterTools() {
+            const query = document.getElementById('liveSearchInput').value.toLowerCase().trim();
+            const cards = document.querySelectorAll('#toolsGrid .tool-card');
+            cards.forEach(card => {
+                const name = card.getAttribute('data-name') || '';
+                const title = card.querySelector('h3').innerText.toLowerCase();
+                const desc = card.querySelector('p').innerText.toLowerCase();
+                if(name.includes(query) || title.includes(query) || desc.includes(query)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // FAVORITES / BOOKMARK SYSTEM
         function updateFavUI() {
-            document.querySelectorAll('.tool-card').forEach(card => {
+            document.querySelectorAll('#toolsGrid .tool-card').forEach(card => {
                 const id = card.getAttribute('data-id');
                 const btn = card.querySelector('.fav-btn');
                 if (favorites.includes(id)) {
@@ -238,7 +736,7 @@
                 favCount.innerText = favorites.length;
                 favGrid.innerHTML = '';
                 favorites.forEach(id => {
-                    const originalCard = document.querySelector(`.tool-card[data-id="${id}"]`);
+                    const originalCard = document.querySelector(`#toolsGrid .tool-card[data-id="${id}"]`);
                     if (originalCard) {
                         const clone = originalCard.cloneNode(true);
                         favGrid.appendChild(clone);
@@ -253,119 +751,292 @@
             e.stopPropagation();
             if (favorites.includes(id)) {
                 favorites = favorites.filter(f => f !== id);
-                showToast('বুকমার্ক রিমুভ করা হয়েছে');
+                showSuccessToast('বুকমার্ক রিমুভ করা হয়েছে!');
             } else {
                 favorites.push(id);
-                showToast('টুলটি বুকমার্কে সেভ করা হয়েছে!');
+                showSuccessToast('টুলটি স্টার সেকশনে যুক্ত করা হয়েছে!');
             }
             localStorage.setItem('jt_favorites', JSON.stringify(favorites));
             updateFavUI();
         }
 
-        // LIVE SEARCH
-        function liveSearchTools() {
-            const query = document.getElementById('globalSearch').value.toLowerCase().trim();
-            document.querySelectorAll('#toolsGrid .tool-card').forEach(card => {
-                const text = card.getAttribute('data-keywords').toLowerCase() + ' ' + card.innerText.toLowerCase();
-                if (text.includes(query)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
+        // AUTHENTICATION TAB SYSTEM
+        function switchTab(tab) {
+            const loginBtn = document.getElementById('loginTabBtn');
+            const signupBtn = document.getElementById('signupTabBtn');
+            const loginForm = document.getElementById('loginForm');
+            const signupForm = document.getElementById('signupForm');
+            if(tab === 'login') {
+                loginBtn.className = "flex-1 py-2 text-sm font-medium rounded-lg bg-blue-600 text-white transition shadow";
+                signupBtn.className = "flex-1 py-2 text-sm font-medium rounded-lg text-slate-400 hover:text-white transition";
+                loginForm.classList.remove('hidden');
+                signupForm.classList.add('hidden');
+            } else {
+                signupBtn.className = "flex-1 py-2 text-sm font-medium rounded-lg bg-emerald-600 text-white transition shadow";
+                loginBtn.className = "flex-1 py-2 text-sm font-medium rounded-lg text-slate-400 hover:text-white transition";
+                signupForm.classList.remove('hidden');
+                loginForm.classList.add('hidden');
+            }
         }
 
-        // TOAST NOTIFICATION
-        function showToast(msg) {
+        function handleLogin(e) {
+            e.preventDefault();
+            localStorage.setItem('jt_is_logged_in', 'true');
+            document.getElementById('authAlert').classList.remove('hidden');
+            document.getElementById('authAlertText').innerText = "লগইন সফল হয়েছে!";
+            setTimeout(() => document.getElementById('authModal').classList.add('hidden'), 800);
+        }
+
+        function handleSignup(e) {
+            e.preventDefault();
+            localStorage.setItem('jt_is_logged_in', 'true');
+            document.getElementById('authAlert').classList.remove('hidden');
+            document.getElementById('authAlertText').innerText = "রেজিস্ট্রেশন সফল হয়েছে!";
+            setTimeout(() => document.getElementById('authModal').classList.add('hidden'), 800);
+        }
+
+        function logout() {
+            localStorage.removeItem('jt_is_logged_in');
+            document.getElementById('authModal').classList.remove('hidden');
+            document.getElementById('dropdownMenu').classList.add('hidden');
+        }
+
+        function toggleMenu() { document.getElementById('dropdownMenu').classList.toggle('hidden'); }
+        function openProfileModal() { document.getElementById('profileModal').classList.remove('hidden'); }
+        function closeProfileModal() { document.getElementById('profileModal').classList.add('hidden'); }
+        function openCompleteWorksModal() { document.getElementById('completeWorksModal').classList.remove('hidden'); }
+        function closeCompleteWorksModal() { document.getElementById('completeWorksModal').classList.add('hidden'); }
+
+        function saveProfile(e) {
+            e.preventDefault();
+            document.getElementById('profileAlert').classList.remove('hidden');
+            setTimeout(() => closeProfileModal(), 1100);
+        }
+
+        function registerCompletedTask() {
+            completedWorksCount++;
+            localStorage.setItem('jt_works_count', completedWorksCount);
+            document.getElementById('menuWorkCount').innerText = completedWorksCount;
+            document.getElementById('modalWorkCount').innerText = completedWorksCount;
+        }
+
+        function updateTotalViews() {
+            let total = Object.values(toolViews).reduce((a, b) => a + b, 0);
+            document.getElementById('totalViewsCount').innerText = total;
+            for (let key in toolViews) {
+                const el = document.getElementById(`view-${key}`);
+                if(el) el.innerText = toolViews[key];
+            }
+        }
+
+        function showSuccessToast(message) {
             const container = document.getElementById('toastContainer');
             const toast = document.createElement('div');
-            toast.className = "bg-slate-900 border border-blue-500/50 text-white text-xs px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2 animate-bounce";
-            toast.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-400"></i> ${msg}`;
+            toast.className = "pointer-events-auto bg-slate-900 border border-emerald-500/50 shadow-2xl rounded-2xl p-4 flex items-center gap-3 text-white toast-slide-in min-w-[280px]";
+            toast.innerHTML = `
+                <div class="w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg border border-emerald-500/40 shrink-0">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold text-emerald-400">সফল হয়েছে!</h4>
+                    <p class="text-[11px] text-slate-300">${message}</p>
+                </div>
+            `;
             container.appendChild(toast);
-            setTimeout(() => toast.remove(), 3000);
+            setTimeout(() => {
+                toast.classList.remove('toast-slide-in');
+                toast.classList.add('toast-slide-out');
+                setTimeout(() => toast.remove(), 400);
+            }, 3500);
         }
 
-        // COUNTDOWN TIMER
         function startCountdown() {
-            const endDate = new Date().getTime() + (12 * 24 * 60 * 60 * 1000);
+            const endDate = new Date().getTime() + (14 * 24 * 60 * 60 * 1000);
             setInterval(() => {
                 const now = new Date().getTime();
                 const distance = endDate - now;
-                document.getElementById('cdDays').innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
-                document.getElementById('cdHours').innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                document.getElementById('cdMins').innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                document.getElementById('cdSecs').innerText = Math.floor((distance % (1000 * 60)) / 1000);
+                if (document.getElementById('cdDays')) {
+                    document.getElementById('cdDays').innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    document.getElementById('cdHours').innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    document.getElementById('cdMins').innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    document.getElementById('cdSecs').innerText = Math.floor((distance % (1000 * 60)) / 1000);
+                }
             }, 1000);
         }
-        startCountdown();
 
-        // TOOL MODAL HANDLER
-        function openTool(toolId) {
+        // TOOL MODAL OPENER
+        function openTool(toolName) {
+            toolViews[toolName] = (toolViews[toolName] || 0) + 1;
+            localStorage.setItem('jt_tool_views', JSON.stringify(toolViews));
+            updateTotalViews();
+
             const modal = document.getElementById('toolModal');
-            const title = document.getElementById('modalTitle');
-            const body = document.getElementById('modalBody');
+            const title = document.getElementById('toolModalTitle');
+            const body = document.getElementById('toolModalBody');
             modal.classList.remove('hidden');
 
-            if (toolId === 'gpaChecker') {
-                title.innerHTML = `<i class="fa-solid fa-calculator text-blue-400"></i> জিপিএ ও সাবজেক্ট এডমিশন এলিজিবিলিটি ক্যালকুলেটর`;
+            if(toolName === 'admissionHub') {
+                title.innerHTML = `<i class="fa-solid fa-graduation-cap text-amber-400"></i> বিশ্ববিদ্যালয় ও মেডিকেল ভর্তি পোর্টাল ডিরেক্টরি`;
                 body.innerHTML = `
                     <div class="space-y-5">
-                        <div class="bg-blue-950/40 p-4 rounded-xl border border-blue-500/30 text-xs text-slate-300">
-                            শিক্ষার্থীর গ্রুপ, SSC ও HSC জিপিএ দিয়ে সাবমিট বাটনে ক্লিক করুন। এক ক্লিকে ঢাকা বিশ্ববিদ্যালয়, বুয়েট, মেডিকেল, গুচ্ছসহ সকল বিশ্ববিদ্যালয়ের রিয়েল-টাইম আবেদনের যোগ্যতা দেখতে পাবেন।
+                        <div class="text-center bg-amber-950/30 p-4 rounded-2xl border border-amber-500/30">
+                            <h4 class="font-bold text-sm text-amber-300 mb-1">সকল পাবলিক, মেডিকেল ও ইঞ্জিনিয়ারিং বিশ্ববিদ্যালয়ের লিংক হাব</h4>
+                            <p class="text-[11px] text-slate-300">নিচের ক্যাটাগরি অনুযায়ী সরকারি, মেডিকেল, গুচ্ছ ও প্রাইভেট বিশ্ববিদ্যালয়ের আবেদনের অফিশিয়াল ওয়েবসাইট ও নোটিশ পোর্টাল ভিজিট করুন।</p>
                         </div>
-
+                        <div class="flex gap-2 overflow-x-auto pb-2 no-scrollbar">
+                            <button onclick="filterAdmission('all')" class="px-4 py-2 bg-amber-600 text-white rounded-xl text-xs font-bold shrink-0 shadow">সকল বিশ্ববিদ্যালয়</button>
+                            <button onclick="filterAdmission('public')" class="px-4 py-2 bg-slate-900 text-slate-300 border border-slate-800 rounded-xl text-xs font-medium shrink-0">পাবলিক (DU, RU, CU)</button>
+                            <button onclick="filterAdmission('gst')" class="px-4 py-2 bg-slate-900 text-slate-300 border border-slate-800 rounded-xl text-xs font-medium shrink-0">জিএসটি গুচ্ছ (২৪টি)</button>
+                            <button onclick="filterAdmission('engineering')" class="px-4 py-2 bg-slate-900 text-slate-300 border border-slate-800 rounded-xl text-xs font-medium shrink-0">ইঞ্জিনিয়ারিং (BUET, CKRUET)</button>
+                            <button onclick="filterAdmission('medical')" class="px-4 py-2 bg-slate-900 text-slate-300 border border-slate-800 rounded-xl text-xs font-medium shrink-0">মেডিকেল ও ডেন্টাল (MBBS)</button>
+                            <button onclick="filterAdmission('private')" class="px-4 py-2 bg-slate-900 text-slate-300 border border-slate-800 rounded-xl text-xs font-medium shrink-0">প্রাইভেট বিশ্ববিদ্যালয়</button>
+                        </div>
+                        <div id="admissionCardsList" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <!-- DU -->
+                            <div class="admission-card public glass-dark p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                                <div>
+                                    <span class="text-[10px] bg-purple-500/20 text-purple-300 border border-purple-500/30 px-2 py-0.5 rounded-full font-bold">DU Units A,B,C,F</span>
+                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">ঢাকা বিশ্ববিদ্যালয় (DU)</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">ঢাকা বিশ্ববিদ্যালয় স্নাতক প্রথম বর্ষ অনলাইন ভর্তি পোর্টাল।</p>
+                                </div>
+                                <div class="flex gap-2 pt-2 border-t border-slate-800">
+                                    <a href="https://admission.eis.du.ac.bd" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-purple-600 hover:bg-purple-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">আবেদন পোর্টাল</a>
+                                    <a href="https://du.ac.bd" target="_blank" class="bg-slate-900 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">ওয়েবসাইট</a>
+                                </div>
+                            </div>
+                            <!-- RU -->
+                            <div class="admission-card public glass-dark p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                                <div>
+                                    <span class="text-[10px] bg-teal-500/20 text-teal-300 border border-teal-500/30 px-2 py-0.5 rounded-full font-bold">RU Units A,B,C</span>
+                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">রাজশাহী বিশ্ববিদ্যালয় (RU)</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">রাজশাহী বিশ্ববিদ্যালয় ভর্তি আবেদন ও আসন বিন্যাস।</p>
+                                </div>
+                                <div class="flex gap-2 pt-2 border-t border-slate-800">
+                                    <a href="https://admission.ru.ac.bd" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-teal-600 hover:bg-teal-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">আবেদন পোর্টাল</a>
+                                    <a href="https://ru.ac.bd" target="_blank" class="bg-slate-900 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">ওয়েবসাইট</a>
+                                </div>
+                            </div>
+                            <!-- CU -->
+                            <div class="admission-card public glass-dark p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                                <div>
+                                    <span class="text-[10px] bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 px-2 py-0.5 rounded-full font-bold">CU Units A,B,C,D</span>
+                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">চট্টগ্রাম বিশ্ববিদ্যালয় (CU)</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">চট্টগ্রাম বিশ্ববিদ্যালয় ভর্তি অনলাইন সিস্টেম।</p>
+                                </div>
+                                <div class="flex gap-2 pt-2 border-t border-slate-800">
+                                    <a href="https://admission.cu.ac.bd" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-indigo-600 hover:bg-indigo-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">আবেদন পোর্টাল</a>
+                                    <a href="https://cu.ac.bd" target="_blank" class="bg-slate-900 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">ওয়েবসাইট</a>
+                                </div>
+                            </div>
+                            <!-- GST -->
+                            <div class="admission-card gst glass-dark p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                                <div>
+                                    <span class="text-[10px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded-full font-bold">২৪টি বিশ্ববিদ্যালয়</span>
+                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">জিএসটি গুচ্ছ পরীক্ষা (GST Cluster)</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">২৪টি সাধারণ ও বিজ্ঞান প্রযুক্তি বিশ্ববিদ্যালয়ের সমন্বিত ভর্তি পোর্টাল।</p>
+                                </div>
+                                <div class="flex gap-2 pt-2 border-t border-slate-800">
+                                    <a href="https://gstadmission.ac.bd" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">আবেদন পোর্টাল</a>
+                                    <a href="https://gstadmission.ac.bd" target="_blank" class="bg-slate-900 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">নোটিশ</a>
+                                </div>
+                            </div>
+                            <!-- BUET -->
+                            <div class="admission-card engineering glass-dark p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                                <div>
+                                    <span class="text-[10px] bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2 py-0.5 rounded-full font-bold">BUET</span>
+                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">বাংলাদেশ প্রকৌশল বিশ্ববিদ্যালয় (BUET)</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">বুয়েট স্নাতক প্রথম বর্ষ প্রাথমিক আবেদন ও অফিশিয়াল লিংক।</p>
+                                </div>
+                                <div class="flex gap-2 pt-2 border-t border-slate-800">
+                                    <a href="https://www.buet.ac.bd/web/#/admission" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-blue-600 hover:bg-blue-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">আবেদন পোর্টাল</a>
+                                    <a href="https://www.buet.ac.bd" target="_blank" class="bg-slate-900 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">ওয়েবসাইট</a>
+                                </div>
+                            </div>
+                            <!-- MEDICAL -->
+                            <div class="admission-card medical glass-dark p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                                <div>
+                                    <span class="text-[10px] bg-rose-500/20 text-rose-300 border border-rose-500/30 px-2 py-0.5 rounded-full font-bold">MBBS & BDS</span>
+                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">সরকারি ও বেসরকারি মেডিকেল কলেজ</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">DGME মেডিকেল ও ডেন্টাল অনলাইন আবেদন পোর্টাল।</p>
+                                </div>
+                                <div class="flex gap-2 pt-2 border-t border-slate-800">
+                                    <a href="https://dgme.teletalk.com.bd" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-rose-600 hover:bg-rose-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">আবেদন পোর্টাল</a>
+                                    <a href="https://dghs.gov.bd" target="_blank" class="bg-slate-900 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">নোটিশ</a>
+                                </div>
+                            </div>
+                            <!-- NSU -->
+                            <div class="admission-card private glass-dark p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                                <div>
+                                    <span class="text-[10px] bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 px-2 py-0.5 rounded-full font-bold">Private #1</span>
+                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">নর্থ সাউথ ইউনিভার্সিটি (NSU)</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">নর্থ সাউথ ইউনিভার্সিটি এডমিশন পোর্টাল।</p>
+                                </div>
+                                <div class="flex gap-2 pt-2 border-t border-slate-800">
+                                    <a href="https://www.northsouth.edu/admissions/" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-cyan-600 hover:bg-cyan-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">আবেদন পোর্টাল</a>
+                                    <a href="https://www.northsouth.edu" target="_blank" class="bg-slate-900 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">ওয়েবসাইট</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else if(toolName === 'gpaChecker') {
+                title.innerHTML = `<i class="fa-solid fa-square-check text-cyan-400"></i> জিপিএ ও এডমিশন যোগ্যতা ক্যালকুলেটর`;
+                body.innerHTML = `
+                    <div class="space-y-4">
+                        <div class="bg-cyan-950/30 p-4 rounded-2xl border border-cyan-500/30 text-center">
+                            <h4 class="font-bold text-sm text-cyan-300 mb-1">এডমিশন এলিজিবিলিটি চেকার</h4>
+                            <p class="text-[11px] text-slate-300">আপনার গ্রুপ, SSC ও HSC জিপিএ দিয়ে সাবমিট করুন। এক ক্লিকে ঢাকা বিশ্ববিদ্যালয়, বুয়েট, মেডিকেল ও গুচ্ছের যোগ্যতা লাইভ দেখা যাবে।</p>
+                        </div>
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                             <div>
-                                <label class="text-xs text-slate-400 block mb-1">গ্রুপ সিলেক্ট করুন</label>
-                                <select id="studentGroup" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
+                                <label class="text-xs text-slate-400 block mb-1">আপনার বিভাগ (Group)</label>
+                                <select id="studentGroup" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2.5 text-xs text-white">
                                     <option value="science">বিজ্ঞান (Science)</option>
                                     <option value="arts">মানবিক (Arts / Humanities)</option>
-                                    <option value="commerce">ব্যবসায় শিক্ষা (Commerce)</option>
+                                    <option value="commerce">ব্যবসায় শিক্ষা (Commerce)</option>
                                 </select>
                             </div>
                             <div>
                                 <label class="text-xs text-slate-400 block mb-1">SSC জিপিএ</label>
-                                <input type="number" id="sscGpa" step="0.01" max="5.00" value="5.00" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
+                                <input type="number" id="sscGpaInput" step="0.01" max="5.00" value="5.00" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white">
                             </div>
                             <div>
                                 <label class="text-xs text-slate-400 block mb-1">HSC জিপিএ</label>
-                                <input type="number" id="hscGpa" step="0.01" max="5.00" value="4.50" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
+                                <input type="number" id="hscGpaInput" step="0.01" max="5.00" value="4.50" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white">
                             </div>
                         </div>
-
-                        <button onclick="calculateAdmissionEligibility()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-2.5 rounded-xl text-xs shadow-lg transition">যোগ্যতা চেক করুন</button>
-
-                        <div id="eligibilityResults" class="hidden space-y-3 pt-3"></div>
+                        <button onclick="calculateEligibility()" class="w-full bg-cyan-600 hover:bg-cyan-500 text-white py-3 rounded-xl text-xs font-bold shadow-lg transition">আবেদনের যোগ্যতা চেক করুন</button>
+                        <div id="eligibilityResult" class="hidden space-y-2 p-4 bg-slate-900 rounded-xl border border-slate-800 text-xs"></div>
                     </div>
                 `;
-            } else if (toolId === 'cvMaker') {
-                title.innerHTML = `<i class="fa-solid fa-file-invoice text-purple-400"></i> প্রফেশনাল রেজুমে ও ফটো সিভি বিল্ডার`;
+            } else if(toolName === 'cvBuilder') {
+                title.innerHTML = `<i class="fa-solid fa-file-invoice text-purple-400"></i> প্রফেশনাল রেজুমে ও ফটো সিভি মেকার`;
                 body.innerHTML = `
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="space-y-3">
-                            <h4 class="font-bold text-xs text-purple-400">১. ব্যক্তিগত ও শিক্ষাগত তথ্য দিন</h4>
+                            <h4 class="font-bold text-xs text-purple-400">১. ব্যক্তিগত তথ্য ও সিভির ফিল্ড লিখুন</h4>
                             <div class="grid grid-cols-2 gap-2">
-                                <input type="text" id="cvFullName" placeholder="পূর্ণ নাম" class="bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs text-white">
-                                <input type="text" id="cvFather" placeholder="পিতার নাম" class="bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs text-white">
+                                <input type="text" id="cvFullName" placeholder="পূর্ণ নাম" class="bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-white">
+                                <input type="text" id="cvFather" placeholder="পিতার নাম" class="bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-white">
                             </div>
                             <div class="grid grid-cols-2 gap-2">
-                                <input type="text" id="cvMother" placeholder="মাতার নাম" class="bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs text-white">
-                                <input type="text" id="cvPhone" placeholder="মোবাইল নম্বর" class="bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs text-white">
+                                <input type="text" id="cvMother" placeholder="মাতার নাম" class="bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-white">
+                                <input type="text" id="cvPhone" placeholder="মোবাইল নম্বর" class="bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-white">
                             </div>
-                            <input type="text" id="cvAddress" placeholder="বর্তমান ঠিকানা" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs text-white">
+                            <input type="text" id="cvAddress" placeholder="বর্তমান ঠিকানা" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-white">
                             <div>
-                                <label class="text-[10px] text-slate-400 block mb-1">ছবি আপলোড করুন</label>
+                                <label class="text-[10px] text-slate-400 block mb-1">পাসপোর্ট সাইজ ছবি আপলোড</label>
                                 <input type="file" id="cvPhoto" accept="image/*" onchange="previewCvPhoto(event)" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-1.5 text-xs text-slate-400">
                             </div>
-                            <textarea id="cvEduText" rows="3" placeholder="শিক্ষাগত যোগ্যতা (যেমন: SSC - 2024, HSC - 2026 GPA: 4.50)" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs text-white"></textarea>
-                            <textarea id="cvSkillsText" rows="2" placeholder="দক্ষতাসমূহ (যেমন: MS Word, Graphics Design, Web Dev)" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs text-white"></textarea>
+                            <textarea id="cvEduText" rows="2" placeholder="শিক্ষাগত যোগ্যতা (SSC, HSC...)" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-white"></textarea>
+                            <textarea id="cvSkillsText" rows="2" placeholder="দক্ষতা (Graphic Design, Coding, Video Editing)" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-white"></textarea>
                             
-                            <button onclick="updateCvPreview()" class="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold py-2 rounded-xl text-xs">সিভি আপডেট করুন</button>
-                            <button onclick="window.print()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 rounded-xl text-xs"><i class="fa-solid fa-print"></i> সিভি প্রিন্ট / PDF ডাউনলোড</button>
+                            <button onclick="updateCvPreview()" class="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold py-2.5 rounded-xl text-xs shadow">সিভি আপডেট ও তৈরি করুন</button>
+                            <button onclick="window.print()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 rounded-xl text-xs shadow"><i class="fa-solid fa-print"></i> সিভি প্রিন্ট / PDF ডাউনলোড</button>
                         </div>
 
-                        <!-- LIVE CV PREVIEW -->
-                        <div id="printableCvArea" class="bg-white text-slate-900 p-6 rounded-xl shadow-2xl border border-slate-300 space-y-4 font-sans min-h-[400px]">
+                        <!-- LIVE CV PREVIEW AREA -->
+                        <div id="printableCvArea" class="bg-white text-slate-900 p-6 rounded-xl shadow-2xl border border-slate-300 space-y-4 font-sans min-h-[420px]">
                             <div class="flex justify-between items-start border-b-2 border-slate-800 pb-4">
                                 <div>
                                     <h2 id="prevCvName" class="text-xl font-bold text-slate-900 uppercase tracking-wide">জুনায়েদ ইসলাম</h2>
@@ -388,76 +1059,91 @@
                             </div>
                             <div>
                                 <h4 class="font-bold text-xs uppercase bg-slate-200 px-2 py-1 mb-2">দক্ষতা ও অন্যান্য</h4>
-                                <p id="prevCvSkills" class="text-xs whitespace-pre-line">ওয়েব অ্যাপ্লিকেশন ডেভেলপমেন্ট, গ্রাফিক্স ডিজাইন, ভিপ্রো এডিটিং</p>
+                                <p id="prevCvSkills" class="text-xs whitespace-pre-line">ওয়েব অ্যাপ্লিকেশন ডেভেলপমেন্ট, গ্রাফিক্স ডিজাইন, ভিডিও এডিটিং</p>
                             </div>
                         </div>
                     </div>
                 `;
-            } else if (toolId === 'quizHub') {
-                title.innerHTML = `<i class="fa-solid fa-list-check text-emerald-400"></i> এডমিশন মডেল টেস্ট ও ডেইলি কুইজ`;
+            } else if(toolName === 'quizHub') {
+                title.innerHTML = `<i class="fa-solid fa-list-check text-emerald-400"></i> প্রশ্ন ব্যাংক ও ডেইলি এডমিশন মডেল টেস্ট`;
                 body.innerHTML = `
                     <div class="space-y-4">
                         <div class="flex justify-between items-center bg-slate-900 p-3 rounded-xl border border-slate-800 text-xs">
                             <span class="text-emerald-400 font-bold">বিষয়: সাধারণ জ্ঞান ও বিজ্ঞান</span>
-                            <span class="text-slate-400">দৈনিক ১০টি প্রশ্ন সমাধান</span>
+                            <span class="text-slate-400">দৈনিক প্রশ্ন সমাধান</span>
                         </div>
                         <div id="quizContainer" class="space-y-3">
                             <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
                                 <p class="text-xs font-bold text-white mb-3">১. ঢাকা বিশ্ববিদ্যালয় কত সালে প্রতিষ্ঠিত হয়?</p>
                                 <div class="grid grid-cols-2 gap-2 text-xs">
-                                    <button onclick="checkQuizAns(this, false)" class="bg-slate-800 hover:bg-slate-700 p-2 rounded-lg text-left">A. ১৯০৫ সালে</button>
-                                    <button onclick="checkQuizAns(this, true)" class="bg-slate-800 hover:bg-slate-700 p-2 rounded-lg text-left">B. ১৯২১ সালে</button>
-                                    <button onclick="checkQuizAns(this, false)" class="bg-slate-800 hover:bg-slate-700 p-2 rounded-lg text-left">C. ১৯৪৭ সালে</button>
-                                    <button onclick="checkQuizAns(this, false)" class="bg-slate-800 hover:bg-slate-700 p-2 rounded-lg text-left">D. ১৯৭১ সালে</button>
+                                    <button onclick="checkQuizAns(this, false)" class="bg-slate-800 hover:bg-slate-700 p-2.5 rounded-lg text-left text-slate-200">A. ১৯০৫ সালে</button>
+                                    <button onclick="checkQuizAns(this, true)" class="bg-slate-800 hover:bg-slate-700 p-2.5 rounded-lg text-left text-slate-200">B. ১৯২১ সালে</button>
+                                    <button onclick="checkQuizAns(this, false)" class="bg-slate-800 hover:bg-slate-700 p-2.5 rounded-lg text-left text-slate-200">C. ১৯৪৭ সালে</button>
+                                    <button onclick="checkQuizAns(this, false)" class="bg-slate-800 hover:bg-slate-700 p-2.5 rounded-lg text-left text-slate-200">D. ১৯৭১ সালে</button>
                                 </div>
                             </div>
                             <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
                                 <p class="text-xs font-bold text-white mb-3">২. পদার্থের চতুর্থ অবস্থার নাম কী?</p>
                                 <div class="grid grid-cols-2 gap-2 text-xs">
-                                    <button onclick="checkQuizAns(this, false)" class="bg-slate-800 hover:bg-slate-700 p-2 rounded-lg text-left">A. কঠিন</button>
-                                    <button onclick="checkQuizAns(this, false)" class="bg-slate-800 hover:bg-slate-700 p-2 rounded-lg text-left">B. গ্যাসিয়</button>
-                                    <button onclick="checkQuizAns(this, true)" class="bg-slate-800 hover:bg-slate-700 p-2 rounded-lg text-left">C. প্লাজমা</button>
-                                    <button onclick="checkQuizAns(this, false)" class="bg-slate-800 hover:bg-slate-700 p-2 rounded-lg text-left">D. তরল</button>
+                                    <button onclick="checkQuizAns(this, false)" class="bg-slate-800 hover:bg-slate-700 p-2.5 rounded-lg text-left text-slate-200">A. কঠিন</button>
+                                    <button onclick="checkQuizAns(this, false)" class="bg-slate-800 hover:bg-slate-700 p-2.5 rounded-lg text-left text-slate-200">B. গ্যাসিয়</button>
+                                    <button onclick="checkQuizAns(this, true)" class="bg-slate-800 hover:bg-slate-700 p-2.5 rounded-lg text-left text-slate-200">C. প্লাজমা</button>
+                                    <button onclick="checkQuizAns(this, false)" class="bg-slate-800 hover:bg-slate-700 p-2.5 rounded-lg text-left text-slate-200">D. তরল</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 `;
-            } else if (toolId === 'univDirectory') {
-                title.innerHTML = `<i class="fa-solid fa-graduation-cap text-amber-400"></i> সকল বিশ্ববিদ্যালয় সার্কুলার ও পোর্টাল হাব`;
+            } else if(toolName === 'compressJpeg') {
+                title.innerHTML = `<i class="fa-solid fa-compress text-teal-400"></i> Compress JPEG & Converter Studio`;
                 body.innerHTML = `
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                        <div class="bg-slate-900 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-                            <div><strong class="text-white block">ঢাকা বিশ্ববিদ্যালয় (DU)</strong><span class="text-slate-400">admission.eis.du.ac.bd</span></div>
-                            <a href="https://admission.eis.du.ac.bd" target="_blank" class="bg-blue-600 text-white px-3 py-1.5 rounded-lg font-bold">এপ্লাই</a>
+                    <div class="space-y-4">
+                        <div class="bg-slate-900/80 p-5 rounded-2xl border-2 border-dashed border-slate-700 text-center hover:border-teal-500 transition">
+                            <input type="file" id="cjInput" accept="image/*" onchange="loadCompressJpeg(event)" class="hidden">
+                            <label for="cjInput" class="cursor-pointer flex flex-col items-center">
+                                <div class="w-12 h-12 bg-teal-500/20 text-teal-400 rounded-2xl flex items-center justify-center text-xl mb-2 border border-teal-500/30">
+                                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                                </div>
+                                <span class="text-xs font-bold text-white mb-1">কম্প্রেস করতে ছবি সিলেক্ট করুন</span>
+                            </label>
                         </div>
-                        <div class="bg-slate-900 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-                            <div><strong class="text-white block">জিএসটি গুচ্ছ (GST Cluster 24)</strong><span class="text-slate-400">gstadmission.ac.bd</span></div>
-                            <a href="https://gstadmission.ac.bd" target="_blank" class="bg-emerald-600 text-white px-3 py-1.5 rounded-lg font-bold">এপ্লাই</a>
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="text-slate-300">কোয়ালিটি রিডাকশন: <strong id="cjQualityVal" class="text-teal-400">85%</strong></span>
+                            <input type="range" id="cjQualityRange" min="10" max="95" value="85" oninput="document.getElementById('cjQualityVal').innerText=this.value+'%'" class="accent-teal-500">
                         </div>
-                        <div class="bg-slate-900 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-                            <div><strong class="text-white block">মেডিকেল ভর্তি (DGME)</strong><span class="text-slate-400">dgme.teletalk.com.bd</span></div>
-                            <a href="https://dgme.teletalk.com.bd" target="_blank" class="bg-rose-600 text-white px-3 py-1.5 rounded-lg font-bold">এপ্লাই</a>
+                        <div id="cjPreviewBox" class="hidden text-center bg-slate-950 p-4 rounded-xl border border-slate-800">
+                            <img id="cjPreviewImg" class="max-h-32 mx-auto rounded-lg mb-2 object-contain">
+                            <p class="text-xs text-slate-300">মূল সাইজ: <span id="cjOrigSize" class="text-amber-400">--</span> | নতুন সাইজ: <span id="cjNewSize" class="text-emerald-400">--</span></p>
                         </div>
-                        <div class="bg-slate-900 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-                            <div><strong class="text-white block">বুয়েট (BUET)</strong><span class="text-slate-400">buet.ac.bd</span></div>
-                            <a href="https://www.buet.ac.bd" target="_blank" class="bg-purple-600 text-white px-3 py-1.5 rounded-lg font-bold">এপ্লাই</a>
-                        </div>
+                        <button onclick="downloadCompressedJpeg()" class="w-full bg-teal-600 text-white py-3 rounded-xl text-xs font-bold">কম্প্রেস ও ডাউনলোড জেপিইজি</button>
                     </div>
                 `;
-            } else if (toolId === 'sigResizer') {
-                title.innerHTML = `<i class="fa-solid fa-signature text-teal-400"></i> সিগনেচার সাইজার (300x80 px)`;
+            } else if(toolName === 'passportPhoto') {
+                title.innerHTML = `<i class="fa-solid fa-id-badge text-blue-400"></i> প্রফেশনাল পাসপোর্ট ফটো স্টুডিও`;
                 body.innerHTML = `
-                    <div class="space-y-4 text-center">
-                        <input type="file" id="sigFileInput" accept="image/*" onchange="loadSig(event)" class="bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs text-slate-300 w-full">
-                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 inline-block">
-                            <canvas id="sigCanvas" width="300" height="80" class="bg-white rounded border border-slate-300 mx-auto"></canvas>
+                    <div class="space-y-4">
+                        <input type="file" id="passPhotoInput" accept="image/*" onchange="loadPassportImage(event)" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200">
+                        <div class="text-center bg-slate-950 p-4 rounded-xl border border-slate-800">
+                            <div class="inline-block border-4 border-slate-700 rounded-xl overflow-hidden bg-white" style="width: 140px; height: 170px;">
+                                <canvas id="passportCanvas" width="300" height="350" class="w-full h-full block"></canvas>
+                            </div>
                         </div>
-                        <button onclick="downloadSig()" class="w-full bg-teal-600 text-white py-2.5 rounded-xl text-xs font-bold">ডাউনলোড ৩০০x৮০ পিক্সেল সিগনেচার</button>
+                        <button onclick="downloadPassport('single')" class="w-full bg-blue-600 text-white py-3 rounded-xl text-xs font-bold">ডাউনলোড সিঙ্গেল এইচডি ছবি</button>
                     </div>
                 `;
-            } else if (toolId === 'fbStrategy') {
-                title.innerHTML = `<i class="fa-brands fa-facebook text-indigo-400"></i> ফেসবুক ভিডিও ট্রাফিক মার্কেটিং স্ট্র্যাটেজি`;
+            } else if(toolName === 'signatureResizer') {
+                title.innerHTML = `<i class="fa-solid fa-signature text-emerald-400"></i> সরকারি ও এডমিশন সিগনেচার সাইজার (300x80 px)`;
+                body.innerHTML = `
+                    <div class="space-y-4">
+                        <input type="file" id="sigInput" accept="image/*" onchange="loadSignatureImage(event)" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200">
+                        <div class="text-center bg-slate-950 p-4 rounded-xl border border-slate-800">
+                            <canvas id="signatureCanvas" width="600" height="160" class="max-w-full h-auto block mx-auto bg-white p-2 rounded-lg"></canvas>
+                        </div>
+                        <button onclick="downloadSignature()" class="w-full bg-emerald-600 text-white py-3 rounded-xl text-sm font-bold">ডাউনলোড সিগনেচার (৩০০x৮০)</button>
+                    </div>
+                `;
+            } else if(toolName === 'fbStrategy') {
+                title.innerHTML = `<i class="fa-brands fa-facebook text-indigo-400"></i> ফেসবুক ভিডিও ভাইরাল কন্টেন্ট স্ট্র্যাটেজি`;
                 body.innerHTML = `
                     <div class="space-y-3 text-xs text-slate-300">
                         <div class="bg-slate-900 p-3 rounded-xl border border-slate-800">
@@ -465,46 +1151,164 @@
                             <p>ভিডিওর প্রথম ৩ সেকেন্ডে সমস্যা তুলে ধরুন। যেমন: "এডমিশন সিগনেচার সাইজ ৩০০x৮০ করতে ঝামেলা হচ্ছে?"</p>
                         </div>
                         <div class="bg-slate-900 p-3 rounded-xl border border-slate-800">
-                            <strong class="text-indigo-400 block mb-1">২. কমেন্ট সেকশন পিন লিংক:</strong>
-                            <p>ভিডিও ডেসক্রিপশনের বদলে প্রথম কমেন্টে আপনার টুলের সরাসরি লিংক পিন (Pin Comment) করে রাখুন।</p>
+                            <strong class="text-indigo-400 block mb-1">২. প্রথম কমেন্ট পিন পদ্ধতি:</strong>
+                            <p>ভিডিওর ডেসক্রিপশনে লিংক না দিয়ে প্রথম কমেন্টে সরাসরি ওয়েবসাইটের লিংক পিন (Pin Comment) করে রাখুন।</p>
                         </div>
                     </div>
                 `;
+            } else if(toolName === 'thumbDownloader') {
+                title.innerHTML = `<i class="fa-solid fa-download text-red-400"></i> ইউটিউব থাম্বনেইল ডাউনলোডার`;
+                body.innerHTML = `
+                    <input type="text" id="ytUrl" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm mb-3 text-slate-200" placeholder="ইউটিউব ভিডিওর লিংক বসান...">
+                    <button onclick="downloadThumbnail()" class="w-full bg-red-600 text-white py-2.5 rounded-xl text-sm font-medium">ডাউনলোড এইচডি থাম্বনেইল</button>
+                `;
+            } else if(toolName === 'qrGenerator') {
+                title.innerHTML = `<i class="fa-solid fa-qrcode text-purple-400"></i> HD QR কোড জেনারেটর`;
+                body.innerHTML = `
+                    <input type="text" id="qrText" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm mb-3 text-slate-200" placeholder="লিংক বা লেখা লিখুন...">
+                    <button onclick="generateQR()" class="w-full bg-purple-600 text-white py-2.5 rounded-xl text-sm font-medium mb-3">জেনারেট করুন</button>
+                    <div id="qrResult" class="text-center p-4 bg-slate-900 rounded-xl border border-slate-800 text-xs text-slate-400">প্রিভিউ</div>
+                `;
+            } else if(toolName === 'wordCounter') {
+                title.innerHTML = `<i class="fa-solid fa-file-lines text-blue-400"></i> ওয়ার্ড ও ক্যারেক্টার কাউন্টার`;
+                body.innerHTML = `
+                    <textarea id="wcText" oninput="countWords()" rows="4" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm mb-3 text-slate-200" placeholder="টেক্সট লিখুন..."></textarea>
+                    <div class="grid grid-cols-2 gap-3 text-center">
+                        <div class="bg-slate-900 p-3 rounded-xl border border-slate-800"><span id="wordCount" class="text-xl font-bold text-blue-400">0</span><p class="text-xs text-slate-400">শব্দ (Words)</p></div>
+                        <div class="bg-slate-900 p-3 rounded-xl border border-slate-800"><span id="charCount" class="text-xl font-bold text-emerald-400">0</span><p class="text-xs text-slate-400">অক্ষর (Chars)</p></div>
+                    </div>
+                `;
+            } else if(toolName === 'passGenerator') {
+                title.innerHTML = `<i class="fa-solid fa-key text-emerald-400"></i> স্ট্রং পাসওয়ার্ড জেনারেটর`;
+                body.innerHTML = `
+                    <div class="flex gap-2 mb-3">
+                        <input type="text" id="passOutput" readonly class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm text-emerald-400 font-mono" value="জেনারেট বাটনে ক্লিক করুন">
+                        <button onclick="copyPass()" class="bg-emerald-600 px-4 rounded-xl text-white text-sm">কপি</button>
+                    </div>
+                    <button onclick="generatePass()" class="w-full bg-slate-800 py-2.5 rounded-xl text-sm font-medium text-emerald-300">পাসওয়ার্ড জেনারেট করুন</button>
+                `;
+            } else if(toolName === 'ageCalculator') {
+                title.innerHTML = `<i class="fa-solid fa-cake-candles text-amber-400"></i> বয়স ক্যালকুলেটর`;
+                body.innerHTML = `
+                    <input type="date" id="birthDate" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm mb-3 text-slate-200">
+                    <button onclick="calcAge()" class="w-full bg-amber-600 text-white py-2.5 rounded-xl text-sm font-medium mb-3">বয়স হিসেব করুন</button>
+                    <div id="ageResult" class="text-center p-3 bg-slate-900 rounded-xl border border-slate-800 text-sm font-medium text-amber-400">তারিখ সিলেক্ট করুন</div>
+                `;
+            } else if(toolName === 'unitConverter') {
+                title.innerHTML = `<i class="fa-solid fa-scale-balanced text-cyan-400"></i> ইউনিট কনভার্টার`;
+                body.innerHTML = `
+                    <input type="number" id="kgInput" oninput="convertUnit()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm mb-3 text-slate-200" placeholder="কেজি (KG) লিখুন...">
+                    <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 text-center text-sm"><span id="gramResult" class="font-bold text-cyan-400">0</span> গ্রাম</div>
+                `;
+            } else if(toolName === 'textSpeech') {
+                title.innerHTML = `<i class="fa-solid fa-volume-high text-rose-400"></i> টেক্সট-টু-স্পিচ`;
+                body.innerHTML = `
+                    <textarea id="speechText" rows="3" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm mb-3 text-slate-200" placeholder="লেখা লিখুন..."></textarea>
+                    <button onclick="speakText()" class="w-full bg-rose-600 text-white py-2.5 rounded-xl text-sm font-medium">ভয়েস শুনুন</button>
+                `;
+            } else if(toolName === 'colorPicker') {
+                title.innerHTML = `<i class="fa-solid fa-palette text-emerald-400"></i> কালার পিকার ও HEX`;
+                body.innerHTML = `
+                    <div class="flex items-center gap-3 mb-3">
+                        <input type="color" id="colorInput" onchange="updateColorCode()" class="w-16 h-12 bg-slate-900 border border-slate-800 rounded-xl cursor-pointer p-1">
+                        <input type="text" id="colorHexOutput" readonly class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-emerald-400 font-mono" value="#2563eb">
+                    </div>
+                    <button onclick="copyColorHex()" class="w-full bg-emerald-600 text-white py-2.5 rounded-xl text-sm font-medium">HEX কোড কপি করুন</button>
+                `;
+            } else if(toolName === 'tempNotepad') {
+                const savedNote = localStorage.getItem('jt_temp_note') || '';
+                title.innerHTML = `<i class="fa-solid fa-note-sticky text-yellow-400"></i> অটো-সেভ নোটপ্যাড`;
+                body.innerHTML = `
+                    <textarea id="notepadArea" rows="4" oninput="saveNotepad()" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm mb-3 text-slate-200" placeholder="নোট লিখুন...">${savedNote}</textarea>
+                    <button onclick="clearNotepad()" class="text-rose-400 text-xs">নোট মুছে ফেলুন</button>
+                `;
+            } else if(toolName === 'passChecker') {
+                title.innerHTML = `<i class="fa-solid fa-shield-halved text-fuchsia-400"></i> পাসওয়ার্ড হ্যাক টাইম চেকার`;
+                body.innerHTML = `
+                    <input type="password" id="checkPass" oninput="checkPassTime()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm mb-3 text-slate-200" placeholder="পাসওয়ার্ড লিখুন...">
+                    <div id="passTimeResult" class="p-3 bg-slate-900 rounded-xl border border-slate-800 text-xs text-fuchsia-300 text-center font-medium">পাসওয়ার্ড দিন</div>
+                `;
+            } else if(toolName === 'pomodoro') {
+                title.innerHTML = `<i class="fa-solid fa-clock text-pink-400"></i> পমোদোরো টাইমার`;
+                body.innerHTML = `
+                    <div class="text-center py-6 bg-slate-900 rounded-xl border border-slate-800 mb-3">
+                        <span id="timerDisplay" class="text-4xl font-bold text-pink-400 font-mono">25:00</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button onclick="startPomodoro()" class="bg-pink-600 text-white py-2 rounded-xl text-sm">স্টার্ট</button>
+                        <button onclick="resetPomodoro()" class="bg-slate-800 text-slate-300 py-2 rounded-xl text-sm">রিসেট</button>
+                    </div>
+                `;
+            } else if(toolName === 'emiCalc') {
+                title.innerHTML = `<i class="fa-solid fa-calculator text-amber-300"></i> লোন ও EMI ক্যালকুলেটর`;
+                body.innerHTML = `
+                    <input type="number" id="loanAmount" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm mb-2 text-slate-200" placeholder="লোনের পরিমাণ...">
+                    <input type="number" id="loanRate" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm mb-2 text-slate-200" placeholder="সুদের হার %...">
+                    <input type="number" id="loanMonths" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm mb-3 text-slate-200" placeholder="মাস সংখ্যা...">
+                    <button onclick="calcEMI()" class="w-full bg-amber-600 text-white py-2.5 rounded-xl text-sm font-medium mb-3">হিসেব করুন</button>
+                    <div id="emiResult" class="text-center p-3 bg-slate-900 rounded-xl border border-slate-800 text-sm text-amber-300">মাসিক কিস্তি (EMI): 0</div>
+                `;
+            } else if(toolName === 'worldClock') {
+                title.innerHTML = `<i class="fa-solid fa-clock-rotate-left text-rose-300"></i> ওয়ার্ল্ড ক্লক`;
+                body.innerHTML = `
+                    <div class="space-y-2 text-xs text-slate-300 bg-slate-900 p-4 rounded-xl border border-slate-800">
+                        <p><strong>বাংলাদেশ:</strong> <span class="text-rose-400 font-mono" id="clockBD">--:--:--</span></p>
+                        <p><strong>নিউ ইয়র্ক:</strong> <span class="text-rose-400 font-mono" id="clockNY">--:--:--</span></p>
+                        <p><strong>লন্ডন:</strong> <span class="text-rose-400 font-mono" id="clockLondon">--:--:--</span></p>
+                    </div>
+                `;
+                setInterval(() => {
+                    const now = new Date();
+                    if(document.getElementById('clockBD')) {
+                        document.getElementById('clockBD').innerText = now.toLocaleTimeString('en-US', {timeZone: 'Asia/Dhaka'});
+                        document.getElementById('clockNY').innerText = now.toLocaleTimeString('en-US', {timeZone: 'America/New_York'});
+                        document.getElementById('clockLondon').innerText = now.toLocaleTimeString('en-US', {timeZone: 'Europe/London'});
+                    }
+                }, 1000);
             }
         }
 
-        function closeModal() {
-            document.getElementById('toolModal').classList.add('hidden');
+        function closeToolModal() { document.getElementById('toolModal').classList.add('hidden'); }
+
+        function filterAdmission(category) {
+            const cards = document.querySelectorAll('.admission-card');
+            cards.forEach(card => {
+                if(category === 'all' || card.classList.contains(category)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
         }
 
-        // ADMISSION ELIGIBILITY ENGINE
-        function calculateAdmissionEligibility() {
+        // ADMISSION ELIGIBILITY CALCULATOR ENGINE
+        function calculateEligibility() {
             const group = document.getElementById('studentGroup').value;
-            const ssc = parseFloat(document.getElementById('sscGpa').value) || 0;
-            const hsc = parseFloat(document.getElementById('hscGpa').value) || 0;
+            const ssc = parseFloat(document.getElementById('sscGpaInput').value) || 0;
+            const hsc = parseFloat(document.getElementById('hscGpaInput').value) || 0;
             const total = ssc + hsc;
-            const resultsBox = document.getElementById('eligibilityResults');
-            resultsBox.classList.remove('hidden');
+            const resBox = document.getElementById('eligibilityResult');
+            resBox.classList.remove('hidden');
 
-            let html = `<h4 class="font-bold text-xs text-white">আপনার জিপিএ ফলাফল (${ssc.toFixed(2)} + ${hsc.toFixed(2)} = ${total.toFixed(2)}):</h4>`;
+            let html = `<p class="font-bold text-white mb-2">আপনার প্রাপ্ত পয়েন্ট: SSC (${ssc.toFixed(2)}) + HSC (${hsc.toFixed(2)}) = মোট ${total.toFixed(2)}</p>`;
 
-            if (group === 'science') {
-                if (total >= 9.00 && ssc >= 4.5 && hsc >= 4.5) {
-                    html += `<div class="p-2.5 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-xl text-xs">✔ ঢাকা বিশ্ববিদ্যালয় (A Unit), বুয়েট (BUET) এবং মেডিকেল ভর্তি পরীক্ষায় আবেদনের যোগ্য।</div>`;
-                } else if (total >= 8.00) {
-                    html += `<div class="p-2.5 bg-blue-500/10 border border-blue-500/30 text-blue-400 rounded-xl text-xs">✔ জিএসটি গুচ্ছ (GST Science) ও প্রকৌশল বিশ্ববিদ্যালয়সমূহে পরীক্ষা দেওয়া যাবে।</div>`;
+            if(group === 'science') {
+                if(total >= 9.00 && ssc >= 4.50 && hsc >= 4.50) {
+                    html += `<div class="p-2.5 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-xl text-xs mb-1">✔ আপনি ঢাকা বিশ্ববিদ্যালয় (A Unit), বুয়েট (BUET) এবং সরকারি মেডিকেল ভর্তি পরীক্ষায় আবেদনের জন্য সম্পূর্ণ যোগ্য।</div>`;
+                } else if(total >= 8.00) {
+                    html += `<div class="p-2.5 bg-blue-500/10 border border-blue-500/30 text-blue-400 rounded-xl text-xs mb-1">✔ জিএসটি গুচ্ছ (GST Science) ও প্রকৌশল বিশ্ববিদ্যালয়সমূহ (CKRUET)-এ পরীক্ষা দেওয়া যাবে।</div>`;
                 } else {
-                    html += `<div class="p-2.5 bg-amber-500/10 border border-amber-500/30 text-amber-400 rounded-xl text-xs">✔ জাতীয় বিশ্ববিদ্যালয় (NU) ও প্রাইভেট বিশ্ববিদ্যালয়ে আবেদনের সুযোগ রয়েছে।</div>`;
+                    html += `<div class="p-2.5 bg-amber-500/10 border border-amber-500/30 text-amber-400 rounded-xl text-xs mb-1">✔ জাতীয় বিশ্ববিদ্যালয় (NU) ও প্রাইভেট বিশ্ববিদ্যালয়সমূহে আবেদনের সুযোগ রয়েছে।</div>`;
                 }
             } else {
-                if (total >= 7.50) {
-                    html += `<div class="p-2.5 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-xl text-xs">✔ ঢাকা বিশ্ববিদ্যালয় (B/C Unit) ও সাধারণ গুচ্ছ বিশ্ববিদ্যালয়ে আবেদনের যোগ্য।</div>`;
+                if(total >= 7.50) {
+                    html += `<div class="p-2.5 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-xl text-xs mb-1">✔ ঢাকা বিশ্ববিদ্যালয় (B/C Unit) ও সাধারণ গুচ্ছ বিশ্ববিদ্যালয়ে আবেদনের জন্য যোগ্য।</div>`;
                 } else {
-                    html += `<div class="p-2.5 bg-amber-500/10 border border-amber-500/30 text-amber-400 rounded-xl text-xs">✔ জাতীয় বিশ্ববিদ্যালয় ও ৭ কলেজে আবেদন সম্ভব।</div>`;
+                    html += `<div class="p-2.5 bg-amber-500/10 border border-amber-500/30 text-amber-400 rounded-xl text-xs mb-1">✔ জাতীয় বিশ্ববিদ্যালয় ও ৭ কলেজের ভর্তি পরীক্ষায় আবেদন সম্ভব।</div>`;
                 }
             }
-
-            resultsBox.innerHTML = html;
+            resBox.innerHTML = html;
+            registerCompletedTask();
         }
 
         // CV FUNCTIONS
@@ -527,24 +1331,224 @@
             document.getElementById('prevCvMother').innerText = document.getElementById('cvMother').value || "মোছাঃ জাহানারা বেগম";
             document.getElementById('prevCvContact').innerText = "মোবাইল: " + (document.getElementById('cvPhone').value || "01568600668");
             document.getElementById('prevCvAddr').innerText = document.getElementById('cvAddress').value || "মিরপুর ১, ঢাকা";
-            document.getElementById('prevCvEdu').innerText = document.getElementById('cvEduText').value || "HSC Science (2026)\nSSC Science (2024)";
+            document.getElementById('prevCvEdu').innerText = document.getElementById('cvEduText').value || "HSC - Science (2026)\nSSC - Science (2024)";
             document.getElementById('prevCvSkills').innerText = document.getElementById('cvSkillsText').value || "ওয়েব অ্যাপ কন্টেন্ট ডিজাইন";
-            showToast("সিভি তথ্য সফলভাবে আপডেট হয়েছে!");
+            showSuccessToast("সিভি তথ্য সফলভাবে আপডেট হয়েছে!");
+            registerCompletedTask();
         }
 
-        // QUIZ FUNCTION
         function checkQuizAns(btn, isCorrect) {
             if (isCorrect) {
-                btn.className = "bg-emerald-600 text-white p-2 rounded-lg text-left font-bold";
-                showToast("সঠিক উত্তর হয়েছে!");
+                btn.className = "bg-emerald-600 text-white p-2.5 rounded-lg text-left font-bold";
+                showSuccessToast("সঠিক উত্তর হয়েছে!");
             } else {
-                btn.className = "bg-rose-600 text-white p-2 rounded-lg text-left font-bold";
-                showToast("ভুল উত্তর! আবার চেষ্টা করুন।");
+                btn.className = "bg-rose-600 text-white p-2.5 rounded-lg text-left font-bold";
+                showSuccessToast("ভুল উত্তর! সঠিকটি বাছাই করুন।");
             }
+            registerCompletedTask();
         }
 
-        // INITIALIZE
-        updateFavUI();
+        // COMPRESS JPEG
+        let cjLoadedImg = null, cjCompressedDataUrl = null;
+        function loadCompressJpeg(e) {
+            const file = e.target.files[0];
+            if(!file) return;
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const img = new Image();
+                img.onload = function() {
+                    cjLoadedImg = img;
+                    document.getElementById('cjPreviewBox').classList.remove('hidden');
+                    document.getElementById('cjPreviewImg').src = event.target.result;
+                    document.getElementById('cjOrigSize').innerText = (file.size / 1024).toFixed(1) + ' KB';
+                    document.getElementById('cjNewSize').innerText = 'রেডি';
+                }
+                img.src = event.target.result;
+            }
+            reader.readAsDataURL(file);
+        }
+
+        function downloadCompressedJpeg() {
+            if(!cjLoadedImg) return alert("ছবি সিলেক্ট করুন");
+            const quality = parseInt(document.getElementById('cjQualityRange').value) / 100;
+            const canvas = document.createElement('canvas');
+            canvas.width = cjLoadedImg.width; canvas.height = cjLoadedImg.height;
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(cjLoadedImg, 0, 0);
+            cjCompressedDataUrl = canvas.toDataURL('image/jpeg', quality);
+            let approxBytes = Math.round((cjCompressedDataUrl.length - 23) * 3/4);
+            document.getElementById('cjNewSize').innerText = (approxBytes / 1024).toFixed(1) + ' KB';
+            const link = document.createElement('a');
+            link.download = 'compressed-jt.jpg'; link.href = cjCompressedDataUrl; link.click();
+            registerCompletedTask();
+            showSuccessToast("কম্প্রেস ও ডাউনলোড সম্পন্ন!");
+        }
+
+        // PASSPORT PHOTO STUDIO
+        let pImg = null;
+        function loadPassportImage(e) {
+            const file = e.target.files[0];
+            if(!file) return;
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const img = new Image();
+                img.onload = function() {
+                    pImg = img;
+                    redrawPassport();
+                }
+                img.src = event.target.result;
+            }
+            reader.readAsDataURL(file);
+        }
+
+        function redrawPassport() {
+            if(!pImg) return;
+            const canvas = document.getElementById('passportCanvas');
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(pImg, 0, 0, canvas.width, canvas.height);
+        }
+
+        function downloadPassport(mode) {
+            if(!pImg) return alert("ছবি সিলেক্ট করুন");
+            const canvas = document.getElementById('passportCanvas');
+            const link = document.createElement('a');
+            link.download = 'passport-hd.png'; link.href = canvas.toDataURL('image/png'); link.click();
+            registerCompletedTask();
+            showSuccessToast("পাসপোর্ট সাইজ ছবি ডাউনলোড হয়েছে!");
+        }
+
+        // SIGNATURE RESIZER
+        let sImg = null;
+        function loadSignatureImage(e) {
+            const file = e.target.files[0];
+            if(!file) return;
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const img = new Image();
+                img.onload = function() { sImg = img; redrawSig(); }
+                img.src = event.target.result;
+            }
+            reader.readAsDataURL(file);
+        }
+
+        function redrawSig() {
+            if(!sImg) return;
+            const canvas = document.getElementById('signatureCanvas');
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(sImg, 0, 0, canvas.width, canvas.height);
+        }
+
+        function downloadSignature() {
+            if(!sImg) return alert("সিগনেচার ছবি দিন");
+            const canvas = document.createElement('canvas');
+            canvas.width = 300; canvas.height = 80;
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, 300, 80);
+            ctx.drawImage(sImg, 0, 0, 300, 80);
+            const link = document.createElement('a');
+            link.download = 'signature-300x80.jpg'; link.href = canvas.toDataURL('image/jpeg', 1.0); link.click();
+            registerCompletedTask();
+            showSuccessToast("৩০০x৮০ সিগনেচার ডাউনলোড হয়েছে!");
+        }
+
+        // OTHER UTILITIES
+        function downloadThumbnail() {
+            const url = document.getElementById('ytUrl').value;
+            const match = url ? url.match(/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/) : null;
+            if(match && match[2].length === 11) {
+                window.open(`https://img.youtube.com/vi/${match[2]}/maxresdefault.jpg`, '_blank');
+                registerCompletedTask();
+                showSuccessToast("থাম্বনেইল ডাউনলোড হয়েছে!");
+            } else { alert("সঠিক ইউটিউব ভিডিও লিংক বসান!"); }
+        }
+
+        function countWords() {
+            const text = document.getElementById('wcText').value.trim();
+            const words = text === "" ? 0 : text.split(/\s+/).length;
+            document.getElementById('wordCount').innerText = words;
+            document.getElementById('charCount').innerText = text.length;
+        }
+
+        function generatePass() {
+            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*!";
+            let pass = "";
+            for(let i=0; i<12; i++) pass += chars.charAt(Math.floor(Math.random() * chars.length));
+            document.getElementById('passOutput').value = pass;
+            registerCompletedTask();
+        }
+
+        function copyPass() {
+            navigator.clipboard.writeText(document.getElementById('passOutput').value);
+            showSuccessToast("পাসওয়ার্ড কপি হয়েছে!");
+        }
+
+        function generateQR() {
+            const val = document.getElementById('qrText').value;
+            if(!val) return alert("লেখা বা লিংক লিখুন");
+            document.getElementById('qrResult').innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(val)}" class="mx-auto rounded-lg border p-1 bg-white">`;
+            registerCompletedTask();
+        }
+
+        function calcAge() {
+            const val = document.getElementById('birthDate').value;
+            if(!val) return alert("তারিখ সিলেক্ট করুন");
+            const bdate = new Date(val), today = new Date();
+            let years = today.getFullYear() - bdate.getFullYear();
+            document.getElementById('ageResult').innerText = `আপনার বয়স ${years} বছর!`;
+            registerCompletedTask();
+        }
+
+        function convertUnit() {
+            const kg = document.getElementById('kgInput').value;
+            document.getElementById('gramResult').innerText = kg ? (kg * 1000).toLocaleString() : 0;
+        }
+
+        function speakText() {
+            const text = document.getElementById('speechText').value;
+            if(text) window.speechSynthesis.speak(new SpeechSynthesisUtterance(text));
+        }
+
+        function updateColorCode() { document.getElementById('colorHexOutput').value = document.getElementById('colorInput').value; }
+        function copyColorHex() { navigator.clipboard.writeText(document.getElementById('colorHexOutput').value); showSuccessToast("HEX কোড কপি হয়েছে!"); }
+
+        function saveNotepad() { localStorage.setItem('jt_temp_note', document.getElementById('notepadArea').value); }
+        function clearNotepad() { localStorage.removeItem('jt_temp_note'); document.getElementById('notepadArea').value = ''; }
+
+        function checkPassTime() {
+            const p = document.getElementById('checkPass').value;
+            const res = document.getElementById('passTimeResult');
+            if(p.length < 6) res.innerText = "খুব দুর্বল";
+            else if(p.length < 10) res.innerText = "মাঝারি পাসওয়ার্ড";
+            else res.innerText = "খুবই শক্তিশালী!";
+        }
+
+        let pomoTimer;
+        function startPomodoro() {
+            let t = 1500;
+            clearInterval(pomoTimer);
+            pomoTimer = setInterval(() => {
+                let m = Math.floor(t / 60), s = t % 60;
+                if(document.getElementById('timerDisplay')) {
+                    document.getElementById('timerDisplay').innerText = `${m}:${s < 10 ? '0' : ''}${s}`;
+                }
+                if(t <= 0) { clearInterval(pomoTimer); alert("পমোদোরো সময় সম্পন্ন হয়েছে!"); }
+                t--;
+            }, 1000);
+            registerCompletedTask();
+        }
+        function resetPomodoro() { clearInterval(pomoTimer); document.getElementById('timerDisplay').innerText = "25:00"; }
+
+        function calcEMI() {
+            const p = document.getElementById('loanAmount').value;
+            const r = document.getElementById('loanRate').value / 1200;
+            const n = document.getElementById('loanMonths').value;
+            const emi = (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+            document.getElementById('emiResult').innerText = `মাসিক কিস্তি (EMI): ${Math.round(emi || 0).toLocaleString()} টাকা`;
+            registerCompletedTask();
+        }
     </script>
 </body>
 </html>
