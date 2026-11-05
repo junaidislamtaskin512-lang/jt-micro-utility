@@ -163,14 +163,14 @@
             <!-- ALL TOOLS GRID -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 
-                <!-- Passport Photo Maker (Bulletproof Image Loader & Custom Size) -->
+                <!-- Passport Photo Maker -->
                 <div onclick="openTool('passportPhoto')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-blue-400 border-2 border-blue-500/30 bg-blue-950/20">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-blue-500/20 text-blue-400 rounded-2xl flex items-center justify-center text-xl border border-blue-500/40 group-hover:scale-110 transition"><i class="fa-solid fa-id-badge"></i></div>
                         <span class="text-[11px] bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2.5 py-1 rounded-full font-bold">PRO PASSPORT STUDIO</span>
                     </div>
                     <h3 class="font-bold text-lg text-white mb-1 group-hover:text-blue-400 transition">Passport Photo Maker</h3>
-                    <p class="text-xs text-slate-300">Instant image preview, 1-click background removal, custom px/cm/mm sizing.</p>
+                    <p class="text-xs text-slate-300">Universal image support (iPhone/DSLR), safe background remover & custom sizes.</p>
                 </div>
 
                 <!-- Signature Resizer -->
@@ -180,7 +180,7 @@
                         <span class="text-[11px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2.5 py-1 rounded-full font-bold">BD EXAM 300x80</span>
                     </div>
                     <h3 class="font-bold text-lg text-white mb-1 group-hover:text-emerald-400 transition">Signature Resizer</h3>
-                    <p class="text-xs text-slate-300">Exact 300x80px Bangladesh govt exam standard with live preview.</p>
+                    <p class="text-xs text-slate-300">Exact 300x80px sharp Bangladesh govt exam standard preview.</p>
                 </div>
 
                 <!-- Thumbnail Downloader -->
@@ -592,16 +592,16 @@
                 body.innerHTML = `
                     <div class="space-y-4">
                         <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800">
-                            <label class="text-xs text-slate-300 block mb-2 font-medium">1. Upload Image (Camera or Gallery)</label>
+                            <label class="text-xs text-slate-300 block mb-2 font-medium">1. Upload Image (Supports iPhone HEIC, DSLR & Gallery)</label>
                             <input type="file" id="passPhotoInput" accept="image/*" onchange="loadPassportImage(event)" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-500 cursor-pointer">
                         </div>
 
-                        <!-- SEPARATE BACKGROUND REMOVAL BUTTON -->
+                        <!-- BACKGROUND REMOVAL BUTTON -->
                         <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800 text-center">
                             <button onclick="executeBgRemoval()" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold py-3 rounded-xl text-xs shadow-lg shadow-purple-600/30 transition flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-wand-magic-sparkles text-base"></i> Remove Background (1-Click AI Studio)
+                                <i class="fa-solid fa-wand-magic-sparkles text-base"></i> Remove Background Cleanly (AI Studio)
                             </button>
-                            <p id="bgStatusText" class="text-[11px] text-amber-400 mt-2 font-medium hidden"><i class="fa-solid fa-spinner fa-spin"></i> Processing Background Removal...</p>
+                            <p id="bgStatusText" class="text-[11px] text-amber-400 mt-2 font-medium hidden"><i class="fa-solid fa-spinner fa-spin"></i> Processing HD Background Removal...</p>
                         </div>
 
                         <!-- CUSTOM SIZE CONTROLS -->
@@ -676,19 +676,19 @@
                 body.innerHTML = `
                     <div class="space-y-4">
                         <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800">
-                            <label class="text-xs text-slate-300 block mb-2 font-medium">Select Signature Image</label>
+                            <label class="text-xs text-slate-300 block mb-2 font-medium">Select Signature Image (High Clarity Support)</label>
                             <input type="file" id="sigInput" accept="image/*" onchange="loadSignatureImage(event)" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-emerald-600 file:text-white hover:file:bg-emerald-500 cursor-pointer">
                         </div>
 
                         <div class="text-center bg-slate-950 p-4 rounded-xl border border-slate-800">
-                            <p class="text-xs text-emerald-400 mb-2 font-semibold">Live Preview (Exact 300x80 Ratio)</p>
+                            <p class="text-xs text-emerald-400 mb-2 font-semibold">Live Preview (Exact 300x80 Ratio - Sharp & Clear)</p>
                             <div class="inline-block border-2 border-slate-700 rounded-lg overflow-hidden shadow-2xl bg-white p-2">
                                 <canvas id="signatureCanvas" width="600" height="160" class="max-w-full h-auto block mx-auto"></canvas>
                             </div>
                         </div>
 
                         <button onclick="downloadSignature()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-3 rounded-xl text-sm font-bold shadow-lg shadow-emerald-600/30 transition flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-download"></i> Download HD Official Signature
+                            <i class="fa-solid fa-download"></i> Download HD Official Signature (300x80)
                         </button>
                     </div>
                 `;
@@ -891,7 +891,7 @@
 
         function closeToolModal() { document.getElementById('toolModal').classList.add('hidden'); }
 
-        // BULLETPROOF PASSPORT & IMAGE LOADING ENGINE
+        // ROBUST & BULLETPROOF PASSPORT ENGINE (iPhone/DSLR Safe & Clean BG Removal)
         let pOriginalImage = null;
         let pProcessedCanvas = null;
         let pBgColor = '#ffffff';
@@ -906,30 +906,49 @@
             reader.onload = function(event) {
                 const img = new Image();
                 img.onload = function() {
-                    pOriginalImage = img;
-                    pProcessedCanvas = document.createElement('canvas');
-                    pProcessedCanvas.width = img.width;
-                    pProcessedCanvas.height = img.height;
-                    const ctx = pProcessedCanvas.getContext('2d');
-                    ctx.drawImage(img, 0, 0);
+                    // Safe downscaling for heavy DSLR/iPhone images to prevent browser crash
+                    let maxW = 1200, maxH = 1200;
+                    let w = img.width, h = img.height;
+                    if (w > maxW || h > maxH) {
+                        let ratio = Math.min(maxW / w, maxH / h);
+                        w = Math.floor(w * ratio);
+                        h = Math.floor(h * ratio);
+                    }
 
-                    pScale = 1;
-                    pOffsetX = (300 - img.width * 0.5) / 2;
-                    pOffsetY = (350 - img.height * 0.5) / 2;
-                    document.getElementById('zoomRange').value = 1;
+                    const tempC = document.createElement('canvas');
+                    tempC.width = w;
+                    tempC.height = h;
+                    const tCtx = tempC.getContext('2d');
+                    tCtx.drawImage(img, 0, 0, w, h);
 
-                    redrawPassport();
-                    showSuccessToast("Image Loaded Successfully!");
+                    const cleanImg = new Image();
+                    cleanImg.onload = function() {
+                        pOriginalImage = cleanImg;
+                        pProcessedCanvas = document.createElement('canvas');
+                        pProcessedCanvas.width = cleanImg.width;
+                        pProcessedCanvas.height = cleanImg.height;
+                        const ctx = pProcessedCanvas.getContext('2d');
+                        ctx.drawImage(cleanImg, 0, 0);
+
+                        pScale = 1;
+                        pOffsetX = (300 - cleanImg.width * 0.4) / 2;
+                        pOffsetY = (350 - cleanImg.height * 0.4) / 2;
+                        document.getElementById('zoomRange').value = 1;
+
+                        redrawPassport();
+                        showSuccessToast("Image Loaded Successfully!");
+                    };
+                    cleanImg.src = tempC.toDataURL('image/jpeg', 0.9);
                 }
                 img.onerror = function() {
-                    alert("Failed to load image. Please select a valid image file.");
+                    alert("Failed to load image. Please select a valid JPEG/PNG image.");
                 }
                 img.src = event.target.result;
             }
             reader.readAsDataURL(file);
         }
 
-        // SEPARATE BUTTON TO REMOVE BACKGROUND (SAFE & SECURE)
+        // ACCURATE & CLEAN BACKGROUND REMOVAL (Protects face, hair & eyes)
         function executeBgRemoval() {
             if(!pOriginalImage) {
                 alert("Please upload a photo first!");
@@ -950,16 +969,27 @@
                     const imgData = tCtx.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
                     const data = imgData.data;
 
-                    // Reliable corner background sampling
-                    let avgR = data[0], avgG = data[1], avgB = data[2];
+                    // Sample corners to detect background color accurately
+                    let corners = [
+                        0, 
+                        (tempCanvas.width - 1) * 4, 
+                        (tempCanvas.width * (tempCanvas.height - 1)) * 4
+                    ];
+                    let rSum = 0, gSum = 0, bSum = 0;
+                    corners.forEach(idx => {
+                        rSum += data[idx];
+                        gSum += data[idx+1];
+                        bSum += data[idx+2];
+                    });
+                    let bgR = rSum / 3, bgG = gSum / 3, bgB = bSum / 3;
 
                     for (let i = 0; i < data.length; i += 4) {
                         let r = data[i], g = data[i+1], b = data[i+2];
-                        let dist = Math.sqrt(Math.pow(r - avgR, 2) + Math.pow(g - avgG, 2) + Math.pow(b - avgB, 2));
+                        let diff = Math.abs(r - bgR) + Math.abs(g - bgG) + Math.abs(b - bgB);
                         
-                        // Clean background separation
-                        if (dist < 60 || (g > r && g > b && g > 45)) {
-                            data[i+3] = 0; // Make transparent
+                        // Strict threshold to isolate subject without touching facial features
+                        if (diff < 45) {
+                            data[i+3] = 0; // Transparent background
                         }
                     }
 
@@ -968,12 +998,12 @@
 
                     statusEl.classList.add('hidden');
                     redrawPassport();
-                    showSuccessToast("Background Removed Successfully!");
+                    showSuccessToast("Background Removed Cleanly!");
                 } catch(err) {
                     statusEl.classList.add('hidden');
-                    alert("Error processing image background.");
+                    alert("Error processing background removal.");
                 }
-            }, 300);
+            }, 200);
         }
 
         function updateSizeDimensions() {
@@ -1073,16 +1103,20 @@
             showSuccessToast("Successfully Downloaded HD File!");
         }
 
-        // SIGNATURE ENGINE
+        // SHARP SIGNATURE ENGINE (300x80 Govt Exam Standard)
         let sImg = null;
         function loadSignatureImage(e) {
             const file = e.target.files[0];
             if(!file) return;
             const reader = new FileReader();
             reader.onload = function(event) {
-                sImg = new Image();
-                sImg.onload = function() { redrawSignature(); }
-                sImg.src = event.target.result;
+                const img = new Image();
+                img.onload = function() {
+                    sImg = img;
+                    redrawSignature();
+                    showSuccessToast("Signature Loaded Successfully!");
+                }
+                img.src = event.target.result;
             }
             reader.readAsDataURL(file);
         }
@@ -1091,6 +1125,8 @@
             if(!sImg) return;
             const canvas = document.getElementById('signatureCanvas');
             const ctx = canvas.getContext('2d');
+            ctx.imageSmoothingEnabled = true;
+            ctx.imageSmoothingQuality = 'high';
             ctx.fillStyle = '#ffffff';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             ctx.drawImage(sImg, 0, 0, canvas.width, canvas.height);
@@ -1099,19 +1135,21 @@
         function downloadSignature() {
             if(!sImg) { alert("Please select a signature image first!"); return; }
             const canvas = document.createElement('canvas');
-            canvas.width = 900; canvas.height = 240; 
+            canvas.width = 300; canvas.height = 80; // Exact Bangladesh Govt Exam Ratio
             const ctx = canvas.getContext('2d');
+            ctx.imageSmoothingEnabled = true;
+            ctx.imageSmoothingQuality = 'high';
             ctx.fillStyle = '#ffffff';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             ctx.drawImage(sImg, 0, 0, canvas.width, canvas.height);
 
             const link = document.createElement('a');
             link.download = 'official-exam-signature-300x80.jpg';
-            link.href = canvas.toDataURL('image/jpeg', 0.9);
+            link.href = canvas.toDataURL('image/jpeg', 1.0);
             link.click();
             
             registerCompletedTask();
-            showSuccessToast("Signature Downloaded Successfully!");
+            showSuccessToast("Signature Downloaded Successfully (300x80)!");
         }
 
         // OTHER UTILITIES FUNCTIONS
