@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JT Micro Utility - Ultimate All-in-One Toolkit</title>
+    <title>JT Micro Utility - Ultimate All-in-One Toolkit & Admission Hub</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -33,6 +33,10 @@
 
         @keyframes pulse-glow { 0%, 100% { box-shadow: 0 0 15px rgba(37, 211, 102, 0.4); } 50% { box-shadow: 0 0 25px rgba(37, 211, 102, 0.8); } }
         .whatsapp-float { animation: pulse-glow 2.5s infinite; }
+
+        /* Hide scrollbar for clean slider effect */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white relative overflow-x-hidden">
@@ -115,7 +119,7 @@
                 </div>
                 <div>
                     <h2 class="font-bold text-base tracking-wide text-white">JT Micro Utility</h2>
-                    <p class="text-[10px] text-slate-400">Smart Utility & Tools Hub</p>
+                    <p class="text-[10px] text-slate-400">Smart Utility & Admission Hub</p>
                 </div>
             </div>
             
@@ -147,7 +151,7 @@
             <div class="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div>
                     <h1 class="text-2xl sm:text-3xl font-bold text-white mb-1">Interactive Dashboard</h1>
-                    <p class="text-slate-400 text-xs sm:text-sm">All essential utilities & professional passport/signature maker.</p>
+                    <p class="text-slate-400 text-xs sm:text-sm">HSC 2024/2026 Admission Circular Hub & Professional Utilities.</p>
                 </div>
                 <div class="bg-slate-900 border border-slate-800 px-4 py-2 rounded-xl flex items-center gap-3 self-start sm:self-auto">
                     <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></div>
@@ -163,7 +167,17 @@
             <!-- ALL TOOLS GRID -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 
-                <!-- Compress JPEG Studio (New Request) -->
+                <!-- NEW: HSC & University Admission Circular Hub -->
+                <div onclick="openTool('admissionHub')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-amber-400 border-2 border-amber-500/30 bg-amber-950/20">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-amber-500/20 text-amber-400 rounded-2xl flex items-center justify-center text-xl border border-amber-500/40 group-hover:scale-110 transition"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <span class="text-[11px] bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2.5 py-1 rounded-full font-bold">HSC ADMISSION 2026</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-white mb-1 group-hover:text-amber-400 transition">University & Medical Admission Hub</h3>
+                    <p class="text-xs text-slate-300">Medical, Dental, BUET, DU & Varsity admission notices, circulars & direct application links.</p>
+                </div>
+
+                <!-- Compress JPEG Studio -->
                 <div onclick="openTool('compressJpeg')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-teal-400 border-2 border-teal-500/30 bg-teal-950/20">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-teal-500/20 text-teal-400 rounded-2xl flex items-center justify-center text-xl border border-teal-500/40 group-hover:scale-110 transition"><i class="fa-solid fa-compress"></i></div>
@@ -434,7 +448,7 @@
 
     <!-- TOOL MODAL -->
     <div id="toolModal" class="fixed inset-0 z-40 hidden flex items-center justify-center bg-black/90 backdrop-blur-md p-4">
-        <div class="glass w-full max-w-2xl rounded-2xl p-6 shadow-2xl animate-pop relative border border-slate-800 max-h-[90vh] overflow-y-auto">
+        <div class="glass w-full max-w-3xl rounded-2xl p-6 shadow-2xl animate-pop relative border border-slate-800 max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center mb-4 border-b border-slate-800 pb-3">
                 <h3 id="toolModalTitle" class="font-bold text-lg text-white flex items-center gap-2">Tool Title</h3>
                 <button onclick="closeToolModal()" class="w-8 h-8 rounded-full bg-slate-900 text-slate-400 hover:text-white flex items-center justify-center border border-slate-800 transition"><i class="fa-solid fa-xmark"></i></button>
@@ -489,7 +503,7 @@
 
     <!-- JAVASCRIPT SYSTEM -->
     <script>
-        let toolViews = JSON.parse(localStorage.getItem('jt_tool_views')) || { compressJpeg: 0, passportPhoto: 0, signatureResizer: 0, wordCounter: 0, passGenerator: 0, qrGenerator: 0, ageCalculator: 0, unitConverter: 0, textSpeech: 0, thumbDownloader: 0, imgCompressor: 0, colorPicker: 0, caseConverter: 0, tempNotepad: 0, passChecker: 0, codeMinifier: 0, metaGen: 0, ipFinder: 0, pomodoro: 0, tagGen: 0, paletteGen: 0, emiCalc: 0, binaryConv: 0, base64Tool: 0, worldClock: 0, keyTester: 0 };
+        let toolViews = JSON.parse(localStorage.getItem('jt_tool_views')) || { admissionHub: 0, compressJpeg: 0, passportPhoto: 0, signatureResizer: 0, wordCounter: 0, passGenerator: 0, qrGenerator: 0, ageCalculator: 0, unitConverter: 0, textSpeech: 0, thumbDownloader: 0, imgCompressor: 0, colorPicker: 0, caseConverter: 0, tempNotepad: 0, passChecker: 0, codeMinifier: 0, metaGen: 0, ipFinder: 0, pomodoro: 0, tagGen: 0, paletteGen: 0, emiCalc: 0, binaryConv: 0, base64Tool: 0, worldClock: 0, keyTester: 0 };
         let completedWorksCount = parseInt(localStorage.getItem('jt_works_count')) || 0;
 
         document.getElementById('menuWorkCount').innerText = completedWorksCount;
@@ -597,7 +611,155 @@
             const body = document.getElementById('toolModalBody');
             modal.classList.remove('hidden');
 
-            if(toolName === 'compressJpeg') {
+            if(toolName === 'admissionHub') {
+                title.innerHTML = `<i class="fa-solid fa-graduation-cap text-amber-400"></i> HSC 2026 & University Admission Circular Hub`;
+                body.innerHTML = `
+                    <div class="space-y-5">
+                        <div class="text-center bg-amber-950/30 p-4 rounded-2xl border border-amber-500/30">
+                            <h4 class="font-bold text-sm text-amber-300 mb-1">ADMISSION CIRCULAR & APPLICATION PORTAL</h4>
+                            <p class="text-[11px] text-slate-300">সকল সরকারি মেডিকেল, ডেন্টাল, ইঞ্জিনিয়ারিং (BUET/CUET/RUET/KUET) এবং পাবলিক বিশ্ববিদ্যালয়ের ভর্তি পরীক্ষার অফিশিয়াল নোটিশ এবং সরাসরি অনলাইন আবেদনের লিংক।</p>
+                        </div>
+
+                        <!-- HORIZONTAL SCROLLABLE CATEGORIES/CARDS -->
+                        <div>
+                            <h5 class="text-xs font-bold text-slate-300 mb-3 uppercase tracking-wider flex items-center gap-2">
+                                <i class="fa-solid fa-fire text-amber-400"></i> Select Category / University Sector
+                            </h5>
+                            <div class="flex gap-3 overflow-x-auto pb-3 no-scrollbar">
+                                <button onclick="filterAdmission('all')" class="px-4 py-2 bg-amber-600 text-white rounded-xl text-xs font-bold shrink-0 shadow transition">All Circulars</button>
+                                <button onclick="filterAdmission('medical')" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 rounded-xl text-xs font-medium shrink-0 transition">Medical & Dental</button>
+                                <button onclick="filterAdmission('engineering')" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 rounded-xl text-xs font-medium shrink-0 transition">Engineering</button>
+                                <button onclick="filterAdmission('varsity')" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 rounded-xl text-xs font-medium shrink-0 transition">Public Universities</button>
+                            </div>
+                        </div>
+
+                        <!-- ADMISSION CARDS GRID / LIST -->
+                        <div id="admissionCardsList" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            
+                            <!-- Medical & Dental Card -->
+                            <div class="admission-card medical glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                                <div>
+                                    <div class="flex justify-between items-start mb-2">
+                                        <span class="text-[10px] bg-rose-500/20 text-rose-300 border border-rose-500/30 px-2 py-0.5 rounded-full font-bold">MBBS & BDS</span>
+                                        <span class="text-[10px] text-emerald-400 font-semibold"><i class="fa-solid fa-circle-check"></i> Circular Active</span>
+                                    </div>
+                                    <h5 class="font-bold text-sm text-white mb-1">Government & Private Medical / Dental Admission</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">DGME controlled MBBS and Dental College admission application & seat distribution notice.</p>
+                                </div>
+                                <div class="flex gap-2 pt-2 border-t border-slate-800">
+                                    <a href="https://dgme.teletalk.com.bd" target="_blank" onclick="registerCompletedTask(); showSuccessToast('Redirecting to Medical Application Portal...');" class="flex-1 bg-rose-600 hover:bg-rose-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">
+                                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Apply Now
+                                    </a>
+                                    <a href="https://dghs.gov.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800 transition">
+                                        Notice
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- BUET & Engineering Card -->
+                            <div class="admission-card engineering glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                                <div>
+                                    <div class="flex justify-between items-start mb-2">
+                                        <span class="text-[10px] bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2 py-0.5 rounded-full font-bold">BUET / CKRUET</span>
+                                        <span class="text-[10px] text-emerald-400 font-semibold"><i class="fa-solid fa-circle-check"></i> Circular Active</span>
+                                    </div>
+                                    <h5 class="font-bold text-sm text-white mb-1">Bangladesh University of Engineering (BUET)</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">BUET undergraduate admission preliminary application, written test & seat plan.</p>
+                                </div>
+                                <div class="flex gap-2 pt-2 border-t border-slate-800">
+                                    <a href="https://www.buet.ac.bd/web/#/admission" target="_blank" onclick="registerCompletedTask(); showSuccessToast('Redirecting to BUET Portal...');" class="flex-1 bg-blue-600 hover:bg-blue-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">
+                                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Apply Now
+                                    </a>
+                                    <a href="https://www.buet.ac.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800 transition">
+                                        Notice
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Dhaka University Card -->
+                            <div class="admission-card varsity glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                                <div>
+                                    <div class="flex justify-between items-start mb-2">
+                                        <span class="text-[10px] bg-purple-500/20 text-purple-300 border border-purple-500/30 px-2 py-0.5 rounded-full font-bold">DU Units A, B, C, D</span>
+                                        <span class="text-[10px] text-emerald-400 font-semibold"><i class="fa-solid fa-circle-check"></i> Circular Active</span>
+                                    </div>
+                                    <h5 class="font-bold text-sm text-white mb-1">University of Dhaka (DU) Admission</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">Science, Arts, Business Studies and Fine Arts undergraduate online application portal.</p>
+                                </div>
+                                <div class="flex gap-2 pt-2 border-t border-slate-800">
+                                    <a href="https://admission.eis.du.ac.bd" target="_blank" onclick="registerCompletedTask(); showSuccessToast('Redirecting to DU Admission Portal...');" class="flex-1 bg-purple-600 hover:bg-purple-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">
+                                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Apply Now
+                                    </a>
+                                    <a href="https://du.ac.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800 transition">
+                                        Notice
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- GST Cluster Card -->
+                            <div class="admission-card varsity glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                                <div>
+                                    <div class="flex justify-between items-start mb-2">
+                                        <span class="text-[10px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded-full font-bold">20+ Universities</span>
+                                        <span class="text-[10px] text-emerald-400 font-semibold"><i class="fa-solid fa-circle-check"></i> Circular Active</span>
+                                    </div>
+                                    <h5 class="font-bold text-sm text-white mb-1">GST Cluster Admission (General, Science & Tech)</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">Combined admission test for 20+ general, science and technology public universities.</p>
+                                </div>
+                                <div class="flex gap-2 pt-2 border-t border-slate-800">
+                                    <a href="https://gstadmission.ac.bd" target="_blank" onclick="registerCompletedTask(); showSuccessToast('Redirecting to GST Portal...');" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">
+                                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Apply Now
+                                    </a>
+                                    <a href="https://gstadmission.ac.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800 transition">
+                                        Notice
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Rajshahi University Card -->
+                            <div class="admission-card varsity glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                                <div>
+                                    <div class="flex justify-between items-start mb-2">
+                                        <span class="text-[10px] bg-teal-500/20 text-teal-300 border border-teal-500/30 px-2 py-0.5 rounded-full font-bold">RU Units A, B, C</span>
+                                        <span class="text-[10px] text-emerald-400 font-semibold"><i class="fa-solid fa-circle-check"></i> Open</span>
+                                    </div>
+                                    <h5 class="font-bold text-sm text-white mb-1">University of Rajshahi (RU) Admission</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">Rajshahi University undergraduate admission preliminary application and seat plan.</p>
+                                </div>
+                                <div class="flex gap-2 pt-2 border-t border-slate-800">
+                                    <a href="https://admission.ru.ac.bd" target="_blank" onclick="registerCompletedTask(); showSuccessToast('Redirecting to RU Portal...');" class="flex-1 bg-teal-600 hover:bg-teal-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">
+                                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Apply Now
+                                    </a>
+                                    <a href="https://ru.ac.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800 transition">
+                                        Notice
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Chittagong University Card -->
+                            <div class="admission-card varsity glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                                <div>
+                                    <div class="flex justify-between items-start mb-2">
+                                        <span class="text-[10px] bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 px-2 py-0.5 rounded-full font-bold">CU Units A, B, C, D</span>
+                                        <span class="text-[10px] text-emerald-400 font-semibold"><i class="fa-solid fa-circle-check"></i> Open</span>
+                                    </div>
+                                    <h5 class="font-bold text-sm text-white mb-1">University of Chittagong (CU) Admission</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">Chittagong University admission application, sub-units and admit card download.</p>
+                                </div>
+                                <div class="flex gap-2 pt-2 border-t border-slate-800">
+                                    <a href="https://admission.cu.ac.bd" target="_blank" onclick="registerCompletedTask(); showSuccessToast('Redirecting to CU Portal...');" class="flex-1 bg-indigo-600 hover:bg-indigo-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">
+                                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Apply Now
+                                    </a>
+                                    <a href="https://cu.ac.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800 transition">
+                                        Notice
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                `;
+            } else if(toolName === 'compressJpeg') {
                 title.innerHTML = `<i class="fa-solid fa-compress text-teal-400"></i> Compress JPEG & Converter Studio`;
                 body.innerHTML = `
                     <div class="space-y-4">
@@ -961,6 +1123,18 @@
 
         function closeToolModal() { document.getElementById('toolModal').classList.add('hidden'); }
 
+        // FILTER ADMISSION CARDS
+        function filterAdmission(category) {
+            const cards = document.querySelectorAll('.admission-card');
+            cards.forEach(card => {
+                if(category === 'all' || card.classList.contains(category)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
         // COMPRESS JPEG ENGINE
         let cjLoadedImg = null;
         let cjOrigFileSize = 0;
@@ -1001,7 +1175,6 @@
 
             cjCompressedDataUrl = canvas.toDataURL('image/jpeg', quality);
             
-            // Approximate size calculation in KB
             let head = 'data:image/jpeg;base64,';
             let approxBytes = Math.round((cjCompressedDataUrl.length - head.length) * 3/4);
             document.getElementById('cjNewSize').innerText = (approxBytes / 1024).toFixed(1) + ' KB';
@@ -1023,7 +1196,7 @@
             showSuccessToast("Successfully Downloaded JPEG File!");
         }
 
-        // UNIVERSAL & BULLETPROOF PASSPORT ENGINE (Supports all image formats)
+        // PASSPORT ENGINE
         let pOriginalImage = null;
         let pProcessedCanvas = null;
         let pBgColor = '#ffffff';
@@ -1053,9 +1226,7 @@
                     redrawPassport();
                     showSuccessToast("Image Loaded Successfully!");
                 }
-                img.onerror = function() {
-                    alert("Please select a valid image file (JPEG, PNG or transparent PNG).");
-                }
+                img.onerror = function() { alert("Please select a valid image file."); }
                 img.src = event.target.result;
             }
             reader.readAsDataURL(file);
@@ -1066,13 +1237,9 @@
             const wInput = document.getElementById('customWidth');
             const hInput = document.getElementById('customHeight');
 
-            if(unit === 'cm') {
-                wInput.value = 3.5; hInput.value = 4.5;
-            } else if(unit === 'mm') {
-                wInput.value = 35; hInput.value = 45;
-            } else {
-                wInput.value = 300; hInput.value = 350;
-            }
+            if(unit === 'cm') { wInput.value = 3.5; hInput.value = 4.5; }
+            else if(unit === 'mm') { wInput.value = 35; hInput.value = 45; }
+            else { wInput.value = 300; hInput.value = 350; }
             redrawPassport();
         }
 
@@ -1108,20 +1275,14 @@
             setTimeout(() => {
                 const canvas = document.getElementById('passportCanvas');
                 if(!canvas) return;
-
                 canvas.onmousedown = (e) => { isDragging = true; startX = e.clientX - pOffsetX; startY = e.clientY - pOffsetY; };
                 window.onmousemove = (e) => { if(!isDragging) return; pOffsetX = e.clientX - startX; pOffsetY = e.clientY - startY; redrawPassport(); };
                 window.onmouseup = () => { isDragging = false; };
-
-                canvas.ontouchstart = (e) => { isDragging = true; startX = e.touches[0].clientX - pOffsetX; startY = e.touches[0].clientY - pOffsetY; };
-                window.ontouchmove = (e) => { if(!isDragging) return; pOffsetX = e.touches[0].clientX - startX; pOffsetY = e.touches[0].clientY - startY; redrawPassport(); };
-                window.ontouchend = () => { isDragging = false; };
             }, 500);
         }
 
         function downloadPassport(mode) {
             if(!pProcessedCanvas) { alert("Please upload a photo first!"); return; }
-            
             const canvas = document.getElementById('passportCanvas');
             const link = document.createElement('a');
 
@@ -1135,30 +1296,21 @@
                 const sCtx = sheetCanvas.getContext('2d');
                 sCtx.fillStyle = '#ffffff';
                 sCtx.fillRect(0, 0, sheetCanvas.width, sheetCanvas.height);
-
                 let pw = canvas.width, ph = canvas.height;
-                let cols = 4, rows = 2;
-                let startX = 100, startY = 100;
-                let gapX = 50, gapY = 50;
-
-                for(let r=0; r<rows; r++) {
-                    for(let c=0; c<cols; c++) {
-                        let x = startX + c * (pw + gapX);
-                        let y = startY + r * (ph + gapY);
-                        sCtx.drawImage(canvas, x, y);
+                for(let r=0; r<2; r++) {
+                    for(let c=0; c<4; c++) {
+                        sCtx.drawImage(canvas, 100 + c * (pw + 50), 100 + r * (ph + 50));
                     }
                 }
-
                 link.download = 'passport-print-sheet-4r.jpg';
                 link.href = sheetCanvas.toDataURL('image/jpeg', 0.95);
                 link.click();
             }
-            
             registerCompletedTask();
             showSuccessToast("Successfully Downloaded HD File!");
         }
 
-        // SHARP SIGNATURE ENGINE (300x80 Govt Exam Standard)
+        // SIGNATURE ENGINE
         let sImg = null;
         function loadSignatureImage(e) {
             const file = e.target.files[0];
@@ -1166,11 +1318,7 @@
             const reader = new FileReader();
             reader.onload = function(event) {
                 const img = new Image();
-                img.onload = function() {
-                    sImg = img;
-                    redrawSignature();
-                    showSuccessToast("Signature Loaded Successfully!");
-                }
+                img.onload = function() { sImg = img; redrawSignature(); showSuccessToast("Signature Loaded Successfully!"); }
                 img.src = event.target.result;
             }
             reader.readAsDataURL(file);
@@ -1202,7 +1350,6 @@
             link.download = 'official-exam-signature-300x80.jpg';
             link.href = canvas.toDataURL('image/jpeg', 1.0);
             link.click();
-            
             registerCompletedTask();
             showSuccessToast("Signature Downloaded Successfully (300x80)!");
         }
@@ -1216,9 +1363,7 @@
                 window.open(`https://img.youtube.com/vi/${match[2]}/${quality}.jpg`, '_blank');
                 registerCompletedTask();
                 showSuccessToast("Thumbnail Downloaded!");
-            } else {
-                alert("Please enter a valid YouTube Video URL!");
-            }
+            } else { alert("Please enter a valid YouTube Video URL!"); }
         }
 
         function compressAndDownloadImage() {
@@ -1229,10 +1374,8 @@
                 const img = new Image();
                 img.onload = function() {
                     const canvas = document.createElement('canvas');
-                    canvas.width = img.width;
-                    canvas.height = img.height;
-                    const ctx = canvas.getContext('2d');
-                    ctx.drawImage(img, 0, 0);
+                    canvas.width = img.width; canvas.height = img.height;
+                    canvas.getContext('2d').drawImage(img, 0, 0);
                     const link = document.createElement('a');
                     link.download = 'compressed-hd.jpg';
                     link.href = canvas.toDataURL('image/jpeg', 0.85);
@@ -1296,15 +1439,8 @@
             registerCompletedTask();
         }
 
-        function updateColorCode() {
-            document.getElementById('colorHexOutput').value = document.getElementById('colorInput').value;
-        }
-
-        function copyColorHex() {
-            navigator.clipboard.writeText(document.getElementById('colorHexOutput').value);
-            showSuccessToast("HEX Copied!");
-            registerCompletedTask();
-        }
+        function updateColorCode() { document.getElementById('colorHexOutput').value = document.getElementById('colorInput').value; }
+        function copyColorHex() { navigator.clipboard.writeText(document.getElementById('colorHexOutput').value); showSuccessToast("HEX Copied!"); registerCompletedTask(); }
 
         function convertCase(type) {
             const txt = document.getElementById('caseText');
@@ -1387,14 +1523,8 @@
             registerCompletedTask();
         }
 
-        function encodeBase64() {
-            document.getElementById('baseText').value = btoa(document.getElementById('baseText').value);
-            registerCompletedTask();
-        }
-        function decodeBase64() {
-            try { document.getElementById('baseText').value = atob(document.getElementById('baseText').value); } catch(e) { alert("Invalid Base64"); }
-            registerCompletedTask();
-        }
+        function encodeBase64() { document.getElementById('baseText').value = btoa(document.getElementById('baseText').value); registerCompletedTask(); }
+        function decodeBase64() { try { document.getElementById('baseText').value = atob(document.getElementById('baseText').value); } catch(e) { alert("Invalid Base64"); } registerCompletedTask(); }
     </script>
 </body>
 </html>
