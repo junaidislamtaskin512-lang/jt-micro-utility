@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JT Micro Utility - Pro Passport Studio & Toolkit</title>
+    <title>JT Micro Utility - Ultimate All-in-One Toolkit</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -163,14 +163,14 @@
             <!-- ALL TOOLS GRID -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 
-                <!-- Passport Photo Maker (Ultimate Custom Size & Pro BG Remover) -->
+                <!-- Passport Photo Maker (Bulletproof Image Loader & Custom Size) -->
                 <div onclick="openTool('passportPhoto')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-blue-400 border-2 border-blue-500/30 bg-blue-950/20">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-blue-500/20 text-blue-400 rounded-2xl flex items-center justify-center text-xl border border-blue-500/40 group-hover:scale-110 transition"><i class="fa-solid fa-id-badge"></i></div>
                         <span class="text-[11px] bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2.5 py-1 rounded-full font-bold">PRO PASSPORT STUDIO</span>
                     </div>
                     <h3 class="font-bold text-lg text-white mb-1 group-hover:text-blue-400 transition">Passport Photo Maker</h3>
-                    <p class="text-xs text-slate-300">Separate Background Removal button, custom sizes (px/cm/mm), and color palette.</p>
+                    <p class="text-xs text-slate-300">Instant image preview, 1-click background removal, custom px/cm/mm sizing.</p>
                 </div>
 
                 <!-- Signature Resizer -->
@@ -477,7 +477,7 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT LOGIC -->
+    <!-- JAVASCRIPT SYSTEM -->
     <script>
         let toolViews = JSON.parse(localStorage.getItem('jt_tool_views')) || { passportPhoto: 0, signatureResizer: 0, wordCounter: 0, passGenerator: 0, qrGenerator: 0, ageCalculator: 0, unitConverter: 0, textSpeech: 0, thumbDownloader: 0, imgCompressor: 0, colorPicker: 0, caseConverter: 0, tempNotepad: 0, passChecker: 0, codeMinifier: 0, metaGen: 0, ipFinder: 0, pomodoro: 0, tagGen: 0, paletteGen: 0, emiCalc: 0, binaryConv: 0, base64Tool: 0, worldClock: 0, keyTester: 0 };
         let completedWorksCount = parseInt(localStorage.getItem('jt_works_count')) || 0;
@@ -576,7 +576,7 @@
             }, 3500);
         }
 
-        // TOOL HANDLER (All 25 Tools with Advanced Passport Studio)
+        // TOOL HANDLER
         function openTool(toolName) {
             toolViews[toolName] = (toolViews[toolName] || 0) + 1;
             localStorage.setItem('jt_tool_views', JSON.stringify(toolViews));
@@ -601,7 +601,7 @@
                             <button onclick="executeBgRemoval()" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold py-3 rounded-xl text-xs shadow-lg shadow-purple-600/30 transition flex items-center justify-center gap-2">
                                 <i class="fa-solid fa-wand-magic-sparkles text-base"></i> Remove Background (1-Click AI Studio)
                             </button>
-                            <p id="bgStatusText" class="text-[11px] text-amber-400 mt-2 font-medium hidden"><i class="fa-solid fa-spinner fa-spin"></i> Processing Background Removal & Subject Extraction...</p>
+                            <p id="bgStatusText" class="text-[11px] text-amber-400 mt-2 font-medium hidden"><i class="fa-solid fa-spinner fa-spin"></i> Processing Background Removal...</p>
                         </div>
 
                         <!-- CUSTOM SIZE CONTROLS -->
@@ -891,7 +891,7 @@
 
         function closeToolModal() { document.getElementById('toolModal').classList.add('hidden'); }
 
-        // PASSPORT ENGINE WITH ADVANCED SEPARATE BG REMOVAL & CUSTOM SIZES
+        // BULLETPROOF PASSPORT & IMAGE LOADING ENGINE
         let pOriginalImage = null;
         let pProcessedCanvas = null;
         let pBgColor = '#ffffff';
@@ -921,12 +921,15 @@
                     redrawPassport();
                     showSuccessToast("Image Loaded Successfully!");
                 }
+                img.onerror = function() {
+                    alert("Failed to load image. Please select a valid image file.");
+                }
                 img.src = event.target.result;
             }
             reader.readAsDataURL(file);
         }
 
-        // SEPARATE BUTTON TO REMOVE BACKGROUND (AI Studio Style)
+        // SEPARATE BUTTON TO REMOVE BACKGROUND (SAFE & SECURE)
         function executeBgRemoval() {
             if(!pOriginalImage) {
                 alert("Please upload a photo first!");
@@ -937,50 +940,40 @@
             statusEl.classList.remove('hidden');
 
             setTimeout(() => {
-                const tempCanvas = document.createElement('canvas');
-                tempCanvas.width = pOriginalImage.width;
-                tempCanvas.height = pOriginalImage.height;
-                const tCtx = tempCanvas.getContext('2d');
-                tCtx.drawImage(pOriginalImage, 0, 0);
+                try {
+                    const tempCanvas = document.createElement('canvas');
+                    tempCanvas.width = pOriginalImage.width;
+                    tempCanvas.height = pOriginalImage.height;
+                    const tCtx = tempCanvas.getContext('2d');
+                    tCtx.drawImage(pOriginalImage, 0, 0);
 
-                const imgData = tCtx.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
-                const data = imgData.data;
+                    const imgData = tCtx.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
+                    const data = imgData.data;
 
-                // Corner background color detection
-                let corners = [
-                    0,
-                    (tempCanvas.width - 1) * 4,
-                    (tempCanvas.width * (tempCanvas.height - 1)) * 4,
-                    (tempCanvas.width * tempCanvas.height - 1) * 4
-                ];
+                    // Reliable corner background sampling
+                    let avgR = data[0], avgG = data[1], avgB = data[2];
 
-                let avgR = 0, avgG = 0, avgB = 0;
-                corners.forEach(idx => {
-                    avgR += data[idx];
-                    avgG += data[idx+1];
-                    avgB += data[idx+2];
-                });
-                avgR = Math.floor(avgR / 4);
-                avgG = Math.floor(avgG / 4);
-                avgB = Math.floor(avgB / 4);
-
-                for (let i = 0; i < data.length; i += 4) {
-                    let r = data[i], g = data[i+1], b = data[i+2];
-                    let dist = Math.sqrt(Math.pow(r - avgR, 2) + Math.pow(g - avgG, 2) + Math.pow(b - avgB, 2));
-                    
-                    let isGreenOrOutdoor = (g > r && g > b && g > 50) || (dist < 65);
-                    if (isGreenOrOutdoor) {
-                        data[i+3] = 0; // Make transparent
+                    for (let i = 0; i < data.length; i += 4) {
+                        let r = data[i], g = data[i+1], b = data[i+2];
+                        let dist = Math.sqrt(Math.pow(r - avgR, 2) + Math.pow(g - avgG, 2) + Math.pow(b - avgB, 2));
+                        
+                        // Clean background separation
+                        if (dist < 60 || (g > r && g > b && g > 45)) {
+                            data[i+3] = 0; // Make transparent
+                        }
                     }
+
+                    tCtx.putImageData(imgData, 0, 0);
+                    pProcessedCanvas = tempCanvas;
+
+                    statusEl.classList.add('hidden');
+                    redrawPassport();
+                    showSuccessToast("Background Removed Successfully!");
+                } catch(err) {
+                    statusEl.classList.add('hidden');
+                    alert("Error processing image background.");
                 }
-
-                tCtx.putImageData(imgData, 0, 0);
-                pProcessedCanvas = tempCanvas;
-
-                statusEl.classList.add('hidden');
-                redrawPassport();
-                showSuccessToast("Background Removed Successfully!");
-            }, 600);
+            }, 300);
         }
 
         function updateSizeDimensions() {
