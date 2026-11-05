@@ -1,506 +1,273 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="bn" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JT Micro Utility - Ultimate All-in-One Toolkit & Admission Hub</title>
+    <title>JT Micro Utility - Ultimate Admission & Pro Utility Hub</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
-                    colors: {
-                        brand: { 50: '#eff6ff', 500: '#3b82f6', 600: '#2563eb', 900: '#1e3a8a' }
+                    fontFamily: {
+                        sans: ['Hind Siliguri', 'Poppins', 'sans-serif']
                     }
                 }
             }
         }
     </script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Poppins', sans-serif; transition: background-color 0.3s ease, color 0.3s ease; }
+        body { font-family: 'Hind Siliguri', 'Poppins', sans-serif; }
         .glass-dark { background: rgba(15, 23, 42, 0.90); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
-        .glass-light { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); border: 1px solid rgba(0, 0, 0, 0.08); }
-        .glass-card-dark { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
-        .glass-card-dark:hover { transform: translateY(-6px); box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.5); }
-        .glass-card-light { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px); border: 1px solid rgba(0, 0, 0, 0.06); transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
-        .glass-card-light:hover { transform: translateY(-6px); box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.1); }
-        @keyframes spin-slow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .animate-spin-slow { animation: spin-slow 12s linear infinite; }
-        @keyframes pop-in { 0% { transform: scale(0.85); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
-        .animate-pop { animation: pop-in 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
-        @keyframes slide-in-right { 0% { transform: translateX(120%); opacity: 0; } 100% { transform: translateX(0); opacity: 1; } }
-        @keyframes slide-out-right { 0% { transform: translateX(0); opacity: 1; } 100% { transform: translateX(120%); opacity: 0; } }
-        .toast-slide-in { animation: slide-in-right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
-        .toast-slide-out { animation: slide-out-right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
-        @keyframes pulse-glow { 0%, 100% { box-shadow: 0 0 15px rgba(37, 211, 102, 0.4); } 50% { box-shadow: 0 0 25px rgba(37, 211, 102, 0.8); } }
-        .whatsapp-float { animation: pulse-glow 2.5s infinite; }
+        .glass-card-dark { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.3s ease; }
+        .glass-card-dark:hover { transform: translateY(-4px); border-color: rgba(59, 130, 246, 0.5); }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        @media print {
+            body * { visibility: hidden; }
+            #printableCvArea, #printableCvArea * { visibility: visible; }
+            #printableCvArea { position: absolute; left: 0; top: 0; width: 100%; }
+        }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white relative overflow-x-hidden">
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white">
 
-    <script>
-        (function() {
-            var isLoggedIn = localStorage.getItem('jt_is_logged_in');
-            if (!isLoggedIn) {
-                document.addEventListener("DOMContentLoaded", function() {
-                    document.getElementById('authModal').classList.remove('hidden');
-                });
-            }
-        })();
-    </script>
-
-    <!-- TOAST CONTAINER -->
+    <!-- TOAST NOTIFICATION -->
     <div id="toastContainer" class="fixed top-6 right-6 z-50 flex flex-col gap-3 pointer-events-none"></div>
 
-    <!-- WHATSAPP FLOAT -->
-    <a href="https://wa.me/8801568600668?text=Hello!%20I%20need%20help%20with%20JT%20Micro%20Utility." target="_blank" title="Chat on WhatsApp" class="whatsapp-float fixed bottom-6 right-6 z-40 bg-emerald-500 hover:bg-emerald-400 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl transition hover:scale-110 border border-emerald-300">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-
-    <!-- AUTH MODAL -->
-    <div id="authModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md p-4 hidden">
-        <div class="glass-dark w-full max-w-md rounded-2xl p-8 shadow-2xl animate-pop relative border border-slate-800">
-            <div class="text-center mb-6">
-                <div class="w-16 h-16 bg-gradient-to-tr from-blue-600 to-indigo-500 text-white rounded-2xl flex items-center justify-center mx-auto mb-3 text-2xl shadow-lg shadow-blue-500/30">
-                    <i class="fa-solid fa-bolt animate-spin-slow"></i>
-                </div>
-                <h1 class="text-2xl font-bold tracking-wide text-white">JT Micro Utility</h1>
-                <p class="text-xs text-slate-400 mt-1">Please login or register to access tools</p>
+    <!-- HEADER -->
+    <header class="glass-dark sticky top-0 z-30 px-4 lg:px-8 py-3.5 flex justify-between items-center border-b border-slate-800">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-gradient-to-tr from-blue-600 to-indigo-600 text-white rounded-xl flex items-center justify-center font-bold text-lg shadow-md shadow-blue-500/30">
+                <i class="fa-solid fa-bolt"></i>
             </div>
-
-            <div class="flex bg-slate-900/80 rounded-xl p-1 mb-6 border border-slate-800/80">
-                <button onclick="switchTab('login')" id="loginTabBtn" class="flex-1 py-2 text-sm font-medium rounded-lg bg-blue-600 text-white transition shadow">Login</button>
-                <button onclick="switchTab('signup')" id="signupTabBtn" class="flex-1 py-2 text-sm font-medium rounded-lg text-slate-400 hover:text-white transition">Sign Up</button>
-            </div>
-
-            <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-4">
-                <div>
-                    <label class="text-xs text-slate-400 block mb-1">Email or Phone Number</label>
-                    <input type="text" id="loginEmail" required class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500 transition text-slate-200" placeholder="Enter email or phone">
-                </div>
-                <div>
-                    <label class="text-xs text-slate-400 block mb-1">Password</label>
-                    <input type="password" id="loginPass" required class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500 transition text-slate-200" placeholder="Enter password">
-                </div>
-                <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-medium py-3 rounded-xl transition shadow-lg shadow-blue-600/30">Login Now</button>
-            </form>
-
-            <form id="signupForm" onsubmit="handleSignup(event)" class="space-y-4 hidden">
-                <div>
-                    <label class="text-xs text-slate-400 block mb-1">Full Name</label>
-                    <input type="text" id="signupName" required class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 transition text-slate-200" placeholder="Enter full name">
-                </div>
-                <div>
-                    <label class="text-xs text-slate-400 block mb-1">Email or Phone Number</label>
-                    <input type="text" id="signupEmail" required class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 transition text-slate-200" placeholder="Enter email or phone">
-                </div>
-                <div>
-                    <label class="text-xs text-slate-400 block mb-1">Create Password</label>
-                    <input type="password" id="signupPass" required class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 transition text-slate-200" placeholder="Create password">
-                </div>
-                <button type="submit" class="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-medium py-3 rounded-xl transition shadow-lg shadow-emerald-600/30">Register Account</button>
-            </form>
-
-            <div id="authAlert" class="hidden mt-4 p-3 bg-emerald-500/20 border border-emerald-500 text-emerald-400 rounded-xl text-center text-sm font-medium animate-pop flex items-center justify-center gap-2">
-                <i class="fa-solid fa-circle-check text-lg"></i> <span id="authAlertText">Success!</span>
+            <div>
+                <h2 class="font-bold text-base tracking-wide text-white">JT Micro Utility</h2>
+                <p class="text-[11px] text-slate-400">বাংলাদেশের সর্বাধুনিক এডমিশন ও প্রফেশনাল হাব</p>
             </div>
         </div>
-    </div>
+
+        <div class="flex items-center gap-3">
+            <div class="relative w-48 sm:w-72">
+                <input type="text" id="globalSearch" oninput="liveSearchTools()" placeholder="টুলস বা বিশ্ববিদ্যালয় সার্চ করুন..." class="w-full bg-slate-900 border border-slate-800 rounded-xl pl-9 pr-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-blue-500">
+                <i class="fa-solid fa-search absolute left-3 top-2.5 text-xs text-slate-500"></i>
+            </div>
+            <a href="https://wa.me/8801568600668" target="_blank" class="hidden sm:flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20 px-3 py-1.5 rounded-xl text-xs font-medium transition">
+                <i class="fa-brands fa-whatsapp"></i> সাপোর্ট
+            </a>
+        </div>
+    </header>
 
     <!-- MAIN DASHBOARD -->
-    <div id="mainApp" class="flex-1 flex flex-col">
-        <header id="mainHeader" class="glass-dark sticky top-0 z-30 px-4 lg:px-12 py-4 flex justify-between items-center border-b border-slate-800/80 transition-colors duration-300">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-gradient-to-tr from-blue-600 to-indigo-600 text-white rounded-xl flex items-center justify-center font-bold text-lg shadow-md shadow-blue-500/30">
-                    <i class="fa-solid fa-bolt animate-spin-slow"></i>
-                </div>
-                <div>
-                    <h2 class="font-bold text-base tracking-wide text-white dark:text-white" id="headerBrandTitle">JT Micro Utility</h2>
-                    <p class="text-[10px] text-slate-400">Smart Utility & Admission Hub</p>
-                </div>
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 lg:px-8 py-6 space-y-8">
+
+        <!-- LIVE COUNTDOWN BANNER -->
+        <div class="bg-gradient-to-r from-blue-900/40 via-indigo-900/30 to-slate-900 border border-blue-500/30 rounded-2xl p-4 sm:p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="space-y-1 text-center sm:text-left">
+                <span class="text-[10px] bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2.5 py-0.5 rounded-full font-bold">লাইভ এডমিশন ট্র্যাকার</span>
+                <h3 class="font-bold text-base sm:text-lg text-white">ঢাকা বিশ্ববিদ্যালয় (DU) এডমিশন আবেদন</h3>
+                <p class="text-xs text-slate-300">আবেদনের শেষ সময়সীমা গণনায় লাইভ টাইম আপডেট হচ্ছে</p>
             </div>
-            
-            <div class="flex items-center gap-3 relative">
-                <!-- THEME TOGGLE BUTTON -->
-                <button onclick="toggleTheme()" class="w-10 h-10 bg-slate-900 dark:bg-slate-900 bg-slate-100 hover:bg-slate-800 dark:hover:bg-slate-800 hover:bg-slate-200 border border-slate-800 dark:border-slate-800 border-slate-300 rounded-xl flex items-center justify-center text-slate-300 dark:text-slate-300 text-slate-700 transition shadow-sm" title="Toggle Theme">
-                    <i id="themeIcon" class="fa-solid fa-moon text-base"></i>
-                </button>
-
-                <a href="https://wa.me/8801568600668" target="_blank" class="hidden sm:flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20 px-3 py-1.5 rounded-xl text-xs font-medium transition">
-                    <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Support
-                </a>
-
-                <div class="relative">
-                    <button onclick="toggleMenu()" class="w-10 h-10 bg-slate-900 dark:bg-slate-900 bg-slate-100 hover:bg-slate-800 dark:hover:bg-slate-800 hover:bg-slate-200 border border-slate-800 dark:border-slate-800 border-slate-300 rounded-xl flex items-center justify-center text-slate-300 dark:text-slate-300 text-slate-700 transition shadow-sm">
-                        <i class="fa-solid fa-ellipsis-vertical text-lg"></i>
-                    </button>
-                    <div id="dropdownMenu" class="hidden absolute right-0 mt-2 w-52 glass-dark rounded-xl shadow-2xl border border-slate-800 overflow-hidden z-50 animate-pop">
-                        <button onclick="openProfileModal(); toggleMenu();" class="w-full text-left px-4 py-2.5 text-xs text-slate-200 hover:bg-slate-800/80 flex items-center gap-2.5 transition border-b border-slate-800/50">
-                            <i class="fa-solid fa-user text-emerald-400"></i> Profile
-                        </button>
-                        <button onclick="openCompleteWorksModal(); toggleMenu();" class="w-full text-left px-4 py-2.5 text-xs text-slate-200 hover:bg-slate-800/80 flex items-center gap-2.5 transition border-b border-slate-800/50">
-                            <i class="fa-solid fa-circle-check text-purple-400"></i> Complete Works (<span id="menuWorkCount">0</span>)
-                        </button>
-                        <button onclick="logout()" class="w-full text-left px-4 py-2.5 text-xs text-rose-400 hover:bg-rose-500/10 flex items-center gap-2.5 transition font-medium">
-                            <i class="fa-solid fa-right-from-bracket"></i> Logout
-                        </button>
-                    </div>
+            <div class="flex gap-3 text-center">
+                <div class="bg-slate-900/90 border border-slate-800 p-2.5 rounded-xl min-w-[55px]">
+                    <span id="cdDays" class="block font-bold text-lg text-blue-400">12</span>
+                    <span class="text-[10px] text-slate-400">দিন</span>
                 </div>
-            </div>
-        </header>
-
-        <main class="flex-1 max-w-7xl w-full mx-auto px-4 lg:px-8 py-8">
-            <div class="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                <div>
-                    <h1 class="text-2xl sm:text-3xl font-bold text-white dark:text-white text-slate-900 mb-1" id="mainHeadingTitle">Interactive Dashboard</h1>
-                    <p class="text-slate-400 text-xs sm:text-sm">Complete Admission Hub, Student GPA Checker, AI Utilities & Tools.</p>
+                <div class="bg-slate-900/90 border border-slate-800 p-2.5 rounded-xl min-w-[55px]">
+                    <span id="cdHours" class="block font-bold text-lg text-indigo-400">08</span>
+                    <span class="text-[10px] text-slate-400">ঘণ্টা</span>
                 </div>
-                <div class="bg-slate-900 dark:bg-slate-900 bg-white border border-slate-800 dark:border-slate-800 border-slate-200 px-4 py-2 rounded-xl flex items-center gap-3 self-start sm:self-auto shadow-sm">
-                    <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></div>
-                    <span class="text-xs text-slate-300 dark:text-slate-300 text-slate-700 font-medium">Total Live Interactions: <strong id="totalViewsCount" class="text-emerald-400">0</strong></span>
+                <div class="bg-slate-900/90 border border-slate-800 p-2.5 rounded-xl min-w-[55px]">
+                    <span id="cdMins" class="block font-bold text-lg text-teal-400">45</span>
+                    <span class="text-[10px] text-slate-400">মিঃ</span>
                 </div>
-            </div>
-
-            <!-- INSTANT LIVE SEARCH BAR -->
-            <div class="mb-8 relative">
-                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400">
-                    <i class="fa-solid fa-search"></i>
-                </div>
-                <input type="text" id="liveSearchInput" oninput="filterTools()" placeholder="Search any tool instantly (e.g., Admission, GPA, Passport, Compress, QR)..." class="w-full bg-slate-900 dark:bg-slate-900 bg-white border border-slate-800 dark:border-slate-800 border-slate-300 rounded-2xl pl-12 pr-4 py-3.5 text-sm text-slate-200 dark:text-slate-200 text-slate-800 focus:outline-none focus:border-blue-500 transition shadow-lg">
-            </div>
-
-            <!-- ADSTERRA AD CONTAINER -->
-            <div class="mb-8 p-4 bg-slate-900/60 dark:bg-slate-900/65 bg-slate-100 border border-slate-800 dark:border-slate-800 border-slate-300 rounded-2xl text-center">
-                <script data-cfasync="false" src="https://bauval.org/14/a0bf2999fe8463c6c3a473854470e8ce"></script>
-            </div>
-
-            <!-- ALL TOOLS GRID -->
-            <div id="toolsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                
-                <!-- NEW FEATURE 1: HSC & University Admission Hub -->
-                <div onclick="openTool('admissionHub')" class="tool-card glass-card-dark dark:glass-card-dark glass-card-light p-6 rounded-2xl cursor-pointer group hover:border-amber-400 border-2 border-amber-500/30 bg-amber-950/20 dark:bg-amber-950/20 bg-amber-50" data-name="admission hub medical engineering public private university">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="w-12 h-12 bg-amber-500/20 text-amber-400 rounded-2xl flex items-center justify-center text-xl border border-amber-500/40 group-hover:scale-110 transition"><i class="fa-solid fa-graduation-cap"></i></div>
-                        <span class="text-[11px] bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2.5 py-1 rounded-full font-bold">ADMISSION HUB</span>
-                    </div>
-                    <h3 class="font-bold text-lg text-white dark:text-white text-slate-900 mb-1 group-hover:text-amber-400 transition">University & Medical Admission Hub</h3>
-                    <p class="text-xs text-slate-300 dark:text-slate-300 text-slate-600">All Public, GST Cluster, Medical, Engineering & Private Universities application links.</p>
-                </div>
-
-                <!-- NEW FEATURE 2: GPA & Admission Eligibility Checker -->
-                <div onclick="openTool('gpaChecker')" class="tool-card glass-card-dark dark:glass-card-dark glass-card-light p-6 rounded-2xl cursor-pointer group hover:border-cyan-400 border-2 border-cyan-500/30 bg-cyan-950/20 dark:bg-cyan-950/20 bg-cyan-50" data-name="gpa eligibility checker admission university">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="w-12 h-12 bg-cyan-500/20 text-cyan-400 rounded-2xl flex items-center justify-center text-xl border border-cyan-500/40 group-hover:scale-110 transition"><i class="fa-solid fa-square-check"></i></div>
-                        <span class="text-[11px] bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 px-2.5 py-1 rounded-full font-bold">STUDENT TOOL</span>
-                    </div>
-                    <h3 class="font-bold text-lg text-white dark:text-white text-slate-900 mb-1 group-hover:text-cyan-400 transition">GPA & University Eligibility Checker</h3>
-                    <p class="text-xs text-slate-300 dark:text-slate-300 text-slate-600">Check which universities you can apply to based on your SSC & HSC GPA.</p>
-                </div>
-
-                <!-- NEW FEATURE 3: Smart CV / Resume Builder -->
-                <div onclick="openTool('cvBuilder')" class="tool-card glass-card-dark dark:glass-card-dark glass-card-light p-6 rounded-2xl cursor-pointer group hover:border-purple-400 border-2 border-purple-500/30 bg-purple-950/20 dark:bg-purple-950/20 bg-purple-50" data-name="cv resume builder maker biodata">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="w-12 h-12 bg-purple-500/20 text-purple-400 rounded-2xl flex items-center justify-center text-xl border border-purple-500/40 group-hover:scale-110 transition"><i class="fa-solid fa-file-invoice"></i></div>
-                        <span class="text-[11px] bg-purple-500/20 text-purple-300 border border-purple-500/30 px-2.5 py-1 rounded-full font-bold">CAREER TOOL</span>
-                    </div>
-                    <h3 class="font-bold text-lg text-white dark:text-white text-slate-900 mb-1 group-hover:text-purple-400 transition">Smart CV & Resume Builder</h3>
-                    <p class="text-xs text-slate-300 dark:text-slate-300 text-slate-600">Build professional biodata and CV instantly with custom fields.</p>
-                </div>
-
-                <!-- Compress JPEG Studio -->
-                <div onclick="openTool('compressJpeg')" class="tool-card glass-card-dark dark:glass-card-dark glass-card-light p-6 rounded-2xl cursor-pointer group hover:border-teal-400 border-2 border-teal-500/30 bg-teal-950/20 dark:bg-teal-950/20 bg-teal-50" data-name="compress jpeg image converter kb size">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="w-12 h-12 bg-teal-500/20 text-teal-400 rounded-2xl flex items-center justify-center text-xl border border-teal-500/40 group-hover:scale-110 transition"><i class="fa-solid fa-compress"></i></div>
-                        <span class="text-[11px] bg-teal-500/20 text-teal-300 border border-teal-500/30 px-2.5 py-1 rounded-full font-bold">COMPRESS JPEG</span>
-                    </div>
-                    <h3 class="font-bold text-lg text-white dark:text-white text-slate-900 mb-1 group-hover:text-teal-400 transition">Compress JPEG & Converter</h3>
-                    <p class="text-xs text-slate-300 dark:text-slate-300 text-slate-600">Convert any photo to JPEG format, reduce file size in KB, and download instantly.</p>
-                </div>
-
-                <!-- Passport Photo Maker -->
-                <div onclick="openTool('passportPhoto')" class="tool-card glass-card-dark dark:glass-card-dark glass-card-light p-6 rounded-2xl cursor-pointer group hover:border-blue-400 border-2 border-blue-500/30 bg-blue-950/20 dark:bg-blue-950/20 bg-blue-50" data-name="passport photo maker background remover">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="w-12 h-12 bg-blue-500/20 text-blue-400 rounded-2xl flex items-center justify-center text-xl border border-blue-500/40 group-hover:scale-110 transition"><i class="fa-solid fa-id-badge"></i></div>
-                        <span class="text-[11px] bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2.5 py-1 rounded-full font-bold">PASSPORT STUDIO</span>
-                    </div>
-                    <h3 class="font-bold text-lg text-white dark:text-white text-slate-900 mb-1 group-hover:text-blue-400 transition">Passport Photo Maker</h3>
-                    <p class="text-xs text-slate-300 dark:text-slate-300 text-slate-600">Universal format support, AI background removal & custom px/cm/mm sizing.</p>
-                </div>
-
-                <!-- Signature Resizer -->
-                <div onclick="openTool('signatureResizer')" class="tool-card glass-card-dark dark:glass-card-dark glass-card-light p-6 rounded-2xl cursor-pointer group hover:border-emerald-400 border-2 border-emerald-500/30 bg-emerald-950/20 dark:bg-emerald-950/20 bg-emerald-50" data-name="signature resizer 300x80 exam">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="w-12 h-12 bg-emerald-500/20 text-emerald-400 rounded-2xl flex items-center justify-center text-xl border border-emerald-500/40 group-hover:scale-110 transition"><i class="fa-solid fa-signature"></i></div>
-                        <span class="text-[11px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2.5 py-1 rounded-full font-bold">BD EXAM 300x80</span>
-                    </div>
-                    <h3 class="font-bold text-lg text-white dark:text-white text-slate-900 mb-1 group-hover:text-emerald-400 transition">Signature Resizer</h3>
-                    <p class="text-xs text-slate-300 dark:text-slate-300 text-slate-600">Exact 300x80px sharp Bangladesh govt exam standard preview.</p>
-                </div>
-
-                <!-- Thumbnail Downloader -->
-                <div onclick="openTool('thumbDownloader')" class="tool-card glass-card-dark dark:glass-card-dark glass-card-light p-6 rounded-2xl cursor-pointer group hover:border-red-500/50" data-name="thumbnail downloader youtube video">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="w-12 h-12 bg-red-500/15 text-red-400 rounded-2xl flex items-center justify-center text-xl border border-red-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-download"></i></div>
-                        <span class="text-[11px] bg-red-500/10 text-red-400 border border-red-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-thumbDownloader">0</span> views</span>
-                    </div>
-                    <h3 class="font-semibold text-lg text-white dark:text-white text-slate-900 mb-1 group-hover:text-red-400 transition">Thumbnail Downloader</h3>
-                    <p class="text-xs text-slate-400 dark:text-slate-400 text-slate-500">Download YouTube 4K/HD video thumbnails instantly.</p>
-                </div>
-
-                <!-- QR Generator -->
-                <div onclick="openTool('qrGenerator')" class="tool-card glass-card-dark dark:glass-card-dark glass-card-light p-6 rounded-2xl cursor-pointer group hover:border-purple-500/50" data-name="qr code generator">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="w-12 h-12 bg-purple-500/15 text-purple-400 rounded-2xl flex items-center justify-center text-xl border border-purple-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-qrcode"></i></div>
-                        <span class="text-[11px] bg-purple-500/10 text-purple-400 border border-purple-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-qrGenerator">0</span> views</span>
-                    </div>
-                    <h3 class="font-semibold text-lg text-white dark:text-white text-slate-900 mb-1 group-hover:text-purple-400 transition">QR Code Generator</h3>
-                    <p class="text-xs text-slate-400 dark:text-slate-400 text-slate-500">Create & download custom high-res QR codes.</p>
-                </div>
-
-                <!-- Word Counter -->
-                <div onclick="openTool('wordCounter')" class="tool-card glass-card-dark dark:glass-card-dark glass-card-light p-6 rounded-2xl cursor-pointer group hover:border-blue-500/50" data-name="word and character counter">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="w-12 h-12 bg-blue-500/15 text-blue-400 rounded-2xl flex items-center justify-center text-xl border border-blue-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-file-lines"></i></div>
-                        <span class="text-[11px] bg-blue-500/10 text-blue-400 border border-blue-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-wordCounter">0</span> views</span>
-                    </div>
-                    <h3 class="font-semibold text-lg text-white dark:text-white text-slate-900 mb-1 group-hover:text-blue-400 transition">Word & Char Counter</h3>
-                    <p class="text-xs text-slate-400 dark:text-slate-400 text-slate-500">Count words, characters, and paragraphs instantly.</p>
-                </div>
-
-                <!-- Password Generator -->
-                <div onclick="openTool('passGenerator')" class="tool-card glass-card-dark dark:glass-card-dark glass-card-light p-6 rounded-2xl cursor-pointer group hover:border-emerald-500/50" data-name="password generator">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="w-12 h-12 bg-emerald-500/15 text-emerald-400 rounded-2xl flex items-center justify-center text-xl border border-emerald-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-key"></i></div>
-                        <span class="text-[11px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-passGenerator">0</span> views</span>
-                    </div>
-                    <h3 class="font-semibold text-lg text-white dark:text-white text-slate-900 mb-1 group-hover:text-emerald-400 transition">Password Generator</h3>
-                    <p class="text-xs text-slate-400 dark:text-slate-400 text-slate-500">Generate secure passwords with one click.</p>
-                </div>
-
-                <!-- Age Calculator -->
-                <div onclick="openTool('ageCalculator')" class="tool-card glass-card-dark dark:glass-card-dark glass-card-light p-6 rounded-2xl cursor-pointer group hover:border-amber-500/50" data-name="age calculator">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="w-12 h-12 bg-amber-500/15 text-amber-400 rounded-2xl flex items-center justify-center text-xl border border-amber-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-cake-candles"></i></div>
-                        <span class="text-[11px] bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-ageCalculator">0</span> views</span>
-                    </div>
-                    <h3 class="font-semibold text-lg text-white dark:text-white text-slate-900 mb-1 group-hover:text-amber-400 transition">Age Calculator</h3>
-                    <p class="text-xs text-slate-400 dark:text-slate-400 text-slate-500">Calculate exact age from date of birth.</p>
-                </div>
-
-                <!-- Unit Converter -->
-                <div onclick="openTool('unitConverter')" class="tool-card glass-card-dark dark:glass-card-dark glass-card-light p-6 rounded-2xl cursor-pointer group hover:border-cyan-500/50" data-name="unit converter kg gram">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="w-12 h-12 bg-cyan-500/15 text-cyan-400 rounded-2xl flex items-center justify-center text-xl border border-cyan-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-scale-balanced"></i></div>
-                        <span class="text-[11px] bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-unitConverter">0</span> views</span>
-                    </div>
-                    <h3 class="font-semibold text-lg text-white dark:text-white text-slate-900 mb-1 group-hover:text-cyan-400 transition">Unit Converter</h3>
-                    <p class="text-xs text-slate-400 dark:text-slate-400 text-slate-500">Convert measurement units like KG to Gram.</p>
-                </div>
-
-                <!-- Text-to-Speech -->
-                <div onclick="openTool('textSpeech')" class="tool-card glass-card-dark dark:glass-card-dark glass-card-light p-6 rounded-2xl cursor-pointer group hover:border-rose-500/50" data-name="text to speech audio">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="w-12 h-12 bg-rose-500/15 text-rose-400 rounded-2xl flex items-center justify-center text-xl border border-rose-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-volume-high"></i></div>
-                        <span class="text-[11px] bg-rose-500/10 text-rose-400 border border-rose-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-textSpeech">0</span> views</span>
-                    </div>
-                    <h3 class="font-semibold text-lg text-white dark:text-white text-slate-900 mb-1 group-hover:text-rose-400 transition">Text-to-Speech</h3>
-                    <p class="text-xs text-slate-400 dark:text-slate-400 text-slate-500">Convert written text into natural audio speech.</p>
-                </div>
-
-                <!-- Color Picker & HEX -->
-                <div onclick="openTool('colorPicker')" class="tool-card glass-card-dark dark:glass-card-dark glass-card-light p-6 rounded-2xl cursor-pointer group hover:border-emerald-500/50" data-name="color picker hex">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="w-12 h-12 bg-emerald-500/15 text-emerald-400 rounded-2xl flex items-center justify-center text-xl border border-emerald-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-palette"></i></div>
-                        <span class="text-[11px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-colorPicker">0</span> views</span>
-                    </div>
-                    <h3 class="font-semibold text-lg text-white dark:text-white text-slate-900 mb-1 group-hover:text-emerald-400 transition">Color Picker & HEX</h3>
-                    <p class="text-xs text-slate-400 dark:text-slate-400 text-slate-500">Pick colors and get exact HEX codes.</p>
-                </div>
-
-                <!-- Temporary Notepad -->
-                <div onclick="openTool('tempNotepad')" class="tool-card glass-card-dark dark:glass-card-dark glass-card-light p-6 rounded-2xl cursor-pointer group hover:border-yellow-500/50" data-name="temporary notepad notes">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="w-12 h-12 bg-yellow-500/15 text-yellow-400 rounded-2xl flex items-center justify-center text-xl border border-yellow-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-note-sticky"></i></div>
-                        <span class="text-[11px] bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-tempNotepad">0</span> views</span>
-                    </div>
-                    <h3 class="font-semibold text-lg text-white dark:text-white text-slate-900 mb-1 group-hover:text-yellow-400 transition">Temporary Notepad</h3>
-                    <p class="text-xs text-slate-400 dark:text-slate-400 text-slate-500">Auto-saved local scratchpad notes.</p>
-                </div>
-
-                <!-- Password Hack Time Checker -->
-                <div onclick="openTool('passChecker')" class="tool-card glass-card-dark dark:glass-card-dark glass-card-light p-6 rounded-2xl cursor-pointer group hover:border-fuchsia-500/50" data-name="password hack time checker strength">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="w-12 h-12 bg-fuchsia-500/15 text-fuchsia-400 rounded-2xl flex items-center justify-center text-xl border border-fuchsia-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-shield-halved"></i></div>
-                        <span class="text-[11px] bg-fuchsia-500/10 text-fuchsia-400 border border-fuchsia-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-passChecker">0</span> views</span>
-                    </div>
-                    <h3 class="font-semibold text-lg text-white dark:text-white text-slate-900 mb-1 group-hover:text-fuchsia-400 transition">Password Hack Time</h3>
-                    <p class="text-xs text-slate-400 dark:text-slate-400 text-slate-500">Calculate how long it takes to crack a password.</p>
-                </div>
-
-                <!-- Pomodoro Study Timer -->
-                <div onclick="openTool('pomodoro')" class="tool-card glass-card-dark dark:glass-card-dark glass-card-light p-6 rounded-2xl cursor-pointer group hover:border-pink-500/50" data-name="pomodoro study timer">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="w-12 h-12 bg-pink-500/15 text-pink-400 rounded-2xl flex items-center justify-center text-xl border border-pink-500/30 group-hover:scale-110 transition"><i class="fa-solid fa-clock"></i></div>
-                        <span class="text-[11px] bg-pink-500/10 text-pink-400 border border-pink-500/20 px-2.5 py-1 rounded-full font-medium"><span id="view-pomodoro">0</span> views</span>
-                    </div>
-                    <h3 class="font-semibold text-lg text-white dark:text-white text-slate-900 mb-1 group-hover:text-pink-400 transition">Pomodoro Timer</h3>
-                    <p class="text-xs text-slate-400 dark:text-slate-400 text-slate-500">25-minute study focus timer and break tracker.</p>
-                </div>
-
-                <!-- Loan & EMI Calculator -->
-                <div onclick="openTool('emiCalc')" class="tool-card glass-card-dark dark:glass-card-dark glass-card-light p-6 rounded-2xl cursor-pointer group hover:border-amber-400/50" data-name="loan and emi calculator">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="w-12 h-12 bg-amber-400/15 text-amber-300 rounded-2xl flex items-center justify-center text-xl border border-amber-400/30 group-hover:scale-110 transition"><i class="fa-solid fa-calculator"></i></div>
-                        <span class="text-[11px] bg-amber-400/10 text-amber-300 border border-amber-400/20 px-2.5 py-1 rounded-full font-medium"><span id="view-emiCalc">0</span> views</span>
-                    </div>
-                    <h3 class="font-semibold text-lg text-white dark:text-white text-slate-900 mb-1 group-hover:text-amber-300 transition">Loan & EMI Calculator</h3>
-                    <p class="text-xs text-slate-400 dark:text-slate-400 text-slate-500">Calculate loan installments and monthly interest.</p>
-                </div>
-
-                <!-- World Clock Converter -->
-                <div onclick="openTool('worldClock')" class="tool-card glass-card-dark dark:glass-card-dark glass-card-light p-6 rounded-2xl cursor-pointer group hover:border-rose-400/50" data-name="world clock time zone">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="w-12 h-12 bg-rose-400/15 text-rose-300 rounded-2xl flex items-center justify-center text-xl border border-rose-400/30 group-hover:scale-110 transition"><i class="fa-solid fa-clock-rotate-left"></i></div>
-                        <span class="text-[11px] bg-rose-400/10 text-rose-300 border border-rose-400/20 px-2.5 py-1 rounded-full font-medium"><span id="view-worldClock">0</span> views</span>
-                    </div>
-                    <h3 class="font-semibold text-lg text-white dark:text-white text-slate-900 mb-1 group-hover:text-rose-300 transition">World Clock</h3>
-                    <p class="text-xs text-slate-400 dark:text-slate-400 text-slate-500">Check current live times across global timezones.</p>
-                </div>
-
-            </div>
-        </main>
-
-        <footer id="mainFooter" class="glass-dark border-t border-slate-800 text-center py-4 px-4 text-xs text-slate-400 flex flex-col sm:flex-row justify-between items-center gap-2 max-w-7xl mx-auto w-full transition-colors duration-300">
-            <div>&copy; 2026 JT Micro Utility. Powered by Junaid.</div>
-            <div>Need help? <a href="https://wa.me/8801568600668" target="_blank" class="text-emerald-400 hover:underline inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp"></i> WhatsApp (01568600668)</a></div>
-        </footer>
-    </div>
-
-    <!-- TOOL MODAL -->
-    <div id="toolModal" class="fixed inset-0 z-40 hidden flex items-center justify-center bg-black/90 backdrop-blur-md p-4">
-        <div class="glass-dark w-full max-w-4xl rounded-2xl p-6 shadow-2xl animate-pop relative border border-slate-800 max-h-[90vh] overflow-y-auto">
-            <div class="flex justify-between items-center mb-4 border-b border-slate-800 pb-3">
-                <h3 id="toolModalTitle" class="font-bold text-lg text-white flex items-center gap-2">Tool Title</h3>
-                <button onclick="closeToolModal()" class="w-8 h-8 rounded-full bg-slate-900 text-slate-400 hover:text-white flex items-center justify-center border border-slate-800 transition"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            <div id="toolModalBody"></div>
-        </div>
-    </div>
-
-    <!-- PROFILE MODAL -->
-    <div id="profileModal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/90 backdrop-blur-md p-4">
-        <div class="glass-dark w-full max-w-md rounded-2xl p-6 shadow-2xl animate-pop relative border border-slate-800">
-            <div class="flex justify-between items-center mb-4 border-b border-slate-800 pb-3">
-                <h3 class="font-bold text-lg text-white">Edit User Profile</h3>
-                <button onclick="closeProfileModal()" class="w-8 h-8 rounded-full bg-slate-900 text-slate-400 hover:text-white flex items-center justify-center border border-slate-800 transition"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            <form onsubmit="saveProfile(event)" class="space-y-4">
-                <div>
-                    <label class="text-xs text-slate-400 block mb-1">Full Name</label>
-                    <input type="text" id="profileNameInput" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-blue-500 transition text-slate-200" required placeholder="Enter name">
-                </div>
-                <div>
-                    <label class="text-xs text-slate-400 block mb-1">Phone / Contact</label>
-                    <input type="text" id="profilePhoneInput" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-blue-500 transition text-slate-200" placeholder="015xxxxxxxx">
-                </div>
-                <div>
-                    <label class="text-xs text-slate-400 block mb-1">Bio / Address</label>
-                    <textarea id="profileBioInput" rows="2" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-blue-500 transition text-slate-200" placeholder="Write bio..."></textarea>
-                </div>
-                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-medium py-2.5 rounded-xl transition shadow-lg shadow-blue-600/30">Save Changes</button>
-            </form>
-            <div id="profileAlert" class="hidden mt-3 p-3 bg-emerald-500/20 border border-emerald-500 text-emerald-400 rounded-xl text-center text-xs font-medium flex items-center justify-center gap-2 animate-pop">
-                <i class="fa-solid fa-circle-check text-base"></i> Profile Updated!
-            </div>
-        </div>
-    </div>
-
-    <!-- COMPLETE WORKS MODAL -->
-    <div id="completeWorksModal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/90 backdrop-blur-md p-4">
-        <div class="glass-dark w-full max-w-md rounded-2xl p-6 shadow-2xl animate-pop relative border border-slate-800">
-            <div class="flex justify-between items-center mb-4 border-b border-slate-800 pb-3">
-                <h3 class="font-bold text-lg text-white flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> Complete Works History</h3>
-                <button onclick="closeCompleteWorksModal()" class="w-8 h-8 rounded-full bg-slate-900 text-slate-400 hover:text-white flex items-center justify-center border border-slate-800 transition"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            <div class="space-y-3">
-                <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 flex justify-between items-center">
-                    <span class="text-xs text-slate-300 font-medium">Total Tasks Completed:</span>
-                    <span id="modalWorkCount" class="text-lg font-bold text-emerald-400">0</span>
+                <div class="bg-slate-900/90 border border-slate-800 p-2.5 rounded-xl min-w-[55px]">
+                    <span id="cdSecs" class="block font-bold text-lg text-rose-400">30</span>
+                    <span class="text-[10px] text-slate-400">সেঃ</span>
                 </div>
             </div>
         </div>
+
+        <!-- FAVORITES SECTION -->
+        <div id="favSection" class="hidden space-y-3">
+            <h3 class="text-sm font-bold text-amber-400 flex items-center gap-2">
+                <i class="fa-solid fa-star"></i> আপনার পছন্দের বুকমার্ক করা টুলসমূহ (<span id="favCount">0</span>)
+            </h3>
+            <div id="favGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+        </div>
+
+        <!-- FEATURED TOOLS GRID -->
+        <div>
+            <h3 class="text-base font-bold text-white mb-4 flex items-center justify-between">
+                <span><i class="fa-solid fa-cubes text-blue-500 mr-2"></i>সকল ফিচার ও টুলস</span>
+                <span class="text-xs font-normal text-slate-400">স্টার আইকনে ক্লিক করে প্রিয় টুল বুকমার্ক করুন</span>
+            </h3>
+
+            <div id="toolsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+                <!-- 1. GPA & Subject Eligibility Checker -->
+                <div class="tool-card glass-card-dark p-5 rounded-2xl relative group cursor-pointer" data-id="gpaChecker" data-keywords="gpa calculator eligibility admission du ru cu buet medical">
+                    <button onclick="toggleFav('gpaChecker', event)" class="fav-btn absolute top-4 right-4 text-slate-600 hover:text-amber-400 text-lg transition"><i class="fa-solid fa-star"></i></button>
+                    <div onclick="openTool('gpaChecker')">
+                        <div class="w-11 h-11 bg-blue-500/15 text-blue-400 rounded-xl flex items-center justify-center text-xl mb-3 border border-blue-500/30"><i class="fa-solid fa-calculator"></i></div>
+                        <h4 class="font-bold text-base text-white group-hover:text-blue-400 transition mb-1">জিপিএ ও এডমিশন যোগ্যতা ক্যালকুলেটর</h4>
+                        <p class="text-xs text-slate-400">SSC ও HSC জিপিএ দিয়ে চেক করুন আপনি সরকারি, মেডিকেল ও বুয়েটের কোন কোন ইউনিটে পরীক্ষা দিতে পারবেন।</p>
+                    </div>
+                </div>
+
+                <!-- 2. Pro Resume & CV Maker -->
+                <div class="tool-card glass-card-dark p-5 rounded-2xl relative group cursor-pointer" data-id="cvMaker" data-keywords="cv resume maker biodata job part time photo">
+                    <button onclick="toggleFav('cvMaker', event)" class="fav-btn absolute top-4 right-4 text-slate-600 hover:text-amber-400 text-lg transition"><i class="fa-solid fa-star"></i></button>
+                    <div onclick="openTool('cvMaker')">
+                        <div class="w-11 h-11 bg-purple-500/15 text-purple-400 rounded-xl flex items-center justify-center text-xl mb-3 border border-purple-500/30"><i class="fa-solid fa-file-invoice"></i></div>
+                        <h4 class="font-bold text-base text-white group-hover:text-purple-400 transition mb-1">প্রফেশনাল ফটো সিভি ও বায়োডাটা মেকার</h4>
+                        <p class="text-xs text-slate-400">ফুল-টাইম ও পার্ট-টাইম চাকুরীর জন্য আন্তর্জাতিক স্ট্যান্ডার্ডের প্রিমিয়াম ছবিসহ সিভি ডাউনলোড করুন।</p>
+                    </div>
+                </div>
+
+                <!-- 3. Admission Model Test Quiz -->
+                <div class="tool-card glass-card-dark p-5 rounded-2xl relative group cursor-pointer" data-id="quizHub" data-keywords="quiz model test question bank admission mcq">
+                    <button onclick="toggleFav('quizHub', event)" class="fav-btn absolute top-4 right-4 text-slate-600 hover:text-amber-400 text-lg transition"><i class="fa-solid fa-star"></i></button>
+                    <div onclick="openTool('quizHub')">
+                        <div class="w-11 h-11 bg-emerald-500/15 text-emerald-400 rounded-xl flex items-center justify-center text-xl mb-3 border border-emerald-500/30"><i class="fa-solid fa-list-check"></i></div>
+                        <h4 class="font-bold text-base text-white group-hover:text-emerald-400 transition mb-1">এডমিশন প্রশ্ন ব্যাংক ও ডেইলি মডেল টেস্ট</h4>
+                        <p class="text-xs text-slate-400">বিশ্ববিদ্যালয় ভর্তি পরীক্ষার বিগত বছরের প্রশ্ন সমাধান ও ডেইলি লাইভ এমসিকিউ (MCQ) টেস্ট।</p>
+                    </div>
+                </div>
+
+                <!-- 4. Complete Admission Directory -->
+                <div class="tool-card glass-card-dark p-5 rounded-2xl relative group cursor-pointer" data-id="univDirectory" data-keywords="university list du ru cu ju jnu buet medical private link apply">
+                    <button onclick="toggleFav('univDirectory', event)" class="fav-btn absolute top-4 right-4 text-slate-600 hover:text-amber-400 text-lg transition"><i class="fa-solid fa-star"></i></button>
+                    <div onclick="openTool('univDirectory')">
+                        <div class="w-11 h-11 bg-amber-500/15 text-amber-400 rounded-xl flex items-center justify-center text-xl mb-3 border border-amber-500/30"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <h4 class="font-bold text-base text-white group-hover:text-amber-400 transition mb-1">সকল বিশ্ববিদ্যালয় এপ্লাই ও নোটিশ হাব</h4>
+                        <p class="text-xs text-slate-400">বাংলাদেশের সকল পাবলিক, গুচ্ছ, ইঞ্জিনিয়ারিং, মেডিকেল ও সেরা প্রাইভেট বিশ্ববিদ্যালয়ের অফিশিয়াল লিংক।</p>
+                    </div>
+                </div>
+
+                <!-- 5. Signature Resizer (300x80) -->
+                <div class="tool-card glass-card-dark p-5 rounded-2xl relative group cursor-pointer" data-id="sigResizer" data-keywords="signature resizer 300x80 exam gov bd">
+                    <button onclick="toggleFav('sigResizer', event)" class="fav-btn absolute top-4 right-4 text-slate-600 hover:text-amber-400 text-lg transition"><i class="fa-solid fa-star"></i></button>
+                    <div onclick="openTool('sigResizer')">
+                        <div class="w-11 h-11 bg-teal-500/15 text-teal-400 rounded-xl flex items-center justify-center text-xl mb-3 border border-teal-500/30"><i class="fa-solid fa-signature"></i></div>
+                        <h4 class="font-bold text-base text-white group-hover:text-teal-400 transition mb-1">সরকারি ও এডমিশন সিগনেচার সাইজার</h4>
+                        <p class="text-xs text-slate-400">যেকোনো সাক্ষরের ছবি নিখুঁতভাবে ৩০০x৮০ পিক্সেল ফরম্যাটে পরিবর্তন ও ব্যাকগ্রাউন্ড অ্যাডজাস্টমেন্ট।</p>
+                    </div>
+                </div>
+
+                <!-- 6. Passport Photo Studio -->
+                <div class="tool-card glass-card-dark p-5 rounded-2xl relative group cursor-pointer" data-id="passportStudio" data-keywords="passport photo studio bg remove print sheet">
+                    <button onclick="toggleFav('passportStudio', event)" class="fav-btn absolute top-4 right-4 text-slate-600 hover:text-amber-400 text-lg transition"><i class="fa-solid fa-star"></i></button>
+                    <div onclick="openTool('passportStudio')">
+                        <div class="w-11 h-11 bg-rose-500/15 text-rose-400 rounded-xl flex items-center justify-center text-xl mb-3 border border-rose-500/30"><i class="fa-solid fa-id-badge"></i></div>
+                        <h4 class="font-bold text-base text-white group-hover:text-rose-400 transition mb-1">পাসপোর্ট ফটো মেকার স্টুডিও</h4>
+                        <p class="text-xs text-slate-400">স্বয়ংক্রিয় ব্যাকগ্রাউন্ড কালার চেঞ্জ, সাইজ কাটআউট এবং প্রিন্ট শট জেনারেটর।</p>
+                    </div>
+                </div>
+
+                <!-- 7. Compress JPEG Studio -->
+                <div class="tool-card glass-card-dark p-5 rounded-2xl relative group cursor-pointer" data-id="compressJpeg" data-keywords="compress jpeg image size kb reducer">
+                    <button onclick="toggleFav('compressJpeg', event)" class="fav-btn absolute top-4 right-4 text-slate-600 hover:text-amber-400 text-lg transition"><i class="fa-solid fa-star"></i></button>
+                    <div onclick="openTool('compressJpeg')">
+                        <div class="w-11 h-11 bg-cyan-500/15 text-cyan-400 rounded-xl flex items-center justify-center text-xl mb-3 border border-cyan-500/30"><i class="fa-solid fa-file-image"></i></div>
+                        <h4 class="font-bold text-base text-white group-hover:text-cyan-400 transition mb-1">ইমেজ ও জেপিইজি কম্প্রেসর (KB সাইজ)</h4>
+                        <p class="text-xs text-slate-400">ছবি কোয়ালিটি ঠিক রেখে ১০০ KB বা ২০০ KB ফরম্যাটে ফাইল কম্প্রেস করুন।</p>
+                    </div>
+                </div>
+
+                <!-- 8. FB Video Creator Strategy Guide -->
+                <div class="tool-card glass-card-dark p-5 rounded-2xl relative group cursor-pointer" data-id="fbStrategy" data-keywords="facebook video marketing strategy traffic engagement viral">
+                    <button onclick="toggleFav('fbStrategy', event)" class="fav-btn absolute top-4 right-4 text-slate-600 hover:text-amber-400 text-lg transition"><i class="fa-solid fa-star"></i></button>
+                    <div onclick="openTool('fbStrategy')">
+                        <div class="w-11 h-11 bg-indigo-500/15 text-indigo-400 rounded-xl flex items-center justify-center text-xl mb-3 border border-indigo-500/30"><i class="fa-brands fa-facebook"></i></div>
+                        <h4 class="font-bold text-base text-white group-hover:text-indigo-400 transition mb-1">ফেসবুক কন্টেন্ট ও ভাইরাল ট্রাফিক স্ট্র্যাটেজি</h4>
+                        <p class="text-xs text-slate-400">ভিডিও বানিয়ে ফেসবুকে ছাড়ার পর ট্রাফিক ওয়েবসাইটে নিয়ে আসার নিখুঁত স্ট্র্যাটেজি গাইড।</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="glass-dark border-t border-slate-800 text-center py-4 px-4 text-xs text-slate-400">
+        &copy; 2026 JT Micro Utility Portal. All Rights Reserved. Powered by Junaid.
+    </footer>
+
+    <!-- MODAL SYSTEM -->
+    <div id="toolModal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/90 backdrop-blur-md p-4">
+        <div class="glass-dark w-full max-w-4xl rounded-2xl p-6 shadow-2xl relative border border-slate-800 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-4 border-b border-slate-800 pb-3">
+                <h3 id="modalTitle" class="font-bold text-base sm:text-lg text-white flex items-center gap-2"></h3>
+                <button onclick="closeModal()" class="w-8 h-8 rounded-full bg-slate-900 text-slate-400 hover:text-white flex items-center justify-center border border-slate-800 transition"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div id="modalBody"></div>
+        </div>
     </div>
 
-    <!-- JAVASCRIPT SYSTEM -->
+    <!-- JAVASCRIPT LOGIC -->
     <script>
-        let toolViews = JSON.parse(localStorage.getItem('jt_tool_views')) || { admissionHub: 0, gpaChecker: 0, cvBuilder: 0, compressJpeg: 0, passportPhoto: 0, signatureResizer: 0, wordCounter: 0, passGenerator: 0, qrGenerator: 0, ageCalculator: 0, unitConverter: 0, textSpeech: 0, thumbDownloader: 0, colorPicker: 0, tempNotepad: 0, passChecker: 0, pomodoro: 0, emiCalc: 0, worldClock: 0 };
-        let completedWorksCount = parseInt(localStorage.getItem('jt_works_count')) || 0;
-        let currentTheme = localStorage.getItem('jt_theme') || 'dark';
+        // FAVORITES SYSTEM
+        let favorites = JSON.parse(localStorage.getItem('jt_favorites')) || [];
 
-        document.addEventListener('DOMContentLoaded', () => {
-            applyTheme(currentTheme);
-            document.getElementById('menuWorkCount').innerText = completedWorksCount;
-            document.getElementById('modalWorkCount').innerText = completedWorksCount;
-            updateTotalViews();
-        });
+        function updateFavUI() {
+            document.querySelectorAll('.tool-card').forEach(card => {
+                const id = card.getAttribute('data-id');
+                const btn = card.querySelector('.fav-btn');
+                if (favorites.includes(id)) {
+                    btn.classList.add('text-amber-400');
+                    btn.classList.remove('text-slate-600');
+                } else {
+                    btn.classList.remove('text-amber-400');
+                    btn.classList.add('text-slate-600');
+                }
+            });
 
-        function toggleTheme() {
-            currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            localStorage.setItem('jt_theme', currentTheme);
-            applyTheme(currentTheme);
-        }
+            const favSection = document.getElementById('favSection');
+            const favGrid = document.getElementById('favGrid');
+            const favCount = document.getElementById('favCount');
 
-        function applyTheme(theme) {
-            const body = document.body;
-            const header = document.getElementById('mainHeader');
-            const footer = document.getElementById('mainFooter');
-            const brandTitle = document.getElementById('headerBrandTitle');
-            const headingTitle = document.getElementById('mainHeadingTitle');
-            const themeIcon = document.getElementById('themeIcon');
-            const cards = document.querySelectorAll('.tool-card');
-
-            if (theme === 'light') {
-                body.className = "bg-slate-100 text-slate-900 min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white relative overflow-x-hidden";
-                header.className = "glass-light sticky top-0 z-30 px-4 lg:px-12 py-4 flex justify-between items-center border-b border-slate-200 transition-colors duration-300";
-                footer.className = "glass-light border-t border-slate-200 text-center py-4 px-4 text-xs text-slate-600 flex flex-col sm:flex-row justify-between items-center gap-2 max-w-7xl mx-auto w-full transition-colors duration-300";
-                brandTitle.className = "font-bold text-base tracking-wide text-slate-900";
-                headingTitle.className = "text-2xl sm:text-3xl font-bold text-slate-900 mb-1";
-                themeIcon.className = "fa-solid fa-sun text-amber-500 text-base";
-                cards.forEach(c => {
-                    c.classList.remove('glass-card-dark');
-                    c.classList.add('glass-card-light');
+            if (favorites.length > 0) {
+                favSection.classList.remove('hidden');
+                favCount.innerText = favorites.length;
+                favGrid.innerHTML = '';
+                favorites.forEach(id => {
+                    const originalCard = document.querySelector(`.tool-card[data-id="${id}"]`);
+                    if (originalCard) {
+                        const clone = originalCard.cloneNode(true);
+                        favGrid.appendChild(clone);
+                    }
                 });
             } else {
-                body.className = "bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white relative overflow-x-hidden";
-                header.className = "glass-dark sticky top-0 z-30 px-4 lg:px-12 py-4 flex justify-between items-center border-b border-slate-800/80 transition-colors duration-300";
-                footer.className = "glass-dark border-t border-slate-800 text-center py-4 px-4 text-xs text-slate-400 flex flex-col sm:flex-row justify-between items-center gap-2 max-w-7xl mx-auto w-full transition-colors duration-300";
-                brandTitle.className = "font-bold text-base tracking-wide text-white";
-                headingTitle.className = "text-2xl sm:text-3xl font-bold text-white mb-1";
-                themeIcon.className = "fa-solid fa-moon text-slate-300 text-base";
-                cards.forEach(c => {
-                    c.classList.remove('glass-card-light');
-                    c.classList.add('glass-card-dark');
-                });
+                favSection.classList.add('hidden');
             }
         }
 
-        // INSTANT LIVE SEARCH
-        function filterTools() {
-            const query = document.getElementById('liveSearchInput').value.toLowerCase().trim();
-            const cards = document.querySelectorAll('.tool-card');
-            cards.forEach(card => {
-                const name = card.getAttribute('data-name') || '';
-                const title = card.querySelector('h3').innerText.toLowerCase();
-                const desc = card.querySelector('p').innerText.toLowerCase();
-                if(name.includes(query) || title.includes(query) || desc.includes(query)) {
+        function toggleFav(id, e) {
+            e.stopPropagation();
+            if (favorites.includes(id)) {
+                favorites = favorites.filter(f => f !== id);
+                showToast('বুকমার্ক রিমুভ করা হয়েছে');
+            } else {
+                favorites.push(id);
+                showToast('টুলটি বুকমার্কে সেভ করা হয়েছে!');
+            }
+            localStorage.setItem('jt_favorites', JSON.stringify(favorites));
+            updateFavUI();
+        }
+
+        // LIVE SEARCH
+        function liveSearchTools() {
+            const query = document.getElementById('globalSearch').value.toLowerCase().trim();
+            document.querySelectorAll('#toolsGrid .tool-card').forEach(card => {
+                const text = card.getAttribute('data-keywords').toLowerCase() + ' ' + card.innerText.toLowerCase();
+                if (text.includes(query)) {
                     card.style.display = 'block';
                 } else {
                     card.style.display = 'none';
@@ -508,662 +275,276 @@
             });
         }
 
-        function switchTab(tab) {
-            const loginBtn = document.getElementById('loginTabBtn');
-            const signupBtn = document.getElementById('signupTabBtn');
-            const loginForm = document.getElementById('loginForm');
-            const signupForm = document.getElementById('signupForm');
-            if(tab === 'login') {
-                loginBtn.className = "flex-1 py-2 text-sm font-medium rounded-lg bg-blue-600 text-white transition shadow";
-                signupBtn.className = "flex-1 py-2 text-sm font-medium rounded-lg text-slate-400 hover:text-white transition";
-                loginForm.classList.remove('hidden');
-                signupForm.classList.add('hidden');
-            } else {
-                signupBtn.className = "flex-1 py-2 text-sm font-medium rounded-lg bg-emerald-600 text-white transition shadow";
-                loginBtn.className = "flex-1 py-2 text-sm font-medium rounded-lg text-slate-400 hover:text-white transition";
-                signupForm.classList.remove('hidden');
-                loginForm.classList.add('hidden');
-            }
-        }
-
-        function handleLogin(e) {
-            e.preventDefault();
-            localStorage.setItem('jt_is_logged_in', 'true');
-            document.getElementById('authAlert').classList.remove('hidden');
-            document.getElementById('authAlertText').innerText = "Login Successful!";
-            setTimeout(() => document.getElementById('authModal').classList.add('hidden'), 800);
-        }
-
-        function handleSignup(e) {
-            e.preventDefault();
-            localStorage.setItem('jt_is_logged_in', 'true');
-            document.getElementById('authAlert').classList.remove('hidden');
-            document.getElementById('authAlertText').innerText = "Registration Successful!";
-            setTimeout(() => document.getElementById('authModal').classList.add('hidden'), 800);
-        }
-
-        function logout() {
-            localStorage.removeItem('jt_is_logged_in');
-            document.getElementById('authModal').classList.remove('hidden');
-            document.getElementById('dropdownMenu').classList.add('hidden');
-        }
-
-        function toggleMenu() { document.getElementById('dropdownMenu').classList.toggle('hidden'); }
-        function openProfileModal() { document.getElementById('profileModal').classList.remove('hidden'); }
-        function closeProfileModal() { document.getElementById('profileModal').classList.add('hidden'); }
-        function openCompleteWorksModal() { document.getElementById('completeWorksModal').classList.remove('hidden'); }
-        function closeCompleteWorksModal() { document.getElementById('completeWorksModal').classList.add('hidden'); }
-
-        function saveProfile(e) {
-            e.preventDefault();
-            document.getElementById('profileAlert').classList.remove('hidden');
-            setTimeout(() => closeProfileModal(), 1100);
-        }
-
-        function registerCompletedTask() {
-            completedWorksCount++;
-            localStorage.setItem('jt_works_count', completedWorksCount);
-            document.getElementById('menuWorkCount').innerText = completedWorksCount;
-            document.getElementById('modalWorkCount').innerText = completedWorksCount;
-        }
-
-        function updateTotalViews() {
-            let total = Object.values(toolViews).reduce((a, b) => a + b, 0);
-            document.getElementById('totalViewsCount').innerText = total;
-            for (let key in toolViews) {
-                const el = document.getElementById(`view-${key}`);
-                if(el) el.innerText = toolViews[key];
-            }
-        }
-
-        function showSuccessToast(message) {
+        // TOAST NOTIFICATION
+        function showToast(msg) {
             const container = document.getElementById('toastContainer');
             const toast = document.createElement('div');
-            toast.className = "pointer-events-auto bg-slate-900 border border-emerald-500/50 shadow-2xl rounded-2xl p-4 flex items-center gap-3 text-white toast-slide-in min-w-[280px]";
-            toast.innerHTML = `
-                <div class="w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg border border-emerald-500/40 shrink-0">
-                    <i class="fa-solid fa-circle-check"></i>
-                </div>
-                <div>
-                    <h4 class="text-xs font-bold text-emerald-400">Success!</h4>
-                    <p class="text-[11px] text-slate-300">${message}</p>
-                </div>
-            `;
+            toast.className = "bg-slate-900 border border-blue-500/50 text-white text-xs px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2 animate-bounce";
+            toast.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-400"></i> ${msg}`;
             container.appendChild(toast);
-            setTimeout(() => {
-                toast.classList.remove('toast-slide-in');
-                toast.classList.add('toast-slide-out');
-                setTimeout(() => toast.remove(), 400);
-            }, 3500);
+            setTimeout(() => toast.remove(), 3000);
         }
 
-        // TOOL HANDLER
-        function openTool(toolName) {
-            toolViews[toolName] = (toolViews[toolName] || 0) + 1;
-            localStorage.setItem('jt_tool_views', JSON.stringify(toolViews));
-            updateTotalViews();
+        // COUNTDOWN TIMER
+        function startCountdown() {
+            const endDate = new Date().getTime() + (12 * 24 * 60 * 60 * 1000);
+            setInterval(() => {
+                const now = new Date().getTime();
+                const distance = endDate - now;
+                document.getElementById('cdDays').innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
+                document.getElementById('cdHours').innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                document.getElementById('cdMins').innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                document.getElementById('cdSecs').innerText = Math.floor((distance % (1000 * 60)) / 1000);
+            }, 1000);
+        }
+        startCountdown();
 
+        // TOOL MODAL HANDLER
+        function openTool(toolId) {
             const modal = document.getElementById('toolModal');
-            const title = document.getElementById('toolModalTitle');
-            const body = document.getElementById('toolModalBody');
+            const title = document.getElementById('modalTitle');
+            const body = document.getElementById('modalBody');
             modal.classList.remove('hidden');
 
-            if(toolName === 'admissionHub') {
-                title.innerHTML = `<i class="fa-solid fa-graduation-cap text-amber-400"></i> Bangladesh University & Admission Portal Hub`;
+            if (toolId === 'gpaChecker') {
+                title.innerHTML = `<i class="fa-solid fa-calculator text-blue-400"></i> জিপিএ ও সাবজেক্ট এডমিশন এলিজিবিলিটি ক্যালকুলেটর`;
                 body.innerHTML = `
                     <div class="space-y-5">
-                        <div class="text-center bg-amber-950/30 p-4 rounded-2xl border border-amber-500/30">
-                            <h4 class="font-bold text-sm text-amber-300 mb-1">COMPLETE ADMISSION & CIRCULAR DIRECTORY</h4>
-                            <p class="text-[11px] text-slate-300">সকল পাবলিক, প্রাইভেট, মেডিকেল, ইঞ্জিনিয়ারিং ও গুচ্ছ বিশ্ববিদ্যালয়ের অফিসিয়াল এপ্লাই ও নোটিশ লিংক। সার্ভারে সমস্যা থাকলে মূল হোমপেজ লিংক ব্যবহার করুন।</p>
+                        <div class="bg-blue-950/40 p-4 rounded-xl border border-blue-500/30 text-xs text-slate-300">
+                            শিক্ষার্থীর গ্রুপ, SSC ও HSC জিপিএ দিয়ে সাবমিট বাটনে ক্লিক করুন। এক ক্লিকে ঢাকা বিশ্ববিদ্যালয়, বুয়েট, মেডিকেল, গুচ্ছসহ সকল বিশ্ববিদ্যালয়ের রিয়েল-টাইম আবেদনের যোগ্যতা দেখতে পাবেন।
                         </div>
-                        <div class="flex gap-2 overflow-x-auto pb-2 no-scrollbar">
-                            <button onclick="filterAdmission('all')" class="px-4 py-2 bg-amber-600 text-white rounded-xl text-xs font-bold shrink-0 shadow">All Universities</button>
-                            <button onclick="filterAdmission('public')" class="px-4 py-2 bg-slate-900 text-slate-300 border border-slate-800 rounded-xl text-xs font-medium shrink-0">General Public</button>
-                            <button onclick="filterAdmission('gst')" class="px-4 py-2 bg-slate-900 text-slate-300 border border-slate-800 rounded-xl text-xs font-medium shrink-0">GST Cluster (গুচ্ছ)</button>
-                            <button onclick="filterAdmission('engineering')" class="px-4 py-2 bg-slate-900 text-slate-300 border border-slate-800 rounded-xl text-xs font-medium shrink-0">Engineering</button>
-                            <button onclick="filterAdmission('medical')" class="px-4 py-2 bg-slate-900 text-slate-300 border border-slate-800 rounded-xl text-xs font-medium shrink-0">Medical & Dental</button>
-                            <button onclick="filterAdmission('private')" class="px-4 py-2 bg-slate-900 text-slate-300 border border-slate-800 rounded-xl text-xs font-medium shrink-0">Private Universities</button>
-                        </div>
-                        <div id="admissionCardsList" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <!-- DU -->
-                            <div class="admission-card public glass-dark p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
-                                <div>
-                                    <span class="text-[10px] bg-purple-500/20 text-purple-300 border border-purple-500/30 px-2 py-0.5 rounded-full font-bold">DU Units A,B,C,D</span>
-                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">University of Dhaka (DU)</h5>
-                                </div>
-                                <div class="flex gap-2 pt-2 border-t border-slate-800">
-                                    <a href="https://admission.eis.du.ac.bd" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-purple-600 hover:bg-purple-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Apply Portal</a>
-                                    <a href="https://du.ac.bd" target="_blank" class="bg-slate-900 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Website</a>
-                                </div>
-                            </div>
-                            <!-- RU -->
-                            <div class="admission-card public glass-dark p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
-                                <div>
-                                    <span class="text-[10px] bg-teal-500/20 text-teal-300 border border-teal-500/30 px-2 py-0.5 rounded-full font-bold">RU Units</span>
-                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">University of Rajshahi (RU)</h5>
-                                </div>
-                                <div class="flex gap-2 pt-2 border-t border-slate-800">
-                                    <a href="https://admission.ru.ac.bd" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-teal-600 hover:bg-teal-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Apply Portal</a>
-                                    <a href="https://ru.ac.bd" target="_blank" class="bg-slate-900 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Website</a>
-                                </div>
-                            </div>
-                            <!-- CU -->
-                            <div class="admission-card public glass-dark p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
-                                <div>
-                                    <span class="text-[10px] bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 px-2 py-0.5 rounded-full font-bold">CU Units</span>
-                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">University of Chittagong (CU)</h5>
-                                </div>
-                                <div class="flex gap-2 pt-2 border-t border-slate-800">
-                                    <a href="https://admission.cu.ac.bd" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-indigo-600 hover:bg-indigo-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Apply Portal</a>
-                                    <a href="https://cu.ac.bd" target="_blank" class="bg-slate-900 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Website</a>
-                                </div>
-                            </div>
-                            <!-- GST -->
-                            <div class="admission-card gst glass-dark p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
-                                <div>
-                                    <span class="text-[10px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded-full font-bold">24 Universities</span>
-                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">GST Cluster Admission (General, Science & Tech)</h5>
-                                </div>
-                                <div class="flex gap-2 pt-2 border-t border-slate-800">
-                                    <a href="https://gstadmission.ac.bd" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Apply Portal</a>
-                                    <a href="https://gstadmission.ac.bd" target="_blank" class="bg-slate-900 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Notice</a>
-                                </div>
-                            </div>
-                            <!-- BUET -->
-                            <div class="admission-card engineering glass-dark p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
-                                <div>
-                                    <span class="text-[10px] bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2 py-0.5 rounded-full font-bold">BUET</span>
-                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">Bangladesh Univ. of Engineering & Tech</h5>
-                                </div>
-                                <div class="flex gap-2 pt-2 border-t border-slate-800">
-                                    <a href="https://www.buet.ac.bd/web/#/admission" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-blue-600 hover:bg-blue-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Apply Portal</a>
-                                    <a href="https://www.buet.ac.bd" target="_blank" class="bg-slate-900 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Website</a>
-                                </div>
-                            </div>
-                            <!-- MEDICAL -->
-                            <div class="admission-card medical glass-dark p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
-                                <div>
-                                    <span class="text-[10px] bg-rose-500/20 text-rose-300 border border-rose-500/30 px-2 py-0.5 rounded-full font-bold">MBBS & BDS</span>
-                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">Govt & Private Medical / Dental Colleges</h5>
-                                </div>
-                                <div class="flex gap-2 pt-2 border-t border-slate-800">
-                                    <a href="https://dgme.teletalk.com.bd" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-rose-600 hover:bg-rose-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Apply Portal</a>
-                                    <a href="https://dghs.gov.bd" target="_blank" class="bg-slate-900 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Notice</a>
-                                </div>
-                            </div>
-                            <!-- NSU -->
-                            <div class="admission-card private glass-dark p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
-                                <div>
-                                    <span class="text-[10px] bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 px-2 py-0.5 rounded-full font-bold">Private #1</span>
-                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">North South University (NSU)</h5>
-                                </div>
-                                <div class="flex gap-2 pt-2 border-t border-slate-800">
-                                    <a href="https://www.northsouth.edu/admissions/" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-cyan-600 hover:bg-cyan-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Admission Portal</a>
-                                    <a href="https://www.northsouth.edu" target="_blank" class="bg-slate-900 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Website</a>
-                                </div>
-                            </div>
-                            <!-- BRAC -->
-                            <div class="admission-card private glass-dark p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
-                                <div>
-                                    <span class="text-[10px] bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 px-2 py-0.5 rounded-full font-bold">Private</span>
-                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">BRAC University</h5>
-                                </div>
-                                <div class="flex gap-2 pt-2 border-t border-slate-800">
-                                    <a href="https://www.bracu.ac.bd/admissions" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-cyan-600 hover:bg-cyan-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Admission Portal</a>
-                                    <a href="https://www.bracu.ac.bd" target="_blank" class="bg-slate-900 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Website</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            } else if(toolName === 'gpaChecker') {
-                title.innerHTML = `<i class="fa-solid fa-square-check text-cyan-400"></i> GPA & University Eligibility Checker`;
-                body.innerHTML = `
-                    <div class="space-y-4">
-                        <div class="bg-cyan-950/30 p-4 rounded-2xl border border-cyan-500/30 text-center">
-                            <h4 class="font-bold text-sm text-cyan-300 mb-1">CHECK ELIGIBILITY INSTANTLY</h4>
-                            <p class="text-[11px] text-slate-300">Enter your SSC & HSC GPA to check which university exams you are eligible to sit for.</p>
-                        </div>
-                        <div class="grid grid-cols-2 gap-3">
+
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                             <div>
-                                <label class="text-xs text-slate-400 block mb-1">SSC GPA</label>
-                                <input type="number" id="sscGpaInput" step="0.01" max="5.00" value="5.00" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white">
+                                <label class="text-xs text-slate-400 block mb-1">গ্রুপ সিলেক্ট করুন</label>
+                                <select id="studentGroup" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
+                                    <option value="science">বিজ্ঞান (Science)</option>
+                                    <option value="arts">মানবিক (Arts / Humanities)</option>
+                                    <option value="commerce">ব্যবসায় শিক্ষা (Commerce)</option>
+                                </select>
                             </div>
                             <div>
-                                <label class="text-xs text-slate-400 block mb-1">HSC GPA</label>
-                                <input type="number" id="hscGpaInput" step="0.01" max="5.00" value="4.50" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white">
+                                <label class="text-xs text-slate-400 block mb-1">SSC জিপিএ</label>
+                                <input type="number" id="sscGpa" step="0.01" max="5.00" value="5.00" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
+                            </div>
+                            <div>
+                                <label class="text-xs text-slate-400 block mb-1">HSC জিপিএ</label>
+                                <input type="number" id="hscGpa" step="0.01" max="5.00" value="4.50" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
                             </div>
                         </div>
-                        <button onclick="calculateEligibility()" class="w-full bg-cyan-600 hover:bg-cyan-500 text-white py-3 rounded-xl text-xs font-bold shadow-lg transition">Check Eligibility</button>
-                        <div id="eligibilityResult" class="hidden space-y-2 p-4 bg-slate-900 rounded-xl border border-slate-800 text-xs">
-                            <!-- Results populated here -->
-                        </div>
+
+                        <button onclick="calculateAdmissionEligibility()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-2.5 rounded-xl text-xs shadow-lg transition">যোগ্যতা চেক করুন</button>
+
+                        <div id="eligibilityResults" class="hidden space-y-3 pt-3"></div>
                     </div>
                 `;
-            } else if(toolName === 'cvBuilder') {
-                title.innerHTML = `<i class="fa-solid fa-file-invoice text-purple-400"></i> Smart CV & Resume Builder`;
+            } else if (toolId === 'cvMaker') {
+                title.innerHTML = `<i class="fa-solid fa-file-invoice text-purple-400"></i> প্রফেশনাল রেজুমে ও ফটো সিভি বিল্ডার`;
                 body.innerHTML = `
-                    <div class="space-y-3">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                            <input type="text" id="cvName" placeholder="Full Name" class="bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-xs text-white">
-                            <input type="text" id="cvEmail" placeholder="Email / Phone" class="bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-xs text-white">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-3">
+                            <h4 class="font-bold text-xs text-purple-400">১. ব্যক্তিগত ও শিক্ষাগত তথ্য দিন</h4>
+                            <div class="grid grid-cols-2 gap-2">
+                                <input type="text" id="cvFullName" placeholder="পূর্ণ নাম" class="bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs text-white">
+                                <input type="text" id="cvFather" placeholder="পিতার নাম" class="bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs text-white">
+                            </div>
+                            <div class="grid grid-cols-2 gap-2">
+                                <input type="text" id="cvMother" placeholder="মাতার নাম" class="bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs text-white">
+                                <input type="text" id="cvPhone" placeholder="মোবাইল নম্বর" class="bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs text-white">
+                            </div>
+                            <input type="text" id="cvAddress" placeholder="বর্তমান ঠিকানা" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs text-white">
+                            <div>
+                                <label class="text-[10px] text-slate-400 block mb-1">ছবি আপলোড করুন</label>
+                                <input type="file" id="cvPhoto" accept="image/*" onchange="previewCvPhoto(event)" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-1.5 text-xs text-slate-400">
+                            </div>
+                            <textarea id="cvEduText" rows="3" placeholder="শিক্ষাগত যোগ্যতা (যেমন: SSC - 2024, HSC - 2026 GPA: 4.50)" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs text-white"></textarea>
+                            <textarea id="cvSkillsText" rows="2" placeholder="দক্ষতাসমূহ (যেমন: MS Word, Graphics Design, Web Dev)" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs text-white"></textarea>
+                            
+                            <button onclick="updateCvPreview()" class="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold py-2 rounded-xl text-xs">সিভি আপডেট করুন</button>
+                            <button onclick="window.print()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 rounded-xl text-xs"><i class="fa-solid fa-print"></i> সিভি প্রিন্ট / PDF ডাউনলোড</button>
                         </div>
-                        <textarea id="cvEdu" rows="2" placeholder="Educational Qualifications (SSC, HSC...)" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-xs text-white"></textarea>
-                        <textarea id="cvSkills" rows="2" placeholder="Skills (e.g. Graphic Design, Coding, Video Editing)" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-xs text-white"></textarea>
-                        <button onclick="generateCV()" class="w-full bg-purple-600 hover:bg-purple-500 text-white py-3 rounded-xl text-xs font-bold transition">Generate & Preview CV</button>
-                        <div id="cvPreview" class="hidden bg-white text-slate-900 p-4 rounded-xl text-xs space-y-2">
-                            <h3 id="prevName" class="font-bold text-base border-b pb-1"></h3>
-                            <p id="prevContact" class="text-slate-600"></p>
-                            <p><strong>Education:</strong> <span id="prevEdu"></span></p>
-                            <p><strong>Skills:</strong> <span id="prevSkills"></span></p>
-                        </div>
-                    </div>
-                `;
-            } else if(toolName === 'compressJpeg') {
-                title.innerHTML = `<i class="fa-solid fa-compress text-teal-400"></i> Compress JPEG & Converter Studio`;
-                body.innerHTML = `
-                    <div class="space-y-4">
-                        <div class="bg-slate-900/80 p-5 rounded-2xl border-2 border-dashed border-slate-700 text-center hover:border-teal-500 transition">
-                            <input type="file" id="cjInput" accept="image/*" onchange="loadCompressJpeg(event)" class="hidden">
-                            <label for="cjInput" class="cursor-pointer flex flex-col items-center">
-                                <div class="w-12 h-12 bg-teal-500/20 text-teal-400 rounded-2xl flex items-center justify-center text-xl mb-2 border border-teal-500/30">
-                                    <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                        <!-- LIVE CV PREVIEW -->
+                        <div id="printableCvArea" class="bg-white text-slate-900 p-6 rounded-xl shadow-2xl border border-slate-300 space-y-4 font-sans min-h-[400px]">
+                            <div class="flex justify-between items-start border-b-2 border-slate-800 pb-4">
+                                <div>
+                                    <h2 id="prevCvName" class="text-xl font-bold text-slate-900 uppercase tracking-wide">জুনায়েদ ইসলাম</h2>
+                                    <p id="prevCvContact" class="text-xs text-slate-600 font-medium">মোবাইল: 01568600668 | ঢাকা, বাংলাদেশ</p>
                                 </div>
-                                <span class="text-xs font-bold text-white mb-1">Select Image File</span>
-                            </label>
-                        </div>
-                        <div class="flex justify-between items-center text-xs">
-                            <span class="text-slate-300">Quality: <strong id="cjQualityVal" class="text-teal-400">85%</strong></span>
-                            <input type="range" id="cjQualityRange" min="10" max="95" value="85" oninput="document.getElementById('cjQualityVal').innerText=this.value+'%'" class="accent-teal-500">
-                        </div>
-                        <div id="cjPreviewBox" class="hidden text-center bg-slate-950 p-4 rounded-xl border border-slate-800">
-                            <img id="cjPreviewImg" class="max-h-32 mx-auto rounded-lg mb-2 object-contain">
-                            <p class="text-xs text-slate-300">Original: <span id="cjOrigSize" class="text-amber-400">--</span> | Compressed: <span id="cjNewSize" class="text-emerald-400">--</span></p>
-                        </div>
-                        <button onclick="downloadCompressedJpeg()" class="w-full bg-teal-600 text-white py-3 rounded-xl text-xs font-bold">Compress & Download JPEG</button>
-                    </div>
-                `;
-            } else if(toolName === 'passportPhoto') {
-                title.innerHTML = `<i class="fa-solid fa-id-badge text-blue-400"></i> Pro Passport Studio & Background Remover`;
-                body.innerHTML = `
-                    <div class="space-y-4">
-                        <input type="file" id="passPhotoInput" accept="image/*" onchange="loadPassportImage(event)" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200">
-                        <div class="text-center bg-slate-950 p-4 rounded-xl border border-slate-800">
-                            <div class="inline-block border-4 border-slate-700 rounded-xl overflow-hidden bg-white" style="width: 140px; height: 170px;">
-                                <canvas id="passportCanvas" width="300" height="350" class="w-full h-full block"></canvas>
+                                <div class="w-20 h-24 bg-slate-100 border border-slate-300 rounded overflow-hidden flex items-center justify-center">
+                                    <img id="prevCvImg" class="w-full h-full object-cover hidden">
+                                    <span id="prevCvImgPlaceholder" class="text-[10px] text-slate-400">ছবি</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xs uppercase bg-slate-200 px-2 py-1 mb-2">ব্যক্তিগত তথ্যাবলী</h4>
+                                <p class="text-xs"><strong>পিতার নাম:</strong> <span id="prevCvFather">মোঃ রফিকুল ইসলাম</span></p>
+                                <p class="text-xs"><strong>মাতার নাম:</strong> <span id="prevCvMother">মোছাঃ জাহানারা বেগম</span></p>
+                                <p class="text-xs"><strong>ঠিকানা:</strong> <span id="prevCvAddr">মিরপুর ১, ঢাকা</span></p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xs uppercase bg-slate-200 px-2 py-1 mb-2">শিক্ষাগত যোগ্যতা</h4>
+                                <p id="prevCvEdu" class="text-xs whitespace-pre-line">HSC - Science (2026) - GPA: 3.83\nSSC - Science (2024) - GPA: 4.89</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xs uppercase bg-slate-200 px-2 py-1 mb-2">দক্ষতা ও অন্যান্য</h4>
+                                <p id="prevCvSkills" class="text-xs whitespace-pre-line">ওয়েব অ্যাপ্লিকেশন ডেভেলপমেন্ট, গ্রাফিক্স ডিজাইন, ভিপ্রো এডিটিং</p>
                             </div>
                         </div>
-                        <button onclick="downloadPassport('single')" class="w-full bg-blue-600 text-white py-3 rounded-xl text-xs font-bold">Download Single HD</button>
                     </div>
                 `;
-                initPassportInteraction();
-            } else if(toolName === 'signatureResizer') {
-                title.innerHTML = `<i class="fa-solid fa-signature text-emerald-400"></i> BD Exam Signature Studio (300x80 px)`;
+            } else if (toolId === 'quizHub') {
+                title.innerHTML = `<i class="fa-solid fa-list-check text-emerald-400"></i> এডমিশন মডেল টেস্ট ও ডেইলি কুইজ`;
                 body.innerHTML = `
                     <div class="space-y-4">
-                        <input type="file" id="sigInput" accept="image/*" onchange="loadSignatureImage(event)" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200">
-                        <div class="text-center bg-slate-950 p-4 rounded-xl border border-slate-800">
-                            <canvas id="signatureCanvas" width="600" height="160" class="max-w-full h-auto block mx-auto bg-white p-2 rounded-lg"></canvas>
+                        <div class="flex justify-between items-center bg-slate-900 p-3 rounded-xl border border-slate-800 text-xs">
+                            <span class="text-emerald-400 font-bold">বিষয়: সাধারণ জ্ঞান ও বিজ্ঞান</span>
+                            <span class="text-slate-400">দৈনিক ১০টি প্রশ্ন সমাধান</span>
                         </div>
-                        <button onclick="downloadSignature()" class="w-full bg-emerald-600 text-white py-3 rounded-xl text-sm font-bold">Download Signature (300x80)</button>
+                        <div id="quizContainer" class="space-y-3">
+                            <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
+                                <p class="text-xs font-bold text-white mb-3">১. ঢাকা বিশ্ববিদ্যালয় কত সালে প্রতিষ্ঠিত হয়?</p>
+                                <div class="grid grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkQuizAns(this, false)" class="bg-slate-800 hover:bg-slate-700 p-2 rounded-lg text-left">A. ১৯০৫ সালে</button>
+                                    <button onclick="checkQuizAns(this, true)" class="bg-slate-800 hover:bg-slate-700 p-2 rounded-lg text-left">B. ১৯২১ সালে</button>
+                                    <button onclick="checkQuizAns(this, false)" class="bg-slate-800 hover:bg-slate-700 p-2 rounded-lg text-left">C. ১৯৪৭ সালে</button>
+                                    <button onclick="checkQuizAns(this, false)" class="bg-slate-800 hover:bg-slate-700 p-2 rounded-lg text-left">D. ১৯৭১ সালে</button>
+                                </div>
+                            </div>
+                            <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
+                                <p class="text-xs font-bold text-white mb-3">২. পদার্থের চতুর্থ অবস্থার নাম কী?</p>
+                                <div class="grid grid-cols-2 gap-2 text-xs">
+                                    <button onclick="checkQuizAns(this, false)" class="bg-slate-800 hover:bg-slate-700 p-2 rounded-lg text-left">A. কঠিন</button>
+                                    <button onclick="checkQuizAns(this, false)" class="bg-slate-800 hover:bg-slate-700 p-2 rounded-lg text-left">B. গ্যাসিয়</button>
+                                    <button onclick="checkQuizAns(this, true)" class="bg-slate-800 hover:bg-slate-700 p-2 rounded-lg text-left">C. প্লাজমা</button>
+                                    <button onclick="checkQuizAns(this, false)" class="bg-slate-800 hover:bg-slate-700 p-2 rounded-lg text-left">D. তরল</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 `;
-            } else if(toolName === 'thumbDownloader') {
-                title.innerHTML = `<i class="fa-solid fa-download text-red-400"></i> YouTube Thumbnail Downloader`;
+            } else if (toolId === 'univDirectory') {
+                title.innerHTML = `<i class="fa-solid fa-graduation-cap text-amber-400"></i> সকল বিশ্ববিদ্যালয় সার্কুলার ও পোর্টাল হাব`;
                 body.innerHTML = `
-                    <input type="text" id="ytUrl" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm mb-3 text-slate-200" placeholder="Paste YouTube URL...">
-                    <button onclick="downloadThumbnail()" class="w-full bg-red-600 text-white py-2.5 rounded-xl text-sm font-medium">Download HD Thumbnail</button>
-                `;
-            } else if(toolName === 'qrGenerator') {
-                title.innerHTML = `<i class="fa-solid fa-qrcode text-purple-400"></i> HD QR Code Generator`;
-                body.innerHTML = `
-                    <input type="text" id="qrText" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm mb-3 text-slate-200" placeholder="Enter text or URL...">
-                    <button onclick="generateQR()" class="w-full bg-purple-600 text-white py-2.5 rounded-xl text-sm font-medium mb-3">Generate QR</button>
-                    <div id="qrResult" class="text-center p-4 bg-slate-900 rounded-xl border border-slate-800 text-xs text-slate-400">Preview</div>
-                `;
-            } else if(toolName === 'wordCounter') {
-                title.innerHTML = `<i class="fa-solid fa-file-lines text-blue-400"></i> Word & Character Counter`;
-                body.innerHTML = `
-                    <textarea id="wcText" oninput="countWords()" rows="4" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm mb-3 text-slate-200" placeholder="Type text..."></textarea>
-                    <div class="grid grid-cols-2 gap-3 text-center">
-                        <div class="bg-slate-900 p-3 rounded-xl border border-slate-800"><span id="wordCount" class="text-xl font-bold text-blue-400">0</span><p class="text-xs text-slate-400">Words</p></div>
-                        <div class="bg-slate-900 p-3 rounded-xl border border-slate-800"><span id="charCount" class="text-xl font-bold text-emerald-400">0</span><p class="text-xs text-slate-400">Chars</p></div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                        <div class="bg-slate-900 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
+                            <div><strong class="text-white block">ঢাকা বিশ্ববিদ্যালয় (DU)</strong><span class="text-slate-400">admission.eis.du.ac.bd</span></div>
+                            <a href="https://admission.eis.du.ac.bd" target="_blank" class="bg-blue-600 text-white px-3 py-1.5 rounded-lg font-bold">এপ্লাই</a>
+                        </div>
+                        <div class="bg-slate-900 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
+                            <div><strong class="text-white block">জিএসটি গুচ্ছ (GST Cluster 24)</strong><span class="text-slate-400">gstadmission.ac.bd</span></div>
+                            <a href="https://gstadmission.ac.bd" target="_blank" class="bg-emerald-600 text-white px-3 py-1.5 rounded-lg font-bold">এপ্লাই</a>
+                        </div>
+                        <div class="bg-slate-900 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
+                            <div><strong class="text-white block">মেডিকেল ভর্তি (DGME)</strong><span class="text-slate-400">dgme.teletalk.com.bd</span></div>
+                            <a href="https://dgme.teletalk.com.bd" target="_blank" class="bg-rose-600 text-white px-3 py-1.5 rounded-lg font-bold">এপ্লাই</a>
+                        </div>
+                        <div class="bg-slate-900 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
+                            <div><strong class="text-white block">বুয়েট (BUET)</strong><span class="text-slate-400">buet.ac.bd</span></div>
+                            <a href="https://www.buet.ac.bd" target="_blank" class="bg-purple-600 text-white px-3 py-1.5 rounded-lg font-bold">এপ্লাই</a>
+                        </div>
                     </div>
                 `;
-            } else if(toolName === 'passGenerator') {
-                title.innerHTML = `<i class="fa-solid fa-key text-emerald-400"></i> Strong Password Generator`;
+            } else if (toolId === 'sigResizer') {
+                title.innerHTML = `<i class="fa-solid fa-signature text-teal-400"></i> সিগনেচার সাইজার (300x80 px)`;
                 body.innerHTML = `
-                    <div class="flex gap-2 mb-3">
-                        <input type="text" id="passOutput" readonly class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm text-emerald-400 font-mono" value="Click generate">
-                        <button onclick="copyPass()" class="bg-emerald-600 px-4 rounded-xl text-white text-sm">Copy</button>
-                    </div>
-                    <button onclick="generatePass()" class="w-full bg-slate-800 py-2.5 rounded-xl text-sm font-medium text-emerald-300">Generate Password</button>
-                `;
-            } else if(toolName === 'ageCalculator') {
-                title.innerHTML = `<i class="fa-solid fa-cake-candles text-amber-400"></i> Age Calculator`;
-                body.innerHTML = `
-                    <input type="date" id="birthDate" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm mb-3 text-slate-200">
-                    <button onclick="calcAge()" class="w-full bg-amber-600 text-white py-2.5 rounded-xl text-sm font-medium mb-3">Calculate Age</button>
-                    <div id="ageResult" class="text-center p-3 bg-slate-900 rounded-xl border border-slate-800 text-sm font-medium text-amber-400">Select date</div>
-                `;
-            } else if(toolName === 'unitConverter') {
-                title.innerHTML = `<i class="fa-solid fa-scale-balanced text-cyan-400"></i> Unit Converter`;
-                body.innerHTML = `
-                    <input type="number" id="kgInput" oninput="convertUnit()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm mb-3 text-slate-200" placeholder="Enter KG...">
-                    <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 text-center text-sm"><span id="gramResult" class="font-bold text-cyan-400">0</span> Gram</div>
-                `;
-            } else if(toolName === 'textSpeech') {
-                title.innerHTML = `<i class="fa-solid fa-volume-high text-rose-400"></i> Text-to-Speech`;
-                body.innerHTML = `
-                    <textarea id="speechText" rows="3" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm mb-3 text-slate-200" placeholder="Type text..."></textarea>
-                    <button onclick="speakText()" class="w-full bg-rose-600 text-white py-2.5 rounded-xl text-sm font-medium">Speak Aloud</button>
-                `;
-            } else if(toolName === 'colorPicker') {
-                title.innerHTML = `<i class="fa-solid fa-palette text-emerald-400"></i> Color Picker & HEX`;
-                body.innerHTML = `
-                    <div class="flex items-center gap-3 mb-3">
-                        <input type="color" id="colorInput" onchange="updateColorCode()" class="w-16 h-12 bg-slate-900 border border-slate-800 rounded-xl cursor-pointer p-1">
-                        <input type="text" id="colorHexOutput" readonly class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-emerald-400 font-mono" value="#2563eb">
-                    </div>
-                    <button onclick="copyColorHex()" class="w-full bg-emerald-600 text-white py-2.5 rounded-xl text-sm font-medium">Copy HEX</button>
-                `;
-            } else if(toolName === 'tempNotepad') {
-                const savedNote = localStorage.getItem('jt_temp_note') || '';
-                title.innerHTML = `<i class="fa-solid fa-note-sticky text-yellow-400"></i> Temporary Notepad`;
-                body.innerHTML = `
-                    <textarea id="notepadArea" rows="4" oninput="saveNotepad()" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm mb-3 text-slate-200" placeholder="Write notes...">${savedNote}</textarea>
-                    <button onclick="clearNotepad()" class="text-rose-400 text-xs">Clear Note</button>
-                `;
-            } else if(toolName === 'passChecker') {
-                title.innerHTML = `<i class="fa-solid fa-shield-halved text-fuchsia-400"></i> Password Hack Time Checker`;
-                body.innerHTML = `
-                    <input type="password" id="checkPass" oninput="checkPassTime()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm mb-3 text-slate-200" placeholder="Type password...">
-                    <div id="passTimeResult" class="p-3 bg-slate-900 rounded-xl border border-slate-800 text-xs text-fuchsia-300 text-center font-medium">Strength info</div>
-                `;
-            } else if(toolName === 'pomodoro') {
-                title.innerHTML = `<i class="fa-solid fa-clock text-pink-400"></i> Pomodoro Timer`;
-                body.innerHTML = `
-                    <div class="text-center py-6 bg-slate-900 rounded-xl border border-slate-800 mb-3">
-                        <span id="timerDisplay" class="text-4xl font-bold text-pink-400 font-mono">25:00</span>
-                    </div>
-                    <div class="grid grid-cols-2 gap-2">
-                        <button onclick="startPomodoro()" class="bg-pink-600 text-white py-2 rounded-xl text-sm">Start</button>
-                        <button onclick="resetPomodoro()" class="bg-slate-800 text-slate-300 py-2 rounded-xl text-sm">Reset</button>
+                    <div class="space-y-4 text-center">
+                        <input type="file" id="sigFileInput" accept="image/*" onchange="loadSig(event)" class="bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs text-slate-300 w-full">
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 inline-block">
+                            <canvas id="sigCanvas" width="300" height="80" class="bg-white rounded border border-slate-300 mx-auto"></canvas>
+                        </div>
+                        <button onclick="downloadSig()" class="w-full bg-teal-600 text-white py-2.5 rounded-xl text-xs font-bold">ডাউনলোড ৩০০x৮০ পিক্সেল সিগনেচার</button>
                     </div>
                 `;
-            } else if(toolName === 'emiCalc') {
-                title.innerHTML = `<i class="fa-solid fa-calculator text-amber-300"></i> Loan & EMI Calculator`;
+            } else if (toolId === 'fbStrategy') {
+                title.innerHTML = `<i class="fa-brands fa-facebook text-indigo-400"></i> ফেসবুক ভিডিও ট্রাফিক মার্কেটিং স্ট্র্যাটেজি`;
                 body.innerHTML = `
-                    <input type="number" id="loanAmount" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm mb-2 text-slate-200" placeholder="Amount...">
-                    <input type="number" id="loanRate" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm mb-2 text-slate-200" placeholder="Rate %...">
-                    <input type="number" id="loanMonths" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm mb-3 text-slate-200" placeholder="Months...">
-                    <button onclick="calcEMI()" class="w-full bg-amber-600 text-white py-2.5 rounded-xl text-sm font-medium mb-3">Calculate</button>
-                    <div id="emiResult" class="text-center p-3 bg-slate-900 rounded-xl border border-slate-800 text-sm text-amber-300">EMI: 0</div>
-                `;
-            } else if(toolName === 'worldClock') {
-                title.innerHTML = `<i class="fa-solid fa-clock-rotate-left text-rose-300"></i> World Clock`;
-                body.innerHTML = `
-                    <div class="space-y-2 text-xs text-slate-300 bg-slate-900 p-4 rounded-xl border border-slate-800">
-                        <p><strong>Bangladesh:</strong> <span class="text-rose-400 font-mono" id="clockBD">--:--:--</span></p>
-                        <p><strong>New York:</strong> <span class="text-rose-400 font-mono" id="clockNY">--:--:--</span></p>
-                        <p><strong>London:</strong> <span class="text-rose-400 font-mono" id="clockLondon">--:--:--</span></p>
+                    <div class="space-y-3 text-xs text-slate-300">
+                        <div class="bg-slate-900 p-3 rounded-xl border border-slate-800">
+                            <strong class="text-indigo-400 block mb-1">১. প্রবলেম-সলভিং হুক ভিডিও:</strong>
+                            <p>ভিডিওর প্রথম ৩ সেকেন্ডে সমস্যা তুলে ধরুন। যেমন: "এডমিশন সিগনেচার সাইজ ৩০০x৮০ করতে ঝামেলা হচ্ছে?"</p>
+                        </div>
+                        <div class="bg-slate-900 p-3 rounded-xl border border-slate-800">
+                            <strong class="text-indigo-400 block mb-1">২. কমেন্ট সেকশন পিন লিংক:</strong>
+                            <p>ভিডিও ডেসক্রিপশনের বদলে প্রথম কমেন্টে আপনার টুলের সরাসরি লিংক পিন (Pin Comment) করে রাখুন।</p>
+                        </div>
                     </div>
                 `;
-                setInterval(() => {
-                    const now = new Date();
-                    if(document.getElementById('clockBD')) {
-                        document.getElementById('clockBD').innerText = now.toLocaleTimeString('en-US', {timeZone: 'Asia/Dhaka'});
-                        document.getElementById('clockNY').innerText = now.toLocaleTimeString('en-US', {timeZone: 'America/New_York'});
-                        document.getElementById('clockLondon').innerText = now.toLocaleTimeString('en-US', {timeZone: 'Europe/London'});
-                    }
-                }, 1000);
             }
         }
 
-        function closeToolModal() { document.getElementById('toolModal').classList.add('hidden'); }
-
-        function filterAdmission(category) {
-            const cards = document.querySelectorAll('.admission-card');
-            cards.forEach(card => {
-                if(category === 'all' || card.classList.contains(category)) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
+        function closeModal() {
+            document.getElementById('toolModal').classList.add('hidden');
         }
 
-        function calculateEligibility() {
-            const ssc = parseFloat(document.getElementById('sscGpaInput').value) || 0;
-            const hsc = parseFloat(document.getElementById('hscGpaInput').value) || 0;
+        // ADMISSION ELIGIBILITY ENGINE
+        function calculateAdmissionEligibility() {
+            const group = document.getElementById('studentGroup').value;
+            const ssc = parseFloat(document.getElementById('sscGpa').value) || 0;
+            const hsc = parseFloat(document.getElementById('hscGpa').value) || 0;
             const total = ssc + hsc;
-            const resBox = document.getElementById('eligibilityResult');
-            resBox.classList.remove('hidden');
+            const resultsBox = document.getElementById('eligibilityResults');
+            resultsBox.classList.remove('hidden');
 
-            let html = `<p class="font-bold text-white mb-2">Based on your GPA (${ssc} + ${hsc} = ${total.toFixed(2)}):</p>`;
-            if(total >= 8.50) {
-                html += `<p class="text-emerald-400"><i class="fa-solid fa-circle-check"></i> Eligible for Dhaka University (DU), GST Cluster & Public Universities.</p>`;
-                html += `<p class="text-emerald-400"><i class="fa-solid fa-circle-check"></i> Eligible for Medical & Engineering Admission Tests.</p>`;
-            } else if(total >= 7.00) {
-                html += `<p class="text-amber-400"><i class="fa-solid fa-triangle-exclamation"></i> Eligible for GST Cluster and National University.</p>`;
+            let html = `<h4 class="font-bold text-xs text-white">আপনার জিপিএ ফলাফল (${ssc.toFixed(2)} + ${hsc.toFixed(2)} = ${total.toFixed(2)}):</h4>`;
+
+            if (group === 'science') {
+                if (total >= 9.00 && ssc >= 4.5 && hsc >= 4.5) {
+                    html += `<div class="p-2.5 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-xl text-xs">✔ ঢাকা বিশ্ববিদ্যালয় (A Unit), বুয়েট (BUET) এবং মেডিকেল ভর্তি পরীক্ষায় আবেদনের যোগ্য।</div>`;
+                } else if (total >= 8.00) {
+                    html += `<div class="p-2.5 bg-blue-500/10 border border-blue-500/30 text-blue-400 rounded-xl text-xs">✔ জিএসটি গুচ্ছ (GST Science) ও প্রকৌশল বিশ্ববিদ্যালয়সমূহে পরীক্ষা দেওয়া যাবে।</div>`;
+                } else {
+                    html += `<div class="p-2.5 bg-amber-500/10 border border-amber-500/30 text-amber-400 rounded-xl text-xs">✔ জাতীয় বিশ্ববিদ্যালয় (NU) ও প্রাইভেট বিশ্ববিদ্যালয়ে আবেদনের সুযোগ রয়েছে।</div>`;
+                }
             } else {
-                html += `<p class="text-rose-400"><i class="fa-solid fa-circle-xmark"></i> Focus on National University / Private Universities.</p>`;
-            }
-            resBox.innerHTML = html;
-            registerCompletedTask();
-        }
-
-        function generateCV() {
-            const name = document.getElementById('cvName').value || "Junaid Islam";
-            const contact = document.getElementById('cvEmail').value || "01568600668";
-            const edu = document.getElementById('cvEdu').value || "HSC Science (GPA 3.83)";
-            const skills = document.getElementById('cvSkills').value || "Web Development, Graphic Design";
-
-            document.getElementById('prevName').innerText = name;
-            document.getElementById('prevContact').innerText = contact;
-            document.getElementById('prevEdu').innerText = edu;
-            document.getElementById('prevSkills').innerText = skills;
-            document.getElementById('cvPreview').classList.remove('hidden');
-            registerCompletedTask();
-            showSuccessToast("CV Generated Successfully!");
-        }
-
-        // COMPRESS JPEG
-        let cjLoadedImg = null, cjCompressedDataUrl = null;
-        function loadCompressJpeg(e) {
-            const file = e.target.files[0];
-            if(!file) return;
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                const img = new Image();
-                img.onload = function() {
-                    cjLoadedImg = img;
-                    document.getElementById('cjPreviewBox').classList.remove('hidden');
-                    document.getElementById('cjPreviewImg').src = event.target.result;
-                    document.getElementById('cjOrigSize').innerText = (file.size / 1024).toFixed(1) + ' KB';
-                    document.getElementById('cjNewSize').innerText = 'Ready';
+                if (total >= 7.50) {
+                    html += `<div class="p-2.5 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-xl text-xs">✔ ঢাকা বিশ্ববিদ্যালয় (B/C Unit) ও সাধারণ গুচ্ছ বিশ্ববিদ্যালয়ে আবেদনের যোগ্য।</div>`;
+                } else {
+                    html += `<div class="p-2.5 bg-amber-500/10 border border-amber-500/30 text-amber-400 rounded-xl text-xs">✔ জাতীয় বিশ্ববিদ্যালয় ও ৭ কলেজে আবেদন সম্ভব।</div>`;
                 }
-                img.src = event.target.result;
             }
-            reader.readAsDataURL(file);
-        }
-        function downloadCompressedJpeg() {
-            if(!cjLoadedImg) return alert("Select image first");
-            const quality = parseInt(document.getElementById('cjQualityRange').value) / 100;
-            const canvas = document.createElement('canvas');
-            canvas.width = cjLoadedImg.width; canvas.height = cjLoadedImg.height;
-            const ctx = canvas.getContext('2d');
-            ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(cjLoadedImg, 0, 0);
-            cjCompressedDataUrl = canvas.toDataURL('image/jpeg', quality);
-            let approxBytes = Math.round((cjCompressedDataUrl.length - 23) * 3/4);
-            document.getElementById('cjNewSize').innerText = (approxBytes / 1024).toFixed(1) + ' KB';
-            const link = document.createElement('a');
-            link.download = 'compressed-jt.jpg'; link.href = cjCompressedDataUrl; link.click();
-            registerCompletedTask();
-            showSuccessToast("Compressed & Downloaded!");
+
+            resultsBox.innerHTML = html;
         }
 
-        // PASSPORT
-        let pCanvas = null, pImg = null;
-        function loadPassportImage(e) {
+        // CV FUNCTIONS
+        function previewCvPhoto(e) {
             const file = e.target.files[0];
-            if(!file) return;
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                const img = new Image();
-                img.onload = function() {
-                    pImg = img;
-                    redrawPassport();
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(evt) {
+                    document.getElementById('prevCvImg').src = evt.target.result;
+                    document.getElementById('prevCvImg').classList.remove('hidden');
+                    document.getElementById('prevCvImgPlaceholder').classList.add('hidden');
                 }
-                img.src = event.target.result;
+                reader.readAsDataURL(file);
             }
-            reader.readAsDataURL(file);
-        }
-        function redrawPassport() {
-            if(!pImg) return;
-            const canvas = document.getElementById('passportCanvas');
-            const ctx = canvas.getContext('2d');
-            ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(pImg, 0, 0, canvas.width, canvas.height);
-        }
-        function initPassportInteraction() {}
-        function downloadPassport() {
-            if(!pImg) return alert("Upload photo first");
-            const canvas = document.getElementById('passportCanvas');
-            const link = document.createElement('a');
-            link.download = 'passport-hd.png'; link.href = canvas.toDataURL('image/png'); link.click();
-            registerCompletedTask();
-            showSuccessToast("Passport Downloaded!");
         }
 
-        // SIGNATURE
-        let sImg = null;
-        function loadSignatureImage(e) {
-            const file = e.target.files[0];
-            if(!file) return;
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                const img = new Image();
-                img.onload = function() { sImg = img; redrawSig(); }
-                img.src = event.target.result;
+        function updateCvPreview() {
+            document.getElementById('prevCvName').innerText = document.getElementById('cvFullName').value || "জুনায়েদ ইসলাম";
+            document.getElementById('prevCvFather').innerText = document.getElementById('cvFather').value || "মোঃ রফিকুল ইসলাম";
+            document.getElementById('prevCvMother').innerText = document.getElementById('cvMother').value || "মোছাঃ জাহানারা বেগম";
+            document.getElementById('prevCvContact').innerText = "মোবাইল: " + (document.getElementById('cvPhone').value || "01568600668");
+            document.getElementById('prevCvAddr').innerText = document.getElementById('cvAddress').value || "মিরপুর ১, ঢাকা";
+            document.getElementById('prevCvEdu').innerText = document.getElementById('cvEduText').value || "HSC Science (2026)\nSSC Science (2024)";
+            document.getElementById('prevCvSkills').innerText = document.getElementById('cvSkillsText').value || "ওয়েব অ্যাপ কন্টেন্ট ডিজাইন";
+            showToast("সিভি তথ্য সফলভাবে আপডেট হয়েছে!");
+        }
+
+        // QUIZ FUNCTION
+        function checkQuizAns(btn, isCorrect) {
+            if (isCorrect) {
+                btn.className = "bg-emerald-600 text-white p-2 rounded-lg text-left font-bold";
+                showToast("সঠিক উত্তর হয়েছে!");
+            } else {
+                btn.className = "bg-rose-600 text-white p-2 rounded-lg text-left font-bold";
+                showToast("ভুল উত্তর! আবার চেষ্টা করুন।");
             }
-            reader.readAsDataURL(file);
-        }
-        function redrawSig() {
-            if(!sImg) return;
-            const canvas = document.getElementById('signatureCanvas');
-            const ctx = canvas.getContext('2d');
-            ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(sImg, 0, 0, canvas.width, canvas.height);
-        }
-        function downloadSignature() {
-            if(!sImg) return alert("Select signature");
-            const canvas = document.createElement('canvas');
-            canvas.width = 300; canvas.height = 80;
-            const ctx = canvas.getContext('2d');
-            ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, 300, 80);
-            ctx.drawImage(sImg, 0, 0, 300, 80);
-            const link = document.createElement('a');
-            link.download = 'signature-300x80.jpg'; link.href = canvas.toDataURL('image/jpeg', 1.0); link.click();
-            registerCompletedTask();
-            showSuccessToast("Signature Downloaded (300x80)!");
         }
 
-        function downloadThumbnail() {
-            const url = document.getElementById('ytUrl').value;
-            const match = url ? url.match(/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/) : null;
-            if(match && match[2].length === 11) {
-                window.open(`https://img.youtube.com/vi/${match[2]}/maxresdefault.jpg`, '_blank');
-                registerCompletedTask();
-                showSuccessToast("Thumbnail Downloaded!");
-            } else { alert("Enter valid YouTube URL!"); }
-        }
-
-        function countWords() {
-            const text = document.getElementById('wcText').value.trim();
-            const words = text === "" ? 0 : text.split(/\s+/).length;
-            document.getElementById('wordCount').innerText = words;
-            document.getElementById('charCount').innerText = text.length;
-        }
-
-        function generatePass() {
-            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*!";
-            let pass = "";
-            for(let i=0; i<12; i++) pass += chars.charAt(Math.floor(Math.random() * chars.length));
-            document.getElementById('passOutput').value = pass;
-            registerCompletedTask();
-        }
-
-        function copyPass() {
-            navigator.clipboard.writeText(document.getElementById('passOutput').value);
-            showSuccessToast("Password Copied!");
-        }
-
-        function generateQR() {
-            const val = document.getElementById('qrText').value;
-            if(!val) return alert("Enter text");
-            document.getElementById('qrResult').innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(val)}" class="mx-auto rounded-lg border p-1 bg-white">`;
-            registerCompletedTask();
-        }
-
-        function calcAge() {
-            const val = document.getElementById('birthDate').value;
-            if(!val) return alert("Select date");
-            const bdate = new Date(val), today = new Date();
-            let years = today.getFullYear() - bdate.getFullYear();
-            document.getElementById('ageResult').innerText = `You are ${years} years old!`;
-            registerCompletedTask();
-        }
-
-        function convertUnit() {
-            const kg = document.getElementById('kgInput').value;
-            document.getElementById('gramResult').innerText = kg ? (kg * 1000).toLocaleString() : 0;
-        }
-
-        function speakText() {
-            const text = document.getElementById('speechText').value;
-            if(text) window.speechSynthesis.speak(new SpeechSynthesisUtterance(text));
-        }
-
-        function updateColorCode() { document.getElementById('colorHexOutput').value = document.getElementById('colorInput').value; }
-        function copyColorHex() { navigator.clipboard.writeText(document.getElementById('colorHexOutput').value); showSuccessToast("HEX Copied!"); }
-
-        function saveNotepad() { localStorage.setItem('jt_temp_note', document.getElementById('notepadArea').value); }
-        function clearNotepad() { localStorage.removeItem('jt_temp_note'); document.getElementById('notepadArea').value = ''; }
-
-        function checkPassTime() {
-            const p = document.getElementById('checkPass').value;
-            const res = document.getElementById('passTimeResult');
-            if(p.length < 6) res.innerText = "Very weak";
-            else if(p.length < 10) res.innerText = "Moderate";
-            else res.innerText = "Strong!";
-        }
-
-        let pomoTimer;
-        function startPomodoro() {
-            let t = 1500;
-            clearInterval(pomoTimer);
-            pomoTimer = setInterval(() => {
-                let m = Math.floor(t / 60), s = t % 60;
-                if(document.getElementById('timerDisplay')) {
-                    document.getElementById('timerDisplay').innerText = `${m}:${s < 10 ? '0' : ''}${s}`;
-                }
-                if(t <= 0) { clearInterval(pomoTimer); alert("Pomodoro Finished!"); }
-                t--;
-            }, 1000);
-            registerCompletedTask();
-        }
-        function resetPomodoro() { clearInterval(pomoTimer); document.getElementById('timerDisplay').innerText = "25:00"; }
-
-        function calcEMI() {
-            const p = document.getElementById('loanAmount').value;
-            const r = document.getElementById('loanRate').value / 1200;
-            const n = document.getElementById('loanMonths').value;
-            const emi = (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
-            document.getElementById('emiResult').innerText = `EMI: ${Math.round(emi || 0).toLocaleString()}`;
-            registerCompletedTask();
-        }
+        // INITIALIZE
+        updateFavUI();
     </script>
 </body>
 </html>
