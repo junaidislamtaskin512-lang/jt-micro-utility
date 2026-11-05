@@ -34,7 +34,6 @@
         @keyframes pulse-glow { 0%, 100% { box-shadow: 0 0 15px rgba(37, 211, 102, 0.4); } 50% { box-shadow: 0 0 25px rgba(37, 211, 102, 0.8); } }
         .whatsapp-float { animation: pulse-glow 2.5s infinite; }
 
-        /* Hide scrollbar for clean slider effect */
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
@@ -151,7 +150,7 @@
             <div class="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div>
                     <h1 class="text-2xl sm:text-3xl font-bold text-white mb-1">Interactive Dashboard</h1>
-                    <p class="text-slate-400 text-xs sm:text-sm">HSC 2024/2026 Admission Circular Hub & Professional Utilities.</p>
+                    <p class="text-slate-400 text-xs sm:text-sm">Complete Public, Private, Medical & Engineering Admission Hub.</p>
                 </div>
                 <div class="bg-slate-900 border border-slate-800 px-4 py-2 rounded-xl flex items-center gap-3 self-start sm:self-auto">
                     <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></div>
@@ -167,14 +166,14 @@
             <!-- ALL TOOLS GRID -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 
-                <!-- NEW: HSC & University Admission Circular Hub -->
+                <!-- COMPLETE ADMISSION HUB -->
                 <div onclick="openTool('admissionHub')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-amber-400 border-2 border-amber-500/30 bg-amber-950/20">
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-12 h-12 bg-amber-500/20 text-amber-400 rounded-2xl flex items-center justify-center text-xl border border-amber-500/40 group-hover:scale-110 transition"><i class="fa-solid fa-graduation-cap"></i></div>
-                        <span class="text-[11px] bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2.5 py-1 rounded-full font-bold">HSC ADMISSION 2026</span>
+                        <span class="text-[11px] bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2.5 py-1 rounded-full font-bold">ALL ADMISSION HUBS</span>
                     </div>
                     <h3 class="font-bold text-lg text-white mb-1 group-hover:text-amber-400 transition">University & Medical Admission Hub</h3>
-                    <p class="text-xs text-slate-300">Medical, Dental, BUET, DU & Varsity admission notices, circulars & direct application links.</p>
+                    <p class="text-xs text-slate-300">Public, GST Cluster, Medical, Engineering & Private Universities all application links.</p>
                 </div>
 
                 <!-- Compress JPEG Studio -->
@@ -448,7 +447,7 @@
 
     <!-- TOOL MODAL -->
     <div id="toolModal" class="fixed inset-0 z-40 hidden flex items-center justify-center bg-black/90 backdrop-blur-md p-4">
-        <div class="glass w-full max-w-3xl rounded-2xl p-6 shadow-2xl animate-pop relative border border-slate-800 max-h-[90vh] overflow-y-auto">
+        <div class="glass w-full max-w-4xl rounded-2xl p-6 shadow-2xl animate-pop relative border border-slate-800 max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center mb-4 border-b border-slate-800 pb-3">
                 <h3 id="toolModalTitle" class="font-bold text-lg text-white flex items-center gap-2">Tool Title</h3>
                 <button onclick="closeToolModal()" class="w-8 h-8 rounded-full bg-slate-900 text-slate-400 hover:text-white flex items-center justify-center border border-slate-800 transition"><i class="fa-solid fa-xmark"></i></button>
@@ -612,147 +611,233 @@
             modal.classList.remove('hidden');
 
             if(toolName === 'admissionHub') {
-                title.innerHTML = `<i class="fa-solid fa-graduation-cap text-amber-400"></i> HSC 2026 & University Admission Circular Hub`;
+                title.innerHTML = `<i class="fa-solid fa-graduation-cap text-amber-400"></i> Bangladesh University & Admission Portal Hub`;
                 body.innerHTML = `
                     <div class="space-y-5">
                         <div class="text-center bg-amber-950/30 p-4 rounded-2xl border border-amber-500/30">
-                            <h4 class="font-bold text-sm text-amber-300 mb-1">ADMISSION CIRCULAR & APPLICATION PORTAL</h4>
-                            <p class="text-[11px] text-slate-300">সকল সরকারি মেডিকেল, ডেন্টাল, ইঞ্জিনিয়ারিং (BUET/CUET/RUET/KUET) এবং পাবলিক বিশ্ববিদ্যালয়ের ভর্তি পরীক্ষার অফিশিয়াল নোটিশ এবং সরাসরি অনলাইন আবেদনের লিংক।</p>
+                            <h4 class="font-bold text-sm text-amber-300 mb-1">COMPLETE ADMISSION & CIRCULAR DIRECTORY</h4>
+                            <p class="text-[11px] text-slate-300">মেডিকেল, ডেন্টাল, ইঞ্জিনিয়ারিং, জিএসটি গুচ্ছ, সকল পাবলিক এবং প্রাইভেট বিশ্ববিদ্যালয়ের অফিসিয়াল এপ্লাই ও নোটিশ লিংক। (যদি কোনো অফিশিয়াল সার্ভারে মেইনটেনেন্স বা ডাউনটাইম দেখায়, তবে হোমপেজ বা অলটারনেটিভ লিংকে ট্রাই করুন)।</p>
                         </div>
 
-                        <!-- HORIZONTAL SCROLLABLE CATEGORIES/CARDS -->
-                        <div>
-                            <h5 class="text-xs font-bold text-slate-300 mb-3 uppercase tracking-wider flex items-center gap-2">
-                                <i class="fa-solid fa-fire text-amber-400"></i> Select Category / University Sector
-                            </h5>
-                            <div class="flex gap-3 overflow-x-auto pb-3 no-scrollbar">
-                                <button onclick="filterAdmission('all')" class="px-4 py-2 bg-amber-600 text-white rounded-xl text-xs font-bold shrink-0 shadow transition">All Circulars</button>
-                                <button onclick="filterAdmission('medical')" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 rounded-xl text-xs font-medium shrink-0 transition">Medical & Dental</button>
-                                <button onclick="filterAdmission('engineering')" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 rounded-xl text-xs font-medium shrink-0 transition">Engineering</button>
-                                <button onclick="filterAdmission('varsity')" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 rounded-xl text-xs font-medium shrink-0 transition">Public Universities</button>
-                            </div>
+                        <!-- CATEGORY TABS -->
+                        <div class="flex gap-2 overflow-x-auto pb-2 no-scrollbar">
+                            <button onclick="filterAdmission('all')" class="px-4 py-2 bg-amber-600 text-white rounded-xl text-xs font-bold shrink-0 shadow">All Universities</button>
+                            <button onclick="filterAdmission('medical')" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 rounded-xl text-xs font-medium shrink-0">Medical & Dental</button>
+                            <button onclick="filterAdmission('engineering')" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 rounded-xl text-xs font-medium shrink-0">Engineering</button>
+                            <button onclick="filterAdmission('gst')" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 rounded-xl text-xs font-medium shrink-0">GST Cluster (গুচ্ছ)</button>
+                            <button onclick="filterAdmission('public')" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 rounded-xl text-xs font-medium shrink-0">General Public</button>
+                            <button onclick="filterAdmission('private')" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 rounded-xl text-xs font-medium shrink-0">Private Universities</button>
                         </div>
 
-                        <!-- ADMISSION CARDS GRID / LIST -->
+                        <!-- CARDS CONTAINER -->
                         <div id="admissionCardsList" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             
-                            <!-- Medical & Dental Card -->
+                            <!-- 1. MEDICAL & DENTAL -->
                             <div class="admission-card medical glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
                                 <div>
-                                    <div class="flex justify-between items-start mb-2">
-                                        <span class="text-[10px] bg-rose-500/20 text-rose-300 border border-rose-500/30 px-2 py-0.5 rounded-full font-bold">MBBS & BDS</span>
-                                        <span class="text-[10px] text-emerald-400 font-semibold"><i class="fa-solid fa-circle-check"></i> Circular Active</span>
-                                    </div>
-                                    <h5 class="font-bold text-sm text-white mb-1">Government & Private Medical / Dental Admission</h5>
-                                    <p class="text-[11px] text-slate-400 mb-3">DGME controlled MBBS and Dental College admission application & seat distribution notice.</p>
+                                    <span class="text-[10px] bg-rose-500/20 text-rose-300 border border-rose-500/30 px-2 py-0.5 rounded-full font-bold">MBBS & BDS</span>
+                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">Govt & Private Medical / Dental Colleges</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">DGME controlled medical admission and seat distribution portal.</p>
                                 </div>
                                 <div class="flex gap-2 pt-2 border-t border-slate-800">
-                                    <a href="https://dgme.teletalk.com.bd" target="_blank" onclick="registerCompletedTask(); showSuccessToast('Redirecting to Medical Application Portal...');" class="flex-1 bg-rose-600 hover:bg-rose-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">
-                                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Apply Now
-                                    </a>
-                                    <a href="https://dghs.gov.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800 transition">
-                                        Notice
-                                    </a>
+                                    <a href="https://dgme.teletalk.com.bd" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-rose-600 hover:bg-rose-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Apply Portal</a>
+                                    <a href="https://dghs.gov.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Notice</a>
                                 </div>
                             </div>
 
-                            <!-- BUET & Engineering Card -->
+                            <!-- 2. ENGINEERING (BUET) -->
                             <div class="admission-card engineering glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
                                 <div>
-                                    <div class="flex justify-between items-start mb-2">
-                                        <span class="text-[10px] bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2 py-0.5 rounded-full font-bold">BUET / CKRUET</span>
-                                        <span class="text-[10px] text-emerald-400 font-semibold"><i class="fa-solid fa-circle-check"></i> Circular Active</span>
-                                    </div>
-                                    <h5 class="font-bold text-sm text-white mb-1">Bangladesh University of Engineering (BUET)</h5>
-                                    <p class="text-[11px] text-slate-400 mb-3">BUET undergraduate admission preliminary application, written test & seat plan.</p>
+                                    <span class="text-[10px] bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2 py-0.5 rounded-full font-bold">BUET</span>
+                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">Bangladesh Univ. of Engineering & Tech (BUET)</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">Undergraduate admission preliminary application and seat plan.</p>
                                 </div>
                                 <div class="flex gap-2 pt-2 border-t border-slate-800">
-                                    <a href="https://www.buet.ac.bd/web/#/admission" target="_blank" onclick="registerCompletedTask(); showSuccessToast('Redirecting to BUET Portal...');" class="flex-1 bg-blue-600 hover:bg-blue-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">
-                                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Apply Now
-                                    </a>
-                                    <a href="https://www.buet.ac.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800 transition">
-                                        Notice
-                                    </a>
+                                    <a href="https://www.buet.ac.bd/web/#/admission" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-blue-600 hover:bg-blue-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Apply Portal</a>
+                                    <a href="https://www.buet.ac.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Website</a>
                                 </div>
                             </div>
 
-                            <!-- Dhaka University Card -->
-                            <div class="admission-card varsity glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                            <!-- 3. CKRUET (CUET, KUET, RUET) -->
+                            <div class="admission-card engineering glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
                                 <div>
-                                    <div class="flex justify-between items-start mb-2">
-                                        <span class="text-[10px] bg-purple-500/20 text-purple-300 border border-purple-500/30 px-2 py-0.5 rounded-full font-bold">DU Units A, B, C, D</span>
-                                        <span class="text-[10px] text-emerald-400 font-semibold"><i class="fa-solid fa-circle-check"></i> Circular Active</span>
-                                    </div>
-                                    <h5 class="font-bold text-sm text-white mb-1">University of Dhaka (DU) Admission</h5>
-                                    <p class="text-[11px] text-slate-400 mb-3">Science, Arts, Business Studies and Fine Arts undergraduate online application portal.</p>
+                                    <span class="text-[10px] bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2 py-0.5 rounded-full font-bold">CKRUET</span>
+                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">CUET, KUET & RUET Combined Admission</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">Chittagong, Khulna and Rajshahi Engineering & Technology combined admission.</p>
                                 </div>
                                 <div class="flex gap-2 pt-2 border-t border-slate-800">
-                                    <a href="https://admission.eis.du.ac.bd" target="_blank" onclick="registerCompletedTask(); showSuccessToast('Redirecting to DU Admission Portal...');" class="flex-1 bg-purple-600 hover:bg-purple-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">
-                                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Apply Now
-                                    </a>
-                                    <a href="https://du.ac.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800 transition">
-                                        Notice
-                                    </a>
+                                    <a href="https://www.ckruetadmission.ac.bd" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-blue-600 hover:bg-blue-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Apply Portal</a>
+                                    <a href="https://www.ckruetadmission.ac.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Notice</a>
                                 </div>
                             </div>
 
-                            <!-- GST Cluster Card -->
-                            <div class="admission-card varsity glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                            <!-- 4. GST CLUSTER (গুচ্ছ) -->
+                            <div class="admission-card gst glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
                                 <div>
-                                    <div class="flex justify-between items-start mb-2">
-                                        <span class="text-[10px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded-full font-bold">20+ Universities</span>
-                                        <span class="text-[10px] text-emerald-400 font-semibold"><i class="fa-solid fa-circle-check"></i> Circular Active</span>
-                                    </div>
-                                    <h5 class="font-bold text-sm text-white mb-1">GST Cluster Admission (General, Science & Tech)</h5>
-                                    <p class="text-[11px] text-slate-400 mb-3">Combined admission test for 20+ general, science and technology public universities.</p>
+                                    <span class="text-[10px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded-full font-bold">24 Universities</span>
+                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">GST Cluster Admission (General, Science & Tech)</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">Combined admission test for 24 public general, science & technology universities.</p>
                                 </div>
                                 <div class="flex gap-2 pt-2 border-t border-slate-800">
-                                    <a href="https://gstadmission.ac.bd" target="_blank" onclick="registerCompletedTask(); showSuccessToast('Redirecting to GST Portal...');" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">
-                                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Apply Now
-                                    </a>
-                                    <a href="https://gstadmission.ac.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800 transition">
-                                        Notice
-                                    </a>
+                                    <a href="https://gstadmission.ac.bd" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Apply Portal</a>
+                                    <a href="https://gstadmission.ac.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Notice</a>
                                 </div>
                             </div>
 
-                            <!-- Rajshahi University Card -->
-                            <div class="admission-card varsity glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                            <!-- 5. DHAKA UNIVERSITY -->
+                            <div class="admission-card public glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
                                 <div>
-                                    <div class="flex justify-between items-start mb-2">
-                                        <span class="text-[10px] bg-teal-500/20 text-teal-300 border border-teal-500/30 px-2 py-0.5 rounded-full font-bold">RU Units A, B, C</span>
-                                        <span class="text-[10px] text-emerald-400 font-semibold"><i class="fa-solid fa-circle-check"></i> Open</span>
-                                    </div>
-                                    <h5 class="font-bold text-sm text-white mb-1">University of Rajshahi (RU) Admission</h5>
-                                    <p class="text-[11px] text-slate-400 mb-3">Rajshahi University undergraduate admission preliminary application and seat plan.</p>
+                                    <span class="text-[10px] bg-purple-500/20 text-purple-300 border border-purple-500/30 px-2 py-0.5 rounded-full font-bold">DU Units A,B,C,D</span>
+                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">University of Dhaka (DU) Admission</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">Dhaka University undergraduate online application portal.</p>
                                 </div>
                                 <div class="flex gap-2 pt-2 border-t border-slate-800">
-                                    <a href="https://admission.ru.ac.bd" target="_blank" onclick="registerCompletedTask(); showSuccessToast('Redirecting to RU Portal...');" class="flex-1 bg-teal-600 hover:bg-teal-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">
-                                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Apply Now
-                                    </a>
-                                    <a href="https://ru.ac.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800 transition">
-                                        Notice
-                                    </a>
+                                    <a href="https://admission.eis.du.ac.bd" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-purple-600 hover:bg-purple-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Apply Portal</a>
+                                    <a href="https://du.ac.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Website</a>
                                 </div>
                             </div>
 
-                            <!-- Chittagong University Card -->
-                            <div class="admission-card varsity glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                            <!-- 6. RAJSHAHI UNIVERSITY -->
+                            <div class="admission-card public glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
                                 <div>
-                                    <div class="flex justify-between items-start mb-2">
-                                        <span class="text-[10px] bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 px-2 py-0.5 rounded-full font-bold">CU Units A, B, C, D</span>
-                                        <span class="text-[10px] text-emerald-400 font-semibold"><i class="fa-solid fa-circle-check"></i> Open</span>
-                                    </div>
-                                    <h5 class="font-bold text-sm text-white mb-1">University of Chittagong (CU) Admission</h5>
-                                    <p class="text-[11px] text-slate-400 mb-3">Chittagong University admission application, sub-units and admit card download.</p>
+                                    <span class="text-[10px] bg-teal-500/20 text-teal-300 border border-teal-500/30 px-2 py-0.5 rounded-full font-bold">RU Units A,B,C</span>
+                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">University of Rajshahi (RU) Admission</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">Rajshahi University admission application and seat plan.</p>
                                 </div>
                                 <div class="flex gap-2 pt-2 border-t border-slate-800">
-                                    <a href="https://admission.cu.ac.bd" target="_blank" onclick="registerCompletedTask(); showSuccessToast('Redirecting to CU Portal...');" class="flex-1 bg-indigo-600 hover:bg-indigo-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">
-                                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Apply Now
-                                    </a>
-                                    <a href="https://cu.ac.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800 transition">
-                                        Notice
-                                    </a>
+                                    <a href="https://admission.ru.ac.bd" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-teal-600 hover:bg-teal-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Apply Portal</a>
+                                    <a href="https://ru.ac.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Website</a>
+                                </div>
+                            </div>
+
+                            <!-- 7. CHITTAGONG UNIVERSITY -->
+                            <div class="admission-card public glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                                <div>
+                                    <span class="text-[10px] bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 px-2 py-0.5 rounded-full font-bold">CU Units A,B,C,D</span>
+                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">University of Chittagong (CU) Admission</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">Chittagong University admission application and sub-units.</p>
+                                </div>
+                                <div class="flex gap-2 pt-2 border-t border-slate-800">
+                                    <a href="https://admission.cu.ac.bd" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-indigo-600 hover:bg-indigo-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Apply Portal</a>
+                                    <a href="https://cu.ac.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Website</a>
+                                </div>
+                            </div>
+
+                            <!-- 8. JAHANGIRNAGAR UNIVERSITY -->
+                            <div class="admission-card public glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                                <div>
+                                    <span class="text-[10px] bg-sky-500/20 text-sky-300 border border-sky-500/30 px-2 py-0.5 rounded-full font-bold">JU Admission</span>
+                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">Jahangirnagar University (JU) Admission</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">Jahangirnagar University online admission portal.</p>
+                                </div>
+                                <div class="flex gap-2 pt-2 border-t border-slate-800">
+                                    <a href="https://juniv-admission.org" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-sky-600 hover:bg-sky-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Apply Portal</a>
+                                    <a href="https://juniv.edu" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Website</a>
+                                </div>
+                            </div>
+
+                            <!-- 9. AGRICULTURAL UNIVERSITY CLUSTER -->
+                            <div class="admission-card public glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                                <div>
+                                    <span class="text-[10px] bg-lime-500/20 text-lime-300 border border-lime-500/30 px-2 py-0.5 rounded-full font-bold">Agri Cluster</span>
+                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">Agricultural Universities Combined Admission</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">BAU, SAU, BSMRAU, PUST and other agricultural varsities.</p>
+                                </div>
+                                <div class="flex gap-2 pt-2 border-t border-slate-800">
+                                    <a href="https://admission-agri.org" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-lime-600 hover:bg-lime-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Apply Portal</a>
+                                    <a href="https://admission-agri.org" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Notice</a>
+                                </div>
+                            </div>
+
+                            <!-- 10. ISLAMIC UNIVERSITY KUSHTIA -->
+                            <div class="admission-card public glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                                <div>
+                                    <span class="text-[10px] bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded-full font-bold">IU Kushtia</span>
+                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">Islamic University (IU), Kushtia</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">Islamic University undergraduate admission portal.</p>
+                                </div>
+                                <div class="flex gap-2 pt-2 border-t border-slate-800">
+                                    <a href="https://iu.ac.bd" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-amber-600 hover:bg-amber-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Website</a>
+                                    <a href="https://iu.ac.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Notice</a>
+                                </div>
+                            </div>
+
+                            <!-- PRIVATE UNIVERSITIES SECTION -->
+                            <!-- North South University -->
+                            <div class="admission-card private glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                                <div>
+                                    <span class="text-[10px] bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 px-2 py-0.5 rounded-full font-bold">Private #1</span>
+                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">North South University (NSU)</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">Top ranked private university undergraduate admission.</p>
+                                </div>
+                                <div class="flex gap-2 pt-2 border-t border-slate-800">
+                                    <a href="https://www.northsouth.edu/admissions/" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-cyan-600 hover:bg-cyan-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Admission Portal</a>
+                                    <a href="https://www.northsouth.edu" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Website</a>
+                                </div>
+                            </div>
+
+                            <!-- BRAC University -->
+                            <div class="admission-card private glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                                <div>
+                                    <span class="text-[10px] bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 px-2 py-0.5 rounded-full font-bold">Private</span>
+                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">BRAC University</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">BRAC University undergraduate programs admission portal.</p>
+                                </div>
+                                <div class="flex gap-2 pt-2 border-t border-slate-800">
+                                    <a href="https://www.bracu.ac.bd/admissions" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-cyan-600 hover:bg-cyan-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Admission Portal</a>
+                                    <a href="https://www.bracu.ac.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Website</a>
+                                </div>
+                            </div>
+
+                            <!-- Independent University Bangladesh (IUB) -->
+                            <div class="admission-card private glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                                <div>
+                                    <span class="text-[10px] bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 px-2 py-0.5 rounded-full font-bold">Private</span>
+                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">Independent University, Bangladesh (IUB)</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">IUB admission and scholarship information portal.</p>
+                                </div>
+                                <div class="flex gap-2 pt-2 border-t border-slate-800">
+                                    <a href="https://www.iub.edu.bd/admission" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-cyan-600 hover:bg-cyan-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Admission Portal</a>
+                                    <a href="https://www.iub.edu.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Website</a>
+                                </div>
+                            </div>
+
+                            <!-- American International University-Bangladesh (AIUB) -->
+                            <div class="admission-card private glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                                <div>
+                                    <span class="text-[10px] bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 px-2 py-0.5 rounded-full font-bold">Private</span>
+                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">American International University (AIUB)</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">AIUB online admission and faculty programs.</p>
+                                </div>
+                                <div class="flex gap-2 pt-2 border-t border-slate-800">
+                                    <a href="https://www.aiub.edu/admission" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-cyan-600 hover:bg-cyan-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Admission Portal</a>
+                                    <a href="https://www.aiub.edu" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Website</a>
+                                </div>
+                            </div>
+
+                            <!-- Daffodil International University (DIU) -->
+                            <div class="admission-card private glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                                <div>
+                                    <span class="text-[10px] bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 px-2 py-0.5 rounded-full font-bold">Private</span>
+                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">Daffodil International University (DIU)</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">DIU admission application and tuition waiver details.</p>
+                                </div>
+                                <div class="flex gap-2 pt-2 border-t border-slate-800">
+                                    <a href="https://daffodilvarsity.edu.bd/admission" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-cyan-600 hover:bg-cyan-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Admission Portal</a>
+                                    <a href="https://daffodilvarsity.edu.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Website</a>
+                                </div>
+                            </div>
+
+                            <!-- United International University (UIU) -->
+                            <div class="admission-card private glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                                <div>
+                                    <span class="text-[10px] bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 px-2 py-0.5 rounded-full font-bold">Private</span>
+                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">United International University (UIU)</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">UIU undergraduate & graduate admission portal.</p>
+                                </div>
+                                <div class="flex gap-2 pt-2 border-t border-slate-800">
+                                    <a href="https://www.uiu.ac.bd/admission/" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-cyan-600 hover:bg-cyan-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Admission Portal</a>
+                                    <a href="https://www.uiu.ac.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Website</a>
                                 </div>
                             </div>
 
@@ -767,15 +852,11 @@
                             <h4 class="font-bold text-sm text-teal-300 mb-1">COMPRESS JPEG</h4>
                             <p class="text-[11px] text-slate-300">Convert any image to JPEG format, reduce KB size precisely, and download instantly without leaving your browser.</p>
                         </div>
-
-                        <!-- FORMAT TABS -->
                         <div class="flex gap-2 justify-center">
                             <span class="px-3 py-1 bg-teal-600 text-white rounded-lg text-xs font-bold shadow">JPEG</span>
                             <span class="px-3 py-1 bg-slate-900 text-slate-400 rounded-lg text-xs font-medium border border-slate-800">PNG</span>
                             <span class="px-3 py-1 bg-slate-900 text-slate-400 rounded-lg text-xs font-medium border border-slate-800">GIF</span>
                         </div>
-
-                        <!-- UPLOAD BOX -->
                         <div class="bg-slate-900/80 p-5 rounded-2xl border-2 border-dashed border-slate-700 text-center hover:border-teal-500 transition">
                             <input type="file" id="cjInput" accept="image/*,.heic,.HEIC" onchange="loadCompressJpeg(event)" class="hidden">
                             <label for="cjInput" class="cursor-pointer flex flex-col items-center">
@@ -783,21 +864,16 @@
                                     <i class="fa-solid fa-cloud-arrow-up"></i>
                                 </div>
                                 <span class="text-xs font-bold text-white mb-1">SELECT FILES or Drop Your Files Here</span>
-                                <span class="text-[10px] text-slate-400">Supports JPG, PNG, HEIC, WEBP (Max 20 Photos)</span>
+                                <span class="text-[10px] text-slate-400">Supports JPG, PNG, HEIC, WEBP</span>
                             </label>
                         </div>
-
-                        <!-- COMPRESSION SETTINGS -->
                         <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800 space-y-3">
                             <div class="flex justify-between items-center text-xs">
                                 <span class="text-slate-300 font-medium">Target Quality / KB Reduction:</span>
                                 <span id="cjQualityVal" class="text-teal-400 font-bold">85%</span>
                             </div>
                             <input type="range" id="cjQualityRange" min="10" max="95" value="85" oninput="document.getElementById('cjQualityVal').innerText=this.value+'%'" class="w-full accent-teal-500">
-                            <p class="text-[10px] text-slate-400 italic">* Lower quality slider value gives smaller file size (KB).</p>
                         </div>
-
-                        <!-- PREVIEW CONTAINER -->
                         <div id="cjPreviewBox" class="hidden text-center bg-slate-950 p-4 rounded-xl border border-slate-800">
                             <p class="text-xs text-teal-400 mb-2 font-semibold"><i class="fa-solid fa-image"></i> Image Preview & Stats</p>
                             <img id="cjPreviewImg" class="max-h-40 mx-auto rounded-lg border border-slate-800 mb-2 object-contain">
@@ -806,14 +882,12 @@
                                 <span>Compressed: <strong id="cjNewSize" class="text-emerald-400">-- KB</strong></span>
                             </div>
                         </div>
-
-                        <!-- ACTION BUTTONS -->
                         <div class="grid grid-cols-2 gap-3 pt-2">
                             <button onclick="processCompressJpeg()" class="w-full bg-teal-600 hover:bg-teal-500 text-white py-3 rounded-xl text-xs font-bold shadow-lg shadow-teal-600/30 transition flex items-center justify-center gap-2">
                                 <i class="fa-solid fa-compress"></i> COMPRESS
                             </button>
                             <button onclick="downloadCompressedJpeg()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-3 rounded-xl text-xs font-bold shadow-lg shadow-emerald-600/30 transition flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-download"></i> SAVE ALL / DOWNLOAD
+                                <i class="fa-solid fa-download"></i> DOWNLOAD
                             </button>
                         </div>
                     </div>
@@ -823,82 +897,24 @@
                 body.innerHTML = `
                     <div class="space-y-4">
                         <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800">
-                            <label class="text-xs text-slate-300 block mb-2 font-medium">1. Upload Any Image (iPhone HEIC, DSLR, PNG, JPG)</label>
-                            <input type="file" id="passPhotoInput" accept="image/*,.heic,.HEIC" onchange="loadPassportImage(event)" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-500 cursor-pointer">
+                            <label class="text-xs text-slate-300 block mb-2 font-medium">1. Upload Any Image</label>
+                            <input type="file" id="passPhotoInput" accept="image/*,.heic,.HEIC" onchange="loadPassportImage(event)" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 cursor-pointer">
                         </div>
-
-                        <!-- 1-CLICK PRO AI BACKGROUND REMOVER LINK -->
                         <div class="bg-gradient-to-r from-purple-900/40 to-indigo-900/40 p-4 rounded-xl border border-purple-500/40 text-center">
-                            <p class="text-xs text-purple-300 mb-2 font-medium">Want 100% clean background removal (removes trees/outdoor scenery perfectly)?</p>
-                            <a href="https://www.remove.bg" target="_blank" class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold px-5 py-2.5 rounded-xl text-xs shadow-lg shadow-purple-600/30 transition">
-                                <i class="fa-solid fa-wand-magic-sparkles"></i> Open Free 1-Click AI BG Remover (Remove.bg)
+                            <p class="text-xs text-purple-300 mb-2 font-medium">Want 100% clean background removal?</p>
+                            <a href="https://www.remove.bg" target="_blank" class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold px-5 py-2.5 rounded-xl text-xs shadow-lg transition">
+                                <i class="fa-solid fa-wand-magic-sparkles"></i> Open Free AI BG Remover (Remove.bg)
                             </a>
-                            <p class="text-[10px] text-slate-400 mt-2">After downloading the transparent PNG from there, upload it below to apply Passport Background Color & Size!</p>
                         </div>
-
-                        <!-- CUSTOM SIZE CONTROLS -->
-                        <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
-                            <label class="text-xs text-slate-300 block mb-2 font-medium">2. Custom Size & Unit Configuration</label>
-                            <div class="grid grid-cols-3 gap-2 mb-2">
-                                <div>
-                                    <span class="text-[10px] text-slate-400 block mb-1">Unit</span>
-                                    <select id="sizeUnit" onchange="updateSizeDimensions()" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2 text-xs text-slate-200">
-                                        <option value="px">Pixel (px)</option>
-                                        <option value="cm">Centimeter (cm)</option>
-                                        <option value="mm">Millimeter (mm)</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <span class="text-[10px] text-slate-400 block mb-1">Width</span>
-                                    <input type="number" id="customWidth" value="300" oninput="redrawPassport()" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2 text-xs text-slate-200">
-                                </div>
-                                <div>
-                                    <span class="text-[10px] text-slate-400 block mb-1">Height</span>
-                                    <input type="number" id="customHeight" value="350" oninput="redrawPassport()" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2 text-xs text-slate-200">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                            <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
-                                <label class="text-xs text-slate-300 block mb-2 font-medium">3. Background Color Selector</label>
-                                <div class="flex items-center gap-2 mb-2">
-                                    <button onclick="changeBgColor('#ffffff')" class="px-3 py-1.5 bg-white text-slate-900 rounded-lg text-xs font-bold border hover:scale-105 transition shadow">White</button>
-                                    <button onclick="changeBgColor('#0056b3')" class="px-3 py-1.5 bg-blue-600 text-white rounded-lg text-xs font-bold hover:scale-105 transition shadow">Blue</button>
-                                    <button onclick="changeBgColor('#dc2626')" class="px-3 py-1.5 bg-red-600 text-white rounded-lg text-xs font-bold hover:scale-105 transition shadow">Red</button>
-                                    <button onclick="changeBgColor('#f1f5f9')" class="px-3 py-1.5 bg-slate-200 text-slate-800 rounded-lg text-xs font-bold hover:scale-105 transition shadow">Off-White</button>
-                                </div>
-                                <div class="flex items-center gap-2">
-                                    <input type="color" id="customBgPicker" value="#ffffff" onchange="changeBgColor(this.value)" class="w-10 h-8 bg-slate-950 border border-slate-800 rounded-lg p-1 cursor-pointer">
-                                    <span class="text-[11px] text-slate-400">Custom Color</span>
-                                </div>
-                            </div>
-
-                            <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
-                                <label class="text-xs text-slate-300 block mb-2 font-medium">4. Position & Zoom Adjustment</label>
-                                <div class="flex items-center gap-2 mb-2">
-                                    <span class="text-[11px] text-slate-400">Zoom:</span>
-                                    <input type="range" id="zoomRange" min="0.5" max="2.5" step="0.05" value="1" oninput="redrawPassport()" class="w-full accent-blue-600">
-                                </div>
-                                <p class="text-[10px] text-slate-400 italic">* Drag/pan the photo inside preview box.</p>
-                            </div>
-                        </div>
-
-                        <!-- LIVE PREVIEW -->
                         <div class="text-center bg-slate-950 p-4 rounded-xl border border-slate-800">
-                            <p class="text-xs text-emerald-400 mb-2 font-semibold"><i class="fa-solid fa-eye"></i> Studio Live Preview</p>
-                            <div class="inline-block border-4 border-slate-700 rounded-xl overflow-hidden shadow-2xl bg-white cursor-grab active:cursor-grabbing" style="width: 180px; height: 220px;">
+                            <p class="text-xs text-emerald-400 mb-2 font-semibold">Studio Live Preview</p>
+                            <div class="inline-block border-4 border-slate-700 rounded-xl overflow-hidden shadow-2xl bg-white" style="width: 180px; height: 220px;">
                                 <canvas id="passportCanvas" width="300" height="350" class="w-full h-full block"></canvas>
                             </div>
                         </div>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                            <button onclick="downloadPassport('single')" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-3 rounded-xl text-xs font-bold shadow-lg shadow-blue-600/30 transition flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-download"></i> Download HD Single Photo
-                            </button>
-                            <button onclick="downloadPassport('print')" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-3 rounded-xl text-xs font-bold shadow-lg shadow-emerald-600/30 transition flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-print"></i> Download 4R Print Sheet (8 Copies)
-                            </button>
+                        <div class="grid grid-cols-2 gap-3 pt-2">
+                            <button onclick="downloadPassport('single')" class="w-full bg-blue-600 text-white py-3 rounded-xl text-xs font-bold">Download Single</button>
+                            <button onclick="downloadPassport('print')" class="w-full bg-emerald-600 text-white py-3 rounded-xl text-xs font-bold">Download 4R Sheet</button>
                         </div>
                     </div>
                 `;
@@ -908,49 +924,24 @@
                 body.innerHTML = `
                     <div class="space-y-4">
                         <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800">
-                            <label class="text-xs text-slate-300 block mb-2 font-medium">Select Signature Image (High Clarity Support)</label>
-                            <input type="file" id="sigInput" accept="image/*" onchange="loadSignatureImage(event)" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-emerald-600 file:text-white hover:file:bg-emerald-500 cursor-pointer">
+                            <input type="file" id="sigInput" accept="image/*" onchange="loadSignatureImage(event)" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 cursor-pointer">
                         </div>
-
                         <div class="text-center bg-slate-950 p-4 rounded-xl border border-slate-800">
-                            <p class="text-xs text-emerald-400 mb-2 font-semibold">Live Preview (Exact 300x80 Ratio - Sharp & Clear)</p>
-                            <div class="inline-block border-2 border-slate-700 rounded-lg overflow-hidden shadow-2xl bg-white p-2">
-                                <canvas id="signatureCanvas" width="600" height="160" class="max-w-full h-auto block mx-auto"></canvas>
-                            </div>
+                            <canvas id="signatureCanvas" width="600" height="160" class="max-w-full h-auto block mx-auto bg-white p-2 rounded-lg"></canvas>
                         </div>
-
-                        <button onclick="downloadSignature()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-3 rounded-xl text-sm font-bold shadow-lg shadow-emerald-600/30 transition flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-download"></i> Download HD Official Signature (300x80)
-                        </button>
+                        <button onclick="downloadSignature()" class="w-full bg-emerald-600 text-white py-3 rounded-xl text-sm font-bold">Download Signature (300x80)</button>
                     </div>
                 `;
             } else if(toolName === 'thumbDownloader') {
                 title.innerHTML = `<i class="fa-solid fa-download text-red-400"></i> YouTube Thumbnail Downloader`;
                 body.innerHTML = `
                     <input type="text" id="ytUrl" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm mb-3 text-slate-200" placeholder="Paste YouTube Video URL...">
-                    <select id="thumbQuality" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm mb-3 text-slate-200">
-                        <option value="maxresdefault">4K / Ultra HD Quality</option>
-                        <option value="hqdefault">Full HD 1080p Quality</option>
-                    </select>
-                    <button onclick="downloadThumbnail()" class="w-full bg-red-600 hover:bg-red-500 text-white py-2.5 rounded-xl text-sm font-medium mb-3">Download HD Thumbnail</button>
-                `;
-            } else if(toolName === 'imgCompressor') {
-                title.innerHTML = `<i class="fa-solid fa-image text-indigo-400"></i> HD Image Compressor & Resizer`;
-                body.innerHTML = `
-                    <input type="file" id="imageFile" accept="image/*" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-sm mb-3 text-slate-200">
-                    <button onclick="compressAndDownloadImage()" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-2.5 rounded-xl text-sm font-medium mb-3">Compress & Save HD</button>
-                `;
-            } else if(toolName === 'qrGenerator') {
-                title.innerHTML = `<i class="fa-solid fa-qrcode text-purple-400"></i> HD QR Code Generator`;
-                body.innerHTML = `
-                    <input type="text" id="qrText" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm mb-3 text-slate-200" placeholder="Enter URL or text...">
-                    <button onclick="generateQR()" class="w-full bg-purple-600 hover:bg-purple-500 text-white py-2.5 rounded-xl text-sm font-medium mb-3">Generate QR Code</button>
-                    <div id="qrResult" class="text-center p-4 bg-slate-900 rounded-xl border border-slate-800 text-xs text-slate-400">QR preview will appear here</div>
+                    <button onclick="downloadThumbnail()" class="w-full bg-red-600 text-white py-2.5 rounded-xl text-sm font-medium">Download HD Thumbnail</button>
                 `;
             } else if(toolName === 'wordCounter') {
                 title.innerHTML = `<i class="fa-solid fa-file-lines text-blue-400"></i> Word & Character Counter`;
                 body.innerHTML = `
-                    <textarea id="wcText" oninput="countWords()" rows="4" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm focus:outline-none focus:border-blue-500 mb-3 text-slate-200" placeholder="Type or paste text..."></textarea>
+                    <textarea id="wcText" oninput="countWords()" rows="4" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm mb-3 text-slate-200" placeholder="Type text..."></textarea>
                     <div class="grid grid-cols-2 gap-3 text-center">
                         <div class="bg-slate-900 p-3 rounded-xl border border-slate-800"><span id="wordCount" class="text-xl font-bold text-blue-400">0</span><p class="text-xs text-slate-400">Words</p></div>
                         <div class="bg-slate-900 p-3 rounded-xl border border-slate-800"><span id="charCount" class="text-xl font-bold text-emerald-400">0</span><p class="text-xs text-slate-400">Characters</p></div>
@@ -961,16 +952,15 @@
                 body.innerHTML = `
                     <div class="flex gap-2 mb-3">
                         <input type="text" id="passOutput" readonly class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm text-emerald-400 font-mono" value="Click generate">
-                        <button onclick="copyPass()" class="bg-emerald-600 hover:bg-emerald-500 px-4 rounded-xl text-white text-sm">Copy</button>
+                        <button onclick="copyPass()" class="bg-emerald-600 px-4 rounded-xl text-white text-sm">Copy</button>
                     </div>
-                    <button onclick="generatePass()" class="w-full bg-slate-800 hover:bg-slate-700 py-2.5 rounded-xl text-sm font-medium text-emerald-300">Generate Password</button>
+                    <button onclick="generatePass()" class="w-full bg-slate-800 py-2.5 rounded-xl text-sm font-medium text-emerald-300">Generate Password</button>
                 `;
             } else if(toolName === 'ageCalculator') {
                 title.innerHTML = `<i class="fa-solid fa-cake-candles text-amber-400"></i> Age Calculator`;
                 body.innerHTML = `
-                    <label class="text-xs text-slate-400 block mb-1">Select Birth Date</label>
                     <input type="date" id="birthDate" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm mb-3 text-slate-200">
-                    <button onclick="calcAge()" class="w-full bg-amber-600 hover:bg-amber-500 text-white py-2.5 rounded-xl text-sm font-medium mb-3">Calculate Age</button>
+                    <button onclick="calcAge()" class="w-full bg-amber-600 text-white py-2.5 rounded-xl text-sm font-medium mb-3">Calculate Age</button>
                     <div id="ageResult" class="text-center p-3 bg-slate-900 rounded-xl border border-slate-800 text-sm font-medium text-amber-400">Select date above</div>
                 `;
             } else if(toolName === 'unitConverter') {
@@ -982,8 +972,8 @@
             } else if(toolName === 'textSpeech') {
                 title.innerHTML = `<i class="fa-solid fa-volume-high text-rose-400"></i> Text-to-Speech`;
                 body.innerHTML = `
-                    <textarea id="speechText" rows="3" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm mb-3 text-slate-200" placeholder="Type text to speak..."></textarea>
-                    <button onclick="speakText()" class="w-full bg-rose-600 hover:bg-rose-500 text-white py-2.5 rounded-xl text-sm font-medium">Speak Aloud</button>
+                    <textarea id="speechText" rows="3" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm mb-3 text-slate-200" placeholder="Type text..."></textarea>
+                    <button onclick="speakText()" class="w-full bg-rose-600 text-white py-2.5 rounded-xl text-sm font-medium">Speak Aloud</button>
                 `;
             } else if(toolName === 'colorPicker') {
                 title.innerHTML = `<i class="fa-solid fa-palette text-emerald-400"></i> Color Picker & HEX`;
@@ -992,12 +982,12 @@
                         <input type="color" id="colorInput" onchange="updateColorCode()" class="w-16 h-12 bg-slate-900 border border-slate-800 rounded-xl cursor-pointer p-1">
                         <input type="text" id="colorHexOutput" readonly class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-emerald-400 font-mono" value="#2563eb">
                     </div>
-                    <button onclick="copyColorHex()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-2.5 rounded-xl text-sm font-medium">Copy HEX Code</button>
+                    <button onclick="copyColorHex()" class="w-full bg-emerald-600 text-white py-2.5 rounded-xl text-sm font-medium">Copy HEX Code</button>
                 `;
             } else if(toolName === 'caseConverter') {
                 title.innerHTML = `<i class="fa-solid fa-font text-teal-400"></i> Text Case Converter`;
                 body.innerHTML = `
-                    <textarea id="caseText" rows="3" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm mb-3 text-slate-200" placeholder="Type text here..."></textarea>
+                    <textarea id="caseText" rows="3" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm mb-3 text-slate-200" placeholder="Type text..."></textarea>
                     <div class="grid grid-cols-3 gap-2">
                         <button onclick="convertCase('upper')" class="bg-teal-600/20 text-teal-300 py-2 rounded-xl text-xs font-medium">UPPER</button>
                         <button onclick="convertCase('lower')" class="bg-teal-600/20 text-teal-300 py-2 rounded-xl text-xs font-medium">lower</button>
@@ -1008,28 +998,28 @@
                 const savedNote = localStorage.getItem('jt_temp_note') || '';
                 title.innerHTML = `<i class="fa-solid fa-note-sticky text-yellow-400"></i> Temporary Notepad`;
                 body.innerHTML = `
-                    <textarea id="notepadArea" rows="4" oninput="saveNotepad()" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm mb-3 text-slate-200" placeholder="Write notes here...">${savedNote}</textarea>
-                    <div class="flex justify-between text-xs text-slate-400"><span>Auto-saved</span><button onclick="clearNotepad()" class="text-rose-400">Clear</button></div>
+                    <textarea id="notepadArea" rows="4" oninput="saveNotepad()" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm mb-3 text-slate-200" placeholder="Write notes...">${savedNote}</textarea>
+                    <button onclick="clearNotepad()" class="text-rose-400 text-xs">Clear Note</button>
                 `;
             } else if(toolName === 'passChecker') {
                 title.innerHTML = `<i class="fa-solid fa-shield-halved text-fuchsia-400"></i> Password Hack Time Checker`;
                 body.innerHTML = `
-                    <input type="password" id="checkPass" oninput="checkPassTime()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm mb-3 text-slate-200" placeholder="Type password to test...">
-                    <div id="passTimeResult" class="p-3 bg-slate-900 rounded-xl border border-slate-800 text-xs text-fuchsia-300 text-center font-medium">Strength info will appear here</div>
+                    <input type="password" id="checkPass" oninput="checkPassTime()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm mb-3 text-slate-200" placeholder="Type password...">
+                    <div id="passTimeResult" class="p-3 bg-slate-900 rounded-xl border border-slate-800 text-xs text-fuchsia-300 text-center font-medium">Strength info</div>
                 `;
             } else if(toolName === 'codeMinifier') {
                 title.innerHTML = `<i class="fa-solid fa-code text-sky-400"></i> HTML/CSS Minifier`;
                 body.innerHTML = `
-                    <textarea id="rawCode" rows="3" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm mb-3 text-slate-200" placeholder="Paste HTML/CSS code..."></textarea>
-                    <button onclick="minifyCode()" class="w-full bg-sky-600 hover:bg-sky-500 text-white py-2 rounded-xl text-sm font-medium mb-3">Minify Code</button>
-                    <textarea id="minifiedCode" rows="2" readonly class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-xs text-sky-300 font-mono" placeholder="Output..."></textarea>
+                    <textarea id="rawCode" rows="3" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm mb-3 text-slate-200" placeholder="Paste code..."></textarea>
+                    <button onclick="minifyCode()" class="w-full bg-sky-600 text-white py-2 rounded-xl text-sm font-medium mb-3">Minify Code</button>
+                    <textarea id="minifiedCode" rows="2" readonly class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-xs text-sky-300 font-mono"></textarea>
                 `;
             } else if(toolName === 'metaGen') {
                 title.innerHTML = `<i class="fa-solid fa-globe text-lime-400"></i> SEO Meta Tags Generator`;
                 body.innerHTML = `
-                    <input type="text" id="metaTitle" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm mb-2 text-slate-200" placeholder="Site Title...">
-                    <textarea id="metaDesc" rows="2" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm mb-3 text-slate-200" placeholder="Meta Description..."></textarea>
-                    <button onclick="generateMeta()" class="w-full bg-lime-600 hover:bg-lime-500 text-white py-2.5 rounded-xl text-sm font-medium mb-2">Generate Tags</button>
+                    <input type="text" id="metaTitle" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm mb-2 text-slate-200" placeholder="Title...">
+                    <textarea id="metaDesc" rows="2" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm mb-3 text-slate-200" placeholder="Description..."></textarea>
+                    <button onclick="generateMeta()" class="w-full bg-lime-600 text-white py-2.5 rounded-xl text-sm font-medium mb-2">Generate</button>
                     <textarea id="metaOutput" rows="2" readonly class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs text-lime-300 font-mono"></textarea>
                 `;
             } else if(toolName === 'ipFinder') {
@@ -1038,8 +1028,7 @@
                     <div class="space-y-2 text-xs text-slate-300 bg-slate-900 p-4 rounded-xl border border-slate-800">
                         <p><strong>Browser:</strong> <span class="text-orange-400">${navigator.userAgent.substring(0, 45)}...</span></p>
                         <p><strong>Platform:</strong> <span class="text-orange-400">${navigator.platform}</span></p>
-                        <p><strong>Language:</strong> <span class="text-orange-400">${navigator.language}</span></p>
-                        <p><strong>Online Status:</strong> <span class="text-emerald-400">${navigator.onLine ? "Online" : "Offline"}</span></p>
+                        <p><strong>Online:</strong> <span class="text-emerald-400">${navigator.onLine ? "Yes" : "No"}</span></p>
                     </div>
                 `;
             } else if(toolName === 'pomodoro') {
@@ -1049,16 +1038,16 @@
                         <span id="timerDisplay" class="text-4xl font-bold text-pink-400 font-mono">25:00</span>
                     </div>
                     <div class="grid grid-cols-2 gap-2">
-                        <button onclick="startPomodoro()" class="bg-pink-600 hover:bg-pink-500 text-white py-2 rounded-xl text-sm font-medium">Start Timer</button>
-                        <button onclick="resetPomodoro()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 py-2 rounded-xl text-sm font-medium">Reset</button>
+                        <button onclick="startPomodoro()" class="bg-pink-600 text-white py-2 rounded-xl text-sm">Start</button>
+                        <button onclick="resetPomodoro()" class="bg-slate-800 text-slate-300 py-2 rounded-xl text-sm">Reset</button>
                     </div>
                 `;
             } else if(toolName === 'tagGen') {
                 title.innerHTML = `<i class="fa-solid fa-hashtag text-violet-400"></i> Hashtag Generator`;
                 body.innerHTML = `
-                    <input type="text" id="keywordInput" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm mb-3 text-slate-200" placeholder="Enter keyword...">
-                    <button onclick="generateTags()" class="w-full bg-violet-600 hover:bg-violet-500 text-white py-2.5 rounded-xl text-sm font-medium mb-3">Generate Tags</button>
-                    <div id="tagOutput" class="text-xs text-violet-300 bg-slate-900 p-3 rounded-xl border border-slate-800">Tags will appear here</div>
+                    <input type="text" id="keywordInput" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm mb-3 text-slate-200" placeholder="Keyword...">
+                    <button onclick="generateTags()" class="w-full bg-violet-600 text-white py-2.5 rounded-xl text-sm font-medium mb-3">Generate</button>
+                    <div id="tagOutput" class="text-xs text-violet-300 bg-slate-900 p-3 rounded-xl border border-slate-800">Tags</div>
                 `;
             } else if(toolName === 'paletteGen') {
                 title.innerHTML = `<i class="fa-solid fa-swatchbook text-emerald-300"></i> Color Palette Generator`;
@@ -1066,39 +1055,39 @@
                     <div id="paletteBox" class="grid grid-cols-5 gap-2 mb-3">
                         <div class="h-16 rounded-xl bg-blue-500"></div><div class="h-16 rounded-xl bg-purple-500"></div><div class="h-16 rounded-xl bg-emerald-500"></div><div class="h-16 rounded-xl bg-amber-500"></div><div class="h-16 rounded-xl bg-rose-500"></div>
                     </div>
-                    <button onclick="generatePalette()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-2.5 rounded-xl text-sm font-medium">Generate New Palette</button>
+                    <button onclick="generatePalette()" class="w-full bg-emerald-600 text-white py-2.5 rounded-xl text-sm font-medium">Generate New</button>
                 `;
             } else if(toolName === 'emiCalc') {
                 title.innerHTML = `<i class="fa-solid fa-calculator text-amber-300"></i> Loan & EMI Calculator`;
                 body.innerHTML = `
-                    <input type="number" id="loanAmount" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm mb-2 text-slate-200" placeholder="Loan Amount...">
-                    <input type="number" id="loanRate" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm mb-2 text-slate-200" placeholder="Interest Rate %...">
+                    <input type="number" id="loanAmount" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm mb-2 text-slate-200" placeholder="Amount...">
+                    <input type="number" id="loanRate" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm mb-2 text-slate-200" placeholder="Rate %...">
                     <input type="number" id="loanMonths" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm mb-3 text-slate-200" placeholder="Months...">
-                    <button onclick="calcEMI()" class="w-full bg-amber-600 hover:bg-amber-500 text-white py-2.5 rounded-xl text-sm font-medium mb-3">Calculate EMI</button>
-                    <div id="emiResult" class="text-center p-3 bg-slate-900 rounded-xl border border-slate-800 text-sm font-medium text-amber-300">Monthly EMI: 0</div>
+                    <button onclick="calcEMI()" class="w-full bg-amber-600 text-white py-2.5 rounded-xl text-sm font-medium mb-3">Calculate</button>
+                    <div id="emiResult" class="text-center p-3 bg-slate-900 rounded-xl border border-slate-800 text-sm text-amber-300">EMI: 0</div>
                 `;
             } else if(toolName === 'binaryConv') {
                 title.innerHTML = `<i class="fa-solid fa-code-compare text-blue-300"></i> Text to Binary Converter`;
                 body.innerHTML = `
                     <input type="text" id="binText" oninput="toBinary()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm mb-3 text-slate-200" placeholder="Type text...">
-                    <textarea id="binOutput" rows="2" readonly class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-xs font-mono text-blue-300" placeholder="Binary result..."></textarea>
+                    <textarea id="binOutput" rows="2" readonly class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-xs font-mono text-blue-300"></textarea>
                 `;
             } else if(toolName === 'base64Tool') {
                 title.innerHTML = `<i class="fa-solid fa-lock text-cyan-300"></i> Base64 Encoder/Decoder`;
                 body.innerHTML = `
-                    <textarea id="baseText" rows="3" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm mb-3 text-slate-200" placeholder="Type text..."></textarea>
+                    <textarea id="baseText" rows="3" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm mb-3 text-slate-200" placeholder="Text..."></textarea>
                     <div class="grid grid-cols-2 gap-2">
-                        <button onclick="encodeBase64()" class="bg-cyan-600 text-white py-2 rounded-xl text-xs font-medium">Encode</button>
-                        <button onclick="decodeBase64()" class="bg-slate-800 text-cyan-300 py-2 rounded-xl text-xs font-medium">Decode</button>
+                        <button onclick="encodeBase64()" class="bg-cyan-600 text-white py-2 rounded-xl text-xs">Encode</button>
+                        <button onclick="decodeBase64()" class="bg-slate-800 text-cyan-300 py-2 rounded-xl text-xs">Decode</button>
                     </div>
                 `;
             } else if(toolName === 'worldClock') {
                 title.innerHTML = `<i class="fa-solid fa-clock-rotate-left text-rose-300"></i> World Clock`;
                 body.innerHTML = `
                     <div class="space-y-2 text-xs text-slate-300 bg-slate-900 p-4 rounded-xl border border-slate-800">
-                        <p><strong>Bangladesh (Dhaka):</strong> <span class="text-rose-400 font-mono" id="clockBD">--:--:--</span></p>
-                        <p><strong>New York (USA):</strong> <span class="text-rose-400 font-mono" id="clockNY">--:--:--</span></p>
-                        <p><strong>London (UK):</strong> <span class="text-rose-400 font-mono" id="clockLondon">--:--:--</span></p>
+                        <p><strong>Bangladesh:</strong> <span class="text-rose-400 font-mono" id="clockBD">--:--:--</span></p>
+                        <p><strong>New York:</strong> <span class="text-rose-400 font-mono" id="clockNY">--:--:--</span></p>
+                        <p><strong>London:</strong> <span class="text-rose-400 font-mono" id="clockLondon">--:--:--</span></p>
                     </div>
                 `;
                 setInterval(() => {
@@ -1110,13 +1099,11 @@
             } else if(toolName === 'keyTester') {
                 title.innerHTML = `<i class="fa-solid fa-keyboard text-indigo-300"></i> Keyboard & Mouse Tester`;
                 body.innerHTML = `
-                    <div id="keyBox" class="p-6 bg-slate-900 rounded-xl border border-slate-800 text-center text-sm text-indigo-300">
-                        Press any key or click mouse here...
-                    </div>
+                    <div id="keyBox" class="p-6 bg-slate-900 rounded-xl border border-slate-800 text-center text-sm text-indigo-300">Press any key...</div>
                 `;
                 window.onkeydown = (e) => {
                     const kb = document.getElementById('keyBox');
-                    if(kb) kb.innerHTML = `Key Pressed: <strong class="text-white text-lg">${e.key}</strong> (Code: ${e.code})`;
+                    if(kb) kb.innerHTML = `Key Pressed: <strong class="text-white text-lg">${e.key}</strong>`;
                 };
             }
         }
@@ -1144,7 +1131,6 @@
             const file = e.target.files[0];
             if(!file) return;
             cjOrigFileSize = file.size;
-
             const reader = new FileReader();
             reader.onload = function(event) {
                 const img = new Image();
@@ -1164,7 +1150,6 @@
         function processCompressJpeg() {
             if(!cjLoadedImg) { alert("Please select an image first!"); return; }
             const quality = parseInt(document.getElementById('cjQualityRange').value) / 100;
-
             const canvas = document.createElement('canvas');
             canvas.width = cjLoadedImg.width;
             canvas.height = cjLoadedImg.height;
@@ -1172,26 +1157,18 @@
             ctx.fillStyle = '#ffffff';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             ctx.drawImage(cjLoadedImg, 0, 0);
-
             cjCompressedDataUrl = canvas.toDataURL('image/jpeg', quality);
-            
-            let head = 'data:image/jpeg;base64,';
-            let approxBytes = Math.round((cjCompressedDataUrl.length - head.length) * 3/4);
+            let approxBytes = Math.round((cjCompressedDataUrl.length - 23) * 3/4);
             document.getElementById('cjNewSize').innerText = (approxBytes / 1024).toFixed(1) + ' KB';
-
-            showSuccessToast("Image Compressed & Converted to JPEG Successfully!");
+            showSuccessToast("Image Compressed Successfully!");
         }
 
         function downloadCompressedJpeg() {
-            if(!cjCompressedDataUrl) {
-                processCompressJpeg();
-                if(!cjCompressedDataUrl) return;
-            }
+            if(!cjCompressedDataUrl) { processCompressJpeg(); if(!cjCompressedDataUrl) return; }
             const link = document.createElement('a');
             link.download = 'compressed-image-jt.jpg';
             link.href = cjCompressedDataUrl;
             link.click();
-
             registerCompletedTask();
             showSuccessToast("Successfully Downloaded JPEG File!");
         }
@@ -1206,7 +1183,6 @@
         function loadPassportImage(e) {
             const file = e.target.files[0];
             if(!file) return;
-
             const reader = new FileReader();
             reader.onload = function(event) {
                 const img = new Image();
@@ -1215,58 +1191,26 @@
                     pProcessedCanvas = document.createElement('canvas');
                     pProcessedCanvas.width = img.width;
                     pProcessedCanvas.height = img.height;
-                    const ctx = pProcessedCanvas.getContext('2d');
-                    ctx.drawImage(img, 0, 0);
-
-                    pScale = 1;
+                    pProcessedCanvas.getContext('2d').drawImage(img, 0, 0);
                     pOffsetX = (300 - img.width * 0.4) / 2;
                     pOffsetY = (350 - img.height * 0.4) / 2;
-                    document.getElementById('zoomRange').value = 1;
-
                     redrawPassport();
                     showSuccessToast("Image Loaded Successfully!");
                 }
-                img.onerror = function() { alert("Please select a valid image file."); }
                 img.src = event.target.result;
             }
             reader.readAsDataURL(file);
         }
 
-        function updateSizeDimensions() {
-            const unit = document.getElementById('sizeUnit').value;
-            const wInput = document.getElementById('customWidth');
-            const hInput = document.getElementById('customHeight');
-
-            if(unit === 'cm') { wInput.value = 3.5; hInput.value = 4.5; }
-            else if(unit === 'mm') { wInput.value = 35; hInput.value = 45; }
-            else { wInput.value = 300; hInput.value = 350; }
-            redrawPassport();
-        }
-
-        function changeBgColor(color) {
-            pBgColor = color;
-            document.getElementById('customBgPicker').value = color;
-            redrawPassport();
-        }
-
         function redrawPassport() {
             if(!pProcessedCanvas) return;
             const canvas = document.getElementById('passportCanvas');
-            const w = parseInt(document.getElementById('customWidth').value) || 300;
-            const h = parseInt(document.getElementById('customHeight').value) || 350;
-            canvas.width = w;
-            canvas.height = h;
-
             const ctx = canvas.getContext('2d');
-            const zoom = parseFloat(document.getElementById('zoomRange').value);
-
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.fillStyle = pBgColor;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-
             ctx.save();
             ctx.translate(pOffsetX, pOffsetY);
-            ctx.scale(zoom, zoom);
             ctx.drawImage(pProcessedCanvas, 0, 0);
             ctx.restore();
         }
@@ -1285,21 +1229,19 @@
             if(!pProcessedCanvas) { alert("Please upload a photo first!"); return; }
             const canvas = document.getElementById('passportCanvas');
             const link = document.createElement('a');
-
             if(mode === 'single') {
                 link.download = 'passport-photo-hd.png';
                 link.href = canvas.toDataURL('image/png', 1.0);
                 link.click();
-            } else if(mode === 'print') {
+            } else {
                 const sheetCanvas = document.createElement('canvas');
                 sheetCanvas.width = 1800; sheetCanvas.height = 1200;
                 const sCtx = sheetCanvas.getContext('2d');
                 sCtx.fillStyle = '#ffffff';
                 sCtx.fillRect(0, 0, sheetCanvas.width, sheetCanvas.height);
-                let pw = canvas.width, ph = canvas.height;
                 for(let r=0; r<2; r++) {
                     for(let c=0; c<4; c++) {
-                        sCtx.drawImage(canvas, 100 + c * (pw + 50), 100 + r * (ph + 50));
+                        sCtx.drawImage(canvas, 100 + c * (canvas.width + 50), 100 + r * (canvas.height + 50));
                     }
                 }
                 link.download = 'passport-print-sheet-4r.jpg';
@@ -1307,7 +1249,7 @@
                 link.click();
             }
             registerCompletedTask();
-            showSuccessToast("Successfully Downloaded HD File!");
+            showSuccessToast("Downloaded Successfully!");
         }
 
         // SIGNATURE ENGINE
@@ -1318,7 +1260,7 @@
             const reader = new FileReader();
             reader.onload = function(event) {
                 const img = new Image();
-                img.onload = function() { sImg = img; redrawSignature(); showSuccessToast("Signature Loaded Successfully!"); }
+                img.onload = function() { sImg = img; redrawSignature(); showSuccessToast("Signature Loaded!"); }
                 img.src = event.target.result;
             }
             reader.readAsDataURL(file);
@@ -1328,64 +1270,36 @@
             if(!sImg) return;
             const canvas = document.getElementById('signatureCanvas');
             const ctx = canvas.getContext('2d');
-            ctx.imageSmoothingEnabled = true;
-            ctx.imageSmoothingQuality = 'high';
             ctx.fillStyle = '#ffffff';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             ctx.drawImage(sImg, 0, 0, canvas.width, canvas.height);
         }
 
         function downloadSignature() {
-            if(!sImg) { alert("Please select a signature image first!"); return; }
+            if(!sImg) { alert("Select signature first!"); return; }
             const canvas = document.createElement('canvas');
             canvas.width = 300; canvas.height = 80;
             const ctx = canvas.getContext('2d');
-            ctx.imageSmoothingEnabled = true;
-            ctx.imageSmoothingQuality = 'high';
             ctx.fillStyle = '#ffffff';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             ctx.drawImage(sImg, 0, 0, canvas.width, canvas.height);
-
             const link = document.createElement('a');
             link.download = 'official-exam-signature-300x80.jpg';
             link.href = canvas.toDataURL('image/jpeg', 1.0);
             link.click();
             registerCompletedTask();
-            showSuccessToast("Signature Downloaded Successfully (300x80)!");
+            showSuccessToast("Signature Downloaded (300x80)!");
         }
 
-        // OTHER UTILITIES FUNCTIONS
+        // OTHER UTILITIES
         function downloadThumbnail() {
             const url = document.getElementById('ytUrl').value;
-            const quality = document.getElementById('thumbQuality').value;
             const match = url ? url.match(/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/) : null;
             if(match && match[2].length === 11) {
-                window.open(`https://img.youtube.com/vi/${match[2]}/${quality}.jpg`, '_blank');
+                window.open(`https://img.youtube.com/vi/${match[2]}/maxresdefault.jpg`, '_blank');
                 registerCompletedTask();
                 showSuccessToast("Thumbnail Downloaded!");
-            } else { alert("Please enter a valid YouTube Video URL!"); }
-        }
-
-        function compressAndDownloadImage() {
-            const fileInput = document.getElementById('imageFile');
-            if(!fileInput.files[0]) return alert("Select image first!");
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const img = new Image();
-                img.onload = function() {
-                    const canvas = document.createElement('canvas');
-                    canvas.width = img.width; canvas.height = img.height;
-                    canvas.getContext('2d').drawImage(img, 0, 0);
-                    const link = document.createElement('a');
-                    link.download = 'compressed-hd.jpg';
-                    link.href = canvas.toDataURL('image/jpeg', 0.85);
-                    link.click();
-                    registerCompletedTask();
-                    showSuccessToast("Image Compressed & Downloaded!");
-                }
-                img.src = e.target.result;
-            }
-            reader.readAsDataURL(fileInput.files[0]);
+            } else { alert("Enter valid YouTube URL!"); }
         }
 
         function countWords() {
@@ -1393,7 +1307,6 @@
             const words = text === "" ? 0 : text.split(/\s+/).length;
             document.getElementById('wordCount').innerText = words;
             document.getElementById('charCount').innerText = text.length;
-            if(words > 0) registerCompletedTask();
         }
 
         function generatePass() {
@@ -1411,15 +1324,14 @@
 
         function generateQR() {
             const val = document.getElementById('qrText').value;
-            if(!val) return alert("Enter text or URL");
+            if(!val) return alert("Enter text");
             document.getElementById('qrResult').innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(val)}" class="mx-auto rounded-lg border p-1 bg-white">`;
             registerCompletedTask();
-            showSuccessToast("QR Code Generated!");
         }
 
         function calcAge() {
             const val = document.getElementById('birthDate').value;
-            if(!val) return alert("Select birth date");
+            if(!val) return alert("Select date");
             const bdate = new Date(val), today = new Date();
             let years = today.getFullYear() - bdate.getFullYear();
             document.getElementById('ageResult').innerText = `You are ${years} years old!`;
@@ -1429,25 +1341,21 @@
         function convertUnit() {
             const kg = document.getElementById('kgInput').value;
             document.getElementById('gramResult').innerText = kg ? (kg * 1000).toLocaleString() : 0;
-            if(kg) registerCompletedTask();
         }
 
         function speakText() {
             const text = document.getElementById('speechText').value;
-            if(!text) return alert("Type something");
-            window.speechSynthesis.speak(new SpeechSynthesisUtterance(text));
-            registerCompletedTask();
+            if(text) window.speechSynthesis.speak(new SpeechSynthesisUtterance(text));
         }
 
         function updateColorCode() { document.getElementById('colorHexOutput').value = document.getElementById('colorInput').value; }
-        function copyColorHex() { navigator.clipboard.writeText(document.getElementById('colorHexOutput').value); showSuccessToast("HEX Copied!"); registerCompletedTask(); }
+        function copyColorHex() { navigator.clipboard.writeText(document.getElementById('colorHexOutput').value); showSuccessToast("HEX Copied!"); }
 
         function convertCase(type) {
             const txt = document.getElementById('caseText');
             if(type === 'upper') txt.value = txt.value.toUpperCase();
             if(type === 'lower') txt.value = txt.value.toLowerCase();
             if(type === 'title') txt.value = txt.value.replace(/\w\S*/g, (t) => t.charAt(0).toUpperCase() + t.substr(1).toLowerCase());
-            registerCompletedTask();
         }
 
         function saveNotepad() { localStorage.setItem('jt_temp_note', document.getElementById('notepadArea').value); }
@@ -1456,25 +1364,22 @@
         function checkPassTime() {
             const p = document.getElementById('checkPass').value;
             const res = document.getElementById('passTimeResult');
-            if(p.length < 6) res.innerText = "Very weak (Cracked in seconds)";
-            else if(p.length < 10) res.innerText = "Moderate (Cracked in hours)";
-            else res.innerText = "Strong! (Cracked in centuries)";
-            registerCompletedTask();
+            if(p.length < 6) res.innerText = "Very weak";
+            else if(p.length < 10) res.innerText = "Moderate";
+            else res.innerText = "Strong!";
         }
 
         function minifyCode() {
             const c = document.getElementById('rawCode').value;
             document.getElementById('minifiedCode').value = c.replace(/\s+/g, ' ').trim();
-            registerCompletedTask();
-            showSuccessToast("Code Minified!");
+            showSuccessToast("Minified!");
         }
 
         function generateMeta() {
             const t = document.getElementById('metaTitle').value;
             const d = document.getElementById('metaDesc').value;
             document.getElementById('metaOutput').value = `<title>${t}</title>\n<meta name="description" content="${d}">`;
-            registerCompletedTask();
-            showSuccessToast("Meta Tags Generated!");
+            showSuccessToast("Generated!");
         }
 
         let pomoTimer;
@@ -1484,17 +1389,15 @@
             pomoTimer = setInterval(() => {
                 let m = Math.floor(t / 60), s = t % 60;
                 document.getElementById('timerDisplay').innerText = `${m}:${s < 10 ? '0' : ''}${s}`;
-                if(t <= 0) { clearInterval(pomoTimer); alert("Pomodoro Finished!"); }
+                if(t <= 0) { clearInterval(pomoTimer); alert("Finished!"); }
                 t--;
             }, 1000);
-            registerCompletedTask();
         }
         function resetPomodoro() { clearInterval(pomoTimer); document.getElementById('timerDisplay').innerText = "25:00"; }
 
         function generateTags() {
             const k = document.getElementById('keywordInput').value;
-            document.getElementById('tagOutput').innerText = `#${k} #${k}viral #${k}trending #JTMicro #Tools2026`;
-            registerCompletedTask();
+            document.getElementById('tagOutput').innerText = `#${k} #${k}viral #${k}trending #JTMicro`;
         }
 
         function generatePalette() {
@@ -1505,7 +1408,6 @@
                 html += `<div class="h-16 rounded-xl" style="background:${c}"></div>`;
             }
             document.getElementById('paletteBox').innerHTML = html;
-            registerCompletedTask();
         }
 
         function calcEMI() {
@@ -1513,18 +1415,16 @@
             const r = document.getElementById('loanRate').value / 1200;
             const n = document.getElementById('loanMonths').value;
             const emi = (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
-            document.getElementById('emiResult').innerText = `Monthly EMI: ${Math.round(emi || 0).toLocaleString()}`;
-            registerCompletedTask();
+            document.getElementById('emiResult').innerText = `EMI: ${Math.round(emi || 0).toLocaleString()}`;
         }
 
         function toBinary() {
             const t = document.getElementById('binText').value;
             document.getElementById('binOutput').value = t.split('').map(char => char.charCodeAt(0).toString(2)).join(' ');
-            registerCompletedTask();
         }
 
-        function encodeBase64() { document.getElementById('baseText').value = btoa(document.getElementById('baseText').value); registerCompletedTask(); }
-        function decodeBase64() { try { document.getElementById('baseText').value = atob(document.getElementById('baseText').value); } catch(e) { alert("Invalid Base64"); } registerCompletedTask(); }
+        function encodeBase64() { document.getElementById('baseText').value = btoa(document.getElementById('baseText').value); }
+        function decodeBase64() { try { document.getElementById('baseText').value = atob(document.getElementById('baseText').value); } catch(e) { alert("Invalid Base64"); } }
     </script>
 </body>
 </html>
