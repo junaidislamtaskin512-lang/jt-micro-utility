@@ -163,6 +163,16 @@
             <!-- ALL TOOLS GRID -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 
+                <!-- Compress JPEG Studio (New Request) -->
+                <div onclick="openTool('compressJpeg')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-teal-400 border-2 border-teal-500/30 bg-teal-950/20">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-teal-500/20 text-teal-400 rounded-2xl flex items-center justify-center text-xl border border-teal-500/40 group-hover:scale-110 transition"><i class="fa-solid fa-compress"></i></div>
+                        <span class="text-[11px] bg-teal-500/20 text-teal-300 border border-teal-500/30 px-2.5 py-1 rounded-full font-bold">COMPRESS JPEG</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-white mb-1 group-hover:text-teal-400 transition">Compress JPEG & Converter</h3>
+                    <p class="text-xs text-slate-300">Convert any photo to JPEG format, reduce file size in KB, and download instantly.</p>
+                </div>
+
                 <!-- Passport Photo Maker -->
                 <div onclick="openTool('passportPhoto')" class="glass-card p-6 rounded-2xl cursor-pointer group hover:border-blue-400 border-2 border-blue-500/30 bg-blue-950/20">
                     <div class="flex justify-between items-start mb-4">
@@ -479,7 +489,7 @@
 
     <!-- JAVASCRIPT SYSTEM -->
     <script>
-        let toolViews = JSON.parse(localStorage.getItem('jt_tool_views')) || { passportPhoto: 0, signatureResizer: 0, wordCounter: 0, passGenerator: 0, qrGenerator: 0, ageCalculator: 0, unitConverter: 0, textSpeech: 0, thumbDownloader: 0, imgCompressor: 0, colorPicker: 0, caseConverter: 0, tempNotepad: 0, passChecker: 0, codeMinifier: 0, metaGen: 0, ipFinder: 0, pomodoro: 0, tagGen: 0, paletteGen: 0, emiCalc: 0, binaryConv: 0, base64Tool: 0, worldClock: 0, keyTester: 0 };
+        let toolViews = JSON.parse(localStorage.getItem('jt_tool_views')) || { compressJpeg: 0, passportPhoto: 0, signatureResizer: 0, wordCounter: 0, passGenerator: 0, qrGenerator: 0, ageCalculator: 0, unitConverter: 0, textSpeech: 0, thumbDownloader: 0, imgCompressor: 0, colorPicker: 0, caseConverter: 0, tempNotepad: 0, passChecker: 0, codeMinifier: 0, metaGen: 0, ipFinder: 0, pomodoro: 0, tagGen: 0, paletteGen: 0, emiCalc: 0, binaryConv: 0, base64Tool: 0, worldClock: 0, keyTester: 0 };
         let completedWorksCount = parseInt(localStorage.getItem('jt_works_count')) || 0;
 
         document.getElementById('menuWorkCount').innerText = completedWorksCount;
@@ -587,7 +597,66 @@
             const body = document.getElementById('toolModalBody');
             modal.classList.remove('hidden');
 
-            if(toolName === 'passportPhoto') {
+            if(toolName === 'compressJpeg') {
+                title.innerHTML = `<i class="fa-solid fa-compress text-teal-400"></i> Compress JPEG & Converter Studio`;
+                body.innerHTML = `
+                    <div class="space-y-4">
+                        <div class="text-center bg-teal-950/30 p-4 rounded-2xl border border-teal-500/30">
+                            <h4 class="font-bold text-sm text-teal-300 mb-1">COMPRESS JPEG</h4>
+                            <p class="text-[11px] text-slate-300">Convert any image to JPEG format, reduce KB size precisely, and download instantly without leaving your browser.</p>
+                        </div>
+
+                        <!-- FORMAT TABS -->
+                        <div class="flex gap-2 justify-center">
+                            <span class="px-3 py-1 bg-teal-600 text-white rounded-lg text-xs font-bold shadow">JPEG</span>
+                            <span class="px-3 py-1 bg-slate-900 text-slate-400 rounded-lg text-xs font-medium border border-slate-800">PNG</span>
+                            <span class="px-3 py-1 bg-slate-900 text-slate-400 rounded-lg text-xs font-medium border border-slate-800">GIF</span>
+                        </div>
+
+                        <!-- UPLOAD BOX -->
+                        <div class="bg-slate-900/80 p-5 rounded-2xl border-2 border-dashed border-slate-700 text-center hover:border-teal-500 transition">
+                            <input type="file" id="cjInput" accept="image/*,.heic,.HEIC" onchange="loadCompressJpeg(event)" class="hidden">
+                            <label for="cjInput" class="cursor-pointer flex flex-col items-center">
+                                <div class="w-12 h-12 bg-teal-500/20 text-teal-400 rounded-2xl flex items-center justify-center text-xl mb-2 border border-teal-500/30">
+                                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                                </div>
+                                <span class="text-xs font-bold text-white mb-1">SELECT FILES or Drop Your Files Here</span>
+                                <span class="text-[10px] text-slate-400">Supports JPG, PNG, HEIC, WEBP (Max 20 Photos)</span>
+                            </label>
+                        </div>
+
+                        <!-- COMPRESSION SETTINGS -->
+                        <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800 space-y-3">
+                            <div class="flex justify-between items-center text-xs">
+                                <span class="text-slate-300 font-medium">Target Quality / KB Reduction:</span>
+                                <span id="cjQualityVal" class="text-teal-400 font-bold">85%</span>
+                            </div>
+                            <input type="range" id="cjQualityRange" min="10" max="95" value="85" oninput="document.getElementById('cjQualityVal').innerText=this.value+'%'" class="w-full accent-teal-500">
+                            <p class="text-[10px] text-slate-400 italic">* Lower quality slider value gives smaller file size (KB).</p>
+                        </div>
+
+                        <!-- PREVIEW CONTAINER -->
+                        <div id="cjPreviewBox" class="hidden text-center bg-slate-950 p-4 rounded-xl border border-slate-800">
+                            <p class="text-xs text-teal-400 mb-2 font-semibold"><i class="fa-solid fa-image"></i> Image Preview & Stats</p>
+                            <img id="cjPreviewImg" class="max-h-40 mx-auto rounded-lg border border-slate-800 mb-2 object-contain">
+                            <div class="flex justify-center gap-4 text-xs text-slate-300">
+                                <span>Original: <strong id="cjOrigSize" class="text-amber-400">-- KB</strong></span>
+                                <span>Compressed: <strong id="cjNewSize" class="text-emerald-400">-- KB</strong></span>
+                            </div>
+                        </div>
+
+                        <!-- ACTION BUTTONS -->
+                        <div class="grid grid-cols-2 gap-3 pt-2">
+                            <button onclick="processCompressJpeg()" class="w-full bg-teal-600 hover:bg-teal-500 text-white py-3 rounded-xl text-xs font-bold shadow-lg shadow-teal-600/30 transition flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-compress"></i> COMPRESS
+                            </button>
+                            <button onclick="downloadCompressedJpeg()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-3 rounded-xl text-xs font-bold shadow-lg shadow-emerald-600/30 transition flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-download"></i> SAVE ALL / DOWNLOAD
+                            </button>
+                        </div>
+                    </div>
+                `;
+            } else if(toolName === 'passportPhoto') {
                 title.innerHTML = `<i class="fa-solid fa-id-badge text-blue-400"></i> Pro Passport Studio & Background Remover`;
                 body.innerHTML = `
                     <div class="space-y-4">
@@ -892,6 +961,68 @@
 
         function closeToolModal() { document.getElementById('toolModal').classList.add('hidden'); }
 
+        // COMPRESS JPEG ENGINE
+        let cjLoadedImg = null;
+        let cjOrigFileSize = 0;
+        let cjCompressedDataUrl = null;
+
+        function loadCompressJpeg(e) {
+            const file = e.target.files[0];
+            if(!file) return;
+            cjOrigFileSize = file.size;
+
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const img = new Image();
+                img.onload = function() {
+                    cjLoadedImg = img;
+                    document.getElementById('cjPreviewBox').classList.remove('hidden');
+                    document.getElementById('cjPreviewImg').src = event.target.result;
+                    document.getElementById('cjOrigSize').innerText = (cjOrigFileSize / 1024).toFixed(1) + ' KB';
+                    document.getElementById('cjNewSize').innerText = 'Ready';
+                    showSuccessToast("Image Loaded Successfully!");
+                }
+                img.src = event.target.result;
+            }
+            reader.readAsDataURL(file);
+        }
+
+        function processCompressJpeg() {
+            if(!cjLoadedImg) { alert("Please select an image first!"); return; }
+            const quality = parseInt(document.getElementById('cjQualityRange').value) / 100;
+
+            const canvas = document.createElement('canvas');
+            canvas.width = cjLoadedImg.width;
+            canvas.height = cjLoadedImg.height;
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(cjLoadedImg, 0, 0);
+
+            cjCompressedDataUrl = canvas.toDataURL('image/jpeg', quality);
+            
+            // Approximate size calculation in KB
+            let head = 'data:image/jpeg;base64,';
+            let approxBytes = Math.round((cjCompressedDataUrl.length - head.length) * 3/4);
+            document.getElementById('cjNewSize').innerText = (approxBytes / 1024).toFixed(1) + ' KB';
+
+            showSuccessToast("Image Compressed & Converted to JPEG Successfully!");
+        }
+
+        function downloadCompressedJpeg() {
+            if(!cjCompressedDataUrl) {
+                processCompressJpeg();
+                if(!cjCompressedDataUrl) return;
+            }
+            const link = document.createElement('a');
+            link.download = 'compressed-image-jt.jpg';
+            link.href = cjCompressedDataUrl;
+            link.click();
+
+            registerCompletedTask();
+            showSuccessToast("Successfully Downloaded JPEG File!");
+        }
+
         // UNIVERSAL & BULLETPROOF PASSPORT ENGINE (Supports all image formats)
         let pOriginalImage = null;
         let pProcessedCanvas = null;
@@ -1059,7 +1190,7 @@
         function downloadSignature() {
             if(!sImg) { alert("Please select a signature image first!"); return; }
             const canvas = document.createElement('canvas');
-            canvas.width = 300; canvas.height = 80; // Exact Bangladesh Govt Exam Ratio
+            canvas.width = 300; canvas.height = 80;
             const ctx = canvas.getContext('2d');
             ctx.imageSmoothingEnabled = true;
             ctx.imageSmoothingQuality = 'high';
