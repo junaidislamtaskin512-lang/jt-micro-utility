@@ -616,62 +616,120 @@
                     <div class="space-y-5">
                         <div class="text-center bg-amber-950/30 p-4 rounded-2xl border border-amber-500/30">
                             <h4 class="font-bold text-sm text-amber-300 mb-1">COMPLETE ADMISSION & CIRCULAR DIRECTORY</h4>
-                            <p class="text-[11px] text-slate-300">মেডিকেল, ডেন্টাল, ইঞ্জিনিয়ারিং, জিএসটি গুচ্ছ, সকল পাবলিক এবং প্রাইভেট বিশ্ববিদ্যালয়ের অফিসিয়াল এপ্লাই ও নোটিশ লিংক। (যদি কোনো অফিশিয়াল সার্ভারে মেইনটেনেন্স বা ডাউনটাইম দেখায়, তবে হোমপেজ বা অলটারনেটিভ লিংকে ট্রাই করুন)।</p>
+                            <p class="text-[11px] text-slate-300">সকল পাবলিক, প্রাইভেট, মেডিকেল, ইঞ্জিনিয়ারিং ও গুচ্ছ বিশ্ববিদ্যালয়ের সঠিক অফিশিয়াল এপ্লাই ও নোটিশ লিংক। সার্ভারে সমস্যা থাকলে বিকল্প বা মূল হোমপেজ লিংক ব্যবহার করুন।</p>
                         </div>
 
                         <!-- CATEGORY TABS -->
                         <div class="flex gap-2 overflow-x-auto pb-2 no-scrollbar">
                             <button onclick="filterAdmission('all')" class="px-4 py-2 bg-amber-600 text-white rounded-xl text-xs font-bold shrink-0 shadow">All Universities</button>
-                            <button onclick="filterAdmission('medical')" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 rounded-xl text-xs font-medium shrink-0">Medical & Dental</button>
-                            <button onclick="filterAdmission('engineering')" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 rounded-xl text-xs font-medium shrink-0">Engineering</button>
-                            <button onclick="filterAdmission('gst')" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 rounded-xl text-xs font-medium shrink-0">GST Cluster (গুচ্ছ)</button>
                             <button onclick="filterAdmission('public')" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 rounded-xl text-xs font-medium shrink-0">General Public</button>
+                            <button onclick="filterAdmission('gst')" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 rounded-xl text-xs font-medium shrink-0">GST Cluster (গুচ্ছ)</button>
+                            <button onclick="filterAdmission('engineering')" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 rounded-xl text-xs font-medium shrink-0">Engineering</button>
+                            <button onclick="filterAdmission('medical')" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 rounded-xl text-xs font-medium shrink-0">Medical & Dental</button>
                             <button onclick="filterAdmission('private')" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 rounded-xl text-xs font-medium shrink-0">Private Universities</button>
                         </div>
 
                         <!-- CARDS CONTAINER -->
                         <div id="admissionCardsList" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             
-                            <!-- 1. MEDICAL & DENTAL -->
-                            <div class="admission-card medical glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                            <!-- GENERAL & COMPREHENSIVE PUBLIC -->
+                            <div class="admission-card public glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
                                 <div>
-                                    <span class="text-[10px] bg-rose-500/20 text-rose-300 border border-rose-500/30 px-2 py-0.5 rounded-full font-bold">MBBS & BDS</span>
-                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">Govt & Private Medical / Dental Colleges</h5>
-                                    <p class="text-[11px] text-slate-400 mb-3">DGME controlled medical admission and seat distribution portal.</p>
+                                    <span class="text-[10px] bg-purple-500/20 text-purple-300 border border-purple-500/30 px-2 py-0.5 rounded-full font-bold">DU Units A,B,C,D</span>
+                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">University of Dhaka (DU)</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">Dhaka University undergraduate online application portal.</p>
                                 </div>
                                 <div class="flex gap-2 pt-2 border-t border-slate-800">
-                                    <a href="https://dgme.teletalk.com.bd" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-rose-600 hover:bg-rose-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Apply Portal</a>
-                                    <a href="https://dghs.gov.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Notice</a>
+                                    <a href="https://admission.eis.du.ac.bd" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-purple-600 hover:bg-purple-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Apply Portal</a>
+                                    <a href="https://du.ac.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Website</a>
                                 </div>
                             </div>
 
-                            <!-- 2. ENGINEERING (BUET) -->
-                            <div class="admission-card engineering glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                            <div class="admission-card public glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
                                 <div>
-                                    <span class="text-[10px] bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2 py-0.5 rounded-full font-bold">BUET</span>
-                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">Bangladesh Univ. of Engineering & Tech (BUET)</h5>
-                                    <p class="text-[11px] text-slate-400 mb-3">Undergraduate admission preliminary application and seat plan.</p>
+                                    <span class="text-[10px] bg-teal-500/20 text-teal-300 border border-teal-500/30 px-2 py-0.5 rounded-full font-bold">RU Units A,B,C</span>
+                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">University of Rajshahi (RU)</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">Rajshahi University admission application and seat plan.</p>
                                 </div>
                                 <div class="flex gap-2 pt-2 border-t border-slate-800">
-                                    <a href="https://www.buet.ac.bd/web/#/admission" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-blue-600 hover:bg-blue-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Apply Portal</a>
-                                    <a href="https://www.buet.ac.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Website</a>
+                                    <a href="https://admission.ru.ac.bd" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-teal-600 hover:bg-teal-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Apply Portal</a>
+                                    <a href="https://ru.ac.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Website</a>
                                 </div>
                             </div>
 
-                            <!-- 3. CKRUET (CUET, KUET, RUET) -->
-                            <div class="admission-card engineering glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                            <div class="admission-card public glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
                                 <div>
-                                    <span class="text-[10px] bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2 py-0.5 rounded-full font-bold">CKRUET</span>
-                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">CUET, KUET & RUET Combined Admission</h5>
-                                    <p class="text-[11px] text-slate-400 mb-3">Chittagong, Khulna and Rajshahi Engineering & Technology combined admission.</p>
+                                    <span class="text-[10px] bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 px-2 py-0.5 rounded-full font-bold">CU Units A,B,C,D</span>
+                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">University of Chittagong (CU)</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">Chittagong University admission application and sub-units.</p>
                                 </div>
                                 <div class="flex gap-2 pt-2 border-t border-slate-800">
-                                    <a href="https://www.ckruetadmission.ac.bd" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-blue-600 hover:bg-blue-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Apply Portal</a>
-                                    <a href="https://www.ckruetadmission.ac.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Notice</a>
+                                    <a href="https://admission.cu.ac.bd" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-indigo-600 hover:bg-indigo-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Apply Portal</a>
+                                    <a href="https://cu.ac.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Website</a>
                                 </div>
                             </div>
 
-                            <!-- 4. GST CLUSTER (গুচ্ছ) -->
+                            <div class="admission-card public glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                                <div>
+                                    <span class="text-[10px] bg-sky-500/20 text-sky-300 border border-sky-500/30 px-2 py-0.5 rounded-full font-bold">JU Admission</span>
+                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">Jahangirnagar University (JU)</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">Jahangirnagar University online admission portal.</p>
+                                </div>
+                                <div class="flex gap-2 pt-2 border-t border-slate-800">
+                                    <a href="https://juniv-admission.org" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-sky-600 hover:bg-sky-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Apply Portal</a>
+                                    <a href="https://juniv.edu" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Website</a>
+                                </div>
+                            </div>
+
+                            <div class="admission-card public glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                                <div>
+                                    <span class="text-[10px] bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded-full font-bold">JnU Admission</span>
+                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">Jagannath University (JnU)</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">Jagannath University official admission portal.</p>
+                                </div>
+                                <div class="flex gap-2 pt-2 border-t border-slate-800">
+                                    <a href="https://jnu.ac.bd" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-amber-600 hover:bg-amber-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Website</a>
+                                    <a href="https://jnu.ac.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Notice</a>
+                                </div>
+                            </div>
+
+                            <div class="admission-card public glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                                <div>
+                                    <span class="text-[10px] bg-yellow-500/20 text-yellow-300 border border-yellow-500/30 px-2 py-0.5 rounded-full font-bold">IU Kushtia</span>
+                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">Islamic University (IU), Kushtia</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">Islamic University undergraduate admission portal.</p>
+                                </div>
+                                <div class="flex gap-2 pt-2 border-t border-slate-800">
+                                    <a href="https://iu.ac.bd" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-yellow-600 hover:bg-yellow-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Website</a>
+                                    <a href="https://iu.ac.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Notice</a>
+                                </div>
+                            </div>
+
+                            <div class="admission-card public glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                                <div>
+                                    <span class="text-[10px] bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2 py-0.5 rounded-full font-bold">National Univ</span>
+                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">National University (NU)</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">Honours, Masters and Degree admission portal.</p>
+                                </div>
+                                <div class="flex gap-2 pt-2 border-t border-slate-800">
+                                    <a href="https://nu.ac.bd" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-blue-600 hover:bg-blue-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Website</a>
+                                    <a href="http://www.nubd.info" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Portal</a>
+                                </div>
+                            </div>
+
+                            <div class="admission-card public glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                                <div>
+                                    <span class="text-[10px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded-full font-bold">BOU</span>
+                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">Bangladesh Open University (BOU)</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">Open and distance learning admission system.</p>
+                                </div>
+                                <div class="flex gap-2 pt-2 border-t border-slate-800">
+                                    <a href="https://bou.ac.bd" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Website</a>
+                                    <a href="https://bou.ac.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Notice</a>
+                                </div>
+                            </div>
+
+                            <!-- GST CLUSTER -->
                             <div class="admission-card gst glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
                                 <div>
                                     <span class="text-[10px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded-full font-bold">24 Universities</span>
@@ -684,60 +742,57 @@
                                 </div>
                             </div>
 
-                            <!-- 5. DHAKA UNIVERSITY -->
-                            <div class="admission-card public glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                            <!-- ENGINEERING -->
+                            <div class="admission-card engineering glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
                                 <div>
-                                    <span class="text-[10px] bg-purple-500/20 text-purple-300 border border-purple-500/30 px-2 py-0.5 rounded-full font-bold">DU Units A,B,C,D</span>
-                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">University of Dhaka (DU) Admission</h5>
-                                    <p class="text-[11px] text-slate-400 mb-3">Dhaka University undergraduate online application portal.</p>
+                                    <span class="text-[10px] bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2 py-0.5 rounded-full font-bold">BUET</span>
+                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">Bangladesh Univ. of Engineering & Tech (BUET)</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">Undergraduate admission preliminary application and seat plan.</p>
                                 </div>
                                 <div class="flex gap-2 pt-2 border-t border-slate-800">
-                                    <a href="https://admission.eis.du.ac.bd" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-purple-600 hover:bg-purple-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Apply Portal</a>
-                                    <a href="https://du.ac.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Website</a>
+                                    <a href="https://www.buet.ac.bd/web/#/admission" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-blue-600 hover:bg-blue-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Apply Portal</a>
+                                    <a href="https://www.buet.ac.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Website</a>
                                 </div>
                             </div>
 
-                            <!-- 6. RAJSHAHI UNIVERSITY -->
-                            <div class="admission-card public glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                            <div class="admission-card engineering glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
                                 <div>
-                                    <span class="text-[10px] bg-teal-500/20 text-teal-300 border border-teal-500/30 px-2 py-0.5 rounded-full font-bold">RU Units A,B,C</span>
-                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">University of Rajshahi (RU) Admission</h5>
-                                    <p class="text-[11px] text-slate-400 mb-3">Rajshahi University admission application and seat plan.</p>
+                                    <span class="text-[10px] bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2 py-0.5 rounded-full font-bold">CKRUET</span>
+                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">CUET, KUET & RUET Combined Admission</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">Chittagong, Khulna and Rajshahi Engineering & Technology combined admission.</p>
                                 </div>
                                 <div class="flex gap-2 pt-2 border-t border-slate-800">
-                                    <a href="https://admission.ru.ac.bd" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-teal-600 hover:bg-teal-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Apply Portal</a>
-                                    <a href="https://ru.ac.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Website</a>
+                                    <a href="https://www.ckruetadmission.ac.bd" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-blue-600 hover:bg-blue-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Apply Portal</a>
+                                    <a href="https://www.ckruetadmission.ac.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Notice</a>
                                 </div>
                             </div>
 
-                            <!-- 7. CHITTAGONG UNIVERSITY -->
-                            <div class="admission-card public glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                            <div class="admission-card engineering glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
                                 <div>
-                                    <span class="text-[10px] bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 px-2 py-0.5 rounded-full font-bold">CU Units A,B,C,D</span>
-                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">University of Chittagong (CU) Admission</h5>
-                                    <p class="text-[11px] text-slate-400 mb-3">Chittagong University admission application and sub-units.</p>
+                                    <span class="text-[10px] bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2 py-0.5 rounded-full font-bold">DUET</span>
+                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">Dhaka Univ. of Engineering & Tech (DUET)</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">BSc Engineering admission for diploma engineers.</p>
                                 </div>
                                 <div class="flex gap-2 pt-2 border-t border-slate-800">
-                                    <a href="https://admission.cu.ac.bd" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-indigo-600 hover:bg-indigo-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Apply Portal</a>
-                                    <a href="https://cu.ac.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Website</a>
+                                    <a href="https://du.ac.bd" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-blue-600 hover:bg-blue-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Website</a>
+                                    <a href="https://du.ac.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Notice</a>
                                 </div>
                             </div>
 
-                            <!-- 8. JAHANGIRNAGAR UNIVERSITY -->
-                            <div class="admission-card public glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                            <!-- MEDICAL & DENTAL -->
+                            <div class="admission-card medical glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
                                 <div>
-                                    <span class="text-[10px] bg-sky-500/20 text-sky-300 border border-sky-500/30 px-2 py-0.5 rounded-full font-bold">JU Admission</span>
-                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">Jahangirnagar University (JU) Admission</h5>
-                                    <p class="text-[11px] text-slate-400 mb-3">Jahangirnagar University online admission portal.</p>
+                                    <span class="text-[10px] bg-rose-500/20 text-rose-300 border border-rose-500/30 px-2 py-0.5 rounded-full font-bold">MBBS & BDS</span>
+                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">Govt & Private Medical / Dental Colleges</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">DGME controlled medical admission and seat distribution portal.</p>
                                 </div>
                                 <div class="flex gap-2 pt-2 border-t border-slate-800">
-                                    <a href="https://juniv-admission.org" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-sky-600 hover:bg-sky-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Apply Portal</a>
-                                    <a href="https://juniv.edu" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Website</a>
+                                    <a href="https://dgme.teletalk.com.bd" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-rose-600 hover:bg-rose-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Apply Portal</a>
+                                    <a href="https://dghs.gov.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Notice</a>
                                 </div>
                             </div>
 
-                            <!-- 9. AGRICULTURAL UNIVERSITY CLUSTER -->
-                            <div class="admission-card public glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                            <div class="admission-card medical glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
                                 <div>
                                     <span class="text-[10px] bg-lime-500/20 text-lime-300 border border-lime-500/30 px-2 py-0.5 rounded-full font-bold">Agri Cluster</span>
                                     <h5 class="font-bold text-sm text-white mt-2 mb-1">Agricultural Universities Combined Admission</h5>
@@ -749,21 +804,7 @@
                                 </div>
                             </div>
 
-                            <!-- 10. ISLAMIC UNIVERSITY KUSHTIA -->
-                            <div class="admission-card public glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
-                                <div>
-                                    <span class="text-[10px] bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded-full font-bold">IU Kushtia</span>
-                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">Islamic University (IU), Kushtia</h5>
-                                    <p class="text-[11px] text-slate-400 mb-3">Islamic University undergraduate admission portal.</p>
-                                </div>
-                                <div class="flex gap-2 pt-2 border-t border-slate-800">
-                                    <a href="https://iu.ac.bd" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-amber-600 hover:bg-amber-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Website</a>
-                                    <a href="https://iu.ac.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Notice</a>
-                                </div>
-                            </div>
-
-                            <!-- PRIVATE UNIVERSITIES SECTION -->
-                            <!-- North South University -->
+                            <!-- PRIVATE UNIVERSITIES -->
                             <div class="admission-card private glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
                                 <div>
                                     <span class="text-[10px] bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 px-2 py-0.5 rounded-full font-bold">Private #1</span>
@@ -776,7 +817,6 @@
                                 </div>
                             </div>
 
-                            <!-- BRAC University -->
                             <div class="admission-card private glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
                                 <div>
                                     <span class="text-[10px] bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 px-2 py-0.5 rounded-full font-bold">Private</span>
@@ -789,7 +829,6 @@
                                 </div>
                             </div>
 
-                            <!-- Independent University Bangladesh (IUB) -->
                             <div class="admission-card private glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
                                 <div>
                                     <span class="text-[10px] bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 px-2 py-0.5 rounded-full font-bold">Private</span>
@@ -802,7 +841,6 @@
                                 </div>
                             </div>
 
-                            <!-- American International University-Bangladesh (AIUB) -->
                             <div class="admission-card private glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
                                 <div>
                                     <span class="text-[10px] bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 px-2 py-0.5 rounded-full font-bold">Private</span>
@@ -815,7 +853,6 @@
                                 </div>
                             </div>
 
-                            <!-- Daffodil International University (DIU) -->
                             <div class="admission-card private glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
                                 <div>
                                     <span class="text-[10px] bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 px-2 py-0.5 rounded-full font-bold">Private</span>
@@ -828,7 +865,6 @@
                                 </div>
                             </div>
 
-                            <!-- United International University (UIU) -->
                             <div class="admission-card private glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
                                 <div>
                                     <span class="text-[10px] bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 px-2 py-0.5 rounded-full font-bold">Private</span>
@@ -838,6 +874,30 @@
                                 <div class="flex gap-2 pt-2 border-t border-slate-800">
                                     <a href="https://www.uiu.ac.bd/admission/" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-cyan-600 hover:bg-cyan-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Admission Portal</a>
                                     <a href="https://www.uiu.ac.bd" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Website</a>
+                                </div>
+                            </div>
+
+                            <div class="admission-card private glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                                <div>
+                                    <span class="text-[10px] bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 px-2 py-0.5 rounded-full font-bold">Private</span>
+                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">East West University (EWU)</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">EWU admission and course registration portal.</p>
+                                </div>
+                                <div class="flex gap-2 pt-2 border-t border-slate-800">
+                                    <a href="https://www.ewubd.edu" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-cyan-600 hover:bg-cyan-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Website</a>
+                                    <a href="https://www.ewubd.edu" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Notice</a>
+                                </div>
+                            </div>
+
+                            <div class="admission-card private glass-card p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                                <div>
+                                    <span class="text-[10px] bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 px-2 py-0.5 rounded-full font-bold">Private</span>
+                                    <h5 class="font-bold text-sm text-white mt-2 mb-1">Ahsanullah Univ. of Science & Tech (AUST)</h5>
+                                    <p class="text-[11px] text-slate-400 mb-3">AUST undergraduate engineering & architecture admission.</p>
+                                </div>
+                                <div class="flex gap-2 pt-2 border-t border-slate-800">
+                                    <a href="https://www.aust.edu" target="_blank" onclick="registerCompletedTask();" class="flex-1 bg-cyan-600 hover:bg-cyan-500 text-white text-center py-2 rounded-lg text-xs font-bold transition shadow">Website</a>
+                                    <a href="https://www.aust.edu" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-2 rounded-lg text-xs font-medium border border-slate-800">Notice</a>
                                 </div>
                             </div>
 
